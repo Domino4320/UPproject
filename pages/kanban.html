@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nexus Kanban — Управление задачами (Задание 3.2)</title>
+  <title>Nexus Kanban — Управление задачами</title>
   <script>
     (function() {
       const savedTheme = localStorage.getItem('theme');
@@ -29,7 +29,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
       
       <div class="flex items-center space-x-3">
-        <a href="../" class="p-2 -ml-2 text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="В портал заданий">
+        <a href="../" class="p-2 -ml-2 text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="На главную">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
         </a>
         <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-purple-600 to-brand-500 flex items-center justify-center text-white shadow-lg shadow-purple-500/25">
@@ -37,7 +37,7 @@
         </div>
         <div>
           <h1 class="text-lg font-black tracking-tight text-slate-900 dark:text-white">Nexus Kanban</h1>
-          <span class="text-[11px] font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-wider">Спринт 42 • Задание 3.2</span>
+          <span class="text-[11px] font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-wider">Спринт 42 • Q4 Roadmap</span>
         </div>
       </div>
 
@@ -76,9 +76,9 @@
     <!-- Инфо-плашка -->
     <div class="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
       <div>
-        <span class="ds-badge ds-badge-brand mb-1">Задание 3.2</span>
+        <span class="ds-badge ds-badge-brand mb-1">Канбан-доска</span>
         <h2 class="ds-h2 text-xl sm:text-2xl">Доска разработки Nexus</h2>
-        <p class="ds-body-sm">Поддержка свайпа и горизонтального скролла snap-x, визуальный drag-handle, теги и счетчики.</p>
+        <p class="ds-body-sm">Управление задачами спринта, приоритизация бэклога и командное распределение ресурсов.</p>
       </div>
 
       <div class="flex items-center gap-2">
@@ -90,7 +90,7 @@
     <div class="flex-1 flex overflow-x-auto snap-x snap-mandatory gap-6 pb-6 scrollbar-custom -mx-4 px-4 sm:mx-0 sm:px-0">
       
       <!-- ============================================== -->
-      <!-- КОЛОНКА 1: TO DO (Задание 3.2)                 -->
+      
       <!-- ============================================== -->
       <section class="snap-center shrink-0 w-[85%] sm:w-[350px] min-w-[300px] flex flex-col rounded-3xl bg-slate-100/70 dark:bg-slate-900/40 border border-slate-200/60 dark:border-slate-800/60 p-4">
         
@@ -112,14 +112,14 @@
             <div class="flex items-start justify-between gap-2 mb-2">
               <span class="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-purple-50 text-purple-700 dark:bg-purple-950 dark:text-purple-300">Архитектура</span>
               
-              <!-- Визуальный drag-handle (Задание 3.2) -->
+              
               <div class="text-slate-300 group-hover:text-slate-500 dark:text-slate-600 dark:group-hover:text-slate-400 cursor-grab transition-colors" title="Перетащить задачу">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M7 2a2 2 0 10 .001 4.001A2 2 0 007 2zm0 6a2 2 0 10 .001 4.001A2 2 0 007 8zm0 6a2 2 0 10 .001 4.001A2 2 0 007 14zm6-12a2 2 0 10 .001 4.001A2 2 0 0013 2zm0 6a2 2 0 10 .001 4.001A2 2 0 0013 8zm0 6a2 2 0 10 .001 4.001A2 2 0 0013 14z"/></svg>
               </div>
             </div>
 
-            <h4 class="font-bold text-sm text-slate-900 dark:text-white group-hover:text-brand-600 transition">Внедрить Container Queries в каталог</h4>
-            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 line-clamp-2">Использовать @container для адаптивной перестройки карточек товаров на экранах планшетов и мобильных.</p>
+            <h4 class="font-bold text-sm text-slate-900 dark:text-white group-hover:text-brand-600 transition">Адаптивная сетка карточек каталога</h4>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 line-clamp-2">Оптимизировать компоновку и отображение товаров на планшетных и мобильных экранах.</p>
 
             <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
               <!-- Приоритет -->
@@ -175,7 +175,7 @@
       </section>
 
       <!-- ============================================== -->
-      <!-- КОЛОНКА 2: IN PROGRESS (Задание 3.2)           -->
+      
       <!-- ============================================== -->
       <section class="snap-center shrink-0 w-[85%] sm:w-[350px] min-w-[300px] flex flex-col rounded-3xl bg-slate-100/70 dark:bg-slate-900/40 border border-slate-200/60 dark:border-slate-800/60 p-4">
         
@@ -198,8 +198,8 @@
               </div>
             </div>
 
-            <h4 class="font-bold text-sm text-slate-900 dark:text-white group-hover:text-brand-600 transition">Сборка многошаговой формы с индикацией</h4>
-            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 line-clamp-2">Реализация 4 шагов регистрации с прогресс-баром, валидацией peer-invalid и селекторами has-[:checked].</p>
+            <h4 class="font-bold text-sm text-slate-900 dark:text-white group-hover:text-brand-600 transition">Онбординг новых пользователей</h4>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 line-clamp-2">Пошаговая форма регистрации с интерактивной проверкой полей и выбором тарифного плана.</p>
 
             <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
               <span class="inline-flex items-center gap-1 text-[11px] font-bold text-rose-600 dark:text-rose-400">
@@ -218,8 +218,8 @@
               </div>
             </div>
 
-            <h4 class="font-bold text-sm text-slate-900 dark:text-white group-hover:text-brand-600 transition">Интерактивный чат с кастомным скроллом</h4>
-            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 line-clamp-2">Поддержка arbitrary values для скроллбара, автоскролл при отправке новых сообщений и адаптивный вид.</p>
+            <h4 class="font-bold text-sm text-slate-900 dark:text-white group-hover:text-brand-600 transition">Оптимизация интерфейса чата</h4>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 line-clamp-2">Плавная прокрутка истории сообщений, автоскролл при отправке и мобильная адаптация.</p>
 
             <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
               <span class="inline-flex items-center gap-1 text-[11px] font-bold text-amber-600 dark:text-amber-400">
@@ -233,7 +233,7 @@
       </section>
 
       <!-- ============================================== -->
-      <!-- КОЛОНКА 3: DONE (Задание 3.2)                  -->
+      
       <!-- ============================================== -->
       <section class="snap-center shrink-0 w-[85%] sm:w-[350px] min-w-[300px] flex flex-col rounded-3xl bg-slate-100/70 dark:bg-slate-900/40 border border-slate-200/60 dark:border-slate-800/60 p-4">
         
@@ -254,7 +254,7 @@
               <span class="text-emerald-500 font-bold text-xs">✓ Выполнено</span>
             </div>
 
-            <h4 class="font-bold text-sm text-slate-900 dark:text-white line-through decoration-slate-400">Создать дизайн-систему на Tailwind (4.4)</h4>
+            <h4 class="font-bold text-sm text-slate-900 dark:text-white line-through decoration-slate-400">Дизайн-система компонентов UI Kit</h4>
             <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 line-clamp-2">Все токены, матрица кнопок 4x3, бейджи, алерты, карточки и модальные окна задокументированы.</p>
 
             <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
@@ -270,7 +270,7 @@
               <span class="text-emerald-500 font-bold text-xs">✓ Выполнено</span>
             </div>
 
-            <h4 class="font-bold text-sm text-slate-900 dark:text-white line-through decoration-slate-400">Аналитический дашборд с графиком CSS Grid</h4>
+            <h4 class="font-bold text-sm text-slate-900 dark:text-white line-through decoration-slate-400">Аналитический дашборд с графиками</h4>
             <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 line-clamp-2">4 карточки с трендами, таблица транзакций, фильтры и фиксированный адаптивный сайдбар.</p>
 
             <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">

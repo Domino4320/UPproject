@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NexusSaaS — Платформа нового поколения (Задания 2.1, 2.2, 3.3, 3.4)</title>
+  <title>NexusSaaS — Платформа нового поколения</title>
   <script>
     (function() {
       const savedTheme = localStorage.getItem('theme');
@@ -15,7 +15,7 @@
       }
     })();
   </script>
-  <link rel="stylesheet" href="/src/css/style.css">
+  <link rel="stylesheet" href="../src/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -23,13 +23,13 @@
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col selection:bg-brand-500 selection:text-white">
 
   <!-- ============================================== -->
-  <!-- 1. Навигационная панель (Задания 1.2, 3.3, 3.4) -->
+  <!-- 1. Навигационная панель  -->
   <!-- ============================================== -->
   <header class="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
       
       <!-- Логотип слева -->
-      <a href="./" class="flex items-center space-x-3 group shrink-0">
+      <a href="../" class="flex items-center space-x-3 group shrink-0">
         <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-600 to-pink-500 flex items-center justify-center text-white shadow-lg shadow-brand-500/25 group-hover:scale-105 transition-transform duration-200">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
@@ -43,89 +43,84 @@
         </div>
       </a>
 
-      <!-- Меню по центру: Кнопка «Все задания» + гармоничные отступы -->
+      <!-- Меню по центру -->
       <nav class="hidden lg:flex items-center gap-2.5 xl:gap-4 2xl:gap-6 text-sm font-semibold text-slate-600 dark:text-slate-300 shrink-0">
         
-        <!-- Выпадающее меню всех заданий (CSS group-hover) -->
+        <!-- Выпадающее меню разделов (CSS group-hover) -->
         <div class="relative group">
           <button class="flex items-center gap-2 px-3 py-2 rounded-xl text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-950/70 border border-brand-200/80 dark:border-brand-800/80 hover:bg-brand-100 dark:hover:bg-brand-900/60 transition shadow-sm whitespace-nowrap text-xs xl:text-sm">
-            <span class="font-bold">🧭 Все задания</span>
+            <span class="font-bold">🧭 Разделы</span>
             <svg class="w-3.5 h-3.5 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
 
-          <!-- Выпадающий список всех 16 заданий -->
+          <!-- Выпадающий список всех Навигация -->
           <div class="absolute left-0 top-full pt-3 w-[460px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 z-50">
             <div class="p-5 bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4">
               <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2">
-                <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Все 16 заданий по уровням:</span>
-                <span class="text-[10px] px-2 py-0.5 rounded-full bg-brand-100 text-brand-700 dark:bg-brand-950 dark:text-brand-300 font-bold">16 заданий</span>
+                <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Разделы платформы:</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-full bg-brand-100 text-brand-700 dark:bg-brand-950 dark:text-brand-300 font-bold">Навигация</span>
               </div>
               
               <div class="grid grid-cols-2 gap-3 text-xs">
-                <!-- Уровень 1 -->
+                <!-- О платформе -->
                 <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700/60 space-y-1.5">
-                  <div class="font-bold text-brand-600 dark:text-brand-400 text-[11px] uppercase tracking-wide">Уровень 1: Начальный</div>
-                  <a href="#profile-card" class="block text-slate-700 dark:text-slate-200 hover:text-brand-600 transition">▪ 1.1 Карточка профиля</a>
-                  <a href="#hero" class="block text-slate-700 dark:text-slate-200 hover:text-brand-600 transition">▪ 1.2 Навбар</a>
-                  <a href="./pages/ecommerce.html" class="block text-slate-700 dark:text-slate-200 hover:text-brand-600 transition">▪ 1.3 Сетка товаров</a>
+                  <div class="font-bold text-brand-600 dark:text-brand-400 text-[11px] uppercase tracking-wide">О платформе</div>
+                  <a href="#profile-card" class="block text-slate-700 dark:text-slate-200 hover:text-brand-600 transition">Карточка профиля</a>
+                  <a href="#hero" class="block text-slate-700 dark:text-slate-200 hover:text-brand-600 transition">Навигационная панель</a>
+                  <a href="./ecommerce.html" class="block text-slate-700 dark:text-slate-200 hover:text-brand-600 transition">Каталог товаров</a>
                 </div>
 
-                <!-- Уровень 2 -->
+                <!-- Интерфейсы -->
                 <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700/60 space-y-1.5">
-                  <div class="font-bold text-indigo-600 dark:text-indigo-400 text-[11px] uppercase tracking-wide">Уровень 2: Средний</div>
-                  <a href="#hero" class="block text-slate-700 dark:text-slate-200 hover:text-brand-600 transition">▪ 2.1 Hero-секция</a>
-                  <a href="#pricing" class="block text-slate-700 dark:text-slate-200 hover:text-brand-600 transition">▪ 2.2 Pricing-таблица</a>
-                  <a href="./pages/dashboard.html" class="block text-slate-700 dark:text-slate-200 hover:text-brand-600 transition">▪ 2.3 Сайдбар</a>
-                  <a href="./pages/multistep.html" class="block text-slate-700 dark:text-slate-200 hover:text-brand-600 transition">▪ 2.4 Форма регистрации</a>
+                  <div class="font-bold text-indigo-600 dark:text-indigo-400 text-[11px] uppercase tracking-wide">Интерфейсы</div>
+                  <a href="#hero" class="block text-slate-700 dark:text-slate-200 hover:text-brand-600 transition">Hero-секция</a>
+                  <a href="#pricing" class="block text-slate-700 dark:text-slate-200 hover:text-brand-600 transition">Тарифные планы</a>
+                  <a href="./dashboard.html" class="block text-slate-700 dark:text-slate-200 hover:text-brand-600 transition">Панель управления</a>
+                  <a href="./multistep.html" class="block text-slate-700 dark:text-slate-200 hover:text-brand-600 transition">Форма регистрации</a>
                 </div>
 
-                <!-- Уровень 3 -->
+                <!-- Коммуникации -->
                 <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-700/60 space-y-1.5">
-                  <div class="font-bold text-pink-600 dark:text-pink-400 text-[11px] uppercase tracking-wide">Уровень 3: Продвинутый</div>
-                  <a href="./pages/messenger.html" class="block text-slate-700 dark:text-slate-200 hover:text-brand-600 transition">▪ 3.1 Мессенджер (чат)</a>
-                  <a href="./pages/kanban.html" class="block text-slate-700 dark:text-slate-200 hover:text-brand-600 transition">▪ 3.2 Kanban-доска</a>
-                  <a href="#hero" class="block text-slate-700 dark:text-slate-200 hover:text-brand-600 transition">▪ 3.3 Комплексный лендинг</a>
-                  <span class="block text-slate-400">▪ 3.4 Dark mode (в шапке)</span>
+                  <div class="font-bold text-pink-600 dark:text-pink-400 text-[11px] uppercase tracking-wide">Коммуникации</div>
+                  <a href="./messenger.html" class="block text-slate-700 dark:text-slate-200 hover:text-brand-600 transition">Мессенджер</a>
+                  <a href="./kanban.html" class="block text-slate-700 dark:text-slate-200 hover:text-brand-600 transition">Kanban-доска</a>
+                  <a href="#hero" class="block text-slate-700 dark:text-slate-200 hover:text-brand-600 transition">Продуктовый лендинг</a>
+                  <span class="block text-slate-400">Тёмная тема</span>
                 </div>
 
-                <!-- Уровень 4 -->
+                <!-- Сервисы & Аналитика -->
                 <div class="p-3 rounded-2xl bg-brand-50/60 dark:bg-brand-950/40 border border-brand-200/60 dark:border-brand-800/60 space-y-1.5">
-                  <div class="font-bold text-amber-500 text-[11px] uppercase tracking-wide">Уровень 4: Экспертный</div>
-                  <a href="./pages/dashboard.html" class="block font-medium text-slate-800 dark:text-slate-100 hover:text-brand-600 transition">▪ 4.1 Дашборд аналитики</a>
-                  <a href="./pages/multistep.html" class="block font-medium text-slate-800 dark:text-slate-100 hover:text-brand-600 transition">▪ 4.2 Степпер (has-*)</a>
-                  <a href="./pages/ecommerce.html" class="block font-medium text-slate-800 dark:text-slate-100 hover:text-brand-600 transition">▪ 4.3 Каталог (@container)</a>
-                  <a href="./pages/storybook.html" class="block font-medium text-slate-800 dark:text-slate-100 hover:text-brand-600 transition">▪ 4.4 Дизайн-система</a>
+                  <div class="font-bold text-amber-500 text-[11px] uppercase tracking-wide">Сервисы & Аналитика</div>
+                  <a href="./dashboard.html" class="block font-medium text-slate-800 dark:text-slate-100 hover:text-brand-600 transition">Дашборд аналитики</a>
+                  <a href="./multistep.html" class="block font-medium text-slate-800 dark:text-slate-100 hover:text-brand-600 transition">Многошаговая форма</a>
+                  <a href="./ecommerce.html" class="block font-medium text-slate-800 dark:text-slate-100 hover:text-brand-600 transition">E-commerce витрина</a>
+                  <a href="./storybook.html" class="block font-medium text-slate-800 dark:text-slate-100 hover:text-brand-600 transition">Storybook UI Kit</a>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <a href="./pages/dashboard.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors flex items-center gap-1.5 whitespace-nowrap">
+        <a href="./dashboard.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors flex items-center gap-1.5 whitespace-nowrap">
           <span>Дашборд</span>
-          <span class="hidden xl:inline-flex text-[10px] px-1.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-brand-600 font-bold">4.1</span>
-        </a>
-        <a href="./pages/ecommerce.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors flex items-center gap-1.5 whitespace-nowrap">
+          </a>
+        <a href="./ecommerce.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors flex items-center gap-1.5 whitespace-nowrap">
           <span>Каталог</span>
-          <span class="hidden xl:inline-flex text-[10px] px-1.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-brand-600 font-bold">4.3</span>
-        </a>
-        <a href="./pages/messenger.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors flex items-center gap-1.5 whitespace-nowrap">
+          </a>
+        <a href="./messenger.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors flex items-center gap-1.5 whitespace-nowrap">
           <span>Мессенджер</span>
-          <span class="hidden xl:inline-flex text-[10px] px-1.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-brand-600 font-bold">3.1</span>
-        </a>
-        <a href="./pages/kanban.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors flex items-center gap-1.5 whitespace-nowrap">
+          </a>
+        <a href="./kanban.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors flex items-center gap-1.5 whitespace-nowrap">
           <span>Kanban</span>
-          <span class="hidden xl:inline-flex text-[10px] px-1.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-brand-600 font-bold">3.2</span>
-        </a>
-        <a href="./pages/storybook.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors flex items-center gap-1.5 whitespace-nowrap">
+          </a>
+        <a href="./storybook.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors flex items-center gap-1.5 whitespace-nowrap">
           <span>Storybook</span>
-          <span class="hidden xl:inline-flex text-[10px] px-1.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-brand-600 font-bold">4.4</span>
-        </a>
+          </a>
       </nav>
 
       <!-- Правая часть: тема + Sign In + Кнопка мобильного меню с выверенными отступами -->
       <div class="flex items-center gap-3 sm:gap-4 shrink-0">
-        <!-- Кнопка темы (Задание 3.4) -->
+        
         <button data-theme-toggle class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white bg-slate-100/50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition shrink-0" aria-label="Сменить тему" title="Сменить тему (Задание 3.4)">
           <svg data-theme-icon="sun" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
           <svg data-theme-icon="moon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
@@ -135,11 +130,11 @@
 
         <!-- Кнопки действий с комфортным расстоянием -->
         <div class="flex items-center gap-2.5 sm:gap-3">
-          <a href="./pages/multistep.html" class="hidden sm:inline-flex ds-btn ds-btn-md ds-btn-secondary whitespace-nowrap">
-            <span>Регистрация</span><span class="hidden 2xl:inline">&nbsp;(4.2)</span>
+          <a href="./multistep.html" class="hidden sm:inline-flex ds-btn ds-btn-md ds-btn-secondary whitespace-nowrap">
+            <span>Регистрация</span>
           </a>
           <a href="#profile-card" class="ds-btn ds-btn-md ds-btn-primary whitespace-nowrap">
-            <span>Профиль</span><span class="hidden 2xl:inline">&nbsp;(1.1)</span>
+            <span>Профиль</span>
           </a>
         </div>
 
@@ -152,107 +147,107 @@
       </div>
     </div>
 
-    <!-- Мобильное выпадающее меню со всеми заданиями -->
+    <!-- Мобильное выпадающее меню -->
     <div id="mobileMenu" class="hidden lg:hidden border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg px-4 pt-4 pb-6 space-y-4 max-h-[80vh] overflow-y-auto">
       
       <div>
-        <div class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400 mb-2">Уровень 1: Начальный</div>
+        <div class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400 mb-2">О платформе</div>
         <div class="grid grid-cols-1 gap-1">
           <a href="#profile-card" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 flex justify-between items-center">
-            <span>1.1 Карточка профиля</span>
+            <span>Карточка профиля</span>
             <span class="text-xs text-brand-600 font-semibold">Смотреть ↓</span>
           </a>
           <a href="#hero" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 flex justify-between items-center">
-            <span>1.2 Навигационная панель</span>
+            <span>Навигационная панель</span>
             <span class="text-xs text-slate-400">В шапке</span>
           </a>
-          <a href="./pages/ecommerce.html" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 flex justify-between items-center">
-            <span>1.3 Сетка карточек товаров</span>
+          <a href="./ecommerce.html" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 flex justify-between items-center">
+            <span>Каталог товаров</span>
             <span class="text-xs text-brand-600 font-semibold">В каталог →</span>
           </a>
         </div>
       </div>
 
       <div class="pt-2 border-t border-slate-200/60 dark:border-slate-800/60">
-        <div class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-2">Уровень 2: Средний</div>
+        <div class="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-2">Интерфейсы</div>
         <div class="grid grid-cols-1 gap-1">
           <a href="#hero" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 flex justify-between items-center">
-            <span>2.1 Hero-секция с градиентом</span>
+            <span>Hero-секция</span>
             <span class="text-xs text-brand-600 font-semibold">Смотреть ↓</span>
           </a>
           <a href="#pricing" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 flex justify-between items-center">
-            <span>2.2 Pricing-таблица (3 тарифа)</span>
+            <span>Тарифные планы</span>
             <span class="text-xs text-brand-600 font-semibold">Смотреть ↓</span>
           </a>
-          <a href="./pages/dashboard.html" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 flex justify-between items-center">
-            <span>2.3 Sidebar + контент</span>
+          <a href="./dashboard.html" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 flex justify-between items-center">
+            <span>Панель управления</span>
             <span class="text-xs text-brand-600 font-semibold">В дашборд →</span>
           </a>
-          <a href="./pages/multistep.html" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 flex justify-between items-center">
-            <span>2.4 Форма регистрации</span>
+          <a href="./multistep.html" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 flex justify-between items-center">
+            <span>Форма регистрации</span>
             <span class="text-xs text-brand-600 font-semibold">В форму →</span>
           </a>
         </div>
       </div>
 
       <div class="pt-2 border-t border-slate-200/60 dark:border-slate-800/60">
-        <div class="text-xs font-bold uppercase tracking-wider text-pink-600 dark:text-pink-400 mb-2">Уровень 3: Продвинутый</div>
+        <div class="text-xs font-bold uppercase tracking-wider text-pink-600 dark:text-pink-400 mb-2">Коммуникации</div>
         <div class="grid grid-cols-1 gap-1">
-          <a href="./pages/messenger.html" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 flex justify-between items-center">
-            <span>3.1 Мессенджер (чат)</span>
+          <a href="./messenger.html" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 flex justify-between items-center">
+            <span>Мессенджер (чат)</span>
             <span class="text-xs text-pink-600 font-semibold">Открыть →</span>
           </a>
-          <a href="./pages/kanban.html" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 flex justify-between items-center">
-            <span>3.2 Kanban-доска</span>
+          <a href="./kanban.html" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 flex justify-between items-center">
+            <span>Kanban-доска</span>
             <span class="text-xs text-pink-600 font-semibold">Открыть →</span>
           </a>
           <a href="#hero" class="px-3 py-2 rounded-lg text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 flex justify-between items-center">
-            <span>3.3 Комплексный лендинг</span>
+            <span>Продуктовый лендинг</span>
             <span class="text-xs text-slate-400">Главная</span>
           </a>
           <div class="px-3 py-2 rounded-lg text-sm font-medium flex justify-between items-center">
-            <span>3.4 Dark mode с переключателем</span>
+            <span>Тёмная тема</span>
             <span class="text-xs text-slate-400">Кнопка ☀️/🌙 в шапке</span>
           </div>
         </div>
       </div>
 
       <div class="pt-2 border-t border-slate-200/60 dark:border-slate-800/60">
-        <div class="text-xs font-bold uppercase tracking-wider text-amber-500 mb-2">Уровень 4: Экспертный</div>
+        <div class="text-xs font-bold uppercase tracking-wider text-amber-500 mb-2">Сервисы & Аналитика</div>
         <div class="grid grid-cols-1 gap-1">
-          <a href="./pages/dashboard.html" class="px-3 py-2 rounded-lg text-sm font-medium bg-brand-50/50 dark:bg-brand-950/30 hover:bg-brand-100 dark:hover:bg-brand-900/40 flex justify-between items-center">
-            <span class="font-semibold text-brand-700 dark:text-brand-300">4.1 Дашборд аналитики (Grid 12)</span>
+          <a href="./dashboard.html" class="px-3 py-2 rounded-lg text-sm font-medium bg-brand-50/50 dark:bg-brand-950/30 hover:bg-brand-100 dark:hover:bg-brand-900/40 flex justify-between items-center">
+            <span class="font-semibold text-brand-700 dark:text-brand-300">Дашборд аналитики</span>
             <span class="text-xs text-brand-600 font-semibold">Открыть →</span>
           </a>
-          <a href="./pages/multistep.html" class="px-3 py-2 rounded-lg text-sm font-medium bg-brand-50/50 dark:bg-brand-950/30 hover:bg-brand-100 dark:hover:bg-brand-900/40 flex justify-between items-center">
-            <span class="font-semibold text-brand-700 dark:text-brand-300">4.2 Многошаговая форма (Степпер)</span>
+          <a href="./multistep.html" class="px-3 py-2 rounded-lg text-sm font-medium bg-brand-50/50 dark:bg-brand-950/30 hover:bg-brand-100 dark:hover:bg-brand-900/40 flex justify-between items-center">
+            <span class="font-semibold text-brand-700 dark:text-brand-300">Многошаговая форма</span>
             <span class="text-xs text-brand-600 font-semibold">Открыть →</span>
           </a>
-          <a href="./pages/ecommerce.html" class="px-3 py-2 rounded-lg text-sm font-medium bg-brand-50/50 dark:bg-brand-950/30 hover:bg-brand-100 dark:hover:bg-brand-900/40 flex justify-between items-center">
-            <span class="font-semibold text-brand-700 dark:text-brand-300">4.3 E-commerce (@container)</span>
+          <a href="./ecommerce.html" class="px-3 py-2 rounded-lg text-sm font-medium bg-brand-50/50 dark:bg-brand-950/30 hover:bg-brand-100 dark:hover:bg-brand-900/40 flex justify-between items-center">
+            <span class="font-semibold text-brand-700 dark:text-brand-300">E-commerce витрина</span>
             <span class="text-xs text-brand-600 font-semibold">Открыть →</span>
           </a>
-          <a href="./pages/storybook.html" class="px-3 py-2 rounded-lg text-sm font-medium bg-brand-50/50 dark:bg-brand-950/30 hover:bg-brand-100 dark:hover:bg-brand-900/40 flex justify-between items-center">
-            <span class="font-semibold text-brand-700 dark:text-brand-300">4.4 Дизайн-система (Storybook)</span>
+          <a href="./storybook.html" class="px-3 py-2 rounded-lg text-sm font-medium bg-brand-50/50 dark:bg-brand-950/30 hover:bg-brand-100 dark:hover:bg-brand-900/40 flex justify-between items-center">
+            <span class="font-semibold text-brand-700 dark:text-brand-300">Дизайн-система (Storybook)</span>
             <span class="text-xs text-brand-600 font-semibold">Открыть →</span>
           </a>
         </div>
       </div>
 
       <div class="pt-2 border-t border-slate-200 dark:border-slate-800 flex gap-2">
-        <a href="./pages/multistep.html" class="flex-1 ds-btn ds-btn-md ds-btn-secondary text-center">Регистрация</a>
-        <a href="./pages/dashboard.html" class="flex-1 ds-btn ds-btn-md ds-btn-primary text-center">Дашборд</a>
+        <a href="./multistep.html" class="flex-1 ds-btn ds-btn-md ds-btn-secondary text-center">Регистрация</a>
+        <a href="./dashboard.html" class="flex-1 ds-btn ds-btn-md ds-btn-primary text-center">Дашборд</a>
       </div>
     </div>
   </header>
 
   <!-- ============================================== -->
-  <!-- 2. Hero-секция с градиентом (Задание 2.1, 3.3) -->
+  
   <!-- ============================================== -->
   <section id="hero" class="relative overflow-hidden py-24 sm:py-32 lg:py-40">
     <!-- Фоновое изображение с overlay и декоративные blur-круги -->
     <div class="absolute inset-0 -z-10 overflow-hidden">
-      <!-- Декоративные blur-круги (Задание 2.1) -->
+      
       <div class="absolute -top-40 -left-40 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl animate-pulse"></div>
       <div class="absolute top-20 right-10 w-[500px] h-[500px] bg-pink-500/25 rounded-full blur-3xl animate-pulse" style="animation-duration: 7s;"></div>
       <div class="absolute -bottom-20 left-1/3 w-96 h-96 bg-brand-500/25 rounded-full blur-3xl"></div>
@@ -271,7 +266,7 @@
         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
       </div>
 
-      <!-- Большой заголовок с градиентным текстом (bg-clip-text) (Задание 2.1) -->
+      
       <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-slate-900 dark:text-white max-w-5xl mx-auto leading-[1.1]">
         Управляйте бизнесом на скорости 
         <span class="bg-gradient-to-r from-purple-500 via-pink-500 to-brand-500 bg-clip-text text-transparent underline decoration-pink-500/30 decoration-wavy">
@@ -284,13 +279,13 @@
         Единая облачная экосистема для глубокой аналитики, автоматизации задач, коммуникации сотрудников и мониторинга конверсий с поддержкой Tailwind v3.4+.
       </p>
 
-      <!-- Две кнопки (primary + outline) (Задание 2.1) -->
+      
       <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="./pages/dashboard.html" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-brand-600 to-purple-600 hover:from-brand-700 hover:to-purple-700 text-white font-bold text-base shadow-xl shadow-brand-500/30 hover:shadow-brand-500/50 hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center gap-3">
+        <a href="./dashboard.html" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-brand-600 to-purple-600 hover:from-brand-700 hover:to-purple-700 text-white font-bold text-base shadow-xl shadow-brand-500/30 hover:shadow-brand-500/50 hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center gap-3">
           <span>Открыть дашборд</span>
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </a>
-        <a href="./pages/storybook.html" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-bold text-base border-2 border-slate-200 dark:border-slate-700 hover:border-brand-500 dark:hover:border-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center gap-3">
+        <a href="./storybook.html" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-bold text-base border-2 border-slate-200 dark:border-slate-700 hover:border-brand-500 dark:hover:border-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center gap-3">
           <span>Storybook дизайн-система</span>
           <svg class="w-5 h-5 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
         </a>
@@ -319,28 +314,24 @@
   </section>
 
   <!-- ============================================== -->
-  <!-- Рекламный блок (Vue компонент AdSlot.vue)      -->
+  <!-- Рекламный блок -->
   <!-- ============================================== -->
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-6">
     <div data-vue-ad-slot data-size="leaderboard" data-label="Рекламное место" data-sublabel="Партнёрский рекламный блок (Vue-компонент AdSlot.vue) • Формат Leaderboard 728×90" data-closable="true"></div>
   </section>
 
   <!-- ============================================== -->
-  <!-- 2.5. Карточка профиля (Задание 1.1)            -->
+  
   <!-- ============================================== -->
   <section id="profile-card" class="section-container bg-slate-100/60 dark:bg-slate-900/40 rounded-3xl my-12 border border-slate-200/60 dark:border-slate-800/60 scroll-mt-28">
     <div class="section-heading-wrapper">
-      <span class="ds-badge ds-badge-brand mb-3">Задание 1.1 (Уровень 1: Начальный)</span>
-      <h2 class="ds-h2">Карточка профиля пользователя</h2>
-      <p class="ds-body mt-3">
-        Полная реализация по ТЗ: круглый аватар 80x80px (<code class="font-mono text-brand-600">w-20 h-20 rounded-full</code>), имя, должность, bio, кнопки «Follow» и «Message».
-        Адаптивность: на мобильных карточка занимает всю ширину (<code class="font-mono text-brand-600">w-full</code>), на десктопе — фиксированная 320px (<code class="font-mono text-brand-600">md:w-[320px]</code>).
-        Использованы классы: <code class="font-mono text-brand-600">rounded-full, shadow, flex, space-y-*, gap-*</code>.
-      </p>
+      <span class="ds-badge ds-badge-brand mb-3">Команда платформы</span>
+      <h2 class="ds-h2">Профиль специалиста</h2>
+      <p class="ds-body mt-3">Персональная карточка ведущего инженера платформы: стек ключевых компетенций, статус занятости и быстрый доступ к прямым контактам.</p>
     </div>
 
     <div class="flex flex-col items-center justify-center pt-2 pb-6">
-      <!-- Карточка пользователя (Задание 1.1) -->
+      
       <article class="w-full md:w-[320px] bg-white dark:bg-slate-800 rounded-3xl shadow-xl shadow-slate-200/60 dark:shadow-slate-950/60 border border-slate-200/80 dark:border-slate-700/80 p-6 flex flex-col items-center text-center space-y-5 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
         
         <!-- Аватар (круглый, 80x80px) с индикатором онлайн -->
@@ -399,7 +390,7 @@
   </section>
 
   <!-- ============================================== -->
-  <!-- 3. Features (3 колонки с иконками) (Задание 3.3) -->
+  
   <!-- ============================================== -->
   <section id="features" class="section-container">
     <div class="section-heading-wrapper">
@@ -420,7 +411,7 @@
           Отслеживайте конверсии, транзакции и ключевые метрики в динамических дашбордах с частотой обновления до 50 миллисекунд.
         </p>
         <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
-          <a href="./pages/dashboard.html" class="inline-flex items-center text-sm font-semibold text-brand-600 dark:text-brand-400 group-hover:underline">
+          <a href="./dashboard.html" class="inline-flex items-center text-sm font-semibold text-brand-600 dark:text-brand-400 group-hover:underline">
             Смотреть дашборд
             <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
           </a>
@@ -437,7 +428,7 @@
           Мгновенная связь между отделами, каналы проектов, кастомные скроллбары, поддержка вложений и шифрование данных.
         </p>
         <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
-          <a href="./pages/messenger.html" class="inline-flex items-center text-sm font-semibold text-pink-600 dark:text-pink-400 group-hover:underline">
+          <a href="./messenger.html" class="inline-flex items-center text-sm font-semibold text-pink-600 dark:text-pink-400 group-hover:underline">
             Демо мессенджера
             <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
           </a>
@@ -451,10 +442,10 @@
         </div>
         <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Интерактивный Kanban</h3>
         <p class="ds-body-sm leading-relaxed">
-          Удобный трекинг задач по колонкам (To Do, In Progress, Done) с горизонтальным скроллом snap-x на мобильных устройствах.
+          Удобный трекинг задач по колонкам (To Do, In Progress, Done) с плавной прокруткой и адаптивной структурой на мобильных устройствах.
         </p>
         <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
-          <a href="./pages/kanban.html" class="inline-flex items-center text-sm font-semibold text-purple-600 dark:text-purple-400 group-hover:underline">
+          <a href="./kanban.html" class="inline-flex items-center text-sm font-semibold text-purple-600 dark:text-purple-400 group-hover:underline">
             Открыть Kanban
             <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
           </a>
@@ -465,11 +456,11 @@
   </section>
 
   <!-- ============================================== -->
-  <!-- 4. Pricing-таблица (Задание 2.2, 3.3)           -->
+  
   <!-- ============================================== -->
   <section id="pricing" class="section-container bg-slate-100/60 dark:bg-slate-900/40 rounded-3xl my-12 border border-slate-200/60 dark:border-slate-800/60">
     <div class="section-heading-wrapper">
-      <span class="ds-badge ds-badge-brand mb-3">Задание 2.2</span>
+      <span class="ds-badge ds-badge-brand mb-3">Тарифные планы</span>
       <h2 class="ds-h2">Прозрачные тарифы без скрытых платежей</h2>
       <p class="ds-body mt-3">Выберите план, подходящий вашей команде. Смените тариф или отмените подписку в любой момент.</p>
     </div>
@@ -490,7 +481,7 @@
             <span class="text-slate-500 dark:text-slate-400 text-sm ml-2">/ месяц</span>
           </div>
 
-          <!-- Список фич с divide-y и space-y-* (Задание 2.2) -->
+          
           <ul class="divide-y divide-slate-100 dark:divide-slate-800 text-sm space-y-3 pt-3">
             <li class="flex items-center gap-3 pt-3">
               <span class="text-emerald-500 font-bold">✅</span>
@@ -516,7 +507,7 @@
         </div>
 
         <div class="mt-8">
-          <a href="./pages/multistep.html" class="w-full ds-btn ds-btn-lg ds-btn-secondary">
+          <a href="./multistep.html" class="w-full ds-btn ds-btn-lg ds-btn-secondary">
             Выбрать Basic
           </a>
         </div>
@@ -524,7 +515,7 @@
 
       <!-- Тариф 2: Pro (Popular, ring-2 ring-indigo-500, lg:scale-105) -->
       <div class="ds-card flex flex-col justify-between p-8 relative ring-2 ring-indigo-500 shadow-xl shadow-indigo-500/15 lg:scale-105 bg-white dark:bg-slate-800 z-10">
-        <!-- Бейдж Popular (Задание 2.2) -->
+        
         <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
           <span class="px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-brand-600 to-pink-600 text-white shadow-md">
             🔥 Popular choice
@@ -568,7 +559,7 @@
         </div>
 
         <div class="mt-8">
-          <a href="./pages/multistep.html" class="w-full ds-btn ds-btn-lg ds-btn-primary shadow-lg shadow-brand-500/30">
+          <a href="./multistep.html" class="w-full ds-btn ds-btn-lg ds-btn-primary shadow-lg shadow-brand-500/30">
             Начать с Pro (14 дней триал)
           </a>
         </div>
@@ -613,7 +604,7 @@
         </div>
 
         <div class="mt-8">
-          <a href="./pages/multistep.html" class="w-full ds-btn ds-btn-lg ds-btn-secondary">
+          <a href="./multistep.html" class="w-full ds-btn ds-btn-lg ds-btn-secondary">
             Связаться с отделом продаж
           </a>
         </div>
@@ -623,7 +614,7 @@
   </section>
 
   <!-- ============================================== -->
-  <!-- 5. Testimonials: Карусель без JS (snap-x) (Задание 3.3) -->
+  
   <!-- ============================================== -->
   <section id="testimonials" class="section-container">
     <div class="section-heading-wrapper">
@@ -707,7 +698,7 @@
   </section>
 
   <!-- ============================================== -->
-  <!-- 6. FAQ (Аккордеон через <details> + group-open:*) (Задание 3.3) -->
+  
   <!-- ============================================== -->
   <section id="faq" class="section-container max-w-4xl">
     <div class="section-heading-wrapper">
@@ -734,13 +725,13 @@
       <!-- FAQ item 2 -->
       <details class="group ds-card p-6 transition-all duration-200 open:ring-2 open:ring-brand-500/20">
         <summary class="flex justify-between items-center cursor-pointer font-bold text-slate-900 dark:text-white select-none list-none">
-          <span class="text-base sm:text-lg">Какие версии Tailwind CSS поддерживаются?</span>
+          <span class="text-base sm:text-lg">Поддерживается ли интеграция с внешними сервисами и API?</span>
           <span class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-500 group-open:rotate-180 transition-transform duration-200">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </span>
         </summary>
         <p class="mt-4 ds-body text-sm leading-relaxed border-t border-slate-100 dark:border-slate-800/80 pt-4">
-          Проект полностью скомпилирован на базе Tailwind v3.4+ с активными Container Queries (<code class="font-mono text-brand-600">@container</code>), селекторами состояний (<code class="font-mono text-brand-600">has-[:checked]</code>, <code class="font-mono text-brand-600">peer-invalid</code>), и кастомными плагинами в <code class="font-mono text-brand-600">tailwind.config.js</code>.
+          Да, платформа Nexus Cloud предоставляет открытый REST API, вебхуки и готовые интеграции с CRM, аналитическими сервисами и платёжными шлюзами для непрерывной синхронизации данных.
         </p>
       </details>
 
@@ -753,7 +744,7 @@
           </span>
         </summary>
         <p class="mt-4 ds-body text-sm leading-relaxed border-t border-slate-100 dark:border-slate-800/80 pt-4">
-          Да! В разделе <a href="./pages/storybook.html" class="text-brand-600 font-semibold underline">Storybook</a> представлена интерактивная документация со всеми дизайн-токенами, матрицей кнопок, модальными окнами, полями ввода и алертами.
+          Да! В разделе <a href="./storybook.html" class="text-brand-600 font-semibold underline">Storybook</a> представлена интерактивная документация со всеми дизайн-токенами, матрицей кнопок, модальными окнами, полями ввода и алертами.
         </p>
       </details>
 
@@ -766,7 +757,7 @@
           </span>
         </summary>
         <p class="mt-4 ds-body text-sm leading-relaxed border-t border-slate-100 dark:border-slate-800/80 pt-4">
-          Воспользуйтесь <a href="./pages/multistep.html" class="text-brand-600 font-semibold underline">многошаговой формой регистрации</a>. Выберите нужный тарифный план, введите контактные данные и получите мгновенный доступ.
+          Воспользуйтесь <a href="./multistep.html" class="text-brand-600 font-semibold underline">многошаговой формой регистрации</a>. Выберите нужный тарифный план, введите контактные данные и получите мгновенный доступ.
         </p>
       </details>
 
@@ -774,7 +765,7 @@
   </section>
 
   <!-- ============================================== -->
-  <!-- 7. Footer (4 колонки) (Задание 3.3)             -->
+  
   <!-- ============================================== -->
   <footer class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -800,13 +791,13 @@
         <div>
           <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-4">Модули проекта</h4>
           <ul class="space-y-2.5 text-sm text-slate-600 dark:text-slate-400">
-            <li><a href="#profile-card" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Карточка профиля (1.1)</a></li>
-            <li><a href="./pages/dashboard.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Дашборд аналитики (4.1)</a></li>
-            <li><a href="./pages/storybook.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Storybook дизайн-система (4.4)</a></li>
-            <li><a href="./pages/ecommerce.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition">E-commerce каталог (4.3)</a></li>
-            <li><a href="./pages/messenger.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Мессенджер интерфейс (3.1)</a></li>
-            <li><a href="./pages/kanban.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Kanban-доска (3.2)</a></li>
-            <li><a href="./pages/multistep.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Многошаговая форма (4.2)</a></li>
+            <li><a href="#profile-card" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Карточка профиля</a></li>
+            <li><a href="./dashboard.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Дашборд аналитики</a></li>
+            <li><a href="./storybook.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Storybook дизайн-система</a></li>
+            <li><a href="./ecommerce.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition">E-commerce каталог</a></li>
+            <li><a href="./messenger.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Мессенджер интерфейс</a></li>
+            <li><a href="./kanban.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Kanban-доска</a></li>
+            <li><a href="./multistep.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Многошаговая форма</a></li>
           </ul>
         </div>
 
@@ -814,8 +805,8 @@
         <div>
           <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-4">Ресурсы</h4>
           <ul class="space-y-2.5 text-sm text-slate-600 dark:text-slate-400">
-            <li><a href="./" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Главный хаб заданий</a></li>
-            <li><a href="https://tailwindcss.com" target="_blank" rel="noreferrer" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Документация Tailwind CSS</a></li>
+            <li><a href="../" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Главная страница</a></li>
+            <li><a href="https://tailwindcss.com" target="_blank" rel="noreferrer" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Центр документации</a></li>
             <li><a href="#hero" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Руководство разработчика</a></li>
             <li><a href="#pricing" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Тарифная сетка</a></li>
             <li><a href="#faq" class="hover:text-brand-600 dark:hover:text-brand-400 transition">FAQ и поддержка</a></li>

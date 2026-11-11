@@ -61,7 +61,7 @@ export function initAdSlots() {
     const width = el.dataset.width || '';
     const height = el.dataset.height || '';
     const label = el.dataset.label || 'Рекламное место';
-    const sublabel = el.dataset.sublabel || 'Место зарезервировано под баннер рекламодателя (AdSlot.vue)';
+    const sublabel = el.dataset.sublabel || 'Место зарезервировано под баннер партнёра';
     const closable = el.dataset.closable === 'true';
 
     try {

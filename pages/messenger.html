@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nexus Chat — Корпоративный мессенджер (Задание 3.1)</title>
+  <title>Nexus Chat — Корпоративный мессенджер</title>
   <script>
     (function() {
       const savedTheme = localStorage.getItem('theme');
@@ -27,7 +27,7 @@
   <!-- ============================================== -->
   <header class="h-16 shrink-0 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80 px-4 sm:px-6 flex items-center justify-between z-30">
     <div class="flex items-center space-x-3">
-      <a href="../" class="p-2 -ml-2 text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="В портал заданий">
+      <a href="../" class="p-2 -ml-2 text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="На главную">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
       </a>
       <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-pink-500 to-brand-600 flex items-center justify-center text-white font-bold text-sm shadow-md shadow-pink-500/20">
@@ -35,7 +35,7 @@
       </div>
       <div>
         <span class="font-extrabold text-slate-900 dark:text-white text-base">NexusChat</span>
-        <span class="ml-2 text-[11px] font-semibold px-2 py-0.5 rounded-full bg-pink-100 text-pink-700 dark:bg-pink-950 dark:text-pink-300">Задание 3.1</span>
+        <span class="ml-2 text-[11px] font-semibold px-2 py-0.5 rounded-full bg-pink-100 text-pink-700 dark:bg-pink-950 dark:text-pink-300">В сети</span>
       </div>
     </div>
 
@@ -45,7 +45,7 @@
         <svg data-theme-icon="sun" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
         <svg data-theme-icon="moon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
       </button>
-      <a href="./kanban.html" class="ds-btn ds-btn-sm ds-btn-secondary hidden sm:inline-flex whitespace-nowrap">В Kanban (3.2)</a>
+      <a href="./kanban.html" class="ds-btn ds-btn-sm ds-btn-secondary hidden sm:inline-flex whitespace-nowrap">В Kanban</a>
     </div>
   </header>
 
@@ -55,7 +55,7 @@
   <div class="flex-1 flex overflow-hidden max-w-7xl w-full mx-auto p-2 sm:p-4 gap-4">
     
     <!-- ============================================== -->
-    <!-- 3. Список диалогов слева (Задание 3.1)          -->
+    
     <!-- Стилизованный скроллбар [&::-webkit-scrollbar]:w-2 -->
     <!-- ============================================== -->
     <aside id="chatSidebar" class="w-full md:w-80 lg:w-96 flex flex-col bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 shrink-0 overflow-hidden shadow-sm">
@@ -145,7 +145,7 @@
     </aside>
 
     <!-- ============================================== -->
-    <!-- 4. Область сообщений справа (Задание 3.1)       -->
+    
     <!-- flex, overflow-y-auto, sticky bottom-0         -->
     <!-- ============================================== -->
     <main class="hidden md:flex flex-1 flex-col bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 overflow-hidden shadow-sm relative">
@@ -179,7 +179,7 @@
         </div>
       </div>
 
-      <!-- Лента сообщений со стилизованным скроллбаром (Задание 3.1) -->
+      
       <!-- [&::-webkit-scrollbar]:w-2 -->
       <div id="messagesContainer" class="flex-1 overflow-y-auto p-6 space-y-4 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:bg-slate-300 dark:[&::-webkit-scrollbar-thumb]:bg-slate-700 [&::-webkit-scrollbar-thumb]:rounded-full">
         
@@ -226,7 +226,7 @@
       </div>
 
       <!-- ============================================== -->
-      <!-- 5. Поле ввода (Sticky bottom-0) (Задание 3.1)   -->
+      
       <!-- ============================================== -->
       <div class="sticky bottom-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md p-4 border-t border-slate-100 dark:border-slate-800">
         <form id="chatForm" class="flex items-center gap-3">

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nexus Analytics Dashboard — Дашборд аналитики (Задания 2.3, 4.1)</title>
+  <title>Nexus Analytics Dashboard — Дашборд аналитики</title>
   <script>
     (function() {
       const savedTheme = localStorage.getItem('theme');
@@ -28,7 +28,7 @@
   <div id="sidebarBackdrop" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-40 hidden lg:hidden transition-opacity duration-300"></div>
 
   <!-- ============================================== -->
-  <!-- 2. Фиксированный сайдбар (Задания 2.3, 4.1)      -->
+  <!-- 2. Фиксированный сайдбар       -->
   <!-- w-64 (256px), h-screen, fixed, overflow-y-auto -->
   <!-- ============================================== -->
   <aside id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-white dark:bg-slate-900 border-r border-slate-200/80 dark:border-slate-800/80 z-50 flex flex-col justify-between transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out h-screen overflow-y-auto scrollbar-custom">
@@ -58,47 +58,47 @@
         
         <a href="./dashboard.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold bg-brand-50 text-brand-700 dark:bg-brand-950/60 dark:text-brand-300 transition-colors group">
           <svg class="w-5 h-5 text-brand-600 dark:text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
-          <span>Дашборд (4.1)</span>
+          <span>Дашборд</span>
         </a>
 
         <a href="./ecommerce.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors group">
           <svg class="w-5 h-5 text-slate-400 group-hover:text-brand-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-          <span>Каталог товаров (4.3)</span>
+          <span>Каталог товаров</span>
         </a>
 
         <a href="./messenger.html" class="flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors group">
           <div class="flex items-center gap-3">
             <svg class="w-5 h-5 text-slate-400 group-hover:text-brand-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-            <span>Мессенджер (3.1)</span>
+            <span>Мессенджер</span>
           </div>
           <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-pink-500 text-white">4</span>
         </a>
 
         <a href="./kanban.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors group">
           <svg class="w-5 h-5 text-slate-400 group-hover:text-brand-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/></svg>
-          <span>Kanban-доска (3.2)</span>
+          <span>Kanban-доска</span>
         </a>
 
         <a href="./multistep.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors group">
           <svg class="w-5 h-5 text-slate-400 group-hover:text-brand-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
-          <span>Многошаговая форма (4.2)</span>
+          <span>Многошаговая форма</span>
         </a>
 
         <div class="pt-6 px-3 pb-2 text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Система</div>
 
         <a href="./landing.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors group">
           <svg class="w-5 h-5 text-slate-400 group-hover:text-brand-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-          <span>Лендинг (3.3)</span>
+          <span>Лендинг</span>
         </a>
 
         <a href="./storybook.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors group">
           <svg class="w-5 h-5 text-slate-400 group-hover:text-brand-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-          <span>Storybook (4.4)</span>
+          <span>Storybook</span>
         </a>
 
         <a href="../" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors group">
           <svg class="w-5 h-5 text-slate-400 group-hover:text-brand-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-          <span>Портал всех заданий</span>
+          <span>Главная страница</span>
         </a>
       </div>
     </div>
@@ -106,7 +106,7 @@
     <!-- Нижняя часть сайдбара: Рекламный слот + Профиль пользователя -->
     <div class="p-3 border-t border-slate-100 dark:border-slate-800/80 space-y-3">
       <!-- Vue AdSlot Component в сайдбаре -->
-      <div data-vue-ad-slot data-size="inline" data-label="Рекламное место" data-sublabel="Спонсор раздела (AdSlot.vue)" data-closable="true"></div>
+      <div data-vue-ad-slot data-size="inline" data-label="Рекламное место" data-sublabel="Спонсор раздела" data-closable="true"></div>
 
       <div class="flex items-center gap-3 p-2 rounded-2xl bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer">
         <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&h=80&q=80" alt="Аватар" class="w-10 h-10 rounded-full object-cover ring-2 ring-brand-500">
@@ -124,7 +124,7 @@
   <div class="flex-1 flex flex-col min-w-0 lg:pl-64">
 
     <!-- ============================================== -->
-    <!-- 4. Topbar с поиском и аватаром (Задание 2.3)     -->
+    
     <!-- ============================================== -->
     <header class="sticky top-0 z-30 h-20 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80 px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
       
@@ -167,14 +167,14 @@
     </header>
 
     <!-- ============================================== -->
-    <!-- 5. Основной контент дашборда (Задание 4.1)      -->
+    
     <!-- ============================================== -->
     <main class="flex-1 p-4 sm:p-6 lg:p-8 space-y-8 max-w-7xl w-full mx-auto">
       
       <!-- Заголовок страницы и быстрые фильтры -->
       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <span class="ds-badge ds-badge-brand mb-2">Задания 2.3 & 4.1</span>
+          <span class="ds-badge ds-badge-brand mb-2">Аналитический центр</span>
           <h1 class="ds-h1 text-2xl sm:text-3xl">Аналитический центр</h1>
           <p class="ds-body-sm mt-1">Мониторинг выручки, транзакций и активности пользователей в режиме реального времени.</p>
         </div>
@@ -194,7 +194,7 @@
       </div>
 
       <!-- ============================================== -->
-      <!-- 6. 4 Stat-карточки с трендами (Задание 4.1)     -->
+      
       <!-- ============================================== -->
       <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
         
@@ -438,7 +438,7 @@
       </div>
 
       <!-- ============================================== -->
-      <!-- 8. Таблица последних транзакций (Задание 4.1)  -->
+      
       <!-- Фильтры, поиск, truncate, min-w-0, scrollbar   -->
       <!-- ============================================== -->
       <div class="ds-card overflow-hidden">
