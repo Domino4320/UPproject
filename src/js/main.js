@@ -80,9 +80,32 @@ export function initAdSlots() {
   });
 }
 
+// Auto-fix relative paths on GitHub Pages
+export function fixGitHubPagesLinks() {
+  if (typeof window === 'undefined') return;
+  const path = window.location.pathname;
+  if (!window.location.hostname.endsWith('github.io')) return;
+
+  const parts = path.split('/').filter(Boolean);
+  if (parts.length === 0) return;
+  const repoName = parts[0];
+
+  document.querySelectorAll('a[href]').forEach(a => {
+    const href = a.getAttribute('href');
+    if (!href || href.startsWith('#') || href.startsWith('http://') || href.startsWith('https://') || href.startsWith('mailto:')) {
+      return;
+    }
+    // If link starts with / but not with /repoName
+    if (href.startsWith('/') && !href.startsWith(`/${repoName}`)) {
+      a.setAttribute('href', `/${repoName}${href}`);
+    }
+  });
+}
+
 export function initApp() {
   initTheme();
   initAdSlots();
+  fixGitHubPagesLinks();
 }
 
 // Auto-run theme and ad slots on DOM ready safely (idempotent)
