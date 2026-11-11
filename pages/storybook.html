@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Storybook — Tailwind Design System (Задание 4.4)</title>
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="/src/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 flex flex-col min-h-screen">
+
+  <!-- Top bar -->
+  <header class="sticky top-0 z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <a href="/" class="p-2 -ml-2 text-slate-500 hover:text-slate-900 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="Назад на главную">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+        </a>
+        <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-brand-600 to-pink-500 flex items-center justify-center text-white font-bold text-sm shadow-md shadow-brand-500/20">
+          DS
+        </div>
+        <div>
+          <span class="font-bold text-slate-900 dark:text-white tracking-tight">Tailwind UI</span>
+          <span class="ml-2 text-xs font-semibold px-2 py-0.5 rounded-full bg-brand-100 text-brand-700 dark:bg-brand-950 dark:text-brand-300">v1.0 • Storybook</span>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3 sm:gap-4 shrink-0">
+        <button id="themeToggle" data-theme-toggle class="p-2.5 rounded-xl text-slate-500 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-slate-800 bg-slate-100/50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition shrink-0" aria-label="Переключить тему">
+          <!-- Sun icon -->
+          <svg data-theme-icon="sun" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <!-- Moon icon -->
+          <svg data-theme-icon="moon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        </button>
+        <a href="/" class="ds-btn ds-btn-sm ds-btn-secondary whitespace-nowrap">Главное меню</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 flex gap-8">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="w-56 shrink-0 hidden lg:block sticky top-24 self-start space-y-6">
+      <div class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Дизайн-токены</div>
+      <nav class="space-y-1">
+        <a href="#colors" class="block px-3 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand-600 transition">1. Палитра цветов</a>
+        <a href="#typography" class="block px-3 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand-600 transition">2. Типографика</a>
+      </nav>
+
+      <div class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Компоненты</div>
+      <nav class="space-y-1">
+        <a href="#buttons" class="block px-3 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand-600 transition">3. Кнопки (Матрица 4×3)</a>
+        <a href="#forms" class="block px-3 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand-600 transition">4. Поля ввода & Toggle</a>
+        <a href="#badges" class="block px-3 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand-600 transition">5. Бейджи (Badges)</a>
+        <a href="#alerts" class="block px-3 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand-600 transition">6. Уведомления (Alerts)</a>
+        <a href="#cards" class="block px-3 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand-600 transition">7. Карточки (Cards)</a>
+        <a href="#modal-section" class="block px-3 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand-600 transition">8. Модальное окно (Modal)</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 min-w-0 space-y-16">
+
+      <!-- Header info -->
+      <div>
+        <span class="ds-badge ds-badge-brand mb-3">Задание 4.4</span>
+        <h1 class="ds-h1">Дизайн-система Tailwind</h1>
+        <p class="ds-body mt-2">
+          Комплексная дизайн-система, созданная с использованием <code class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-brand-600 font-mono text-sm">@layer components</code>, <code class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-brand-600 font-mono text-sm">@apply</code>, кастомных утилит и расширенной конфигурации Tailwind v3.4+.
+        </p>
+      </div>
+
+      <!-- Section 1: Colors -->
+      <section id="colors" class="space-y-6 scroll-mt-24">
+        <div>
+          <h2 class="ds-h2">1. Кастомные цвета (Brand & Semantic)</h2>
+          <p class="ds-body-sm mt-1">Определены в <code class="font-mono text-brand-600">tailwind.config.js</code> с расширенной шкалой оттенков.</p>
+        </div>
+
+        <div class="space-y-4">
+          <h3 class="text-sm font-bold text-slate-500 uppercase tracking-wider">Brand Palette (Indigo Spectrum)</h3>
+          <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-11 gap-2">
+            <div class="space-y-1.5"><div class="h-16 rounded-xl bg-brand-50 border border-slate-200 dark:border-transparent shadow-inner"></div><div class="text-xs font-bold">50</div><div class="text-[10px] text-slate-400">#eef2ff</div></div>
+            <div class="space-y-1.5"><div class="h-16 rounded-xl bg-brand-100 shadow-inner"></div><div class="text-xs font-bold">100</div><div class="text-[10px] text-slate-400">#e0e7ff</div></div>
+            <div class="space-y-1.5"><div class="h-16 rounded-xl bg-brand-200 shadow-inner"></div><div class="text-xs font-bold">200</div><div class="text-[10px] text-slate-400">#c7d2fe</div></div>
+            <div class="space-y-1.5"><div class="h-16 rounded-xl bg-brand-300 shadow-inner"></div><div class="text-xs font-bold">300</div><div class="text-[10px] text-slate-400">#a5b4fc</div></div>
+            <div class="space-y-1.5"><div class="h-16 rounded-xl bg-brand-400 shadow-inner"></div><div class="text-xs font-bold">400</div><div class="text-[10px] text-slate-400">#818cf8</div></div>
+            <div class="space-y-1.5"><div class="h-16 rounded-xl bg-brand-500 shadow-inner"></div><div class="text-xs font-bold text-brand-600">500 (Base)</div><div class="text-[10px] text-slate-400">#6366f1</div></div>
+            <div class="space-y-1.5"><div class="h-16 rounded-xl bg-brand-600 shadow-inner"></div><div class="text-xs font-bold">600</div><div class="text-[10px] text-slate-400">#4f46e5</div></div>
+            <div class="space-y-1.5"><div class="h-16 rounded-xl bg-brand-700 shadow-inner"></div><div class="text-xs font-bold">700</div><div class="text-[10px] text-slate-400">#4338ca</div></div>
+            <div class="space-y-1.5"><div class="h-16 rounded-xl bg-brand-800 shadow-inner"></div><div class="text-xs font-bold">800</div><div class="text-[10px] text-slate-400">#3730a3</div></div>
+            <div class="space-y-1.5"><div class="h-16 rounded-xl bg-brand-900 shadow-inner"></div><div class="text-xs font-bold">900</div><div class="text-[10px] text-slate-400">#312e81</div></div>
+            <div class="space-y-1.5"><div class="h-16 rounded-xl bg-brand-950 shadow-inner"></div><div class="text-xs font-bold">950</div><div class="text-[10px] text-slate-400">#1e1b4b</div></div>
+          </div>
+        </div>
+
+        <div class="space-y-4 pt-4">
+          <h3 class="text-sm font-bold text-slate-500 uppercase tracking-wider">Semantic Colors (Success, Warning, Error, Info)</h3>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div class="p-4 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-2">
+              <div class="h-10 rounded-lg bg-emerald-500 flex items-center justify-center text-white text-xs font-bold">success</div>
+              <div class="flex justify-between text-xs font-semibold"><span>Light / Dark</span><span class="text-emerald-600">#10b981</span></div>
+            </div>
+            <div class="p-4 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-2">
+              <div class="h-10 rounded-lg bg-amber-500 flex items-center justify-center text-white text-xs font-bold">warning</div>
+              <div class="flex justify-between text-xs font-semibold"><span>Light / Dark</span><span class="text-amber-600">#f59e0b</span></div>
+            </div>
+            <div class="p-4 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-2">
+              <div class="h-10 rounded-lg bg-rose-500 flex items-center justify-center text-white text-xs font-bold">error</div>
+              <div class="flex justify-between text-xs font-semibold"><span>Light / Dark</span><span class="text-rose-600">#ef4444</span></div>
+            </div>
+            <div class="p-4 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-2">
+              <div class="h-10 rounded-lg bg-sky-500 flex items-center justify-center text-white text-xs font-bold">info</div>
+              <div class="flex justify-between text-xs font-semibold"><span>Light / Dark</span><span class="text-sky-600">#0ea5e9</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Typography -->
+      <section id="typography" class="space-y-6 scroll-mt-24">
+        <div>
+          <h2 class="ds-h2">2. Типографика</h2>
+          <p class="ds-body-sm mt-1">Компоненты <code class="font-mono text-brand-600">.ds-h1, .ds-h2, .ds-h3, .ds-body, .ds-body-sm</code></p>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-6">
+          <div class="border-b border-slate-100 dark:border-slate-700 pb-4">
+            <span class="text-xs font-mono text-slate-400">.ds-h1</span>
+            <div class="ds-h1">The quick brown fox jumps over the lazy dog</div>
+          </div>
+          <div class="border-b border-slate-100 dark:border-slate-700 pb-4">
+            <span class="text-xs font-mono text-slate-400">.ds-h2</span>
+            <div class="ds-h2">Modern Web Design with Tailwind CSS v3.4+</div>
+          </div>
+          <div class="border-b border-slate-100 dark:border-slate-700 pb-4">
+            <span class="text-xs font-mono text-slate-400">.ds-h3</span>
+            <div class="ds-h3">Subheadings and Section Titles</div>
+          </div>
+          <div class="border-b border-slate-100 dark:border-slate-700 pb-4">
+            <span class="text-xs font-mono text-slate-400">.ds-body</span>
+            <p class="ds-body">
+              Адаптивный основной текст для параграфов и описаний. Обладает идеальной высотой строки (leading-relaxed) и сбалансированным контрастом для максимальной читаемости на любых дисплеях.
+            </p>
+          </div>
+          <div>
+            <span class="text-xs font-mono text-slate-400">.ds-body-sm</span>
+            <p class="ds-body-sm">
+              Вторичный текст мелкого шрифта для подписей, мета-информации и сносок.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Buttons -->
+      <section id="buttons" class="space-y-6 scroll-mt-24">
+        <div>
+          <h2 class="ds-h2">3. Матрица кнопок</h2>
+          <p class="ds-body-sm mt-1">4 варианта: <code class="font-mono text-brand-600">primary / secondary / ghost / danger</code> × 3 размера: <code class="font-mono text-brand-600">sm / md / lg</code> + состояния focus, active scale, disabled</p>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 overflow-x-auto">
+          <table class="w-full text-left text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-400 uppercase">
+                <th class="py-3 px-4">Вариант</th>
+                <th class="py-3 px-4">Small (.ds-btn-sm)</th>
+                <th class="py-3 px-4">Medium (.ds-btn-md)</th>
+                <th class="py-3 px-4">Large (.ds-btn-lg)</th>
+                <th class="py-3 px-4">Disabled</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 dark:divide-slate-700/60">
+              <tr>
+                <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">Primary</td>
+                <td class="py-4 px-4"><button class="ds-btn ds-btn-sm ds-btn-primary">Button</button></td>
+                <td class="py-4 px-4"><button class="ds-btn ds-btn-md ds-btn-primary">Button</button></td>
+                <td class="py-4 px-4"><button class="ds-btn ds-btn-lg ds-btn-primary">Button</button></td>
+                <td class="py-4 px-4"><button disabled class="ds-btn ds-btn-md ds-btn-primary">Disabled</button></td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">Secondary</td>
+                <td class="py-4 px-4"><button class="ds-btn ds-btn-sm ds-btn-secondary">Button</button></td>
+                <td class="py-4 px-4"><button class="ds-btn ds-btn-md ds-btn-secondary">Button</button></td>
+                <td class="py-4 px-4"><button class="ds-btn ds-btn-lg ds-btn-secondary">Button</button></td>
+                <td class="py-4 px-4"><button disabled class="ds-btn ds-btn-md ds-btn-secondary">Disabled</button></td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">Ghost</td>
+                <td class="py-4 px-4"><button class="ds-btn ds-btn-sm ds-btn-ghost">Button</button></td>
+                <td class="py-4 px-4"><button class="ds-btn ds-btn-md ds-btn-ghost">Button</button></td>
+                <td class="py-4 px-4"><button class="ds-btn ds-btn-lg ds-btn-ghost">Button</button></td>
+                <td class="py-4 px-4"><button disabled class="ds-btn ds-btn-md ds-btn-ghost">Disabled</button></td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 font-semibold text-slate-900 dark:text-white">Danger</td>
+                <td class="py-4 px-4"><button class="ds-btn ds-btn-sm ds-btn-danger">Button</button></td>
+                <td class="py-4 px-4"><button class="ds-btn ds-btn-md ds-btn-danger">Button</button></td>
+                <td class="py-4 px-4"><button class="ds-btn ds-btn-lg ds-btn-danger">Button</button></td>
+                <td class="py-4 px-4"><button disabled class="ds-btn ds-btn-md ds-btn-danger">Disabled</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 4: Forms & Controls -->
+      <section id="forms" class="space-y-6 scroll-mt-24">
+        <div>
+          <h2 class="ds-h2">4. Инпуты, Чекбоксы, Переключатели (Toggle)</h2>
+          <p class="ds-body-sm mt-1">Интерактивные элементы формы с поддержкой фокуса, состояний ошибки и отключения.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="p-6 rounded-3xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-4">
+            <h3 class="font-bold text-slate-900 dark:text-white">Текстовые поля (.ds-input)</h3>
+            
+            <div class="space-y-1">
+              <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300">Стандартный инпут</label>
+              <input type="text" placeholder="Введите имя..." class="ds-input">
+            </div>
+
+            <div class="space-y-1">
+              <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300">С иконкой слева</label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                </span>
+                <input type="email" placeholder="user@company.com" class="ds-input pl-10">
+              </div>
+            </div>
+
+            <div class="space-y-1">
+              <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300">Отключенное состояние (disabled)</label>
+              <input type="text" value="Только для чтения / Отключено" disabled class="ds-input">
+            </div>
+          </div>
+
+          <div class="p-6 rounded-3xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-6">
+            <h3 class="font-bold text-slate-900 dark:text-white">Чекбоксы & Переключатели (Toggle)</h3>
+
+            <!-- Checkboxes -->
+            <div class="space-y-3">
+              <label class="flex items-center space-x-3 cursor-pointer">
+                <input type="checkbox" checked class="ds-checkbox">
+                <span class="text-sm font-medium text-slate-700 dark:text-slate-300">Активный чекбокс</span>
+              </label>
+              <label class="flex items-center space-x-3 cursor-pointer">
+                <input type="checkbox" class="ds-checkbox">
+                <span class="text-sm font-medium text-slate-700 dark:text-slate-300">Неактивный чекбокс</span>
+              </label>
+              <label class="flex items-center space-x-3 opacity-50 cursor-not-allowed">
+                <input type="checkbox" disabled class="ds-checkbox">
+                <span class="text-sm font-medium text-slate-700 dark:text-slate-300">Отключенный чекбокс</span>
+              </label>
+            </div>
+
+            <!-- Toggles -->
+            <div class="pt-4 border-t border-slate-100 dark:border-slate-700 space-y-3">
+              <label class="flex items-center justify-between cursor-pointer">
+                <span class="text-sm font-medium text-slate-700 dark:text-slate-300">Push-уведомления</span>
+                <div class="relative">
+                  <input type="checkbox" checked class="sr-only peer">
+                  <div class="ds-toggle-track"><div class="ds-toggle-thumb"></div></div>
+                </div>
+              </label>
+
+              <label class="flex items-center justify-between cursor-pointer">
+                <span class="text-sm font-medium text-slate-700 dark:text-slate-300">Двухфакторная аутентификация</span>
+                <div class="relative">
+                  <input type="checkbox" class="sr-only peer">
+                  <div class="ds-toggle-track"><div class="ds-toggle-thumb"></div></div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Badges -->
+      <section id="badges" class="space-y-6 scroll-mt-24">
+        <div>
+          <h2 class="ds-h2">5. Бейджи (Badge Component)</h2>
+          <p class="ds-body-sm mt-1">Компоненты <code class="font-mono text-brand-600">.ds-badge, .ds-badge-brand, .ds-badge-success, .ds-badge-warning, .ds-badge-danger</code></p>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex flex-wrap gap-4 items-center">
+          <span class="ds-badge ds-badge-brand">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+            Brand Pro
+          </span>
+          <span class="ds-badge ds-badge-success">
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+            Успешно
+          </span>
+          <span class="ds-badge ds-badge-warning">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+            В ожидании
+          </span>
+          <span class="ds-badge ds-badge-danger">
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+            Отклонено
+          </span>
+        </div>
+      </section>
+
+      <!-- Section 6: Alerts -->
+      <section id="alerts" class="space-y-6 scroll-mt-24">
+        <div>
+          <h2 class="ds-h2">6. Уведомления (Alerts)</h2>
+          <p class="ds-body-sm mt-1">Компоненты <code class="font-mono text-brand-600">.ds-alert, .ds-alert-info, .ds-alert-success, .ds-alert-warning, .ds-alert-danger</code></p>
+        </div>
+
+        <div class="space-y-3">
+          <div class="ds-alert ds-alert-info">
+            <svg class="w-5 h-5 shrink-0 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <div>
+              <div class="font-semibold">Информация об обновлении</div>
+              <div class="opacity-90 text-xs mt-0.5">Новая версия Tailwind CSS 3.4 поддерживает @container и селекторы :has.</div>
+            </div>
+          </div>
+
+          <div class="ds-alert ds-alert-success">
+            <svg class="w-5 h-5 shrink-0 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <div>
+              <div class="font-semibold">Изменения успешно сохранены</div>
+              <div class="opacity-90 text-xs mt-0.5">Все стили синхронизированы с дизайн-системой.</div>
+            </div>
+          </div>
+
+          <div class="ds-alert ds-alert-warning">
+            <svg class="w-5 h-5 shrink-0 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            <div>
+              <div class="font-semibold">Внимание! Подписка заканчивается через 3 дня</div>
+              <div class="opacity-90 text-xs mt-0.5">Продлите тариф, чтобы не потерять доступ к премиум функциям.</div>
+            </div>
+          </div>
+
+          <div class="ds-alert ds-alert-danger">
+            <svg class="w-5 h-5 shrink-0 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <div>
+              <div class="font-semibold">Ошибка аутентификации</div>
+              <div class="opacity-90 text-xs mt-0.5">Неверный токен доступа или сессия истекла. Пожалуйста, авторизуйтесь заново.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 7: Cards -->
+      <section id="cards" class="space-y-6 scroll-mt-24">
+        <div>
+          <h2 class="ds-h2">7. Карточки (Card Component)</h2>
+          <p class="ds-body-sm mt-1">Компоненты <code class="font-mono text-brand-600">.ds-card, .ds-card-header, .ds-card-body, .glass-card</code></p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Карточка профиля (Задание 1.1) -->
+          <article class="w-full bg-white dark:bg-slate-800 rounded-3xl shadow-xl shadow-slate-200/60 dark:shadow-slate-950/60 border border-slate-200/80 dark:border-slate-700/80 p-6 flex flex-col items-center text-center space-y-4">
+            <span class="ds-badge ds-badge-brand text-[10px]">Задание 1.1</span>
+            <div class="relative flex items-center justify-center">
+              <img 
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=160&h=160&q=80" 
+                alt="Аватар" 
+                class="w-20 h-20 rounded-full object-cover shadow-md ring-4 ring-brand-500/20"
+              >
+              <span class="absolute bottom-0 right-0 w-4 h-4 bg-emerald-500 border-2 border-white dark:border-slate-800 rounded-full"></span>
+            </div>
+            <div class="space-y-0.5">
+              <h4 class="font-bold text-slate-900 dark:text-white text-base">Александра Смирнова</h4>
+              <p class="text-xs font-medium text-brand-600 dark:text-brand-400">Senior Frontend Engineer</p>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-300">
+              Создаю масштабируемые дизайн-системы и веб-интерфейсы на Tailwind CSS.
+            </p>
+            <div class="w-full flex gap-2 pt-2">
+              <button class="flex-1 py-2 px-3 rounded-full bg-brand-600 hover:bg-brand-700 text-white font-semibold text-xs transition">Follow</button>
+              <button class="flex-1 py-2 px-3 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold text-xs border border-slate-200 dark:border-slate-600 transition">Message</button>
+            </div>
+          </article>
+
+          <div class="ds-card">
+            <div class="ds-card-header flex items-center justify-between">
+              <h4 class="font-bold text-slate-900 dark:text-white">Стандартная карточка</h4>
+              <span class="ds-badge ds-badge-brand">Active</span>
+            </div>
+            <div class="ds-card-body space-y-4">
+              <p class="ds-body text-sm">
+                Базовый компонент карточки с плавной тенью, скруглением 2xl и адаптивными рамками в обеих темах.
+              </p>
+              <div class="flex justify-end gap-2 pt-2">
+                <button class="ds-btn ds-btn-sm ds-btn-secondary">Отмена</button>
+                <button class="ds-btn ds-btn-sm ds-btn-primary">Применить</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Glassmorphism Card (custom utility plugin) -->
+          <div class="glass-card dark:glass-card-dark rounded-2xl p-6 relative overflow-hidden group">
+            <div class="absolute -right-10 -bottom-10 w-32 h-32 rounded-full bg-brand-500/20 blur-2xl group-hover:scale-150 transition-transform duration-500"></div>
+            <div class="relative z-10 space-y-3">
+              <span class="ds-badge ds-badge-warning">Кастомная утилита</span>
+              <h4 class="font-bold text-slate-900 dark:text-white">Glassmorphism Card</h4>
+              <p class="ds-body text-sm">
+                Создано через Tailwind Plugin (<code class="font-mono text-xs">.glass-card</code>) с эффектом <code class="font-mono text-xs">backdrop-filter: blur(16px)</code>.
+              </p>
+              <button class="ds-btn ds-btn-sm ds-btn-primary">Исследовать</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 8: Modal Component -->
+      <section id="modal-section" class="space-y-6 scroll-mt-24">
+        <div>
+          <h2 class="ds-h2">8. Модальное окно (Modal Component)</h2>
+          <p class="ds-body-sm mt-1">Полноценное модальное окно с эффектом backdrop-blur, анимацией появления и клавиатурным управлением.</p>
+        </div>
+
+        <div class="p-8 rounded-3xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex flex-col items-center justify-center text-center space-y-4">
+          <div class="w-12 h-12 rounded-2xl bg-brand-100 dark:bg-brand-950 flex items-center justify-center text-brand-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"/></svg>
+          </div>
+          <h3 class="font-bold text-slate-900 dark:text-white">Интерактивная демонстрация Modal</h3>
+          <p class="ds-body-sm max-w-md">Нажмите на кнопку ниже, чтобы открыть модальное окно дизайн-системы с затемнением фона и анимацией.</p>
+          <button id="openModalBtn" class="ds-btn ds-btn-md ds-btn-primary">
+            Открыть модальное окно
+          </button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Modal Dialog -->
+  <div id="demoModal" class="ds-modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="ds-modal-content animate-slide-up">
+      <div class="p-6 border-b border-slate-100 dark:border-slate-700 flex items-center justify-between">
+        <h3 id="modalTitle" class="text-lg font-bold text-slate-900 dark:text-white">Подтверждение операции</h3>
+        <button id="closeModalBtn" class="p-1 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="p-6 space-y-4">
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-brand-100 dark:bg-brand-950/80 text-brand-600 flex items-center justify-center shrink-0">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div>
+            <h4 class="font-semibold text-slate-900 dark:text-white">Опубликовать дизайн-токены?</h4>
+            <p class="ds-body-sm mt-1">Все изменения в цветах, компонентах типографики и кнопках будут скомпилированы и применены ко всем проектам системы.</p>
+          </div>
+        </div>
+      </div>
+      <div class="p-6 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-100 dark:border-slate-700 flex justify-end gap-3">
+        <button id="cancelModalBtn" class="ds-btn ds-btn-md ds-btn-secondary">Отмена</button>
+        <button id="confirmModalBtn" class="ds-btn ds-btn-md ds-btn-primary">Опубликовать</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initTheme } from '/src/js/main.js';
+    initTheme();
+
+    // Modal Interaction
+    const modal = document.getElementById('demoModal');
+    const openBtn = document.getElementById('openModalBtn');
+    const closeBtn = document.getElementById('closeModalBtn');
+    const cancelBtn = document.getElementById('cancelModalBtn');
+    const confirmBtn = document.getElementById('confirmModalBtn');
+
+    function openModal() {
+      modal.classList.remove('hidden');
+    }
+
+    function closeModal() {
+      modal.classList.add('hidden');
+    }
+
+    openBtn?.addEventListener('click', openModal);
+    closeBtn?.addEventListener('click', closeModal);
+    cancelBtn?.addEventListener('click', closeModal);
+    confirmBtn?.addEventListener('click', () => {
+      alert('Дизайн-токены успешно опубликованы!');
+      closeModal();
+    });
+
+    modal?.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal?.classList.contains('hidden')) {
+        closeModal();
+      }
+    });
+  </script>
+</body>
+</html>

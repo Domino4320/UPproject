@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus Analytics Dashboard — Дашборд аналитики (Задания 2.3, 4.1)</title>
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="/src/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen antialiased flex">
+
+  <!-- ============================================== -->
+  <!-- 1. Мобильный оверлей для сайдбара               -->
+  <!-- ============================================== -->
+  <div id="sidebarBackdrop" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-40 hidden lg:hidden transition-opacity duration-300"></div>
+
+  <!-- ============================================== -->
+  <!-- 2. Фиксированный сайдбар (Задания 2.3, 4.1)      -->
+  <!-- w-64 (256px), h-screen, fixed, overflow-y-auto -->
+  <!-- ============================================== -->
+  <aside id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-white dark:bg-slate-900 border-r border-slate-200/80 dark:border-slate-800/80 z-50 flex flex-col justify-between transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out h-screen overflow-y-auto scrollbar-custom">
+    
+    <div>
+      <!-- Сайдбар Хедер / Бренд -->
+      <div class="h-20 px-6 flex items-center justify-between border-b border-slate-100 dark:border-slate-800/80">
+        <a href="/" class="flex items-center space-x-3 group">
+          <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-600 to-pink-500 flex items-center justify-center text-white shadow-lg shadow-brand-500/25 group-hover:scale-105 transition-transform">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-lg font-black tracking-tight text-slate-900 dark:text-white">Nexus</span>
+            <span class="text-[10px] font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-widest -mt-1">Analytics</span>
+          </div>
+        </a>
+
+        <!-- Кнопка закрытия на мобилках -->
+        <button id="closeSidebarBtn" class="lg:hidden p-1.5 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Навигация сайдбара (иконки + текст) -->
+      <div class="px-4 py-6 space-y-1">
+        <div class="px-3 pb-2 text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Управление</div>
+        
+        <a href="/pages/dashboard.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold bg-brand-50 text-brand-700 dark:bg-brand-950/60 dark:text-brand-300 transition-colors group">
+          <svg class="w-5 h-5 text-brand-600 dark:text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+          <span>Дашборд (4.1)</span>
+        </a>
+
+        <a href="/pages/ecommerce.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors group">
+          <svg class="w-5 h-5 text-slate-400 group-hover:text-brand-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <span>Каталог товаров (4.3)</span>
+        </a>
+
+        <a href="/pages/messenger.html" class="flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors group">
+          <div class="flex items-center gap-3">
+            <svg class="w-5 h-5 text-slate-400 group-hover:text-brand-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+            <span>Мессенджер (3.1)</span>
+          </div>
+          <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-pink-500 text-white">4</span>
+        </a>
+
+        <a href="/pages/kanban.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors group">
+          <svg class="w-5 h-5 text-slate-400 group-hover:text-brand-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/></svg>
+          <span>Kanban-доска (3.2)</span>
+        </a>
+
+        <a href="/pages/multistep.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors group">
+          <svg class="w-5 h-5 text-slate-400 group-hover:text-brand-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+          <span>Многошаговая форма (4.2)</span>
+        </a>
+
+        <div class="pt-6 px-3 pb-2 text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Система</div>
+
+        <a href="/pages/landing.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors group">
+          <svg class="w-5 h-5 text-slate-400 group-hover:text-brand-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          <span>Лендинг (3.3)</span>
+        </a>
+
+        <a href="/pages/storybook.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors group">
+          <svg class="w-5 h-5 text-slate-400 group-hover:text-brand-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+          <span>Storybook (4.4)</span>
+        </a>
+
+        <a href="/" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors group">
+          <svg class="w-5 h-5 text-slate-400 group-hover:text-brand-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+          <span>Портал всех заданий</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Нижняя часть сайдбара: Рекламный слот + Профиль пользователя -->
+    <div class="p-3 border-t border-slate-100 dark:border-slate-800/80 space-y-3">
+      <!-- Vue AdSlot Component в сайдбаре -->
+      <div data-vue-ad-slot data-size="inline" data-label="Рекламное место" data-sublabel="Спонсор раздела (AdSlot.vue)" data-closable="true"></div>
+
+      <div class="flex items-center gap-3 p-2 rounded-2xl bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&h=80&q=80" alt="Аватар" class="w-10 h-10 rounded-full object-cover ring-2 ring-brand-500">
+        <div class="min-w-0 flex-1">
+          <div class="text-xs font-bold text-slate-900 dark:text-white truncate">Александра В.</div>
+          <div class="text-[11px] text-slate-400 truncate">Lead Product Designer</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============================================== -->
+  <!-- 3. Основная рабочая область (с отступом lg:pl-64) -->
+  <!-- ============================================== -->
+  <div class="flex-1 flex flex-col min-w-0 lg:pl-64">
+
+    <!-- ============================================== -->
+    <!-- 4. Topbar с поиском и аватаром (Задание 2.3)     -->
+    <!-- ============================================== -->
+    <header class="sticky top-0 z-30 h-20 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80 px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
+      
+      <div class="flex items-center gap-4 flex-1 max-w-xl">
+        <!-- Кнопка гамбургер для мобилок -->
+        <button id="openSidebarBtn" class="lg:hidden p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" aria-label="Открыть сайдбар">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+
+        <!-- Поисковая строка в топбаре -->
+        <div class="relative w-full">
+          <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </span>
+          <input type="text" placeholder="Поиск по транзакциям, клиентам, отчетам..." class="ds-input pl-10 py-2 text-sm bg-slate-100 dark:bg-slate-800 border-transparent focus:bg-white dark:focus:bg-slate-900 focus:border-brand-500">
+        </div>
+      </div>
+
+      <!-- Правая панель топбара -->
+      <div class="flex items-center gap-3 sm:gap-4 shrink-0">
+        <!-- Переключатель темы -->
+        <button data-theme-toggle class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white bg-slate-100/50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition shrink-0" aria-label="Сменить тему">
+          <svg data-theme-icon="sun" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <svg data-theme-icon="moon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        </button>
+
+        <!-- Колокольчик уведомлений с индикатором -->
+        <div class="relative shrink-0">
+          <button class="p-2.5 rounded-xl text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+          </button>
+          <span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-rose-500 ring-2 ring-white dark:ring-slate-900"></span>
+        </div>
+
+        <!-- Аватар в топбаре -->
+        <div class="flex items-center gap-3 pl-1 shrink-0">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&h=80&q=80" alt="Аватар" class="w-9 h-9 rounded-xl object-cover ring-2 ring-brand-500">
+        </div>
+      </div>
+    </header>
+
+    <!-- ============================================== -->
+    <!-- 5. Основной контент дашборда (Задание 4.1)      -->
+    <!-- ============================================== -->
+    <main class="flex-1 p-4 sm:p-6 lg:p-8 space-y-8 max-w-7xl w-full mx-auto">
+      
+      <!-- Заголовок страницы и быстрые фильтры -->
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div>
+          <span class="ds-badge ds-badge-brand mb-2">Задания 2.3 & 4.1</span>
+          <h1 class="ds-h1 text-2xl sm:text-3xl">Аналитический центр</h1>
+          <p class="ds-body-sm mt-1">Мониторинг выручки, транзакций и активности пользователей в режиме реального времени.</p>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <select class="ds-input py-2 text-xs w-auto font-medium cursor-pointer">
+            <option>За последние 30 дней</option>
+            <option>За текущую неделю</option>
+            <option>За текущий квартал</option>
+            <option>За весь год</option>
+          </select>
+          <button class="ds-btn ds-btn-md ds-btn-primary whitespace-nowrap shadow-md">
+            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            Экспорт отчета
+          </button>
+        </div>
+      </div>
+
+      <!-- ============================================== -->
+      <!-- 6. 4 Stat-карточки с трендами (Задание 4.1)     -->
+      <!-- ============================================== -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
+        
+        <!-- Карточка 1: Выручка -->
+        <div class="ds-card p-6 group hover:border-brand-500/50 transition-all duration-200">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Общая выручка</span>
+            <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+          </div>
+          <div class="mt-4 flex items-baseline justify-between">
+            <div class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">$128,430</div>
+            <span class="inline-flex items-center text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/70 px-2 py-0.5 rounded-full">
+              <svg class="w-3 h-3 mr-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+              +12.4%
+            </span>
+          </div>
+          <div class="text-[11px] text-slate-400 mt-2 flex items-center gap-1">
+            <span>vs $114,260 прошлый период</span>
+          </div>
+        </div>
+
+        <!-- Карточка 2: Новые пользователи -->
+        <div class="ds-card p-6 group hover:border-brand-500/50 transition-all duration-200">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Новые клиенты</span>
+            <div class="w-10 h-10 rounded-xl bg-brand-50 dark:bg-brand-950/60 text-brand-600 dark:text-brand-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            </div>
+          </div>
+          <div class="mt-4 flex items-baseline justify-between">
+            <div class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">2,420</div>
+            <span class="inline-flex items-center text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/70 px-2 py-0.5 rounded-full">
+              <svg class="w-3 h-3 mr-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+              +24.1%
+            </span>
+          </div>
+          <div class="text-[11px] text-slate-400 mt-2 flex items-center gap-1">
+            <span>vs 1,950 прошлый период</span>
+          </div>
+        </div>
+
+        <!-- Карточка 3: Показатель отказов -->
+        <div class="ds-card p-6 group hover:border-brand-500/50 transition-all duration-200">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Bounce Rate</span>
+            <div class="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+            </div>
+          </div>
+          <div class="mt-4 flex items-baseline justify-between">
+            <div class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">28.4%</div>
+            <span class="inline-flex items-center text-xs font-bold text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/70 px-2 py-0.5 rounded-full">
+              <svg class="w-3 h-3 mr-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+              -3.2%
+            </span>
+          </div>
+          <div class="text-[11px] text-slate-400 mt-2 flex items-center gap-1">
+            <span>Улучшение на 1.1% к прошлой неделе</span>
+          </div>
+        </div>
+
+        <!-- Карточка 4: Средний чек -->
+        <div class="ds-card p-6 group hover:border-brand-500/50 transition-all duration-200">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Средний чек</span>
+            <div class="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/60 text-purple-600 dark:text-purple-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            </div>
+          </div>
+          <div class="mt-4 flex items-baseline justify-between">
+            <div class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">$84.50</div>
+            <span class="inline-flex items-center text-xs font-bold text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/70 px-2 py-0.5 rounded-full">
+              <svg class="w-3 h-3 mr-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+              -1.5%
+            </span>
+          </div>
+          <div class="text-[11px] text-slate-400 mt-2 flex items-center gap-1">
+            <span>Сезонные колебания активности</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ============================================== -->
+      <!-- 7. График (заглушка через CSS Grid) & Сводка   -->
+      <!-- grid grid-cols-12, col-span-12 lg:col-span-8   -->
+      <!-- ============================================== -->
+      <div class="grid grid-cols-12 gap-6">
+        
+        <!-- График выручки по дням недели (8 колонок на lg) -->
+        <div class="col-span-12 lg:col-span-8 ds-card p-6 space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-slate-100 dark:border-slate-800 pb-4">
+            <div>
+              <h3 class="font-bold text-slate-900 dark:text-white text-lg">Динамика продаж и конверсии</h3>
+              <p class="ds-body-sm">Столбчатая диаграмма, построенная на базе CSS Grid и Flex</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="inline-flex items-center gap-1.5 text-xs text-slate-500">
+                <span class="w-3 h-3 rounded-full bg-brand-500"></span> Текущий период
+              </span>
+              <span class="inline-flex items-center gap-1.5 text-xs text-slate-500">
+                <span class="w-3 h-3 rounded-full bg-slate-200 dark:bg-slate-700"></span> Прошлый период
+              </span>
+            </div>
+          </div>
+
+          <!-- Сетка графика с адаптивными столбиками -->
+          <div class="h-64 flex items-end justify-between gap-3 sm:gap-6 pt-6 px-2">
+            
+            <!-- Пн -->
+            <div class="flex-1 flex flex-col items-center gap-2 h-full justify-end group">
+              <div class="text-[11px] font-bold text-brand-600 opacity-0 group-hover:opacity-100 transition-opacity">$14.2k</div>
+              <div class="w-full flex items-end justify-center gap-1.5 h-full">
+                <div class="w-full max-w-[18px] bg-slate-200 dark:bg-slate-700 rounded-t-lg h-[45%]"></div>
+                <div class="w-full max-w-[18px] bg-gradient-to-t from-brand-600 to-indigo-400 group-hover:to-pink-500 rounded-t-lg h-[65%] transition-all duration-300"></div>
+              </div>
+              <span class="text-xs font-semibold text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white">Пн</span>
+            </div>
+
+            <!-- Вт -->
+            <div class="flex-1 flex flex-col items-center gap-2 h-full justify-end group">
+              <div class="text-[11px] font-bold text-brand-600 opacity-0 group-hover:opacity-100 transition-opacity">$18.9k</div>
+              <div class="w-full flex items-end justify-center gap-1.5 h-full">
+                <div class="w-full max-w-[18px] bg-slate-200 dark:bg-slate-700 rounded-t-lg h-[55%]"></div>
+                <div class="w-full max-w-[18px] bg-gradient-to-t from-brand-600 to-indigo-400 group-hover:to-pink-500 rounded-t-lg h-[80%] transition-all duration-300"></div>
+              </div>
+              <span class="text-xs font-semibold text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white">Вт</span>
+            </div>
+
+            <!-- Ср -->
+            <div class="flex-1 flex flex-col items-center gap-2 h-full justify-end group">
+              <div class="text-[11px] font-bold text-brand-600 opacity-0 group-hover:opacity-100 transition-opacity">$12.5k</div>
+              <div class="w-full flex items-end justify-center gap-1.5 h-full">
+                <div class="w-full max-w-[18px] bg-slate-200 dark:bg-slate-700 rounded-t-lg h-[60%]"></div>
+                <div class="w-full max-w-[18px] bg-gradient-to-t from-brand-600 to-indigo-400 group-hover:to-pink-500 rounded-t-lg h-[50%] transition-all duration-300"></div>
+              </div>
+              <span class="text-xs font-semibold text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white">Ср</span>
+            </div>
+
+            <!-- Чт -->
+            <div class="flex-1 flex flex-col items-center gap-2 h-full justify-end group">
+              <div class="text-[11px] font-bold text-brand-600 opacity-0 group-hover:opacity-100 transition-opacity">$24.1k</div>
+              <div class="w-full flex items-end justify-center gap-1.5 h-full">
+                <div class="w-full max-w-[18px] bg-slate-200 dark:bg-slate-700 rounded-t-lg h-[70%]"></div>
+                <div class="w-full max-w-[18px] bg-gradient-to-t from-brand-600 to-indigo-400 group-hover:to-pink-500 rounded-t-lg h-[95%] transition-all duration-300"></div>
+              </div>
+              <span class="text-xs font-semibold text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white">Чт</span>
+            </div>
+
+            <!-- Пт -->
+            <div class="flex-1 flex flex-col items-center gap-2 h-full justify-end group">
+              <div class="text-[11px] font-bold text-brand-600 opacity-0 group-hover:opacity-100 transition-opacity">$21.8k</div>
+              <div class="w-full flex items-end justify-center gap-1.5 h-full">
+                <div class="w-full max-w-[18px] bg-slate-200 dark:bg-slate-700 rounded-t-lg h-[65%]"></div>
+                <div class="w-full max-w-[18px] bg-gradient-to-t from-brand-600 to-indigo-400 group-hover:to-pink-500 rounded-t-lg h-[88%] transition-all duration-300"></div>
+              </div>
+              <span class="text-xs font-semibold text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white">Пт</span>
+            </div>
+
+            <!-- Сб -->
+            <div class="flex-1 flex flex-col items-center gap-2 h-full justify-end group">
+              <div class="text-[11px] font-bold text-brand-600 opacity-0 group-hover:opacity-100 transition-opacity">$16.4k</div>
+              <div class="w-full flex items-end justify-center gap-1.5 h-full">
+                <div class="w-full max-w-[18px] bg-slate-200 dark:bg-slate-700 rounded-t-lg h-[40%]"></div>
+                <div class="w-full max-w-[18px] bg-gradient-to-t from-brand-600 to-indigo-400 group-hover:to-pink-500 rounded-t-lg h-[68%] transition-all duration-300"></div>
+              </div>
+              <span class="text-xs font-semibold text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white">Сб</span>
+            </div>
+
+            <!-- Вс -->
+            <div class="flex-1 flex flex-col items-center gap-2 h-full justify-end group">
+              <div class="text-[11px] font-bold text-brand-600 opacity-0 group-hover:opacity-100 transition-opacity">$19.7k</div>
+              <div class="w-full flex items-end justify-center gap-1.5 h-full">
+                <div class="w-full max-w-[18px] bg-slate-200 dark:bg-slate-700 rounded-t-lg h-[50%]"></div>
+                <div class="w-full max-w-[18px] bg-gradient-to-t from-brand-600 to-indigo-400 group-hover:to-pink-500 rounded-t-lg h-[82%] transition-all duration-300"></div>
+              </div>
+              <span class="text-xs font-semibold text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white">Вс</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Боковая панель: Источники трафика (4 колонки на lg) -->
+        <div class="col-span-12 lg:col-span-4 ds-card p-6 space-y-6 flex flex-col justify-between">
+          <div>
+            <h3 class="font-bold text-slate-900 dark:text-white text-lg">Каналы привлечения</h3>
+            <p class="ds-body-sm mt-0.5">Структура источников конверсий</p>
+
+            <div class="mt-6 space-y-4">
+              <div>
+                <div class="flex justify-between text-xs font-semibold mb-1.5">
+                  <span class="text-slate-700 dark:text-slate-300">Органический поиск</span>
+                  <span class="text-brand-600 font-bold">48%</span>
+                </div>
+                <div class="w-full h-2 rounded-full bg-slate-100 dark:bg-slate-700 overflow-hidden">
+                  <div class="h-full bg-brand-500 rounded-full" style="width: 48%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs font-semibold mb-1.5">
+                  <span class="text-slate-700 dark:text-slate-300">Прямой трафик (Direct)</span>
+                  <span class="text-purple-600 font-bold">27%</span>
+                </div>
+                <div class="w-full h-2 rounded-full bg-slate-100 dark:bg-slate-700 overflow-hidden">
+                  <div class="h-full bg-purple-500 rounded-full" style="width: 27%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs font-semibold mb-1.5">
+                  <span class="text-slate-700 dark:text-slate-300">Реферальные программы</span>
+                  <span class="text-emerald-600 font-bold">15%</span>
+                </div>
+                <div class="w-full h-2 rounded-full bg-slate-100 dark:bg-slate-700 overflow-hidden">
+                  <div class="h-full bg-emerald-500 rounded-full" style="width: 15%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs font-semibold mb-1.5">
+                  <span class="text-slate-700 dark:text-slate-300">Социальные сети</span>
+                  <span class="text-pink-600 font-bold">10%</span>
+                </div>
+                <div class="w-full h-2 rounded-full bg-slate-100 dark:bg-slate-700 overflow-hidden">
+                  <div class="h-full bg-pink-500 rounded-full" style="width: 10%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Баннер Pro -->
+          <div class="p-4 rounded-2xl bg-gradient-to-br from-brand-600 to-purple-600 text-white mt-6">
+            <div class="font-bold text-sm">Nexus AI Copilot</div>
+            <p class="text-xs text-white/80 mt-1">Автоматическая сегментация когорт пользователей активирована.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ============================================== -->
+      <!-- 8. Таблица последних транзакций (Задание 4.1)  -->
+      <!-- Фильтры, поиск, truncate, min-w-0, scrollbar   -->
+      <!-- ============================================== -->
+      <div class="ds-card overflow-hidden">
+        
+        <div class="p-6 border-b border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <h3 class="font-bold text-slate-900 dark:text-white text-lg">Последние транзакции</h3>
+            <p class="ds-body-sm">Полная история входящих платежей и возвратов клиентов</p>
+          </div>
+
+          <!-- Фильтры статусов транзакций -->
+          <div class="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0">
+            <button class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-brand-50 text-brand-700 dark:bg-brand-950 dark:text-brand-300">Все</button>
+            <button class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Успешные</button>
+            <button class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition">В ожидании</button>
+            <button class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition">Отклоненные</button>
+          </div>
+        </div>
+
+        <!-- Адаптивная таблица с горизонтальным скроллом -->
+        <div class="overflow-x-auto scrollbar-custom">
+          <table class="w-full text-left text-sm border-collapse min-w-[640px]">
+            <thead>
+              <tr class="border-b border-slate-100 dark:border-slate-800 text-[11px] font-bold text-slate-400 uppercase tracking-wider bg-slate-50/50 dark:bg-slate-900/50">
+                <th class="py-3 px-6">Клиент</th>
+                <th class="py-3 px-6">Тариф</th>
+                <th class="py-3 px-6">Дата</th>
+                <th class="py-3 px-6">Сумма</th>
+                <th class="py-3 px-6">Статус</th>
+                <th class="py-3 px-6 text-right">Действие</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 dark:divide-slate-800/60">
+              
+              <!-- Транзакция 1 -->
+              <tr class="hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition-colors group">
+                <td class="py-4 px-6 flex items-center gap-3">
+                  <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=80&h=80&q=80" alt="Клиент" class="w-9 h-9 rounded-full object-cover">
+                  <div class="min-w-0">
+                    <div class="font-bold text-slate-900 dark:text-white text-sm truncate">Мария Иванова</div>
+                    <div class="text-xs text-slate-400 truncate">maria@techcorp.io</div>
+                  </div>
+                </td>
+                <td class="py-4 px-6 font-medium text-slate-700 dark:text-slate-300">Enterprise Cloud</td>
+                <td class="py-4 px-6 text-xs text-slate-500">Сегодня, 14:32</td>
+                <td class="py-4 px-6 font-bold text-slate-900 dark:text-white">$149.00</td>
+                <td class="py-4 px-6">
+                  <span class="ds-badge ds-badge-success">Оплачено</span>
+                </td>
+                <td class="py-4 px-6 text-right">
+                  <button class="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-white transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/></svg>
+                  </button>
+                </td>
+              </tr>
+
+              <!-- Транзакция 2 -->
+              <tr class="hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition-colors group">
+                <td class="py-4 px-6 flex items-center gap-3">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&h=80&q=80" alt="Клиент" class="w-9 h-9 rounded-full object-cover">
+                  <div class="min-w-0">
+                    <div class="font-bold text-slate-900 dark:text-white text-sm truncate">Дмитрий Смирнов</div>
+                    <div class="text-xs text-slate-400 truncate">dmitry@startup.co</div>
+                  </div>
+                </td>
+                <td class="py-4 px-6 font-medium text-slate-700 dark:text-slate-300">Pro Team</td>
+                <td class="py-4 px-6 text-xs text-slate-500">Вчера, 18:20</td>
+                <td class="py-4 px-6 font-bold text-slate-900 dark:text-white">$49.00</td>
+                <td class="py-4 px-6">
+                  <span class="ds-badge ds-badge-success">Оплачено</span>
+                </td>
+                <td class="py-4 px-6 text-right">
+                  <button class="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-white transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/></svg>
+                  </button>
+                </td>
+              </tr>
+
+              <!-- Транзакция 3 -->
+              <tr class="hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition-colors group">
+                <td class="py-4 px-6 flex items-center gap-3">
+                  <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=80&h=80&q=80" alt="Клиент" class="w-9 h-9 rounded-full object-cover">
+                  <div class="min-w-0">
+                    <div class="font-bold text-slate-900 dark:text-white text-sm truncate">Артем Ковалев</div>
+                    <div class="text-xs text-slate-400 truncate">artem@fintech.dev</div>
+                  </div>
+                </td>
+                <td class="py-4 px-6 font-medium text-slate-700 dark:text-slate-300">Basic Starter</td>
+                <td class="py-4 px-6 text-xs text-slate-500">27 окт, 11:05</td>
+                <td class="py-4 px-6 font-bold text-slate-900 dark:text-white">$19.00</td>
+                <td class="py-4 px-6">
+                  <span class="ds-badge ds-badge-warning">В обработке</span>
+                </td>
+                <td class="py-4 px-6 text-right">
+                  <button class="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-white transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/></svg>
+                  </button>
+                </td>
+              </tr>
+
+              <!-- Транзакция 4 -->
+              <tr class="hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition-colors group">
+                <td class="py-4 px-6 flex items-center gap-3">
+                  <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=80&h=80&q=80" alt="Клиент" class="w-9 h-9 rounded-full object-cover">
+                  <div class="min-w-0">
+                    <div class="font-bold text-slate-900 dark:text-white text-sm truncate">Константин Белов</div>
+                    <div class="text-xs text-slate-400 truncate">belov@scaleup.org</div>
+                  </div>
+                </td>
+                <td class="py-4 px-6 font-medium text-slate-700 dark:text-slate-300">Pro Team</td>
+                <td class="py-4 px-6 text-xs text-slate-500">26 окт, 09:14</td>
+                <td class="py-4 px-6 font-bold text-slate-900 dark:text-white">$49.00</td>
+                <td class="py-4 px-6">
+                  <span class="ds-badge ds-badge-danger">Отклонено</span>
+                </td>
+                <td class="py-4 px-6 text-right">
+                  <button class="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-white transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/></svg>
+                  </button>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Пагинация таблицы -->
+        <div class="p-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500">
+          <div>Показано <span class="font-bold text-slate-800 dark:text-slate-200">4</span> из <span class="font-bold text-slate-800 dark:text-slate-200">128</span> транзакций</div>
+          <div class="flex items-center gap-1">
+            <button class="px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700 disabled:opacity-40" disabled>Пред</button>
+            <button class="px-2.5 py-1 rounded-lg bg-brand-600 text-white font-bold">1</button>
+            <button class="px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">2</button>
+            <button class="px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">3</button>
+            <button class="px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">След</button>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <script type="module">
+    import { initTheme } from '/src/js/main.js';
+    initTheme();
+
+    // Сайдбар для мобилок
+    const sidebar = document.getElementById('sidebar');
+    const backdrop = document.getElementById('sidebarBackdrop');
+    const openBtn = document.getElementById('openSidebarBtn');
+    const closeBtn = document.getElementById('closeSidebarBtn');
+
+    function toggleSidebar(open) {
+      if (open) {
+        sidebar.classList.remove('-translate-x-full');
+        backdrop.classList.remove('hidden');
+      } else {
+        sidebar.classList.add('-translate-x-full');
+        backdrop.classList.add('hidden');
+      }
+    }
+
+    openBtn?.addEventListener('click', () => toggleSidebar(true));
+    closeBtn?.addEventListener('click', () => toggleSidebar(false));
+    backdrop?.addEventListener('click', () => toggleSidebar(false));
+  </script>
+</body>
+</html>

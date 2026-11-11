@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus Kanban — Управление задачами (Задание 3.2)</title>
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="/src/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col antialiased">
+
+  <!-- ============================================== -->
+  <!-- 1. Навбар доски                                -->
+  <!-- ============================================== -->
+  <header class="sticky top-0 z-30 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      
+      <div class="flex items-center space-x-3">
+        <a href="/" class="p-2 -ml-2 text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="В портал заданий">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+        </a>
+        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-purple-600 to-brand-500 flex items-center justify-center text-white shadow-lg shadow-purple-500/25">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/></svg>
+        </div>
+        <div>
+          <h1 class="text-lg font-black tracking-tight text-slate-900 dark:text-white">Nexus Kanban</h1>
+          <span class="text-[11px] font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-wider">Спринт 42 • Задание 3.2</span>
+        </div>
+      </div>
+
+      <!-- Действия навбара -->
+      <div class="flex items-center gap-3 sm:gap-4 shrink-0">
+        <!-- Стек аватаров команды -->
+        <div class="hidden sm:flex items-center -space-x-2 overflow-hidden mr-1">
+          <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-slate-900 object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&h=80&q=80" alt="Анна">
+          <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-slate-900 object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&h=80&q=80" alt="Михаил">
+          <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-slate-900 object-cover" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=80&h=80&q=80" alt="Елена">
+          <span class="inline-flex h-8 w-8 rounded-full bg-slate-200 dark:bg-slate-700 text-xs font-bold items-center justify-center ring-2 ring-white dark:ring-slate-900 text-slate-600 dark:text-slate-300">+4</span>
+        </div>
+
+        <!-- Переключатель темы -->
+        <button data-theme-toggle class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white bg-slate-100/50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition shrink-0" aria-label="Сменить тему">
+          <svg data-theme-icon="sun" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <svg data-theme-icon="moon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        </button>
+
+        <button class="ds-btn ds-btn-md ds-btn-primary shadow-md whitespace-nowrap">
+          <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          <span class="hidden sm:inline">Новая задача</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ============================================== -->
+  <!-- 2. Рабочее пространство Kanban-доски            -->
+  <!-- Горизонтальный скролл на мобильных:           -->
+  <!-- overflow-x-auto snap-x snap-mandatory          -->
+  <!-- ============================================== -->
+  <main class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 flex flex-col">
+    
+    <!-- Инфо-плашка -->
+    <div class="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div>
+        <span class="ds-badge ds-badge-brand mb-1">Задание 3.2</span>
+        <h2 class="ds-h2 text-xl sm:text-2xl">Доска разработки Nexus</h2>
+        <p class="ds-body-sm">Поддержка свайпа и горизонтального скролла snap-x, визуальный drag-handle, теги и счетчики.</p>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <span class="text-xs text-slate-400">На мобильных: свайпайте влево/вправо ⇄</span>
+      </div>
+    </div>
+
+    <!-- 3 Колонки Kanban: snap-x snap-mandatory, min-w-[300px] -->
+    <div class="flex-1 flex overflow-x-auto snap-x snap-mandatory gap-6 pb-6 scrollbar-custom -mx-4 px-4 sm:mx-0 sm:px-0">
+      
+      <!-- ============================================== -->
+      <!-- КОЛОНКА 1: TO DO (Задание 3.2)                 -->
+      <!-- ============================================== -->
+      <section class="snap-center shrink-0 w-[85%] sm:w-[350px] min-w-[300px] flex flex-col rounded-3xl bg-slate-100/70 dark:bg-slate-900/40 border border-slate-200/60 dark:border-slate-800/60 p-4">
+        
+        <!-- Заголовок колонки со счётчиком задач -->
+        <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-200/80 dark:border-slate-800">
+          <div class="flex items-center gap-2.5">
+            <span class="w-3 h-3 rounded-full bg-slate-400"></span>
+            <h3 class="font-bold text-slate-900 dark:text-white text-sm">To Do (К выполнению)</h3>
+          </div>
+          <!-- Счётчик задач в колонке -->
+          <span class="px-2 py-0.5 rounded-full text-xs font-extrabold bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">3</span>
+        </div>
+
+        <!-- Список карточек -->
+        <div class="flex-1 space-y-4 overflow-y-auto">
+          
+          <!-- Карточка 1 -->
+          <article class="ds-card p-4 group cursor-grab active:cursor-grabbing hover:shadow-lg hover:border-brand-500/50 transition-all duration-200">
+            <div class="flex items-start justify-between gap-2 mb-2">
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-purple-50 text-purple-700 dark:bg-purple-950 dark:text-purple-300">Архитектура</span>
+              
+              <!-- Визуальный drag-handle (Задание 3.2) -->
+              <div class="text-slate-300 group-hover:text-slate-500 dark:text-slate-600 dark:group-hover:text-slate-400 cursor-grab transition-colors" title="Перетащить задачу">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M7 2a2 2 0 10 .001 4.001A2 2 0 007 2zm0 6a2 2 0 10 .001 4.001A2 2 0 007 8zm0 6a2 2 0 10 .001 4.001A2 2 0 007 14zm6-12a2 2 0 10 .001 4.001A2 2 0 0013 2zm0 6a2 2 0 10 .001 4.001A2 2 0 0013 8zm0 6a2 2 0 10 .001 4.001A2 2 0 0013 14z"/></svg>
+              </div>
+            </div>
+
+            <h4 class="font-bold text-sm text-slate-900 dark:text-white group-hover:text-brand-600 transition">Внедрить Container Queries в каталог</h4>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 line-clamp-2">Использовать @container для адаптивной перестройки карточек товаров на экранах планшетов и мобильных.</p>
+
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <!-- Приоритет -->
+              <span class="inline-flex items-center gap-1 text-[11px] font-bold text-rose-600 dark:text-rose-400">
+                <span class="w-2 h-2 rounded-full bg-rose-500"></span> Высокий
+              </span>
+              <!-- Аватар исполнителя -->
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&h=80&q=80" alt="Исполнитель" class="w-6 h-6 rounded-full object-cover ring-1 ring-white dark:ring-slate-800">
+            </div>
+          </article>
+
+          <!-- Карточка 2 -->
+          <article class="ds-card p-4 group cursor-grab active:cursor-grabbing hover:shadow-lg hover:border-brand-500/50 transition-all duration-200">
+            <div class="flex items-start justify-between gap-2 mb-2">
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-sky-50 text-sky-700 dark:bg-sky-950 dark:text-sky-300">DevOps</span>
+              <div class="text-slate-300 group-hover:text-slate-500 dark:text-slate-600 dark:group-hover:text-slate-400 cursor-grab transition-colors">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M7 2a2 2 0 10 .001 4.001A2 2 0 007 2zm0 6a2 2 0 10 .001 4.001A2 2 0 007 8zm0 6a2 2 0 10 .001 4.001A2 2 0 007 14zm6-12a2 2 0 10 .001 4.001A2 2 0 0013 2zm0 6a2 2 0 10 .001 4.001A2 2 0 0013 8zm0 6a2 2 0 10 .001 4.001A2 2 0 0013 14z"/></svg>
+              </div>
+            </div>
+
+            <h4 class="font-bold text-sm text-slate-900 dark:text-white group-hover:text-brand-600 transition">Оптимизировать размер CSS бандла</h4>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 line-clamp-2">Проверить purge-конфигурацию в tailwind.config.js для исключения неиспользуемых селекторов.</p>
+
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <span class="inline-flex items-center gap-1 text-[11px] font-bold text-amber-600 dark:text-amber-400">
+                <span class="w-2 h-2 rounded-full bg-amber-500"></span> Средний
+              </span>
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=80&h=80&q=80" alt="Исполнитель" class="w-6 h-6 rounded-full object-cover ring-1 ring-white dark:ring-slate-800">
+            </div>
+          </article>
+
+          <!-- Карточка 3 -->
+          <article class="ds-card p-4 group cursor-grab active:cursor-grabbing hover:shadow-lg hover:border-brand-500/50 transition-all duration-200">
+            <div class="flex items-start justify-between gap-2 mb-2">
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300">UX Research</span>
+              <div class="text-slate-300 group-hover:text-slate-500 dark:text-slate-600 dark:group-hover:text-slate-400 cursor-grab transition-colors">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M7 2a2 2 0 10 .001 4.001A2 2 0 007 2zm0 6a2 2 0 10 .001 4.001A2 2 0 007 8zm0 6a2 2 0 10 .001 4.001A2 2 0 007 14zm6-12a2 2 0 10 .001 4.001A2 2 0 0013 2zm0 6a2 2 0 10 .001 4.001A2 2 0 0013 8zm0 6a2 2 0 10 .001 4.001A2 2 0 0013 14z"/></svg>
+              </div>
+            </div>
+
+            <h4 class="font-bold text-sm text-slate-900 dark:text-white group-hover:text-brand-600 transition">Провести аудит доступности (A11y)</h4>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 line-clamp-2">Проверить aria-labels, контрастность цветов и клавиатурную навигацию по интерактивным формам.</p>
+
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <span class="inline-flex items-center gap-1 text-[11px] font-bold text-slate-500">
+                <span class="w-2 h-2 rounded-full bg-slate-400"></span> Низкий
+              </span>
+              <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=80&h=80&q=80" alt="Исполнитель" class="w-6 h-6 rounded-full object-cover ring-1 ring-white dark:ring-slate-800">
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- КОЛОНКА 2: IN PROGRESS (Задание 3.2)           -->
+      <!-- ============================================== -->
+      <section class="snap-center shrink-0 w-[85%] sm:w-[350px] min-w-[300px] flex flex-col rounded-3xl bg-slate-100/70 dark:bg-slate-900/40 border border-slate-200/60 dark:border-slate-800/60 p-4">
+        
+        <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-200/80 dark:border-slate-800">
+          <div class="flex items-center gap-2.5">
+            <span class="w-3 h-3 rounded-full bg-brand-500 animate-pulse"></span>
+            <h3 class="font-bold text-slate-900 dark:text-white text-sm">In Progress (В работе)</h3>
+          </div>
+          <span class="px-2 py-0.5 rounded-full text-xs font-extrabold bg-brand-100 text-brand-700 dark:bg-brand-950 dark:text-brand-300">2</span>
+        </div>
+
+        <div class="flex-1 space-y-4 overflow-y-auto">
+          
+          <!-- Карточка 1 -->
+          <article class="ds-card p-4 group cursor-grab active:cursor-grabbing hover:shadow-lg hover:border-brand-500/50 transition-all duration-200 border-l-4 border-brand-500">
+            <div class="flex items-start justify-between gap-2 mb-2">
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-brand-50 text-brand-700 dark:bg-brand-950 dark:text-brand-300">Frontend</span>
+              <div class="text-slate-300 group-hover:text-slate-500 dark:text-slate-600 dark:group-hover:text-slate-400 cursor-grab transition-colors">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M7 2a2 2 0 10 .001 4.001A2 2 0 007 2zm0 6a2 2 0 10 .001 4.001A2 2 0 007 8zm0 6a2 2 0 10 .001 4.001A2 2 0 007 14zm6-12a2 2 0 10 .001 4.001A2 2 0 0013 2zm0 6a2 2 0 10 .001 4.001A2 2 0 0013 8zm0 6a2 2 0 10 .001 4.001A2 2 0 0013 14z"/></svg>
+              </div>
+            </div>
+
+            <h4 class="font-bold text-sm text-slate-900 dark:text-white group-hover:text-brand-600 transition">Сборка многошаговой формы с индикацией</h4>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 line-clamp-2">Реализация 4 шагов регистрации с прогресс-баром, валидацией peer-invalid и селекторами has-[:checked].</p>
+
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <span class="inline-flex items-center gap-1 text-[11px] font-bold text-rose-600 dark:text-rose-400">
+                <span class="w-2 h-2 rounded-full bg-rose-500"></span> Высокий
+              </span>
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&h=80&q=80" alt="Исполнитель" class="w-6 h-6 rounded-full object-cover ring-1 ring-white dark:ring-slate-800">
+            </div>
+          </article>
+
+          <!-- Карточка 2 -->
+          <article class="ds-card p-4 group cursor-grab active:cursor-grabbing hover:shadow-lg hover:border-brand-500/50 transition-all duration-200 border-l-4 border-brand-500">
+            <div class="flex items-start justify-between gap-2 mb-2">
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-pink-50 text-pink-700 dark:bg-pink-950 dark:text-pink-300">UI / Design</span>
+              <div class="text-slate-300 group-hover:text-slate-500 dark:text-slate-600 dark:group-hover:text-slate-400 cursor-grab transition-colors">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M7 2a2 2 0 10 .001 4.001A2 2 0 007 2zm0 6a2 2 0 10 .001 4.001A2 2 0 007 8zm0 6a2 2 0 10 .001 4.001A2 2 0 007 14zm6-12a2 2 0 10 .001 4.001A2 2 0 0013 2zm0 6a2 2 0 10 .001 4.001A2 2 0 0013 8zm0 6a2 2 0 10 .001 4.001A2 2 0 0013 14z"/></svg>
+              </div>
+            </div>
+
+            <h4 class="font-bold text-sm text-slate-900 dark:text-white group-hover:text-brand-600 transition">Интерактивный чат с кастомным скроллом</h4>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 line-clamp-2">Поддержка arbitrary values для скроллбара, автоскролл при отправке новых сообщений и адаптивный вид.</p>
+
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <span class="inline-flex items-center gap-1 text-[11px] font-bold text-amber-600 dark:text-amber-400">
+                <span class="w-2 h-2 rounded-full bg-amber-500"></span> Средний
+              </span>
+              <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=80&h=80&q=80" alt="Исполнитель" class="w-6 h-6 rounded-full object-cover ring-1 ring-white dark:ring-slate-800">
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- КОЛОНКА 3: DONE (Задание 3.2)                  -->
+      <!-- ============================================== -->
+      <section class="snap-center shrink-0 w-[85%] sm:w-[350px] min-w-[300px] flex flex-col rounded-3xl bg-slate-100/70 dark:bg-slate-900/40 border border-slate-200/60 dark:border-slate-800/60 p-4">
+        
+        <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-200/80 dark:border-slate-800">
+          <div class="flex items-center gap-2.5">
+            <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+            <h3 class="font-bold text-slate-900 dark:text-white text-sm">Done (Завершено)</h3>
+          </div>
+          <span class="px-2 py-0.5 rounded-full text-xs font-extrabold bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300">2</span>
+        </div>
+
+        <div class="flex-1 space-y-4 overflow-y-auto">
+          
+          <!-- Карточка 1 -->
+          <article class="ds-card p-4 group cursor-grab active:cursor-grabbing hover:shadow-lg hover:border-emerald-500/50 transition-all duration-200 opacity-90">
+            <div class="flex items-start justify-between gap-2 mb-2">
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300">Storybook</span>
+              <span class="text-emerald-500 font-bold text-xs">✓ Выполнено</span>
+            </div>
+
+            <h4 class="font-bold text-sm text-slate-900 dark:text-white line-through decoration-slate-400">Создать дизайн-систему на Tailwind (4.4)</h4>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 line-clamp-2">Все токены, матрица кнопок 4x3, бейджи, алерты, карточки и модальные окна задокументированы.</p>
+
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <span class="text-[11px] text-slate-400">28 окт</span>
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&h=80&q=80" alt="Исполнитель" class="w-6 h-6 rounded-full object-cover ring-1 ring-white dark:ring-slate-800">
+            </div>
+          </article>
+
+          <!-- Карточка 2 -->
+          <article class="ds-card p-4 group cursor-grab active:cursor-grabbing hover:shadow-lg hover:border-emerald-500/50 transition-all duration-200 opacity-90">
+            <div class="flex items-start justify-between gap-2 mb-2">
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300">Analytics</span>
+              <span class="text-emerald-500 font-bold text-xs">✓ Выполнено</span>
+            </div>
+
+            <h4 class="font-bold text-sm text-slate-900 dark:text-white line-through decoration-slate-400">Аналитический дашборд с графиком CSS Grid</h4>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 line-clamp-2">4 карточки с трендами, таблица транзакций, фильтры и фиксированный адаптивный сайдбар.</p>
+
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <span class="text-[11px] text-slate-400">27 окт</span>
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&h=80&q=80" alt="Исполнитель" class="w-6 h-6 rounded-full object-cover ring-1 ring-white dark:ring-slate-800">
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <script type="module">
+    import { initTheme } from '/src/js/main.js';
+    initTheme();
+  </script>
+</body>
+</html>

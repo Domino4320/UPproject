@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300 min-h-screen antialiased;
+  }
+}
+
+@layer components {
+  /* Typography Components (Task 4.4) */
+  .ds-h1 {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white;
+  }
+  
+  .ds-h2 {
+    @apply text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white;
+  }
+
+  .ds-h3 {
+    @apply text-xl sm:text-2xl font-semibold text-slate-800 dark:text-slate-100;
+  }
+
+  .ds-body {
+    @apply text-base text-slate-600 dark:text-slate-300 leading-relaxed;
+  }
+
+  .ds-body-sm {
+    @apply text-sm text-slate-500 dark:text-slate-400;
+  }
+
+  /* Button Matrix: primary/secondary/ghost/danger x sm/md/lg (Task 4.4) */
+  .ds-btn {
+    @apply inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none disabled:active:scale-100;
+  }
+
+  .ds-btn-sm {
+    @apply px-3 py-1.5 text-xs rounded-lg gap-1.5;
+  }
+
+  .ds-btn-md {
+    @apply px-4 py-2 text-sm rounded-xl gap-2;
+  }
+
+  .ds-btn-lg {
+    @apply px-6 py-3 text-base rounded-2xl gap-2.5 font-semibold;
+  }
+
+  .ds-btn-primary {
+    @apply bg-brand-600 hover:bg-brand-700 text-white shadow-md shadow-brand-500/20 hover:shadow-brand-500/40 focus-visible:ring-brand-500;
+  }
+
+  .ds-btn-secondary {
+    @apply bg-slate-100 hover:bg-slate-200 text-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 focus-visible:ring-slate-400;
+  }
+
+  .ds-btn-ghost {
+    @apply bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 focus-visible:ring-slate-400;
+  }
+
+  .ds-btn-danger {
+    @apply bg-rose-600 hover:bg-rose-700 text-white shadow-md shadow-rose-500/20 hover:shadow-rose-500/40 focus-visible:ring-rose-500;
+  }
+
+  /* Form Elements (Task 4.4) */
+  .ds-input {
+    @apply w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all duration-150 disabled:bg-slate-100 dark:disabled:bg-slate-900 disabled:opacity-60 disabled:cursor-not-allowed;
+  }
+
+  .ds-checkbox {
+    @apply w-4 h-4 rounded border-slate-300 text-brand-600 focus:ring-brand-500 dark:border-slate-600 dark:bg-slate-800 transition;
+  }
+
+  /* Badge Component (Task 4.4) */
+  .ds-badge {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold;
+  }
+
+  .ds-badge-brand {
+    @apply bg-brand-50 text-brand-700 border border-brand-200 dark:bg-brand-950/70 dark:text-brand-300 dark:border-brand-800;
+  }
+
+  .ds-badge-success {
+    @apply bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-950/70 dark:text-emerald-300 dark:border-emerald-800;
+  }
+
+  .ds-badge-warning {
+    @apply bg-amber-50 text-amber-700 border border-amber-200 dark:bg-amber-950/70 dark:text-amber-300 dark:border-amber-800;
+  }
+
+  .ds-badge-danger {
+    @apply bg-rose-50 text-rose-700 border border-rose-200 dark:bg-rose-950/70 dark:text-rose-300 dark:border-rose-800;
+  }
+
+  /* Alert Component (Task 4.4) */
+  .ds-alert {
+    @apply p-4 rounded-2xl flex items-start gap-3 border text-sm transition-all;
+  }
+
+  .ds-alert-info {
+    @apply bg-sky-50 dark:bg-sky-950/30 text-sky-900 dark:text-sky-200 border-sky-200 dark:border-sky-800/60;
+  }
+
+  .ds-alert-success {
+    @apply bg-emerald-50 dark:bg-emerald-950/30 text-emerald-900 dark:text-emerald-200 border-emerald-200 dark:border-emerald-800/60;
+  }
+
+  .ds-alert-warning {
+    @apply bg-amber-50 dark:bg-amber-950/30 text-amber-900 dark:text-amber-200 border-amber-200 dark:border-amber-800/60;
+  }
+
+  .ds-alert-danger {
+    @apply bg-rose-50 dark:bg-rose-950/30 text-rose-900 dark:text-rose-200 border-rose-200 dark:border-rose-800/60;
+  }
+
+  /* Card Component (Task 4.4) */
+  .ds-card {
+    @apply bg-white dark:bg-slate-800/90 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm hover:shadow-md transition-all duration-200;
+  }
+
+  .ds-card-header {
+    @apply p-5 sm:p-6 border-b border-slate-100 dark:border-slate-700/60;
+  }
+
+  .ds-card-body {
+    @apply p-5 sm:p-6;
+  }
+
+  /* Toggle Switch (Task 4.4) */
+  .ds-toggle-track {
+    @apply w-12 h-6 bg-slate-200 dark:bg-slate-700 rounded-full transition-colors duration-200 peer-checked:bg-brand-600 cursor-pointer relative;
+  }
+
+  .ds-toggle-thumb {
+    @apply w-5 h-5 bg-white rounded-full shadow-md transform transition-transform duration-200 translate-x-0.5 peer-checked:translate-x-6 absolute top-0.5 left-0;
+  }
+
+  /* Modal backdrop & container (Task 4.4) */
+  .ds-modal-backdrop {
+    @apply fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-200;
+  }
+
+  .ds-modal-content {
+    @apply bg-white dark:bg-slate-800 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-700 max-w-lg w-full overflow-hidden transform transition-all duration-300;
+  }
+
+  /* Reusable Landing & Section Classes (Task 3.3) */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24;
+  }
+
+  .section-heading-wrapper {
+    @apply text-center max-w-3xl mx-auto mb-14;
+  }
+}
