@@ -16,8 +16,6 @@ export function applyTheme(isDark) {
 }
 
 export function updateIcons(isDark) {
-  // When dark: show sun (click to switch to light), hide moon
-  // When light: show moon (click to switch to dark), hide sun
   document.querySelectorAll('[data-theme-icon="sun"]').forEach(el => {
     el.classList.toggle('hidden', !isDark);
   });
@@ -60,8 +58,8 @@ export function initAdSlots() {
     const size = el.dataset.size || 'banner';
     const width = el.dataset.width || '';
     const height = el.dataset.height || '';
-    const label = el.dataset.label || 'Рекламное место';
-    const sublabel = el.dataset.sublabel || 'Место зарезервировано под баннер партнёра';
+    const label = el.dataset.label || 'Здесь могла бы быть ваша реклама';
+    const sublabel = el.dataset.sublabel || 'Привлекайте целевую аудиторию разработчиков и IT-бизнеса. Забронируйте партнёрский слот прямо сейчас.';
     const closable = el.dataset.closable === 'true';
 
     try {
@@ -80,6 +78,54 @@ export function initAdSlots() {
   });
 }
 
+// Smooth FAQ Accordion with zero layout jump
+export function initFaqAccordion() {
+  const faqItems = document.querySelectorAll('.faq-item');
+  if (!faqItems.length) return;
+
+  faqItems.forEach(item => {
+    if (item.dataset.faqBound === 'true') return;
+    item.dataset.faqBound = 'true';
+
+    const trigger = item.querySelector('.faq-trigger');
+    const panel = item.querySelector('.faq-panel');
+    const iconSvg = item.querySelector('.faq-icon svg');
+    if (!trigger || !panel) return;
+
+    trigger.addEventListener('click', () => {
+      const isOpen = panel.classList.contains('grid-rows-[1fr]');
+
+      // Close other panels smoothly
+      faqItems.forEach(other => {
+        if (other !== item) {
+          const otherPanel = other.querySelector('.faq-panel');
+          const otherSvg = other.querySelector('.faq-icon svg');
+          if (otherPanel) {
+            otherPanel.classList.remove('grid-rows-[1fr]');
+            otherPanel.classList.add('grid-rows-[0fr]');
+          }
+          if (otherSvg) {
+            otherSvg.classList.remove('rotate-180');
+          }
+          other.classList.remove('ring-2', 'ring-brand-500/20', 'border-brand-500/50');
+        }
+      });
+
+      if (isOpen) {
+        panel.classList.remove('grid-rows-[1fr]');
+        panel.classList.add('grid-rows-[0fr]');
+        if (iconSvg) iconSvg.classList.remove('rotate-180');
+        item.classList.remove('ring-2', 'ring-brand-500/20', 'border-brand-500/50');
+      } else {
+        panel.classList.remove('grid-rows-[0fr]');
+        panel.classList.add('grid-rows-[1fr]');
+        if (iconSvg) iconSvg.classList.add('rotate-180');
+        item.classList.add('ring-2', 'ring-brand-500/20', 'border-brand-500/50');
+      }
+    });
+  });
+}
+
 // Auto-fix relative paths on GitHub Pages
 export function fixGitHubPagesLinks() {
   if (typeof window === 'undefined') return;
@@ -95,7 +141,6 @@ export function fixGitHubPagesLinks() {
     if (!href || href.startsWith('#') || href.startsWith('http://') || href.startsWith('https://') || href.startsWith('mailto:')) {
       return;
     }
-    // If link starts with / but not with /repoName
     if (href.startsWith('/') && !href.startsWith(`/${repoName}`)) {
       a.setAttribute('href', `/${repoName}${href}`);
     }
@@ -105,10 +150,11 @@ export function fixGitHubPagesLinks() {
 export function initApp() {
   initTheme();
   initAdSlots();
+  initFaqAccordion();
   fixGitHubPagesLinks();
 }
 
-// Auto-run theme and ad slots on DOM ready safely (idempotent)
+// Auto-run theme, ad slots, and accordion on DOM ready safely
 if (typeof document !== 'undefined') {
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initApp);
