@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NexusSaaS — Платформа нового поколения</title>
+  <title>TerraNova — Дневник путешественника & Экспедиционный блог</title>
+  <meta name="description" content="Авторский блог о путешествиях, экспедициях по диким уголкам планеты, проверенные GPS-треки, снаряжение и путеводители.">
   <script>
     (function() {
       const savedTheme = localStorage.getItem('theme');
@@ -15,55 +16,57 @@
       }
     })();
   </script>
-  <link rel="stylesheet" href="/src/css/style.css">
+  <link rel="stylesheet" href="./src/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col selection:bg-brand-500 selection:text-white">
 
   <!-- ============================================== -->
-  <!-- 1. Навигационная панель  -->
+  <!-- 1. Навигационная панель (Sticky + Glassmorphism) -->
   <!-- ============================================== -->
   <header class="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
       
       <!-- Логотип слева -->
       <a href="./" class="flex items-center space-x-3 group shrink-0">
-        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-600 to-pink-500 flex items-center justify-center text-white shadow-lg shadow-brand-500/25 group-hover:scale-105 transition-transform duration-200">
+        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-600 via-teal-500 to-sunset-500 flex items-center justify-center text-white shadow-lg shadow-brand-600/25 group-hover:scale-105 transition-transform duration-200">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         </div>
         <div class="flex flex-col">
-          <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-slate-900 via-brand-600 to-pink-600 dark:from-white dark:via-brand-400 dark:to-pink-400 bg-clip-text text-transparent">
-            NexusSaaS
+          <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-slate-900 via-brand-600 to-sunset-600 dark:from-white dark:via-brand-400 dark:to-sunset-400 bg-clip-text text-transparent">
+            TerraNova
           </span>
-          <span class="text-[10px] font-semibold text-slate-400 -mt-1 uppercase tracking-widest">Enterprise Cloud</span>
+          <span class="text-[10px] font-semibold text-slate-400 -mt-1 uppercase tracking-widest">Travel & Expeditions</span>
         </div>
       </a>
 
       <!-- Меню по центру -->
-      <nav class="hidden lg:flex items-center gap-4 xl:gap-7 2xl:gap-9 text-sm font-semibold text-slate-600 dark:text-slate-300 shrink-0">
-
+      <nav class="hidden lg:flex items-center gap-4 xl:gap-7 2xl:gap-8 text-sm font-semibold text-slate-600 dark:text-slate-300 shrink-0">
+        <a href="#articles" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors flex items-center gap-1.5 whitespace-nowrap">
+          <span>Путеводители</span>
+        </a>
         <a href="./pages/dashboard.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors flex items-center gap-1.5 whitespace-nowrap">
-          <span>Дашборд</span>
-          </a>
+          <span>Трекер маршрутов</span>
+        </a>
         <a href="./pages/ecommerce.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors flex items-center gap-1.5 whitespace-nowrap">
-          <span>Каталог</span>
-          </a>
+          <span>Снаряжение & Туры</span>
+        </a>
         <a href="./pages/messenger.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors flex items-center gap-1.5 whitespace-nowrap">
-          <span>Корпоративный чат</span>
-          </a>
+          <span>Чат попутчиков</span>
+        </a>
         <a href="./pages/kanban.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors flex items-center gap-1.5 whitespace-nowrap">
-          <span>Kanban</span>
-          </a>
+          <span>Сборы (Kanban)</span>
+        </a>
         <a href="./pages/storybook.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors flex items-center gap-1.5 whitespace-nowrap">
-          <span>Storybook</span>
-          </a>
+          <span>UI Kit</span>
+        </a>
       </nav>
 
-      <!-- Правая часть: тема + Sign In + Кнопка мобильного меню с выверенными отступами -->
+      <!-- Правая часть: тема + Вступить в клуб + Профиль + Мобильный бургер -->
       <div class="flex items-center gap-3 sm:gap-4 shrink-0">
         
         <button data-theme-toggle class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white bg-slate-100/50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition shrink-0" aria-label="Сменить тему" title="Сменить тему">
@@ -73,17 +76,16 @@
 
         <div class="h-6 w-px bg-slate-200 dark:bg-slate-800 hidden sm:block"></div>
 
-        <!-- Кнопки действий с комфортным расстоянием -->
         <div class="flex items-center gap-2.5 sm:gap-3">
-          <a href="./pages/multistep.html" class="hidden sm:inline-flex ds-btn ds-btn-md ds-btn-secondary whitespace-nowrap">
-            <span>Регистрация</span>
+          <a href="./pages/multistep.html" class="hidden sm:inline-flex ds-btn ds-btn-md ds-btn-sunset whitespace-nowrap">
+            <span>Вступить в клуб</span>
           </a>
-          <a href="#profile-card" class="ds-btn ds-btn-md ds-btn-primary whitespace-nowrap">
-            <span>Профиль</span>
+          <a href="#author-card" class="ds-btn ds-btn-md ds-btn-secondary whitespace-nowrap">
+            <span>Об авторе</span>
           </a>
         </div>
 
-        <!-- Бургер для мобильных без обязательного JS с поддержкой toggle по клику -->
+        <!-- Кнопка мобильного меню -->
         <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition shrink-0 ml-1" aria-label="Открыть меню">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
@@ -92,406 +94,638 @@
       </div>
     </div>
 
-        <!-- Мобильное выпадающее меню -->
+    <!-- Мобильное выпадающее меню -->
     <div id="mobileMenu" class="hidden lg:hidden border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg px-4 pt-4 pb-6 space-y-3">
       <div class="grid grid-cols-1 gap-1 text-sm font-medium">
+        <a href="#articles" class="px-3.5 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 flex justify-between items-center text-slate-800 dark:text-slate-100">
+          <span>Путеводители и отчёты</span>
+          <span class="text-xs text-brand-600 font-semibold">Смотреть →</span>
+        </a>
         <a href="./pages/dashboard.html" class="px-3.5 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 flex justify-between items-center text-slate-800 dark:text-slate-100">
-          <span>Дашборд аналитики</span>
+          <span>Трекер маршрутов & Статистика</span>
           <span class="text-xs text-brand-600 font-semibold">Открыть →</span>
         </a>
         <a href="./pages/ecommerce.html" class="px-3.5 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 flex justify-between items-center text-slate-800 dark:text-slate-100">
-          <span>Каталог товаров</span>
-          <span class="text-xs text-brand-600 font-semibold">В магазин →</span>
+          <span>Каталог снаряжения & Туры</span>
+          <span class="text-xs text-brand-600 font-semibold">В каталог →</span>
         </a>
         <a href="./pages/messenger.html" class="px-3.5 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 flex justify-between items-center text-slate-800 dark:text-slate-100">
-          <span>Мессенджер</span>
+          <span>Чат попутчиков</span>
           <span class="text-xs text-brand-600 font-semibold">В чат →</span>
         </a>
         <a href="./pages/kanban.html" class="px-3.5 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 flex justify-between items-center text-slate-800 dark:text-slate-100">
-          <span>Kanban-планировщик</span>
+          <span>Чек-лист сборов (Kanban)</span>
           <span class="text-xs text-brand-600 font-semibold">К доске →</span>
         </a>
         <a href="./pages/storybook.html" class="px-3.5 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 flex justify-between items-center text-slate-800 dark:text-slate-100">
           <span>Storybook UI Kit</span>
           <span class="text-xs text-brand-600 font-semibold">Компоненты →</span>
         </a>
-        <a href="#profile-card" class="px-3.5 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 flex justify-between items-center text-slate-800 dark:text-slate-100">
-          <span>Профиль специалиста</span>
-          <span class="text-xs text-slate-400">На странице ↓</span>
-        </a>
       </div>
 
       <div class="pt-2 border-t border-slate-200 dark:border-slate-800 flex gap-2">
-        <a href="./pages/multistep.html" class="flex-1 ds-btn ds-btn-md ds-btn-secondary text-center">Регистрация</a>
-        <a href="./pages/dashboard.html" class="flex-1 ds-btn ds-btn-md ds-btn-primary text-center">Дашборд</a>
+        <a href="./pages/multistep.html" class="flex-1 ds-btn ds-btn-md ds-btn-sunset text-center">Вступить в клуб</a>
+        <a href="./pages/dashboard.html" class="flex-1 ds-btn ds-btn-md ds-btn-secondary text-center">Трекер</a>
       </div>
-    </div></header>
+    </div>
+  </header>
 
   <!-- ============================================== -->
-  
+  <!-- 2. Hero-секция с градиентом и фоновым оверлеем -->
   <!-- ============================================== -->
-  <section id="hero" class="relative overflow-hidden pt-16 sm:pt-20 lg:pt-24 pb-8 sm:pb-10 lg:pb-12">
-    <!-- Фоновое изображение с overlay и декоративные blur-круги -->
+  <section id="hero" class="relative overflow-hidden pt-16 sm:pt-20 lg:pt-24 pb-12 sm:pb-16 lg:pb-20">
+    <!-- Атмосферный фон с оверлеем и светящимися кругами -->
     <div class="absolute inset-0 -z-10 overflow-hidden">
+      <div class="absolute -top-40 -left-40 w-96 h-96 bg-brand-500/25 rounded-full blur-3xl animate-pulse"></div>
+      <div class="absolute top-20 right-10 w-[500px] h-[500px] bg-sunset-500/20 rounded-full blur-3xl animate-pulse" style="animation-duration: 8s;"></div>
+      <div class="absolute -bottom-20 left-1/3 w-96 h-96 bg-teal-500/20 rounded-full blur-3xl"></div>
       
-      <div class="absolute -top-40 -left-40 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl animate-pulse"></div>
-      <div class="absolute top-20 right-10 w-[500px] h-[500px] bg-pink-500/25 rounded-full blur-3xl animate-pulse" style="animation-duration: 7s;"></div>
-      <div class="absolute -bottom-20 left-1/3 w-96 h-96 bg-brand-500/25 rounded-full blur-3xl"></div>
-      
-      <!-- Фоновая сетка с мягким radial overlay -->
-      <div class="absolute inset-0 bg-[radial-gradient(#6366f1_1px,transparent_1px)] [background-size:24px_24px] opacity-20 dark:opacity-30"></div>
-      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-slate-50/50 to-slate-50 dark:via-slate-950/60 dark:to-slate-950"></div>
+      <!-- Фоновая сетка гео-координат -->
+      <div class="absolute inset-0 bg-[radial-gradient(#0d9488_1px,transparent_1px)] [background-size:28px_28px] opacity-20 dark:opacity-30"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-slate-50/60 to-slate-50 dark:via-slate-950/70 dark:to-slate-950"></div>
     </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
       
-      <!-- Бейдж новинки -->
+      <!-- Бейдж экспедиции -->
       <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 dark:bg-brand-950/70 border border-brand-200/80 dark:border-brand-800/80 text-brand-700 dark:text-brand-300 text-xs sm:text-sm font-semibold mb-8 backdrop-blur-md shadow-sm">
-        <span class="flex h-2 w-2 rounded-full bg-brand-500 animate-ping"></span>
-        <span>Релиз 3.0: Интеллектуальная автоматизация процессов</span>
+        <span class="flex h-2 w-2 rounded-full bg-sunset-500 animate-ping"></span>
+        <span>Новая экспедиция: Зимняя Исландия и ледники Ватнайёкюдль</span>
         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
       </div>
 
-      
+      <!-- Главный заголовок -->
       <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-slate-900 dark:text-white max-w-5xl mx-auto leading-[1.1]">
-        Управляйте бизнесом на скорости 
-        <span class="bg-gradient-to-r from-purple-500 via-pink-500 to-brand-500 bg-clip-text text-transparent">
-          следующего поколения
+        Открывай мир с духом 
+        <span class="bg-gradient-to-r from-teal-500 via-brand-500 to-sunset-500 bg-clip-text text-transparent">
+          настоящих первооткрывателей
         </span>
       </h1>
 
       <!-- Подзаголовок -->
       <p class="mt-6 text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
-        Единая облачная экосистема для глубокой аналитики, автоматизации задач, корпоративной коммуникации и мониторинга бизнес-метрик в реальном времени.
+        Авторские путеводители, проверенные GPS-треки для оффлайн-навигации, честные чек-листы снаряжения и захватывающие истории из 54 стран нашей планеты.
       </p>
 
-      
+      <!-- CTA Кнопки -->
       <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="./pages/dashboard.html" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-brand-600 to-purple-600 hover:from-brand-700 hover:to-purple-700 text-white font-bold text-base shadow-xl shadow-brand-500/30 hover:shadow-brand-500/50 hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center gap-3">
-          <span>Открыть дашборд</span>
+        <a href="#articles" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-brand-600 to-teal-600 hover:from-brand-700 hover:to-teal-700 text-white font-bold text-base shadow-xl shadow-brand-600/30 hover:shadow-brand-600/50 hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center gap-3">
+          <span>Смотреть путеводители</span>
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </a>
-        <a href="./pages/storybook.html" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-bold text-base border-2 border-slate-200 dark:border-slate-700 hover:border-brand-500 dark:hover:border-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center gap-3">
-          <span>Storybook дизайн-система</span>
-          <svg class="w-5 h-5 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+        <a href="./pages/kanban.html" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-bold text-base border-2 border-slate-200 dark:border-slate-700 hover:border-brand-500 dark:hover:border-brand-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center gap-3">
+          <span>Чек-лист подготовки к поездке</span>
+          <svg class="w-5 h-5 text-sunset-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
         </a>
       </div>
 
-      <!-- Trust metrics / Stats banner -->
+      <!-- Trust metrics / Expedition stats -->
       <div class="mt-12 pt-10 border-t border-slate-200/80 dark:border-slate-800/80 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto text-left sm:text-center">
         <div>
-          <div class="text-3xl font-extrabold text-slate-900 dark:text-white">99.99%</div>
-          <div class="text-xs text-slate-500 dark:text-slate-400 mt-1 uppercase font-semibold">Доступность SLA</div>
+          <div class="text-3xl font-extrabold text-slate-900 dark:text-white">54 страны</div>
+          <div class="text-xs text-slate-500 dark:text-slate-400 mt-1 uppercase font-semibold">Исследовано лично</div>
         </div>
         <div>
-          <div class="text-3xl font-extrabold text-slate-900 dark:text-white">100k+</div>
-          <div class="text-xs text-slate-500 dark:text-slate-400 mt-1 uppercase font-semibold">Активных пользователей</div>
+          <div class="text-3xl font-extrabold text-slate-900 dark:text-white">140+ треков</div>
+          <div class="text-xs text-slate-500 dark:text-slate-400 mt-1 uppercase font-semibold">Офлайн GPX-файлов</div>
         </div>
         <div>
-          <div class="text-3xl font-extrabold text-slate-900 dark:text-white">&lt; 15 ms</div>
-          <div class="text-xs text-slate-500 dark:text-slate-400 mt-1 uppercase font-semibold">Время отклика API</div>
+          <div class="text-3xl font-extrabold text-slate-900 dark:text-white">280k км</div>
+          <div class="text-xs text-slate-500 dark:text-slate-400 mt-1 uppercase font-semibold">Пройдено по земле и воздуху</div>
         </div>
         <div>
           <div class="text-3xl font-extrabold text-slate-900 dark:text-white">4.9 / 5.0</div>
-          <div class="text-xs text-slate-500 dark:text-slate-400 mt-1 uppercase font-semibold">Рейтинг доверия</div>
+          <div class="text-xs text-slate-500 dark:text-slate-400 mt-1 uppercase font-semibold">Рейтинг маршрутов читателей</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================== -->
-  <!-- Рекламный блок -->
+  <!-- Партнёрский блок (Vue AdSlot) -->
   <!-- ============================================== -->
-  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-2 mb-4">
-    <div data-vue-ad-slot data-size="leaderboard" data-label="Здесь могла бы быть ваша реклама" data-sublabel="Привлекайте целевую аудиторию разработчиков и IT-бизнеса. Забронируйте партнёрский слот прямо сейчас." data-closable="true"></div>
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-2 mb-6">
+    <div 
+      data-vue-ad-slot 
+      data-size="leaderboard" 
+      data-label="Спецпроект: Скидка 25% на мембранную экипировку и треккинговые ботинки" 
+      data-sublabel="Партнёрский промокод 'TERRANOVA' дарит скидку на снаряжение в лучших outdoor-магазинах для подготовки к сезону." 
+      data-closable="true"
+    ></div>
   </section>
 
   <!-- ============================================== -->
-  
+  <!-- 3. Карточка автора блога (Задание 1.1) -->
   <!-- ============================================== -->
-  <section id="profile-card" class="section-container bg-slate-100/60 dark:bg-slate-900/40 rounded-3xl mt-2 mb-14 border border-slate-200/60 dark:border-slate-800/60 scroll-mt-28">
+  <section id="author-card" class="section-container bg-slate-100/60 dark:bg-slate-900/40 rounded-3xl mt-2 mb-14 border border-slate-200/60 dark:border-slate-800/60 scroll-mt-28">
     <div class="section-heading-wrapper">
-      <span class="ds-badge ds-badge-brand mb-3">Команда платформы</span>
-      <h2 class="ds-h2">Профиль специалиста</h2>
-      <p class="ds-body mt-3">Персональная карточка ведущего инженера платформы: стек ключевых компетенций, статус занятости и быстрый доступ к прямым контактам.</p>
+      <span class="ds-badge ds-badge-brand mb-3">Основатель проекта</span>
+      <h2 class="ds-h2">Карточка автора блога</h2>
+      <p class="ds-body mt-3">Познакомьтесь с автором и лидером экспедиций: опыт выживания, фоторепортажи и прямая связь для вопросов по маршрутам.</p>
     </div>
 
     <div class="flex flex-col items-center justify-center pt-2 pb-6">
-      
       <article class="w-full md:w-[320px] bg-white dark:bg-slate-800 rounded-3xl shadow-xl shadow-slate-200/60 dark:shadow-slate-950/60 border border-slate-200/80 dark:border-slate-700/80 p-6 flex flex-col items-center text-center space-y-5 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
         
-        <!-- Аватар (круглый, 80x80px) с индикатором онлайн -->
+        <!-- Аватар (80x80px) с индикатором нахождения в экспедиции -->
         <div class="relative flex items-center justify-center">
           <img 
-            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=160&h=160&q=80" 
-            alt="Аватар пользователя" 
-            class="w-20 h-20 rounded-full object-cover shadow-md ring-4 ring-brand-500/20"
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=160&h=160&q=80" 
+            alt="Максим Ветров" 
+            class="w-20 h-20 rounded-full object-cover shadow-md ring-4 ring-brand-500/25"
           >
-          <span class="absolute bottom-0 right-0 w-5 h-5 bg-emerald-500 border-2 border-white dark:border-slate-800 rounded-full" title="Онлайн"></span>
+          <span class="absolute bottom-0 right-0 w-5 h-5 bg-emerald-500 border-2 border-white dark:border-slate-800 rounded-full" title="На связи из базового лагеря"></span>
         </div>
 
-        <!-- Имя и должность -->
+        <!-- Имя и звание -->
         <div class="space-y-1">
           <h3 class="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
-            Александра Смирнова
+            Максим Ветров
           </h3>
           <p class="text-sm font-medium text-brand-600 dark:text-brand-400">
-            Senior Frontend Engineer
+            Трэвел-журналист & Горный гид
           </p>
         </div>
 
         <!-- Короткое описание (bio) -->
         <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-          Создаю масштабируемые дизайн-системы, веб-интерфейсы на Tailwind CSS и реактивные дашборды. Open source энтузиаст.
+          8 лет в автономных экспедициях. Покорил вершины Патагонии, пересёк Норвегию на кемпере и исследовал вулканы Камчатки. Помогаю путешествовать самостоятельно.
         </p>
 
         <!-- Статистика профиля -->
         <div class="w-full flex justify-around py-3 border-y border-slate-100 dark:border-slate-700/60 text-xs text-slate-500 dark:text-slate-400">
           <div>
-            <div class="font-extrabold text-base text-slate-900 dark:text-white">1.4k</div>
-            <div>Подписчики</div>
+            <div class="font-bold text-slate-900 dark:text-white text-sm">54</div>
+            <div>Страны</div>
+          </div>
+          <div class="border-x border-slate-100 dark:border-slate-700/60 px-4">
+            <div class="font-bold text-slate-900 dark:text-white text-sm">140</div>
+            <div>Треков</div>
           </div>
           <div>
-            <div class="font-extrabold text-base text-slate-900 dark:text-white">86</div>
-            <div>Проекты</div>
-          </div>
-          <div>
-            <div class="font-extrabold text-base text-slate-900 dark:text-white">4.9</div>
-            <div>Рейтинг</div>
+            <div class="font-bold text-slate-900 dark:text-white text-sm">45k</div>
+            <div>Читателей</div>
           </div>
         </div>
 
-        <!-- Кнопки "Follow" и "Message" (flex, gap-*) -->
+        <!-- Кнопки действий -->
         <div class="w-full flex gap-3 pt-1">
-          <button type="button" class="flex-1 py-2.5 px-4 rounded-full bg-brand-600 hover:bg-brand-700 active:scale-95 text-white font-semibold text-sm shadow-md shadow-brand-500/25 transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2">
-            Follow
-          </button>
-          <button type="button" class="flex-1 py-2.5 px-4 rounded-full bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 active:scale-95 text-slate-700 dark:text-slate-200 font-semibold text-sm border border-slate-200 dark:border-slate-600 transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2">
-            Message
-          </button>
+          <a href="./pages/multistep.html" class="flex-1 ds-btn ds-btn-md ds-btn-primary">
+            <span>В клуб</span>
+          </a>
+          <a href="./pages/messenger.html" class="flex-1 ds-btn ds-btn-md ds-btn-secondary">
+            <span>Написать</span>
+          </a>
         </div>
-
       </article>
     </div>
   </section>
 
   <!-- ============================================== -->
-  
+  <!-- 4. Сетка путеводителей и статей (Задание 1.3) -->
   <!-- ============================================== -->
-  <section id="features" class="section-container">
+  <section id="articles" class="section-container">
     <div class="section-heading-wrapper">
-      <span class="ds-badge ds-badge-brand mb-3">Возможности</span>
-      <h2 class="ds-h2">Все инструменты для взрывного роста бизнеса</h2>
-      <p class="ds-body mt-3">Инновационная архитектура, созданная для команд любого масштаба — от стартапов до международных корпораций.</p>
+      <span class="ds-badge ds-badge-brand mb-3">Главные экспедиции</span>
+      <h2 class="ds-h2">Популярные путеводители и отчёты</h2>
+      <p class="ds-body mt-3">
+        Готовые маршруты с картами, местами для стоянок, таймингом и сметой расходов. Выбирайте следующее приключение:
+      </p>
+    </div>
+
+    <!-- Адаптивная сетка карточек: 1 col → 2 col (sm) → 3 col (lg) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      
+      <!-- Карточка 1: Исландия -->
+      <article class="group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
+        <div class="relative aspect-video overflow-hidden">
+          <img 
+            src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?auto=format&fit=crop&w=700&q=80" 
+            alt="Исландия на внедорожнике" 
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          >
+          <span class="absolute top-3 left-3 ds-badge ds-badge-brand backdrop-blur-md bg-brand-600/90 text-white border-0">
+            Северная Европа
+          </span>
+          <span class="absolute top-3 right-3 px-2 py-0.5 rounded-full text-[11px] font-bold bg-black/60 text-white backdrop-blur-sm">
+            12 дней • 4x4
+          </span>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <div class="space-y-2.5">
+            <div class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+              <span>★ 4.95 (148 отзывов)</span>
+              <span>•</span>
+              <span class="text-sunset-500 font-semibold">Сложность: Средняя</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+              Исландия: Полное кольцо по F-дорогам и ледникам
+            </h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300 line-clamp-2 leading-relaxed">
+              Форсирование горных рек, тайные горячие источники, лавовые каньоны и ночёвки под полярным сиянием.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+            <div>
+              <span class="text-xs text-slate-400 block">Бюджет поездки</span>
+              <span class="text-lg font-black text-slate-900 dark:text-white">от 145 000 ₽</span>
+            </div>
+            <a href="./pages/kanban.html" class="ds-btn ds-btn-sm ds-btn-primary">
+              Маршрут →
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Карточка 2: Доломитовые Альпы -->
+      <article class="group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
+        <div class="relative aspect-video overflow-hidden">
+          <img 
+            src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=700&q=80" 
+            alt="Доломитовые Альпы" 
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          >
+          <span class="absolute top-3 left-3 ds-badge ds-badge-brand backdrop-blur-md bg-teal-600/90 text-white border-0">
+            Италия / Альпы
+          </span>
+          <span class="absolute top-3 right-3 px-2 py-0.5 rounded-full text-[11px] font-bold bg-black/60 text-white backdrop-blur-sm">
+            8 дней • Хайкинг
+          </span>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <div class="space-y-2.5">
+            <div class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+              <span>★ 4.98 (210 отзывов)</span>
+              <span>•</span>
+              <span class="text-emerald-500 font-semibold">Сложность: Легкая+</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+              Доломиты: 7 лучших виа-феррат и панорамных троп
+            </h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300 line-clamp-2 leading-relaxed">
+              Треккинг вокруг Тре Чиме ди Лаваредо, рассветы на Seceda, бронирование горных рифуджио и вкуснейшая паста.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+            <div>
+              <span class="text-xs text-slate-400 block">Бюджет поездки</span>
+              <span class="text-lg font-black text-slate-900 dark:text-white">от 98 000 ₽</span>
+            </div>
+            <a href="./pages/kanban.html" class="ds-btn ds-btn-sm ds-btn-primary">
+              Маршрут →
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Карточка 3: Япония -->
+      <article class="group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
+        <div class="relative aspect-video overflow-hidden">
+          <img 
+            src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=700&q=80" 
+            alt="Япония вне шаблонов" 
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          >
+          <span class="absolute top-3 left-3 ds-badge ds-badge-brand backdrop-blur-md bg-rose-600/90 text-white border-0">
+            Восточная Азия
+          </span>
+          <span class="absolute top-3 right-3 px-2 py-0.5 rounded-full text-[11px] font-bold bg-black/60 text-white backdrop-blur-sm">
+            14 дней • JR Pass
+          </span>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <div class="space-y-2.5">
+            <div class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+              <span>★ 4.92 (95 отзывов)</span>
+              <span>•</span>
+              <span class="text-blue-500 font-semibold">Сложность: Комфорт</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+              Япония: Древние онсэны и тропы паломников Кумано-Кодо
+            </h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300 line-clamp-2 leading-relaxed">
+              Как проехать всю страну на скоростных поездах, переночевать в монастыре на Коя-сан и найти секретный Токио.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+            <div>
+              <span class="text-xs text-slate-400 block">Бюджет поездки</span>
+              <span class="text-lg font-black text-slate-900 dark:text-white">от 180 000 ₽</span>
+            </div>
+            <a href="./pages/kanban.html" class="ds-btn ds-btn-sm ds-btn-primary">
+              Маршрут →
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Карточка 4: Норвегия -->
+      <article class="group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
+        <div class="relative aspect-video overflow-hidden">
+          <img 
+            src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=700&q=80" 
+            alt="Лофотенские острова" 
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          >
+          <span class="absolute top-3 left-3 ds-badge ds-badge-brand backdrop-blur-md bg-cyan-600/90 text-white border-0">
+            Скандинавия
+          </span>
+          <span class="absolute top-3 right-3 px-2 py-0.5 rounded-full text-[11px] font-bold bg-black/60 text-white backdrop-blur-sm">
+            10 дней • Кемпинг
+          </span>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <div class="space-y-2.5">
+            <div class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+              <span>★ 4.97 (184 отзыва)</span>
+              <span>•</span>
+              <span class="text-amber-500 font-semibold">Сложность: Средняя</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+              Лофотены: Палатка на краю фьорда и полярное лето
+            </h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300 line-clamp-2 leading-relaxed">
+              Дикий кемпинг по закону Allemannsretten, восхождения на Рютен и Рейнебринген, рыбалка на треску и арктический серфинг.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+            <div>
+              <span class="text-xs text-slate-400 block">Бюджет поездки</span>
+              <span class="text-lg font-black text-slate-900 dark:text-white">от 115 000 ₽</span>
+            </div>
+            <a href="./pages/kanban.html" class="ds-btn ds-btn-sm ds-btn-primary">
+              Маршрут →
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Карточка 5: Патагония -->
+      <article class="group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
+        <div class="relative aspect-video overflow-hidden">
+          <img 
+            src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=700&q=80" 
+            alt="Патагония Торрес дель Пайне" 
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          >
+          <span class="absolute top-3 left-3 ds-badge ds-badge-brand backdrop-blur-md bg-indigo-600/90 text-white border-0">
+            Южная Америка
+          </span>
+          <span class="absolute top-3 right-3 px-2 py-0.5 rounded-full text-[11px] font-bold bg-black/60 text-white backdrop-blur-sm">
+            16 дней • Автономка
+          </span>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <div class="space-y-2.5">
+            <div class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+              <span>★ 4.99 (88 отзывов)</span>
+              <span>•</span>
+              <span class="text-rose-500 font-semibold">Сложность: Высокая</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+              Патагония: O-Trek вокруг Торрес-дель-Пайне
+            </h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300 line-clamp-2 leading-relaxed">
+              Ледник Перито-Морено, штормовые ветра Огненной Земли, гранитные башни и стада диких гуанако.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+            <div>
+              <span class="text-xs text-slate-400 block">Бюджет поездки</span>
+              <span class="text-lg font-black text-slate-900 dark:text-white">от 240 000 ₽</span>
+            </div>
+            <a href="./pages/kanban.html" class="ds-btn ds-btn-sm ds-btn-primary">
+              Маршрут →
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Карточка 6: Камчатка -->
+      <article class="group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
+        <div class="relative aspect-video overflow-hidden">
+          <img 
+            src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=700&q=80" 
+            alt="Камчатка вулканы" 
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          >
+          <span class="absolute top-3 left-3 ds-badge ds-badge-brand backdrop-blur-md bg-sunset-600/90 text-white border-0">
+            Дальний Восток
+          </span>
+          <span class="absolute top-3 right-3 px-2 py-0.5 rounded-full text-[11px] font-bold bg-black/60 text-white backdrop-blur-sm">
+            11 дней • Экспедиция
+          </span>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <div class="space-y-2.5">
+            <div class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+              <span>★ 4.96 (120 отзывов)</span>
+              <span>•</span>
+              <span class="text-sunset-500 font-semibold">Сложность: Экстрим</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+              Камчатка: Кратеры вулканов и берег Тихого океана
+            </h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300 line-clamp-2 leading-relaxed">
+              Восхождение на Толбачик и Горелый, киты в Авачинской бухте, горячие источники и черные пески Халактырского пляжа.
+            </p>
+          </div>
+          <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+            <div>
+              <span class="text-xs text-slate-400 block">Бюджет поездки</span>
+              <span class="text-lg font-black text-slate-900 dark:text-white">от 165 000 ₽</span>
+            </div>
+            <a href="./pages/kanban.html" class="ds-btn ds-btn-sm ds-btn-primary">
+              Маршрут →
+            </a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- 5. Секция преимуществ / Фичи блога -->
+  <!-- ============================================== -->
+  <section class="section-container bg-slate-100/50 dark:bg-slate-900/30 rounded-3xl my-6 border border-slate-200/60 dark:border-slate-800/60">
+    <div class="section-heading-wrapper">
+      <span class="ds-badge ds-badge-brand mb-3">Почему TerraNova</span>
+      <h2 class="ds-h2">Всё для ваших самостоятельных приключений</h2>
+      <p class="ds-body mt-3">Мы не продаем скучные пакетные туры — мы даем инструменты, знания и уверенность для автономных путешествий.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       
-      <!-- Feature 1 -->
-      <div class="ds-card p-8 group hover:-translate-y-2 transition-all duration-300 relative overflow-hidden">
-        <div class="w-14 h-14 rounded-2xl bg-indigo-50 dark:bg-indigo-950/80 text-brand-600 dark:text-brand-400 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-brand-600 group-hover:text-white transition-all duration-300 shadow-md shadow-brand-500/10">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+      <div class="p-8 rounded-3xl bg-white dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 space-y-4 hover:shadow-xl transition-all duration-300">
+        <div class="w-14 h-14 rounded-2xl bg-brand-500/10 text-brand-600 dark:text-brand-400 flex items-center justify-center">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+          </svg>
         </div>
-        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Глубокая аналитика в реальном времени</h3>
-        <p class="ds-body-sm leading-relaxed">
-          Отслеживайте конверсии, транзакции и ключевые метрики в динамических дашбордах с частотой обновления до 50 миллисекунд.
+        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Офлайн GPS-треки и карты</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+          Все маршруты проверены лично. Скачивайте файлы GPX и KML для OsmAnd, Organic Maps и Garmin с точками воды, кемпингов и опасных участков.
         </p>
-        <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
-          <a href="./pages/dashboard.html" class="inline-flex items-center text-sm font-semibold text-brand-600 dark:text-brand-400 group-hover:underline">
-            Смотреть дашборд
-            <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-          </a>
-        </div>
       </div>
 
-      <!-- Feature 2 -->
-      <div class="ds-card p-8 group hover:-translate-y-2 transition-all duration-300 relative overflow-hidden">
-        <div class="w-14 h-14 rounded-2xl bg-pink-50 dark:bg-pink-950/80 text-pink-600 dark:text-pink-400 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-pink-600 group-hover:text-white transition-all duration-300 shadow-md shadow-pink-500/10">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+      <div class="p-8 rounded-3xl bg-white dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 space-y-4 hover:shadow-xl transition-all duration-300">
+        <div class="w-14 h-14 rounded-2xl bg-sunset-500/10 text-sunset-600 dark:text-sunset-400 flex items-center justify-center">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+          </svg>
         </div>
-        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Корпоративный мессенджер</h3>
-        <p class="ds-body-sm leading-relaxed">
-          Мгновенная связь между отделами, каналы проектов, кастомные скроллбары, поддержка вложений и шифрование данных.
+        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Чек-листы и тесты снаряжения</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+          Только реальный опыт: какие спальники держат минус, где не промокает мембрана и как собрать рюкзак весом менее 9 кг на двухнедельный поход.
         </p>
-        <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
-          <a href="./pages/messenger.html" class="inline-flex items-center text-sm font-semibold text-pink-600 dark:text-pink-400 group-hover:underline">
-            Демо мессенджера
-            <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-          </a>
-        </div>
       </div>
 
-      <!-- Feature 3 -->
-      <div class="ds-card p-8 group hover:-translate-y-2 transition-all duration-300 relative overflow-hidden">
-        <div class="w-14 h-14 rounded-2xl bg-purple-50 dark:bg-purple-950/80 text-purple-600 dark:text-purple-400 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300 shadow-md shadow-purple-500/10">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
+      <div class="p-8 rounded-3xl bg-white dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 space-y-4 hover:shadow-xl transition-all duration-300">
+        <div class="w-14 h-14 rounded-2xl bg-teal-500/10 text-teal-600 dark:text-teal-400 flex items-center justify-center">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
         </div>
-        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Интерактивный Kanban</h3>
-        <p class="ds-body-sm leading-relaxed">
-          Удобный трекинг задач по колонкам (To Do, In Progress, Done) с плавной прокруткой и адаптивной структурой на мобильных устройствах.
+        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Живое комьюнити & Попутчики</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+          Ищите проверенных попутчиков для шеринга авто и кемперов, делитесь оперативной обстановкой на тропах и получайте помощь 24/7 в нашем чате.
         </p>
-        <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
-          <a href="./pages/kanban.html" class="inline-flex items-center text-sm font-semibold text-purple-600 dark:text-purple-400 group-hover:underline">
-            Открыть Kanban
-            <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-          </a>
-        </div>
       </div>
 
     </div>
   </section>
 
   <!-- ============================================== -->
-  
+  <!-- 6. Клуб путешественников / Тарифы подписки (Задание 2.2) -->
   <!-- ============================================== -->
-  <section id="pricing" class="section-container bg-slate-100/60 dark:bg-slate-900/40 rounded-3xl my-12 border border-slate-200/60 dark:border-slate-800/60">
+  <section id="club" class="section-container bg-slate-100/60 dark:bg-slate-900/40 rounded-3xl my-12 border border-slate-200/60 dark:border-slate-800/60">
     <div class="section-heading-wrapper">
-      <span class="ds-badge ds-badge-brand mb-3">Тарифные планы</span>
-      <h2 class="ds-h2">Прозрачные тарифы без скрытых платежей</h2>
-      <p class="ds-body mt-3">Выберите план, подходящий вашей команде. Смените тариф или отмените подписку в любой момент.</p>
+      <span class="ds-badge ds-badge-sunset mb-3">Клуб исследователей</span>
+      <h2 class="ds-h2">Присоединяйтесь к сообществу первооткрывателей</h2>
+      <p class="ds-body mt-3">Выберите удобный уровень доступа к закрытой базе треков, авторским экспедициям и закрытому клубу скидок на снаряжение.</p>
     </div>
 
-    <!-- 3 тарифа: Basic / Pro / Enterprise. У Pro: бейдж "Popular", ring-2 ring-indigo-500, lg:scale-105 -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch pt-4">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch pt-2">
       
-      <!-- Тариф 1: Basic -->
-      <div class="ds-card flex flex-col justify-between p-8 relative">
-        <div>
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Basic</h3>
-            <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">Старт</span>
+      <!-- Тариф 1: Вольный странник -->
+      <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 border border-slate-200 dark:border-slate-700 flex flex-col justify-between shadow-sm">
+        <div class="space-y-6">
+          <div class="space-y-2">
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Вольный странник</h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400">Для начинающих путешественников и вдохновения</p>
           </div>
-          <p class="ds-body-sm">Для индивидуальных специалистов и небольших проектов.</p>
-          <div class="mt-6 mb-8 flex items-baseline">
-            <span class="text-4xl font-extrabold text-slate-900 dark:text-white">19 BYN</span>
-            <span class="text-slate-500 dark:text-slate-400 text-sm ml-2">/ месяц</span>
+          <div class="flex items-baseline gap-1">
+            <span class="text-4xl font-extrabold text-slate-900 dark:text-white">0 ₽</span>
+            <span class="text-slate-500 dark:text-slate-400 text-sm">/ навсегда</span>
           </div>
-
-          
-          <ul class="divide-y divide-slate-100 dark:divide-slate-800 text-sm space-y-3 pt-3">
-            <li class="flex items-center gap-3 pt-3">
-              <span class="text-emerald-500 font-bold">✅</span>
-              <span class="text-slate-700 dark:text-slate-300">До 3 проектов</span>
+          <ul class="space-y-3.5 text-sm text-slate-600 dark:text-slate-300">
+            <li class="flex items-center gap-3">
+              <span class="text-emerald-500 font-bold">✓</span>
+              <span>Доступ ко всем открытым статьям блога</span>
             </li>
-            <li class="flex items-center gap-3 pt-3">
-              <span class="text-emerald-500 font-bold">✅</span>
-              <span class="text-slate-700 dark:text-slate-300">Базовый дашборд аналитики</span>
+            <li class="flex items-center gap-3">
+              <span class="text-emerald-500 font-bold">✓</span>
+              <span>Базовый чек-лист сборов в дорогу</span>
             </li>
-            <li class="flex items-center gap-3 pt-3">
-              <span class="text-emerald-500 font-bold">✅</span>
-              <span class="text-slate-700 dark:text-slate-300">Хранилище данных 5 GB</span>
+            <li class="flex items-center gap-3">
+              <span class="text-emerald-500 font-bold">✓</span>
+              <span>Участие в открытом чате попутчиков</span>
             </li>
-            <li class="flex items-center gap-3 pt-3">
-              <span class="text-slate-400 font-bold">❌</span>
-              <span class="text-slate-400 line-through">Приоритетная поддержка 24/7</span>
+            <li class="flex items-center gap-3 text-slate-400 line-through">
+              <span>✕</span>
+              <span>Скачивание оффлайн GPX-треков</span>
             </li>
-            <li class="flex items-center gap-3 pt-3">
-              <span class="text-slate-400 font-bold">❌</span>
-              <span class="text-slate-400 line-through">Пользовательские домены</span>
+            <li class="flex items-center gap-3 text-slate-400 line-through">
+              <span>✕</span>
+              <span>Закрытые стримы подготовки к походам</span>
             </li>
           </ul>
         </div>
-
-        <div class="mt-8">
-          <a href="./pages/multistep.html" class="w-full ds-btn ds-btn-lg ds-btn-secondary">
-            Выбрать Basic
+        <div class="pt-8">
+          <a href="./pages/multistep.html" class="w-full ds-btn ds-btn-md ds-btn-secondary text-center">
+            Читать бесплатно
           </a>
         </div>
       </div>
 
-      <!-- Тариф 2: Pro (Popular, ring-2 ring-indigo-500, lg:scale-105) -->
-      <div class="ds-card flex flex-col justify-between p-8 relative ring-2 ring-indigo-500 shadow-xl shadow-indigo-500/15 lg:scale-105 bg-white dark:bg-slate-800 z-10">
-        
-        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
-          <span class="px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-brand-600 to-pink-600 text-white shadow-md">
-            🔥 Popular choice
-          </span>
-        </div>
-
-        <div>
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Pro</h3>
-            <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-brand-50 text-brand-700 dark:bg-brand-950 dark:text-brand-300">Команды</span>
+      <!-- Тариф 2: Клуб первооткрывателей (PRO) - Выделенный -->
+      <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 border-2 border-brand-500 shadow-2xl relative flex flex-col justify-between lg:-translate-y-2 lg:scale-105">
+        <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-gradient-to-r from-brand-600 to-sunset-500 text-white shadow-md">
+          Хит среди читателей
+        </span>
+        <div class="space-y-6">
+          <div class="space-y-2">
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Клуб первооткрывателей</h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400">Для активных хайкеров, соло-туристов и экспедиционеров</p>
           </div>
-          <p class="ds-body-sm">Оптимальный тариф для растущих команд и стартапов.</p>
-          <div class="mt-6 mb-8 flex items-baseline">
-            <span class="text-4xl font-extrabold text-slate-900 dark:text-white">49 BYN</span>
-            <span class="text-slate-500 dark:text-slate-400 text-sm ml-2">/ месяц</span>
+          <div class="flex items-baseline gap-1">
+            <span class="text-4xl font-extrabold text-slate-900 dark:text-white">690 ₽</span>
+            <span class="text-slate-500 dark:text-slate-400 text-sm">/ месяц</span>
           </div>
-
-          <!-- Список фич с divide-y и space-y-* -->
-          <ul class="divide-y divide-slate-100 dark:divide-slate-800 text-sm space-y-3 pt-3">
-            <li class="flex items-center gap-3 pt-3">
-              <span class="text-emerald-500 font-bold">✅</span>
-              <span class="text-slate-900 dark:text-white font-medium">Неограниченное число проектов</span>
+          <ul class="space-y-3.5 text-sm text-slate-600 dark:text-slate-300">
+            <li class="flex items-center gap-3">
+              <span class="text-emerald-500 font-bold">✓</span>
+              <span>Все 140+ GPX-треков и меток стоянок</span>
             </li>
-            <li class="flex items-center gap-3 pt-3">
-              <span class="text-emerald-500 font-bold">✅</span>
-              <span class="text-slate-900 dark:text-white font-medium">Расширенная аналитика в реальном времени</span>
+            <li class="flex items-center gap-3">
+              <span class="text-emerald-500 font-bold">✓</span>
+              <span>Скидки до 30% на снаряжение в 12 магазинах</span>
             </li>
-            <li class="flex items-center gap-3 pt-3">
-              <span class="text-emerald-500 font-bold">✅</span>
-              <span class="text-slate-900 dark:text-white font-medium">Хранилище данных 50 GB</span>
+            <li class="flex items-center gap-3">
+              <span class="text-emerald-500 font-bold">✓</span>
+              <span>Закрытый PRO-чат со спасателями и гидами</span>
             </li>
-            <li class="flex items-center gap-3 pt-3">
-              <span class="text-emerald-500 font-bold">✅</span>
-              <span class="text-slate-900 dark:text-white font-medium">Мессенджер и Kanban-доски без лимитов</span>
+            <li class="flex items-center gap-3">
+              <span class="text-emerald-500 font-bold">✓</span>
+              <span>Разбор вашей аптечки и веса рюкзака</span>
             </li>
-            <li class="flex items-center gap-3 pt-3">
-              <span class="text-emerald-500 font-bold">✅</span>
-              <span class="text-slate-900 dark:text-white font-medium">Приоритетная поддержка 24/7</span>
+            <li class="flex items-center gap-3">
+              <span class="text-emerald-500 font-bold">✓</span>
+              <span>Приоритетный доступ к совместным турам</span>
             </li>
           </ul>
         </div>
-
-        <div class="mt-8">
-          <a href="./pages/multistep.html" class="w-full ds-btn ds-btn-lg ds-btn-primary shadow-lg shadow-brand-500/30">
-            Начать с Pro (14 дней триал)
+        <div class="pt-8">
+          <a href="./pages/multistep.html" class="w-full ds-btn ds-btn-md ds-btn-sunset text-center font-bold">
+            Вступить в PRO-клуб
           </a>
         </div>
       </div>
 
-      <!-- Тариф 3: Enterprise -->
-      <div class="ds-card flex flex-col justify-between p-8 relative">
-        <div>
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Enterprise</h3>
-            <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-purple-50 text-purple-700 dark:bg-purple-950 dark:text-purple-300">Корпорация</span>
+      <!-- Тариф 3: Экспедиционный VIP -->
+      <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 border border-slate-200 dark:border-slate-700 flex flex-col justify-between shadow-sm">
+        <div class="space-y-6">
+          <div class="space-y-2">
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Экспедиционный VIP</h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400">Индивидуальное сопровождение и авторские выезды</p>
           </div>
-          <p class="ds-body-sm">Максимальная производительность, кастомные интеграции и SLA.</p>
-          <div class="mt-6 mb-8 flex items-baseline">
-            <span class="text-4xl font-extrabold text-slate-900 dark:text-white">149 BYN</span>
-            <span class="text-slate-500 dark:text-slate-400 text-sm ml-2">/ месяц</span>
+          <div class="flex items-baseline gap-1">
+            <span class="text-4xl font-extrabold text-slate-900 dark:text-white">4 990 ₽</span>
+            <span class="text-slate-500 dark:text-slate-400 text-sm">/ год</span>
           </div>
-
-          <!-- Список фич с divide-y и space-y-* -->
-          <ul class="divide-y divide-slate-100 dark:divide-slate-800 text-sm space-y-3 pt-3">
-            <li class="flex items-center gap-3 pt-3">
-              <span class="text-emerald-500 font-bold">✅</span>
-              <span class="text-slate-700 dark:text-slate-300">Все возможности Pro без ограничений</span>
+          <ul class="space-y-3.5 text-sm text-slate-600 dark:text-slate-300">
+            <li class="flex items-center gap-3">
+              <span class="text-emerald-500 font-bold">✓</span>
+              <span>Всё, что входит в тариф PRO</span>
             </li>
-            <li class="flex items-center gap-3 pt-3">
-              <span class="text-emerald-500 font-bold">✅</span>
-              <span class="text-slate-700 dark:text-slate-300">Выделенный сервер & SLA 99.99%</span>
+            <li class="flex items-center gap-3">
+              <span class="text-emerald-500 font-bold">✓</span>
+              <span>Персональная разработка маршрута под вас</span>
             </li>
-            <li class="flex items-center gap-3 pt-3">
-              <span class="text-emerald-500 font-bold">✅</span>
-              <span class="text-slate-700 dark:text-slate-300">Кастомные интеграции & API webhook'и</span>
+            <li class="flex items-center gap-3">
+              <span class="text-emerald-500 font-bold">✓</span>
+              <span>Экстренный мониторинг через спутниковый трекер Garmin</span>
             </li>
-            <li class="flex items-center gap-3 pt-3">
-              <span class="text-emerald-500 font-bold">✅</span>
-              <span class="text-slate-700 dark:text-slate-300">Персональный аккаунт-менеджер</span>
-            </li>
-            <li class="flex items-center gap-3 pt-3">
-              <span class="text-emerald-500 font-bold">✅</span>
-              <span class="text-slate-700 dark:text-slate-300">Single Sign-On (SSO / SAML / Okta)</span>
+            <li class="flex items-center gap-3">
+              <span class="text-emerald-500 font-bold">✓</span>
+              <span>Приглашение в закрытые экспедиции с автором</span>
             </li>
           </ul>
         </div>
-
-        <div class="mt-8">
-          <a href="./pages/multistep.html" class="w-full ds-btn ds-btn-lg ds-btn-secondary">
-            Связаться с отделом продаж
+        <div class="pt-8">
+          <a href="./pages/multistep.html" class="w-full ds-btn ds-btn-md ds-btn-secondary text-center">
+            Оформить VIP-пакет
           </a>
         </div>
       </div>
@@ -500,82 +734,53 @@
   </section>
 
   <!-- ============================================== -->
-  
+  <!-- 7. Отзывы участников экспедиций (Snap-карусель) -->
   <!-- ============================================== -->
-  <section id="testimonials" class="section-container">
+  <section class="section-container">
     <div class="section-heading-wrapper">
-      <span class="ds-badge ds-badge-brand mb-3">Отзывы</span>
-      <h2 class="ds-h2">Что говорят лидеры индустрии</h2>
-      <p class="ds-body mt-3">Свайпайте карточки горизонтально на любом экране без сторонних скриптов благодаря CSS Scroll Snap.</p>
+      <span class="ds-badge ds-badge-brand mb-3">Истории читателей</span>
+      <h2 class="ds-h2">Те, кто уже отправился в путь</h2>
+      <p class="ds-body mt-3">Реальные впечатления людей, прошедших маршруты по нашим путеводителям и трекам.</p>
     </div>
 
-    <!-- Карусель без JS через snap-x snap-mandatory -->
-    <div class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-6 scrollbar-custom -mx-4 px-4 sm:mx-0 sm:px-0">
+    <!-- Snap-scroll карусель без обязательного JS -->
+    <div class="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-6 scrollbar-custom">
       
-      <!-- Карточка 1 -->
-      <div class="snap-center shrink-0 w-[85%] sm:w-[420px] ds-card p-6 sm:p-8 flex flex-col justify-between">
-        <div>
-          <div class="flex text-amber-400 mb-4 text-lg">★★★★★</div>
-          <p class="ds-body italic text-slate-700 dark:text-slate-200">
-            «Переход на NexusSaaS ускорил выпуск наших релизов в 3 раза. Скорость работы интерфейса на Tailwind просто феноменальная!»
-          </p>
-        </div>
-        <div class="flex items-center gap-4 mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
-          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&h=120&q=80" alt="Анна Волкова" class="w-12 h-12 rounded-full object-cover ring-2 ring-brand-500">
+      <div class="min-w-[300px] sm:min-w-[380px] p-6 rounded-3xl bg-white dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 snap-center shadow-sm flex flex-col justify-between">
+        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed italic">
+          «Проехали всю Исландию по маршруту Максима в октябре! GPS-трек со всеми бродами спас нас от застревания в лавовом поле. Это было лучшее приключение в жизни!»
+        </p>
+        <div class="flex items-center gap-3 pt-6 border-t border-slate-100 dark:border-slate-700/60 mt-4">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&h=80&q=80" alt="Елена" class="w-10 h-10 rounded-full object-cover">
           <div>
-            <div class="font-bold text-slate-900 dark:text-white">Анна Волкова</div>
-            <div class="text-xs text-slate-500">CTO, Fintech Solutions</div>
+            <div class="text-sm font-bold text-slate-900 dark:text-white">Елена Васильева</div>
+            <div class="text-xs text-brand-600 dark:text-brand-400">Автотрип по Исландии</div>
           </div>
         </div>
       </div>
 
-      <!-- Карточка 2 -->
-      <div class="snap-center shrink-0 w-[85%] sm:w-[420px] ds-card p-6 sm:p-8 flex flex-col justify-between">
-        <div>
-          <div class="flex text-amber-400 mb-4 text-lg">★★★★★</div>
-          <p class="ds-body italic text-slate-700 dark:text-slate-200">
-            «Лучшая реализация дизайн-системы и аналитического дашборда, которую мы интегрировали за последние 5 лет. Всем рекомендую.»
-          </p>
-        </div>
-        <div class="flex items-center gap-4 mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&h=120&q=80" alt="Михаил Соколов" class="w-12 h-12 rounded-full object-cover ring-2 ring-brand-500">
+      <div class="min-w-[300px] sm:min-w-[380px] p-6 rounded-3xl bg-white dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 snap-center shadow-sm flex flex-col justify-between">
+        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed italic">
+          «Чек-лист снаряжения открыл мне глаза на ультралайт. Скинул вес рюкзака с 17 до 9 кг и впервые наслаждался подъемом в Доломитах, а не страдал!»
+        </p>
+        <div class="flex items-center gap-3 pt-6 border-t border-slate-100 dark:border-slate-700/60 mt-4">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=80&h=80&q=80" alt="Денис" class="w-10 h-10 rounded-full object-cover">
           <div>
-            <div class="font-bold text-slate-900 dark:text-white">Михаил Соколов</div>
-            <div class="text-xs text-slate-500">Head of Product, CyberCore</div>
+            <div class="text-sm font-bold text-slate-900 dark:text-white">Денис Ковалёв</div>
+            <div class="text-xs text-brand-600 dark:text-brand-400">Треккинг в Доломитах</div>
           </div>
         </div>
       </div>
 
-      <!-- Карточка 3 -->
-      <div class="snap-center shrink-0 w-[85%] sm:w-[420px] ds-card p-6 sm:p-8 flex flex-col justify-between">
-        <div>
-          <div class="flex text-amber-400 mb-4 text-lg">★★★★★</div>
-          <p class="ds-body italic text-slate-700 dark:text-slate-200">
-            «Темный режим, моментальная загрузка и встроенный канбан позволили отказаться от трех сторонних подписок одновременно!»
-          </p>
-        </div>
-        <div class="flex items-center gap-4 mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
-          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=120&h=120&q=80" alt="Елена Орлова" class="w-12 h-12 rounded-full object-cover ring-2 ring-brand-500">
+      <div class="min-w-[300px] sm:min-w-[380px] p-6 rounded-3xl bg-white dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 snap-center shadow-sm flex flex-col justify-between">
+        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed italic">
+          «В чате попутчиков нашел ребят для поездки на Камчатку. Разделили аренду вахтовки и гида, сэкономив почти 60 тысяч на человека. Спасибо блогу за комьюнити!»
+        </p>
+        <div class="flex items-center gap-3 pt-6 border-t border-slate-100 dark:border-slate-700/60 mt-4">
+          <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=80&h=80&q=80" alt="Артем" class="w-10 h-10 rounded-full object-cover">
           <div>
-            <div class="font-bold text-slate-900 dark:text-white">Елена Орлова</div>
-            <div class="text-xs text-slate-500">Operations Lead, ScaleUp AI</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Карточка 4 -->
-      <div class="snap-center shrink-0 w-[85%] sm:w-[420px] ds-card p-6 sm:p-8 flex flex-col justify-between">
-        <div>
-          <div class="flex text-amber-400 mb-4 text-lg">★★★★★</div>
-          <p class="ds-body italic text-slate-700 dark:text-slate-200">
-            «Многошаговая форма регистрации и встроенный e-commerce каталог с фильтрами показали конверсию в 18.4%. Невероятный результат.»
-          </p>
-        </div>
-        <div class="flex items-center gap-4 mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
-          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&h=120&q=80" alt="Даниил Морозов" class="w-12 h-12 rounded-full object-cover ring-2 ring-brand-500">
-          <div>
-            <div class="font-bold text-slate-900 dark:text-white">Даниил Морозов</div>
-            <div class="text-xs text-slate-500">E-Commerce Director, OmniTrade</div>
+            <div class="text-sm font-bold text-slate-900 dark:text-white">Артём Мельников</div>
+            <div class="text-xs text-brand-600 dark:text-brand-400">Экспедиция на Камчатку</div>
           </div>
         </div>
       </div>
@@ -584,81 +789,73 @@
   </section>
 
   <!-- ============================================== -->
-  
+  <!-- 8. FAQ-аккордеон для путешественников -->
   <!-- ============================================== -->
-  <section id="faq" class="section-container max-w-4xl">
+  <section class="section-container max-w-4xl">
     <div class="section-heading-wrapper">
-      <span class="ds-badge ds-badge-brand mb-3">FAQ</span>
+      <span class="ds-badge ds-badge-brand mb-3">База знаний</span>
       <h2 class="ds-h2">Часто задаваемые вопросы</h2>
-      <p class="ds-body mt-3">Ответы на ключевые технические и организационные вопросы.</p>
+      <p class="ds-body mt-3">Всё о подготовке, безопасности, визах и снаряжении для самостоятельных путешествий.</p>
     </div>
 
-        <div class="space-y-4">
+    <div class="space-y-4">
       
-      <!-- FAQ item 1 -->
-      <div class="faq-item ds-card rounded-2xl overflow-hidden transition-all duration-300 border border-slate-200/80 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700">
-        <button type="button" class="faq-trigger w-full p-6 flex justify-between items-center text-left cursor-pointer font-bold text-slate-900 dark:text-white select-none gap-4 group">
-          <span class="text-base sm:text-lg leading-snug">Как активировать темную тему на сайте?</span>
-          <span class="faq-icon w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700/60 flex items-center justify-center text-slate-500 group-hover:text-brand-600 transition-colors duration-200 shrink-0">
-            <svg class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      <!-- FAQ 1 -->
+      <div class="faq-item rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 overflow-hidden transition-all duration-200">
+        <button class="faq-trigger w-full px-6 py-5 flex items-center justify-between gap-4 text-left font-bold text-slate-900 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 transition" aria-expanded="false">
+          <span>Как загрузить ваши GPS-треки в телефон для работы без интернета?</span>
+          <span class="faq-icon text-slate-400 transition-transform duration-200">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </span>
         </button>
-        <div class="faq-panel grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out">
-          <div class="overflow-hidden">
-            <div class="px-6 pb-6 pt-3 text-slate-600 dark:text-slate-400 text-sm leading-relaxed border-t border-slate-100 dark:border-slate-800/80">
-              Нажмите на иконку солнца/луны в верхнем навбаре. Настройка сохраняется в <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-brand-600 font-mono text-xs">localStorage</code> и автоматически учитывает системные предпочтения операционной системы.
-            </div>
+        <div class="faq-panel grid grid-rows-[0fr] transition-all duration-300 ease-out px-6">
+          <div class="overflow-hidden pb-5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            Все файлы поставляются в стандартных форматах .GPX и .KML. Вы можете открыть их в бесплатном приложении Organic Maps или OsmAnd в один клик. Предварительно скачайте офлайн-карту нужного региона, и навигация будет работать даже в глухой тундре без сотовой связи.
           </div>
         </div>
       </div>
 
-      <!-- FAQ item 2 -->
-      <div class="faq-item ds-card rounded-2xl overflow-hidden transition-all duration-300 border border-slate-200/80 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700">
-        <button type="button" class="faq-trigger w-full p-6 flex justify-between items-center text-left cursor-pointer font-bold text-slate-900 dark:text-white select-none gap-4 group">
-          <span class="text-base sm:text-lg leading-snug">Поддерживается ли интеграция с внешними сервисами и API?</span>
-          <span class="faq-icon w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700/60 flex items-center justify-center text-slate-500 group-hover:text-brand-600 transition-colors duration-200 shrink-0">
-            <svg class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      <!-- FAQ 2 -->
+      <div class="faq-item rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 overflow-hidden transition-all duration-200">
+        <button class="faq-trigger w-full px-6 py-5 flex items-center justify-between gap-4 text-left font-bold text-slate-900 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 transition" aria-expanded="false">
+          <span>Какую медицинскую страховку оформлять для активного треккинга?</span>
+          <span class="faq-icon text-slate-400 transition-transform duration-200">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </span>
         </button>
-        <div class="faq-panel grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out">
-          <div class="overflow-hidden">
-            <div class="px-6 pb-6 pt-3 text-slate-600 dark:text-slate-400 text-sm leading-relaxed border-t border-slate-100 dark:border-slate-800/80">
-              Да, платформа Nexus Cloud предоставляет открытый REST API, вебхуки и готовые интеграции с CRM, аналитическими сервисами и платёжными шлюзами для непрерывной синхронизации данных.
-            </div>
+        <div class="faq-panel grid grid-rows-[0fr] transition-all duration-300 ease-out px-6">
+          <div class="overflow-hidden pb-5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            Обычная туристическая страховка не покрывает походы в горы. Всегда выбирайте опцию «Активный отдых / Треккинг» и проверяйте пункт «Поисково-спасательные работы с вертолетом» (SAR). В статьях блога есть список проверенных ассистансов для Непала, Патагонии и Альп.
           </div>
         </div>
       </div>
 
-      <!-- FAQ item 3 -->
-      <div class="faq-item ds-card rounded-2xl overflow-hidden transition-all duration-300 border border-slate-200/80 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700">
-        <button type="button" class="faq-trigger w-full p-6 flex justify-between items-center text-left cursor-pointer font-bold text-slate-900 dark:text-white select-none gap-4 group">
-          <span class="text-base sm:text-lg leading-snug">Есть ли возможность протестировать компоненты отдельно?</span>
-          <span class="faq-icon w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700/60 flex items-center justify-center text-slate-500 group-hover:text-brand-600 transition-colors duration-200 shrink-0">
-            <svg class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      <!-- FAQ 3 -->
+      <div class="faq-item rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 overflow-hidden transition-all duration-200">
+        <button class="faq-trigger w-full px-6 py-5 flex items-center justify-between gap-4 text-left font-bold text-slate-900 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 transition" aria-expanded="false">
+          <span>Безопасно ли отправляться в сложные маршруты в одиночку?</span>
+          <span class="faq-icon text-slate-400 transition-transform duration-200">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </span>
         </button>
-        <div class="faq-panel grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out">
-          <div class="overflow-hidden">
-            <div class="px-6 pb-6 pt-3 text-slate-600 dark:text-slate-400 text-sm leading-relaxed border-t border-slate-100 dark:border-slate-800/80">
-              Да! В разделе <a href="./pages/storybook.html" class="text-brand-600 font-semibold underline">Storybook</a> представлена интерактивная документация со всеми дизайн-токенами, матрицей кнопок, модальными окнами, полями ввода и алертами.
-            </div>
+        <div class="faq-panel grid grid-rows-[0fr] transition-all duration-300 ease-out px-6">
+          <div class="overflow-hidden pb-5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            Соло-походы дарят невероятное ощущение свободы, но требуют строгой дисциплины: обязательная регистрация в МЧС / рейнджерах парка, наличие спутникового трекера (например, Garmin inReach), запас фильтрации воды и дублирование навигации. Если вы новичок, воспользуйтесь нашим чатом для поиска попутчиков.
           </div>
         </div>
       </div>
 
-      <!-- FAQ item 4 -->
-      <div class="faq-item ds-card rounded-2xl overflow-hidden transition-all duration-300 border border-slate-200/80 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700">
-        <button type="button" class="faq-trigger w-full p-6 flex justify-between items-center text-left cursor-pointer font-bold text-slate-900 dark:text-white select-none gap-4 group">
-          <span class="text-base sm:text-lg leading-snug">Как начать работу с платформой?</span>
-          <span class="faq-icon w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700/60 flex items-center justify-center text-slate-500 group-hover:text-brand-600 transition-colors duration-200 shrink-0">
-            <svg class="w-5 h-5 transition-transform duration-300" fill="none" stroke=currentColor viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      <!-- FAQ 4 -->
+      <div class="faq-item rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 overflow-hidden transition-all duration-200">
+        <button class="faq-trigger w-full px-6 py-5 flex items-center justify-between gap-4 text-left font-bold text-slate-900 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 transition" aria-expanded="false">
+          <span>Как получить скидки на снаряжение по вашей подписке?</span>
+          <span class="faq-icon text-slate-400 transition-transform duration-200">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </span>
         </button>
-        <div class="faq-panel grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out">
-          <div class="overflow-hidden">
-            <div class="px-6 pb-6 pt-3 text-slate-600 dark:text-slate-400 text-sm leading-relaxed border-t border-slate-100 dark:border-slate-800/80">
-              Воспользуйтесь <a href="./pages/multistep.html" class="text-brand-600 font-semibold underline">многошаговой формой регистрации</a>. Выберите нужный тарифный план, введите контактные данные и получите мгновенный доступ.
-            </div>
+        <div class="faq-panel grid grid-rows-[0fr] transition-all duration-300 ease-out px-6">
+          <div class="overflow-hidden pb-5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            После вступления в клуб PRO в личном кабинете открывается раздел с партнёрскими промокодами и персональными ссылками на кэшбэк. Скидки действуют в магазинах туристического снаряжения, на аренду автодомов и сервисы покупки авиабилетов.
           </div>
         </div>
       </div>
@@ -667,61 +864,68 @@
   </section>
 
   <!-- ============================================== -->
-  
+  <!-- 9. Подвал сайта (4 колонки) -->
   <!-- ============================================== -->
-  <footer class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 transition-colors duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+  <footer class="mt-auto bg-white dark:bg-slate-900 border-t border-slate-200/80 dark:border-slate-800 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
         
-        <!-- Колонка 1: О компании & Логотип -->
-        <div class="space-y-4">
-          <div class="flex items-center space-x-3">
-            <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-brand-600 to-pink-500 flex items-center justify-center text-white font-bold text-sm shadow-md">
-              N
+        <!-- О блоге -->
+        <div class="lg:col-span-2 space-y-4">
+          <a href="./" class="flex items-center space-x-3 group">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-600 via-teal-500 to-sunset-500 flex items-center justify-center text-white shadow-md">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
             </div>
-            <span class="font-extrabold text-lg tracking-tight text-slate-900 dark:text-white">NexusSaaS</span>
-          </div>
-          <p class="ds-body-sm leading-relaxed">
-            Передовая веб-платформа нового поколения с дизайн-системой на Tailwind CSS v3.4+, отвечающая всем современным требованиям адаптивности и доступности.
+            <span class="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">TerraNova</span>
+          </a>
+          <p class="text-sm text-slate-500 dark:text-slate-400 max-w-sm leading-relaxed">
+            Независимый экспедиционный блог о путешествиях. Честный опыт, карты без интернета и вдохновение для тех, кто не сидит дома.
           </p>
-          <div class="text-xs text-slate-400">
-            © 2026 NexusSaaS Inc. Все права защищены.
+          <div class="pt-2 text-xs text-slate-400">
+            © 2026 TerraNova Travel Blog. Все права защищены.
           </div>
         </div>
 
-        <!-- Колонка 2: Продукты & Модули -->
-        <div>
-          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-4">Модули проекта</h4>
-          <ul class="space-y-2.5 text-sm text-slate-600 dark:text-slate-400">
-            <li><a href="#profile-card" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Профиль эксперта</a></li>
-            <li><a href="./pages/dashboard.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Аналитический дашборд</a></li>
-            <li><a href="./pages/storybook.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Storybook дизайн-система</a></li>
-            <li><a href="./pages/ecommerce.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition">E-commerce каталог</a></li>
-            <li><a href="./pages/messenger.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Мессенджер интерфейс</a></li>
-            <li><a href="./pages/kanban.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Kanban-планировщик</a></li>
-            <li><a href="./pages/multistep.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Онбординг клиентов</a></li>
+        <!-- Направления -->
+        <div class="space-y-3">
+          <h4 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">Направления</h4>
+          <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+            <li><a href="#articles" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Исландия и Арктика</a></li>
+            <li><a href="#articles" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Доломиты & Альпы</a></li>
+            <li><a href="#articles" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Норвежские фьорды</a></li>
+            <li><a href="#articles" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Камчатка & Алтай</a></li>
+            <li><a href="#articles" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Патагония</a></li>
           </ul>
         </div>
 
-        <!-- Колонка 3: Ресурсы & Документация -->
-        <div>
-          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-4">Ресурсы</h4>
-          <ul class="space-y-2.5 text-sm text-slate-600 dark:text-slate-400">
-            <li><a href="./" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Главная страница</a></li>
-            <li><a href="https://tailwindcss.com" target="_blank" rel="noreferrer" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Центр документации</a></li>
-            <li><a href="#hero" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Руководство разработчика</a></li>
-            <li><a href="#pricing" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Тарифная сетка</a></li>
-            <li><a href="#faq" class="hover:text-brand-600 dark:hover:text-brand-400 transition">FAQ и поддержка</a></li>
+        <!-- Инструменты -->
+        <div class="space-y-3">
+          <h4 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">Инструменты</h4>
+          <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+            <li><a href="./pages/dashboard.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Трекер экспедиций</a></li>
+            <li><a href="./pages/kanban.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Чек-лист сборов</a></li>
+            <li><a href="./pages/ecommerce.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Каталог снаряжения</a></li>
+            <li><a href="./pages/messenger.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Поиск попутчиков</a></li>
+            <li><a href="./pages/storybook.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Travel UI Kit</a></li>
           </ul>
         </div>
 
-        <!-- Колонка 4: Подписка на новости -->
-        <div>
-          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white mb-4">Будьте в курсе обновлений</h4>
-          <p class="ds-body-sm mb-3">Подпишитесь на дайджест новых компонентов и фич платформы.</p>
-          <form onsubmit="event.preventDefault(); alert('Спасибо за подписку!');" class="space-y-2">
-            <input type="email" required placeholder="Ваш рабочий email" class="ds-input text-sm">
-            <button type="submit" class="w-full ds-btn ds-btn-md ds-btn-primary">
+        <!-- Рассылка отчётов -->
+        <div class="space-y-3">
+          <h4 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">Почтовый маяк</h4>
+          <p class="text-xs text-slate-500 dark:text-slate-400">
+            Раз в месяц присылаем новый подробный маршрут с GPS-треком. Никакого спама.
+          </p>
+          <form class="space-y-2" onsubmit="event.preventDefault(); alert('Спасибо за подписку на TerraNova!');">
+            <input 
+              type="email" 
+              required 
+              placeholder="Ваш email" 
+              class="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500"
+            >
+            <button type="submit" class="w-full ds-btn ds-btn-sm ds-btn-sunset font-bold">
               Подписаться
             </button>
           </form>
@@ -731,16 +935,6 @@
     </div>
   </footer>
 
-  <script type="module">
-    import { initTheme } from '/src/js/main.js';
-    initTheme();
-
-    // Мобильное меню
-    const mobileBtn = document.getElementById('mobileMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    mobileBtn?.addEventListener('click', () => {
-      mobileMenu?.classList.toggle('hidden');
-    });
-  </script>
+  <script type="module" src="./src/js/main.js"></script>
 </body>
 </html>

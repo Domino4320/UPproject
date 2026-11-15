@@ -1,7 +1,6 @@
 import { createApp } from 'vue';
 import AdSlot from '../components/AdSlot.vue';
 
-// Export AdSlot component for direct imports
 export { AdSlot };
 
 // Dark Mode and Theme Management
@@ -48,7 +47,7 @@ export function initTheme() {
   });
 }
 
-// Vue AdSlot mounting helper for Vue integration
+// Vue AdSlot mounting helper
 export function initAdSlots() {
   const slots = document.querySelectorAll('[data-vue-ad-slot]');
   slots.forEach(el => {
@@ -58,8 +57,8 @@ export function initAdSlots() {
     const size = el.dataset.size || 'banner';
     const width = el.dataset.width || '';
     const height = el.dataset.height || '';
-    const label = el.dataset.label || 'Здесь могла бы быть ваша реклама';
-    const sublabel = el.dataset.sublabel || 'Привлекайте целевую аудиторию разработчиков и IT-бизнеса. Забронируйте партнёрский слот прямо сейчас.';
+    const label = el.dataset.label || 'Снаряжение для экспедиций со скидкой 25%';
+    const sublabel = el.dataset.sublabel || 'Топовые мембраны, треккинговая обувь и спутниковая связь от проверенных брендов для подписчиков блога.';
     const closable = el.dataset.closable === 'true';
 
     try {
@@ -78,7 +77,7 @@ export function initAdSlots() {
   });
 }
 
-// Smooth FAQ Accordion with zero layout jump
+// Smooth FAQ Accordion
 export function initFaqAccordion() {
   const faqItems = document.querySelectorAll('.faq-item');
   if (!faqItems.length) return;
@@ -95,70 +94,58 @@ export function initFaqAccordion() {
     trigger.addEventListener('click', () => {
       const isOpen = panel.classList.contains('grid-rows-[1fr]');
 
-      // Close other panels smoothly
+      // Close other panels
       faqItems.forEach(other => {
         if (other !== item) {
           const otherPanel = other.querySelector('.faq-panel');
-          const otherSvg = other.querySelector('.faq-icon svg');
+          const otherIcon = other.querySelector('.faq-icon svg');
+          const otherTrigger = other.querySelector('.faq-trigger');
           if (otherPanel) {
             otherPanel.classList.remove('grid-rows-[1fr]');
             otherPanel.classList.add('grid-rows-[0fr]');
           }
-          if (otherSvg) {
-            otherSvg.classList.remove('rotate-180');
+          if (otherIcon) {
+            otherIcon.classList.remove('rotate-180');
           }
-          other.classList.remove('ring-2', 'ring-brand-500/20', 'border-brand-500/50');
+          if (otherTrigger) {
+            otherTrigger.setAttribute('aria-expanded', 'false');
+          }
         }
       });
 
+      // Toggle current panel
       if (isOpen) {
         panel.classList.remove('grid-rows-[1fr]');
         panel.classList.add('grid-rows-[0fr]');
         if (iconSvg) iconSvg.classList.remove('rotate-180');
-        item.classList.remove('ring-2', 'ring-brand-500/20', 'border-brand-500/50');
+        trigger.setAttribute('aria-expanded', 'false');
       } else {
         panel.classList.remove('grid-rows-[0fr]');
         panel.classList.add('grid-rows-[1fr]');
         if (iconSvg) iconSvg.classList.add('rotate-180');
-        item.classList.add('ring-2', 'ring-brand-500/20', 'border-brand-500/50');
+        trigger.setAttribute('aria-expanded', 'true');
       }
     });
   });
 }
 
-// Auto-fix relative paths on GitHub Pages
-export function fixGitHubPagesLinks() {
-  if (typeof window === 'undefined') return;
-  const path = window.location.pathname;
-  if (!window.location.hostname.endsWith('github.io')) return;
+// Mobile Menu Toggle
+export function initMobileMenu() {
+  const btn = document.getElementById('mobileMenuBtn');
+  const menu = document.getElementById('mobileMenu');
+  if (!btn || !menu) return;
 
-  const parts = path.split('/').filter(Boolean);
-  if (parts.length === 0) return;
-  const repoName = parts[0];
-
-  document.querySelectorAll('a[href]').forEach(a => {
-    const href = a.getAttribute('href');
-    if (!href || href.startsWith('#') || href.startsWith('http://') || href.startsWith('https://') || href.startsWith('mailto:')) {
-      return;
-    }
-    if (href.startsWith('/') && !href.startsWith(`/${repoName}`)) {
-      a.setAttribute('href', `/${repoName}${href}`);
-    }
+  btn.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+    const isExpanded = !menu.classList.contains('hidden');
+    btn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
   });
 }
 
-export function initApp() {
+// Universal Initializer on DOM ready
+document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initAdSlots();
   initFaqAccordion();
-  fixGitHubPagesLinks();
-}
-
-// Auto-run theme, ad slots, and accordion on DOM ready safely
-if (typeof document !== 'undefined') {
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initApp);
-  } else {
-    initApp();
-  }
-}
+  initMobileMenu();
+});

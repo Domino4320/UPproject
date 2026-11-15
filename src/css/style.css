@@ -9,12 +9,12 @@
   }
 
   body {
-    @apply bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300 min-h-screen antialiased;
+    @apply bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 min-h-screen antialiased;
   }
 }
 
 @layer components {
-  /* Typography Components (Task 4.4) */
+  /* Typography Components */
   .ds-h1 {
     @apply text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white;
   }
@@ -35,7 +35,7 @@
     @apply text-sm text-slate-500 dark:text-slate-400;
   }
 
-  /* Button Matrix: primary/secondary/ghost/danger x sm/md/lg (Task 4.4) */
+  /* Button Matrix: primary/sunset/secondary/ghost/danger x sm/md/lg */
   .ds-btn {
     @apply inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:pointer-events-none disabled:active:scale-100;
   }
@@ -53,7 +53,11 @@
   }
 
   .ds-btn-primary {
-    @apply bg-brand-600 hover:bg-brand-700 text-white shadow-md shadow-brand-500/20 hover:shadow-brand-500/40 focus-visible:ring-brand-500;
+    @apply bg-brand-600 hover:bg-brand-700 text-white shadow-md shadow-brand-600/25 hover:shadow-brand-600/40 focus-visible:ring-brand-500;
+  }
+
+  .ds-btn-sunset {
+    @apply bg-gradient-to-r from-sunset-500 to-amber-500 hover:from-sunset-600 hover:to-amber-600 text-white shadow-md shadow-sunset-500/25 focus-visible:ring-sunset-500;
   }
 
   .ds-btn-secondary {
@@ -68,7 +72,7 @@
     @apply bg-rose-600 hover:bg-rose-700 text-white shadow-md shadow-rose-500/20 hover:shadow-rose-500/40 focus-visible:ring-rose-500;
   }
 
-  /* Form Elements (Task 4.4) */
+  /* Form Elements */
   .ds-input {
     @apply w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all duration-150 disabled:bg-slate-100 dark:disabled:bg-slate-900 disabled:opacity-60 disabled:cursor-not-allowed;
   }
@@ -77,13 +81,17 @@
     @apply w-4 h-4 rounded border-slate-300 text-brand-600 focus:ring-brand-500 dark:border-slate-600 dark:bg-slate-800 transition;
   }
 
-  /* Badge Component (Task 4.4) */
+  /* Badge Component */
   .ds-badge {
     @apply inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold;
   }
 
   .ds-badge-brand {
     @apply bg-brand-50 text-brand-700 border border-brand-200 dark:bg-brand-950/70 dark:text-brand-300 dark:border-brand-800;
+  }
+
+  .ds-badge-sunset {
+    @apply bg-sunset-50 text-sunset-700 border border-sunset-200 dark:bg-sunset-950/70 dark:text-sunset-300 dark:border-sunset-800;
   }
 
   .ds-badge-success {
@@ -98,7 +106,7 @@
     @apply bg-rose-50 text-rose-700 border border-rose-200 dark:bg-rose-950/70 dark:text-rose-300 dark:border-rose-800;
   }
 
-  /* Alert Component (Task 4.4) */
+  /* Alert Component */
   .ds-alert {
     @apply p-4 rounded-2xl flex items-start gap-3 border text-sm transition-all;
   }
@@ -119,7 +127,7 @@
     @apply bg-rose-50 dark:bg-rose-950/30 text-rose-900 dark:text-rose-200 border-rose-200 dark:border-rose-800/60;
   }
 
-  /* Card Component (Task 4.4) */
+  /* Card Component */
   .ds-card {
     @apply bg-white dark:bg-slate-800/90 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-sm hover:shadow-md transition-all duration-200;
   }
@@ -132,7 +140,7 @@
     @apply p-5 sm:p-6;
   }
 
-  /* Toggle Switch (Task 4.4) */
+  /* Toggle Switch */
   .ds-toggle-track {
     @apply w-12 h-6 bg-slate-200 dark:bg-slate-700 rounded-full transition-colors duration-200 peer-checked:bg-brand-600 cursor-pointer relative;
   }
@@ -141,7 +149,7 @@
     @apply w-5 h-5 bg-white rounded-full shadow-md transform transition-transform duration-200 translate-x-0.5 peer-checked:translate-x-6 absolute top-0.5 left-0;
   }
 
-  /* Modal backdrop & container (Task 4.4) */
+  /* Modal backdrop & container */
   .ds-modal-backdrop {
     @apply fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-200;
   }
@@ -150,7 +158,7 @@
     @apply bg-white dark:bg-slate-800 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-700 max-w-lg w-full overflow-hidden transform transition-all duration-300;
   }
 
-  /* Reusable Landing & Section Classes (Task 3.3) */
+  /* Reusable Section Classes */
   .section-container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24;
   }

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nexus Checkout — Многошаговая форма регистрации</title>
+  <title>TerraNova Expedition Join — Заявка в экспедицию & Клуб</title>
   <script>
     (function() {
       const savedTheme = localStorage.getItem('theme');
@@ -15,7 +15,7 @@
       }
     })();
   </script>
-  <link rel="stylesheet" href="/src/css/style.css">
+  <link rel="stylesheet" href="../src/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -31,72 +31,64 @@
         <a href="../" class="p-2 -ml-2 text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="На главную">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
         </a>
-        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center text-white shadow-lg shadow-brand-500/25">
+        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-600 via-teal-500 to-sunset-500 flex items-center justify-center text-white shadow-md">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
         </div>
         <div>
-          <span class="font-bold text-slate-900 dark:text-white text-base">Nexus Registration</span>
-          <span class="ml-2 text-[11px] font-semibold px-2 py-0.5 rounded-full bg-brand-100 text-brand-700 dark:bg-brand-950 dark:text-brand-300">Регистрация</span>
+          <span class="font-bold text-slate-900 dark:text-white text-base">TerraNova Expedition</span>
+          <span class="ml-2 text-[11px] font-semibold px-2 py-0.5 rounded-full bg-sunset-100 text-sunset-700 dark:bg-sunset-950 dark:text-sunset-300">Бронирование</span>
         </div>
       </div>
 
       <div class="flex items-center gap-3 sm:gap-4 shrink-0">
-        <!-- Переключатель темы -->
         <button data-theme-toggle class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white bg-slate-100/50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition shrink-0" aria-label="Сменить тему">
           <svg data-theme-icon="sun" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
           <svg data-theme-icon="moon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
         </button>
-        <a href="../" class="ds-btn ds-btn-sm ds-btn-secondary whitespace-nowrap">Главная</a>
+        <a href="../" class="ds-btn ds-btn-sm ds-btn-secondary whitespace-nowrap">Главная блога</a>
       </div>
     </div>
   </header>
 
   <!-- ============================================== -->
-  <!-- 2. Основной контейнер формы                     -->
+  <!-- 2. Форма бронирования                           -->
   <!-- ============================================== -->
   <main class="flex-1 max-w-4xl mx-auto w-full px-4 sm:px-6 py-10 space-y-8">
     
     <div class="text-center space-y-2">
-      <span class="ds-badge ds-badge-brand">Onboarding Wizard</span>
-      <h1 class="ds-h1 text-2xl sm:text-4xl">Создание учетной записи Nexus</h1>
-      <p class="ds-body max-w-xl mx-auto text-sm sm:text-base">Заполните 4 простых шага, чтобы активировать корпоративный доступ с 14-дневным пробным периодом.</p>
+      <span class="ds-badge ds-badge-brand">Expedition Wizard</span>
+      <h1 class="ds-h1 text-2xl sm:text-4xl">Заявка на участие в экспедиции</h1>
+      <p class="ds-body max-w-xl mx-auto text-sm sm:text-base">Пройдите 4 шага, чтобы забронировать место в группе, подобрать снаряжение и присоединиться к клубу исследователей.</p>
     </div>
 
-    <!-- ============================================== -->
-    
-    <!-- aria-current="step", data-[state=*]            -->
-    <!-- ============================================== -->
-    <nav aria-label="Этапы регистрации" class="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 shadow-sm">
+    <!-- Индикатор шагов (Stepper) -->
+    <nav aria-label="Этапы бронирования" class="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 shadow-sm">
       <ol class="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs font-semibold">
         
-        <!-- Шаг 1 -->
         <li id="stepIndicator1" class="flex items-center gap-3 text-brand-600 dark:text-brand-400">
-          <div class="w-8 h-8 rounded-xl bg-brand-600 text-white flex items-center justify-center font-bold text-xs shadow-md shadow-brand-500/20">1</div>
+          <div class="w-8 h-8 rounded-xl bg-brand-600 text-white flex items-center justify-center font-bold text-xs shadow-md">1</div>
           <div class="flex flex-col">
             <span class="text-[10px] text-slate-400 uppercase tracking-wider">Шаг 1</span>
-            <span class="font-bold text-slate-900 dark:text-white">Личные данные</span>
+            <span class="font-bold text-slate-900 dark:text-white">Маршрут & Сезон</span>
           </div>
         </li>
 
-        <!-- Шаг 2 -->
         <li id="stepIndicator2" class="flex items-center gap-3 text-slate-400 dark:text-slate-500">
           <div class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 flex items-center justify-center font-bold text-xs">2</div>
           <div class="flex flex-col">
             <span class="text-[10px] uppercase tracking-wider">Шаг 2</span>
-            <span>Адрес & Компания</span>
+            <span>Опыт & Контакты</span>
           </div>
         </li>
 
-        <!-- Шаг 3 -->
         <li id="stepIndicator3" class="flex items-center gap-3 text-slate-400 dark:text-slate-500">
           <div class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 flex items-center justify-center font-bold text-xs">3</div>
           <div class="flex flex-col">
             <span class="text-[10px] uppercase tracking-wider">Шаг 3</span>
-            <span>Оплата & Тариф</span>
+            <span>Снаряжение & SAR</span>
           </div>
         </li>
 
-        <!-- Шаг 4 -->
         <li id="stepIndicator4" class="flex items-center gap-3 text-slate-400 dark:text-slate-500">
           <div class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 flex items-center justify-center font-bold text-xs">4</div>
           <div class="flex flex-col">
@@ -106,258 +98,199 @@
         </li>
 
       </ol>
-
-      <!-- Индикатор прогресса в процентах -->
-      <div class="mt-6 w-full h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
-        <div id="progressBar" class="h-full bg-gradient-to-r from-brand-600 to-pink-500 transition-all duration-300 rounded-full" style="width: 25%;"></div>
-      </div>
     </nav>
 
-    <!-- ============================================== -->
-    <!-- 4. Тело формы                                  -->
-    <!-- ============================================== -->
-    <div class="ds-card p-6 sm:p-10 shadow-lg">
-      <form id="wizardForm" novalidate>
+    <!-- Шаги формы -->
+    <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-10 border border-slate-200/80 dark:border-slate-800/80 shadow-sm">
+      <form id="multistepForm">
         
-        <!-- ============================================== -->
-        <!-- ШАГ 1: Личные данные         -->
-        <!-- peer, peer-invalid, индикатор силы пароля      -->
-        <!-- ============================================== -->
+        <!-- ========================================== -->
+        <!-- ШАГ 1: Выбор экспедиции                   -->
+        <!-- ========================================== -->
         <div id="step1" class="space-y-6">
           <div class="border-b border-slate-100 dark:border-slate-800 pb-4">
-            <h2 class="text-xl font-bold text-slate-900 dark:text-white">Шаг 1: Контактные данные и безопасность</h2>
-            <p class="ds-body-sm mt-1">Используются для входа в панель управления и синхронизации с API.</p>
+            <h2 class="text-xl font-bold text-slate-900 dark:text-white">Шаг 1: Выберите направление экспедиции</h2>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Определитесь со сложностью и природной зоной путешествия</p>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <!-- Имя -->
-            <div class="space-y-1.5">
-              <label for="fullName" class="block text-xs font-semibold text-slate-700 dark:text-slate-300">Полное имя</label>
-              <input type="text" id="fullName" required placeholder="Александр Волков" class="ds-input">
-            </div>
-
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             
-            <div class="space-y-1.5">
-              <label for="email" class="block text-xs font-semibold text-slate-700 dark:text-slate-300">Рабочий Email</label>
-              <div class="relative">
-                <input type="email" id="email" required placeholder="alex@company.com" class="peer ds-input focus:ring-2 invalid:[&:not(:placeholder-shown):not(:focus)]:border-rose-500">
-                <p class="mt-1 hidden peer-[&:not(:placeholder-shown):invalid]:block text-[11px] text-rose-500">Пожалуйста, укажите корректный адрес электронной почты.</p>
+            <label class="has-[:checked]:border-brand-600 has-[:checked]:ring-2 has-[:checked]:ring-brand-500/20 p-5 rounded-2xl border-2 border-slate-200 dark:border-slate-700 cursor-pointer transition hover:border-slate-300 dark:hover:border-slate-600 flex items-start gap-4">
+              <input type="radio" name="expedition" value="iceland" checked class="mt-1 accent-brand-600">
+              <div class="space-y-1">
+                <span class="font-bold text-slate-900 dark:text-white text-sm block">Зимняя Исландия: Ледники & Аврора</span>
+                <span class="text-xs text-slate-500 dark:text-slate-400 block">12 дней • 4x4 Super-Jeep • Сложность: Средняя</span>
+                <span class="text-xs font-bold text-brand-600 dark:text-brand-400 block pt-1">от 145 000 ₽</span>
               </div>
-            </div>
+            </label>
+
+            <label class="has-[:checked]:border-brand-600 has-[:checked]:ring-2 has-[:checked]:ring-brand-500/20 p-5 rounded-2xl border-2 border-slate-200 dark:border-slate-700 cursor-pointer transition hover:border-slate-300 dark:hover:border-slate-600 flex items-start gap-4">
+              <input type="radio" name="expedition" value="dolomites" class="mt-1 accent-brand-600">
+              <div class="space-y-1">
+                <span class="font-bold text-slate-900 dark:text-white text-sm block">Доломиты: Виа-ферраты и панорамы</span>
+                <span class="text-xs text-slate-500 dark:text-slate-400 block">8 дней • Горные рифуджио • Сложность: Легкая+</span>
+                <span class="text-xs font-bold text-brand-600 dark:text-brand-400 block pt-1">от 98 000 ₽</span>
+              </div>
+            </label>
+
+            <label class="has-[:checked]:border-brand-600 has-[:checked]:ring-2 has-[:checked]:ring-brand-500/20 p-5 rounded-2xl border-2 border-slate-200 dark:border-slate-700 cursor-pointer transition hover:border-slate-300 dark:hover:border-slate-600 flex items-start gap-4">
+              <input type="radio" name="expedition" value="norway" class="mt-1 accent-brand-600">
+              <div class="space-y-1">
+                <span class="font-bold text-slate-900 dark:text-white text-sm block">Лофотены: Автодом по Заполярью</span>
+                <span class="text-xs text-slate-500 dark:text-slate-400 block">10 дней • Кемпинг & Фьорды • Сложность: Средняя</span>
+                <span class="text-xs font-bold text-brand-600 dark:text-brand-400 block pt-1">от 115 000 ₽</span>
+              </div>
+            </label>
+
+            <label class="has-[:checked]:border-brand-600 has-[:checked]:ring-2 has-[:checked]:ring-brand-500/20 p-5 rounded-2xl border-2 border-slate-200 dark:border-slate-700 cursor-pointer transition hover:border-slate-300 dark:hover:border-slate-600 flex items-start gap-4">
+              <input type="radio" name="expedition" value="kamchatka" class="mt-1 accent-brand-600">
+              <div class="space-y-1">
+                <span class="font-bold text-slate-900 dark:text-white text-sm block">Камчатка: Вулканы & Тихий океан</span>
+                <span class="text-xs text-slate-500 dark:text-slate-400 block">11 дней • Автономка • Сложность: Экстрим</span>
+                <span class="text-xs font-bold text-brand-600 dark:text-brand-400 block pt-1">от 165 000 ₽</span>
+              </div>
+            </label>
+
+          </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- ШАГ 2: Данные участника & Опыт             -->
+        <!-- ========================================== -->
+        <div id="step2" class="space-y-6 hidden">
+          <div class="border-b border-slate-100 dark:border-slate-800 pb-4">
+            <h2 class="text-xl font-bold text-slate-900 dark:text-white">Шаг 2: Данные участника и опыт походов</h2>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Информация необходима для регистрации маршрута в спасательных службах</p>
           </div>
 
-          
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div class="space-y-1.5">
-              <label for="password" class="block text-xs font-semibold text-slate-700 dark:text-slate-300">Пароль</label>
-              <input type="password" id="password" required minlength="8" placeholder="••••••••" class="ds-input">
-              
-              
-              <div class="pt-1.5 space-y-1">
-                <div class="flex gap-1.5">
-                  <div id="bar1" class="h-1.5 flex-1 rounded-full bg-slate-200 dark:bg-slate-700 transition-colors"></div>
-                  <div id="bar2" class="h-1.5 flex-1 rounded-full bg-slate-200 dark:bg-slate-700 transition-colors"></div>
-                  <div id="bar3" class="h-1.5 flex-1 rounded-full bg-slate-200 dark:bg-slate-700 transition-colors"></div>
-                  <div id="bar4" class="h-1.5 flex-1 rounded-full bg-slate-200 dark:bg-slate-700 transition-colors"></div>
-                </div>
-                <div id="strengthText" class="text-[10px] text-slate-400">Введите не менее 8 символов</div>
-              </div>
+              <label class="text-xs font-bold text-slate-700 dark:text-slate-300">Имя и фамилия *</label>
+              <input type="text" placeholder="Максим Ветров" required class="ds-input">
             </div>
 
-            <!-- Подтверждение пароля -->
             <div class="space-y-1.5">
-              <label for="confirmPassword" class="block text-xs font-semibold text-slate-700 dark:text-slate-300">Подтвердите пароль</label>
-              <input type="password" id="confirmPassword" required placeholder="••••••••" class="ds-input">
+              <label class="text-xs font-bold text-slate-700 dark:text-slate-300">Email для отправки треков *</label>
+              <input type="email" placeholder="explorer@terranova.travel" required class="ds-input">
+            </div>
+
+            <div class="space-y-1.5">
+              <label class="text-xs font-bold text-slate-700 dark:text-slate-300">Телефон (WhatsApp / Telegram) *</label>
+              <input type="tel" placeholder="+7 999 000-00-00" required class="ds-input">
+            </div>
+
+            <div class="space-y-1.5">
+              <label class="text-xs font-bold text-slate-700 dark:text-slate-300">Ваш походный опыт</label>
+              <select class="ds-input">
+                <option>Новичок (первый серьезный поход)</option>
+                <option selected>Средний (ПВД с палатками, хайкинг до 20 км)</option>
+                <option>Опытный (многодневные автономы, перевалы 3000м+)</option>
+                <option>Альпинист (опыт кошек, ледоруба, связок)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- ШАГ 3: Снаряжение & Страховка              -->
+        <!-- ========================================== -->
+        <div id="step3" class="space-y-6 hidden">
+          <div class="border-b border-slate-100 dark:border-slate-800 pb-4">
+            <h2 class="text-xl font-bold text-slate-900 dark:text-white">Шаг 3: Снаряжение и безопасность</h2>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Укажите, требуется ли прокатная экипировка</p>
+          </div>
+
+          <div class="space-y-3">
+            <label class="text-xs font-bold uppercase text-slate-400">Вариант экипировки</label>
+            <div class="space-y-3">
+              <label class="has-[:checked]:border-brand-600 has-[:checked]:ring-2 has-[:checked]:ring-brand-500/20 p-4 rounded-2xl border-2 border-slate-200 dark:border-slate-700 cursor-pointer flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <input type="radio" name="gear" value="own" checked class="accent-brand-600">
+                  <span class="text-sm font-semibold">Использую всё своё личное снаряжение</span>
+                </div>
+                <span class="text-xs font-bold text-slate-400">0 ₽</span>
+              </label>
+
+              <label class="has-[:checked]:border-brand-600 has-[:checked]:ring-2 has-[:checked]:ring-brand-500/20 p-4 rounded-2xl border-2 border-slate-200 dark:border-slate-700 cursor-pointer flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <input type="radio" name="gear" value="rent_basic" class="accent-brand-600">
+                  <span class="text-sm font-semibold">Аренда зимней палатки и спальника (-15°C)</span>
+                </div>
+                <span class="text-xs font-bold text-brand-600 dark:text-brand-400">+4 500 ₽</span>
+              </label>
+
+              <label class="has-[:checked]:border-brand-600 has-[:checked]:ring-2 has-[:checked]:ring-brand-500/20 p-4 rounded-2xl border-2 border-slate-200 dark:border-slate-700 cursor-pointer flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <input type="radio" name="gear" value="rent_full" class="accent-brand-600">
+                  <span class="text-sm font-semibold">Полный комплект под ключ (палатка, спальник, рюкзак, палки, горелка)</span>
+                </div>
+                <span class="text-xs font-bold text-brand-600 dark:text-brand-400">+9 500 ₽</span>
+              </label>
             </div>
           </div>
 
-          
-          <div class="pt-2">
-            <label class="flex items-start space-x-3 cursor-pointer">
-              <input type="checkbox" id="termsCheck" required class="ds-checkbox mt-0.5">
+          <div class="pt-4 border-t border-slate-100 dark:border-slate-800 space-y-3">
+            <label class="text-xs font-bold uppercase text-slate-400">Дополнительные опции</label>
+            <label class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer">
+              <input type="checkbox" checked class="ds-checkbox">
+              <span class="text-sm">Оформить альпинистскую страховку SAR с вертолетной эвакуацией (+3 200 ₽)</span>
+            </label>
+            <label class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/60 cursor-pointer">
+              <input type="checkbox" checked class="ds-checkbox">
+              <span class="text-sm">Трансфер из аэропорта и обратно (+2 000 ₽)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- ШАГ 4: Подтверждение                       -->
+        <!-- ========================================== -->
+        <div id="step4" class="space-y-6 hidden">
+          <div class="border-b border-slate-100 dark:border-slate-800 pb-4">
+            <h2 class="text-xl font-bold text-slate-900 dark:text-white">Шаг 4: Подтверждение бронирования</h2>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Проверьте данные вашей заявки перед отправкой</p>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700 space-y-3 text-sm">
+            <div class="flex justify-between">
+              <span class="text-slate-500">Экспедиция:</span>
+              <span class="font-bold text-slate-900 dark:text-white">Зимняя Исландия: Ледники & Аврора</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-500">Даты:</span>
+              <span class="font-bold text-slate-900 dark:text-white">12 — 24 декабря 2026</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-500">Экипировка:</span>
+              <span class="font-bold text-slate-900 dark:text-white">Свое снаряжение</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-500">Страховка SAR:</span>
+              <span class="font-bold text-emerald-600">Включена</span>
+            </div>
+            <div class="pt-3 border-t border-slate-200 dark:border-slate-700 flex justify-between items-baseline">
+              <span class="font-bold text-base text-slate-900 dark:text-white">Итоговая стоимость:</span>
+              <span class="text-2xl font-black text-brand-600 dark:text-brand-400">148 200 ₽</span>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" required checked class="ds-checkbox mt-1">
               <span class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                Я соглашаюсь с <a href="#" class="text-brand-600 underline">Условиями использования</a> и подтверждаю обработку персональных данных в соответствии с регламентом GDPR.
+                Я подтверждаю, что ознакомлен с правилами техники безопасности в автономных горных походах и согласен на добавление в экспедиционный чат.
               </span>
             </label>
           </div>
         </div>
 
-        <!-- ============================================== -->
-        
-        <!-- has-[:checked] для выбора способа доставки    -->
-        <!-- ============================================== -->
-        <div id="step2" class="hidden space-y-6">
-          <div class="border-b border-slate-100 dark:border-slate-800 pb-4">
-            <h2 class="text-xl font-bold text-slate-900 dark:text-white">Шаг 2: Адресные и юридические данные</h2>
-            <p class="ds-body-sm mt-1">Необходимы для формирования бухгалтерских актов и биллинга.</p>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <div class="space-y-1.5">
-              <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300">Страна</label>
-              <select class="ds-input cursor-pointer">
-                <option>Российская Федерация</option>
-                <option>Казахстан</option>
-                <option>Беларусь</option>
-                <option>Армения</option>
-              </select>
-            </div>
-            <div class="space-y-1.5">
-              <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300">Город</label>
-              <input type="text" placeholder="Москва" class="ds-input">
-            </div>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
-            <div class="sm:col-span-2 space-y-1.5">
-              <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300">Улица, дом, офис</label>
-              <input type="text" placeholder="ул. Ленина, д. 42, оф. 501" class="ds-input">
-            </div>
-            <div class="space-y-1.5">
-              <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300">Почтовый индекс</label>
-              <input type="text" placeholder="101000" class="ds-input">
-            </div>
-          </div>
-
-          <!-- Способ доставки физических документов (has-[:checked]) -->
-          <div class="space-y-3 pt-2">
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-400">Получение оригиналов закрывающих документов</label>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <label class="flex items-center justify-between p-4 rounded-2xl border-2 border-slate-200 dark:border-slate-700 has-[:checked]:border-brand-500 has-[:checked]:bg-brand-50/50 dark:has-[:checked]:bg-brand-950/40 cursor-pointer transition">
-                <div>
-                  <div class="font-bold text-sm text-slate-900 dark:text-white">ЭДО (Диадок / СБИС)</div>
-                  <div class="text-xs text-slate-400">Мгновенная доставка документов</div>
-                </div>
-                <input type="radio" name="deliveryMethod" checked class="ds-checkbox">
-              </label>
-
-              <label class="flex items-center justify-between p-4 rounded-2xl border-2 border-slate-200 dark:border-slate-700 has-[:checked]:border-brand-500 has-[:checked]:bg-brand-50/50 dark:has-[:checked]:bg-brand-950/40 cursor-pointer transition">
-                <div>
-                  <div class="font-bold text-sm text-slate-900 dark:text-white">Курьерская доставка</div>
-                  <div class="text-xs text-slate-400">1-2 рабочих дня по адресу</div>
-                </div>
-                <input type="radio" name="deliveryMethod" class="ds-checkbox">
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <!-- ============================================== -->
-        
-        <!-- has-[:checked] для способов оплаты             -->
-        <!-- ============================================== -->
-        <div id="step3" class="hidden space-y-6">
-          <div class="border-b border-slate-100 dark:border-slate-800 pb-4">
-            <h2 class="text-xl font-bold text-slate-900 dark:text-white">Шаг 3: Выбор метода оплаты</h2>
-            <p class="ds-body-sm mt-1">Первые 14 дней бесплатно. Списание произойдет только после окончания пробного периода.</p>
-          </div>
-
-          <!-- Выбор способа оплаты с has-[:checked] -->
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <label class="p-4 rounded-2xl border-2 border-slate-200 dark:border-slate-700 has-[:checked]:border-brand-500 has-[:checked]:bg-brand-50/50 dark:has-[:checked]:bg-brand-950/40 cursor-pointer transition flex flex-col justify-between space-y-3">
-              <div class="flex items-center justify-between">
-                <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
-                <input type="radio" name="paymentType" checked class="ds-checkbox">
-              </div>
-              <div class="font-bold text-sm text-slate-900 dark:text-white">Банковская карта</div>
-            </label>
-
-            <label class="p-4 rounded-2xl border-2 border-slate-200 dark:border-slate-700 has-[:checked]:border-brand-500 has-[:checked]:bg-brand-50/50 dark:has-[:checked]:bg-brand-950/40 cursor-pointer transition flex flex-col justify-between space-y-3">
-              <div class="flex items-center justify-between">
-                <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/></svg>
-                <input type="radio" name="paymentType" class="ds-checkbox">
-              </div>
-              <div class="font-bold text-sm text-slate-900 dark:text-white">СБП по QR-коду</div>
-            </label>
-
-            <label class="p-4 rounded-2xl border-2 border-slate-200 dark:border-slate-700 has-[:checked]:border-brand-500 has-[:checked]:bg-brand-50/50 dark:has-[:checked]:bg-brand-950/40 cursor-pointer transition flex flex-col justify-between space-y-3">
-              <div class="flex items-center justify-between">
-                <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                <input type="radio" name="paymentType" class="ds-checkbox">
-              </div>
-              <div class="font-bold text-sm text-slate-900 dark:text-white">Счет для юрлиц</div>
-            </label>
-          </div>
-
-          <!-- Поля банковской карты -->
-          <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/50 space-y-4 border border-slate-200/60 dark:border-slate-700/60">
-            <div class="space-y-1.5">
-              <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300">Номер карты</label>
-              <div class="relative">
-                <input type="text" placeholder="4276 •••• •••• 9812" class="ds-input font-mono">
-                <span class="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-slate-400 text-xs font-bold">VISA / MIR</span>
-              </div>
-            </div>
-
-            <div class="grid grid-cols-2 gap-4">
-              <div class="space-y-1.5">
-                <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300">Срок (ММ/ГГ)</label>
-                <input type="text" placeholder="12/28" class="ds-input font-mono">
-              </div>
-              <div class="space-y-1.5">
-                <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300">CVC / CVV</label>
-                <input type="password" placeholder="•••" maxlength="4" class="ds-input font-mono">
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ============================================== -->
-        
-        <!-- Сводка и Submit с loading состоянием           -->
-        <!-- ============================================== -->
-        <div id="step4" class="hidden space-y-6">
-          <div class="border-b border-slate-100 dark:border-slate-800 pb-4">
-            <h2 class="text-xl font-bold text-slate-900 dark:text-white">Шаг 4: Финальное подтверждение</h2>
-            <p class="ds-body-sm mt-1">Проверьте выбранные параметры перед запуском рабочей области.</p>
-          </div>
-
-          <div class="p-6 rounded-2xl bg-brand-50/60 dark:bg-brand-950/40 border border-brand-200 dark:border-brand-800 space-y-4">
-            <div class="flex items-center justify-between pb-3 border-b border-brand-200/60 dark:border-brand-800/60">
-              <span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Выбранный тариф</span>
-              <span class="ds-badge ds-badge-brand">Pro Team (49 BYN/мес)</span>
-            </div>
-            <div class="flex items-center justify-between pb-3 border-b border-brand-200/60 dark:border-brand-800/60">
-              <span class="text-sm font-semibold text-slate-700 dark:text-slate-300">Бесплатный период</span>
-              <span class="font-bold text-emerald-600 dark:text-emerald-400 text-sm">14 дней (до 11 ноября)</span>
-            </div>
-            <div class="flex items-center justify-between">
-              <span class="text-sm font-bold text-slate-900 dark:text-white">Сумма к оплате сегодня</span>
-              <span class="text-2xl font-black text-brand-600 dark:text-brand-400">0.00 BYN</span>
-            </div>
-          </div>
-
-          <div class="ds-alert ds-alert-info">
-            <svg class="w-5 h-5 shrink-0 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            <div class="text-xs">На ваш email отправлена ссылка для мгновенной верификации учетной записи.</div>
-          </div>
-        </div>
-
-        <!-- ============================================== -->
-        
-        <!-- Submit с loading-состоянием через group (2.4) -->
-        <!-- ============================================== -->
-        <div class="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+        <!-- Кнопки управления шагами -->
+        <div class="pt-8 mt-8 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center">
           <button type="button" id="prevBtn" class="ds-btn ds-btn-md ds-btn-secondary invisible">
-            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-            Назад
+            ← Назад
           </button>
-
-          <button type="button" id="nextBtn" class="ds-btn ds-btn-md ds-btn-primary shadow-lg shadow-brand-500/25">
-            <span>Далее</span>
-            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-          </button>
-
-          
-          <button type="submit" id="submitBtn" class="group hidden ds-btn ds-btn-md ds-btn-primary shadow-lg shadow-brand-500/30 relative">
-            <span class="group-data-[loading=true]:opacity-0 transition-opacity">Завершить регистрацию</span>
-            <span class="hidden group-data-[loading=true]:inline-flex items-center gap-2 absolute">
-              <svg class="animate-spin h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-              <span>Создание аккаунта...</span>
-            </span>
+          <button type="button" id="nextBtn" class="ds-btn ds-btn-md ds-btn-sunset font-bold">
+            Далее: Данные →
           </button>
         </div>
 
@@ -367,7 +300,7 @@
   </main>
 
   <script type="module">
-    import { initTheme } from '/src/js/main.js';
+    import { initTheme } from '../src/js/main.js';
     initTheme();
 
     let currentStep = 1;
@@ -375,104 +308,54 @@
 
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
-    const submitBtn = document.getElementById('submitBtn');
-    const progressBar = document.getElementById('progressBar');
 
-    function updateStep(step) {
-      currentStep = step;
-
-      // Обновляем видимость шагов
+    function updateStepUI() {
+      // Hide all steps
       for (let i = 1; i <= totalSteps; i++) {
-        const stepEl = document.getElementById('step' + i);
-        const indEl = document.getElementById('stepIndicator' + i);
-        if (stepEl) {
-          stepEl.classList.toggle('hidden', i !== currentStep);
-        }
-        if (indEl) {
-          if (i <= currentStep) {
-            indEl.className = 'flex items-center gap-3 text-brand-600 dark:text-brand-400 font-bold';
-            indEl.querySelector('div').className = 'w-8 h-8 rounded-xl bg-brand-600 text-white flex items-center justify-center font-bold text-xs shadow-md shadow-brand-500/20';
-          } else {
-            indEl.className = 'flex items-center gap-3 text-slate-400 dark:text-slate-500 font-medium';
-            indEl.querySelector('div').className = 'w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 flex items-center justify-center font-bold text-xs';
-          }
+        document.getElementById(`step${i}`).classList.toggle('hidden', i !== currentStep);
+        
+        const ind = document.getElementById(`stepIndicator${i}`);
+        if (i === currentStep) {
+          ind.className = 'flex items-center gap-3 text-brand-600 dark:text-brand-400';
+          ind.querySelector('div').className = 'w-8 h-8 rounded-xl bg-brand-600 text-white flex items-center justify-center font-bold text-xs shadow-md';
+        } else if (i < currentStep) {
+          ind.className = 'flex items-center gap-3 text-emerald-600 dark:text-emerald-400';
+          ind.querySelector('div').className = 'w-8 h-8 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 flex items-center justify-center font-bold text-xs';
+        } else {
+          ind.className = 'flex items-center gap-3 text-slate-400 dark:text-slate-500';
+          ind.querySelector('div').className = 'w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 flex items-center justify-center font-bold text-xs';
         }
       }
 
-      // Обновляем прогресс-бар
-      const progressPercent = (currentStep / totalSteps) * 100;
-      progressBar.style.width = progressPercent + '%';
-
-      // Кнопки Назад / Далее / Submit
+      // Prev button visibility
       prevBtn.classList.toggle('invisible', currentStep === 1);
-      nextBtn.classList.toggle('hidden', currentStep === totalSteps);
-      submitBtn.classList.toggle('hidden', currentStep !== totalSteps);
+
+      // Next button text
+      if (currentStep === totalSteps) {
+        nextBtn.innerHTML = 'Забронировать место ✓';
+        nextBtn.className = 'ds-btn ds-btn-md ds-btn-primary font-bold';
+      } else {
+        const nextLabels = ['', 'Далее: Данные →', 'Далее: Снаряжение →', 'Далее: Подтверждение →'];
+        nextBtn.innerHTML = nextLabels[currentStep];
+        nextBtn.className = 'ds-btn ds-btn-md ds-btn-sunset font-bold';
+      }
     }
 
-    nextBtn?.addEventListener('click', () => {
+    nextBtn.addEventListener('click', () => {
       if (currentStep < totalSteps) {
-        updateStep(currentStep + 1);
-      }
-    });
-
-    prevBtn?.addEventListener('click', () => {
-      if (currentStep > 1) {
-        updateStep(currentStep - 1);
-      }
-    });
-
-    // Индикатор силы пароля
-    const passInput = document.getElementById('password');
-    const b1 = document.getElementById('bar1');
-    const b2 = document.getElementById('bar2');
-    const b3 = document.getElementById('bar3');
-    const b4 = document.getElementById('bar4');
-    const strengthText = document.getElementById('strengthText');
-
-    passInput?.addEventListener('input', (e) => {
-      const val = e.target.value;
-      let score = 0;
-      if (val.length >= 8) score++;
-      if (/[A-Z]/.test(val)) score++;
-      if (/[0-9]/.test(val)) score++;
-      if (/[^A-Za-z0-9]/.test(val)) score++;
-
-      const bars = [b1, b2, b3, b4];
-      bars.forEach(b => b.className = 'h-1.5 flex-1 rounded-full bg-slate-200 dark:bg-slate-700 transition-colors');
-
-      if (score === 0 && val.length > 0) {
-        b1.className = 'h-1.5 flex-1 rounded-full bg-rose-500';
-        strengthText.textContent = 'Слишком простой пароль';
-      } else if (score === 1) {
-        b1.className = 'h-1.5 flex-1 rounded-full bg-rose-500';
-        strengthText.textContent = 'Слабый пароль';
-      } else if (score === 2) {
-        b1.className = b2.className = 'h-1.5 flex-1 rounded-full bg-amber-500';
-        strengthText.textContent = 'Средняя надежность';
-      } else if (score === 3) {
-        b1.className = b2.className = b3.className = 'h-1.5 flex-1 rounded-full bg-emerald-500';
-        strengthText.textContent = 'Хороший пароль';
-      } else if (score >= 4) {
-        bars.forEach(b => b.className = 'h-1.5 flex-1 rounded-full bg-emerald-500');
-        strengthText.textContent = 'Максимальная надежность 💪';
+        currentStep++;
+        updateStepUI();
       } else {
-        strengthText.textContent = 'Введите не менее 8 символов';
+        alert('Поздравляем! Ваша заявка в экспедицию принята. Наш координатор свяжется с вами в Telegram в течение 2 часов.');
+        window.location.href = '../index.html';
       }
     });
 
-    // Обработка отправки формы со спиннером
-    const form = document.getElementById('wizardForm');
-    form?.addEventListener('submit', (e) => {
-      e.preventDefault();
-      submitBtn.setAttribute('data-loading', 'true');
-      submitBtn.disabled = true;
-
-      setTimeout(() => {
-        submitBtn.removeAttribute('data-loading');
-        submitBtn.disabled = false;
-        alert('🎉 Поздравляем! Ваш аккаунт успешно активирован. Перенаправляем в дашборд...');
-        window.location.href = '/pages/dashboard.html';
-      }, 1500);
+    prevBtn.addEventListener('click', () => {
+      if (currentStep > 1) {
+        currentStep--;
+        updateStepUI();
+      }
     });
   </script>
 </body>

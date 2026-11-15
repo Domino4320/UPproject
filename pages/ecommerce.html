@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nexus Market — Каталог товаров</title>
+  <title>TerraNova Store — Снаряжение & Авторские экспедиции</title>
   <script>
     (function() {
       const savedTheme = localStorage.getItem('theme');
@@ -15,7 +15,7 @@
       }
     })();
   </script>
-  <link rel="stylesheet" href="/src/css/style.css">
+  <link rel="stylesheet" href="../src/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -23,19 +23,21 @@
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col antialiased">
 
   <!-- ============================================== -->
-  <!-- 1. Навбар магазина                              -->
+  <!-- 1. Навбар магазина снаряжения                   -->
   <!-- ============================================== -->
   <header class="sticky top-0 z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
       
       <!-- Логотип -->
       <a href="../" class="flex items-center space-x-3 group shrink-0">
-        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-600 to-pink-500 flex items-center justify-center text-white shadow-lg shadow-brand-500/25 group-hover:scale-105 transition-transform">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-600 via-teal-500 to-sunset-500 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+          </svg>
         </div>
         <div class="flex flex-col">
-          <span class="text-lg font-black tracking-tight text-slate-900 dark:text-white">NexusMarket</span>
-          <span class="text-[10px] font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-widest -mt-1">Online Store</span>
+          <span class="text-lg font-black tracking-tight text-slate-900 dark:text-white">TerraNova Gear</span>
+          <span class="text-[10px] font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-widest -mt-1">Outdoor & Expeditions</span>
         </div>
       </a>
 
@@ -45,16 +47,16 @@
           <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
           </span>
-          <input type="text" placeholder="Поиск девайсов, аксессуаров, техники..." class="ds-input pl-10 py-2 text-sm bg-slate-100 dark:bg-slate-800 border-transparent focus:bg-white dark:focus:bg-slate-900 focus:border-brand-500">
+          <input type="text" placeholder="Поиск палаток, рюкзаков, мембран, туров..." class="ds-input pl-10 py-2 text-sm bg-slate-100 dark:bg-slate-800 border-transparent focus:bg-white dark:focus:bg-slate-900 focus:border-brand-500">
         </div>
       </div>
 
       <!-- Действия навбара -->
       <div class="flex items-center gap-3 sm:gap-4 shrink-0">
-        <!-- Переключатель скелетона (для демонстрации 4.3) -->
+        <!-- Демо-переключатель скелетона -->
         <button id="toggleSkeletonBtn" class="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition whitespace-nowrap">
-          <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-          <span>Демо-режим</span>
+          <span class="w-2 h-2 rounded-full bg-sunset-500 animate-pulse"></span>
+          <span>Демо Skeleton</span>
         </button>
 
         <!-- Тема -->
@@ -66,324 +68,402 @@
         <!-- Корзина -->
         <button class="relative p-2.5 rounded-xl bg-brand-50 dark:bg-brand-950/60 text-brand-600 dark:text-brand-300 hover:bg-brand-100 dark:hover:bg-brand-900/60 transition shrink-0">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-          <span id="cartCount" class="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-pink-500 text-white text-[11px] font-bold flex items-center justify-center shadow-md">3</span>
+          <span id="cartCount" class="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-sunset-500 text-white text-[11px] font-bold flex items-center justify-center shadow-md">2</span>
         </button>
 
-        <a href="../" class="ds-btn ds-btn-sm ds-btn-secondary hidden sm:inline-flex whitespace-nowrap">Портал</a>
+        <a href="../" class="ds-btn ds-btn-sm ds-btn-secondary hidden sm:inline-flex whitespace-nowrap">Блог</a>
       </div>
     </div>
   </header>
 
   <!-- ============================================== -->
-  <!-- 2. Главная страница каталога                    -->
+  <!-- 2. Главная витрина товаров                      -->
   <!-- ============================================== -->
   <main class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 space-y-8">
     
-    <!-- Заголовок и мобильная кнопка фильтров -->
+    <!-- Заголовок -->
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
       <div>
-        <span class="ds-badge ds-badge-brand mb-2">Каталог товаров</span>
-        <h1 class="ds-h1 text-2xl sm:text-3xl">Каталог гаджетов & девайсов</h1>
-        <p class="ds-body-sm mt-1">Адаптивная витрина товаров с фильтрацией, актуальными скидками и быстрым оформлением заказа.</p>
+        <span class="ds-badge ds-badge-brand mb-2">Проверенное снаряжение</span>
+        <h1 class="ds-h1 text-2xl sm:text-3xl">Экипировка & Авторские туры</h1>
+        <p class="ds-body-sm mt-1">Только то, что мы проверили в экстремальных походах по Исландии, Патагонии и Камчатке.</p>
       </div>
 
       <div class="flex items-center gap-3">
-        <!-- Кнопка мобильных фильтров (открывает нижний Drawer) -->
+        <!-- Кнопка мобильных фильтров -->
         <button id="openMobileDrawerBtn" class="lg:hidden flex-1 sm:flex-initial ds-btn ds-btn-md ds-btn-secondary flex items-center justify-center gap-2">
           <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
-          <span>Фильтры (3)</span>
+          <span>Фильтры (4)</span>
         </button>
 
-        <!-- Сортировка Dropdown -->
+        <!-- Сортировка -->
         <div class="flex items-center gap-2">
           <label class="text-xs font-semibold text-slate-500 whitespace-nowrap hidden sm:inline">Сортировать:</label>
           <select class="ds-input py-2 text-xs w-auto font-medium cursor-pointer">
-            <option>По популярности</option>
-            <option>Сначала дешевле</option>
-            <option>Сначала дороже</option>
-            <option>Новинки сезона</option>
+            <option>Сначала проверенные в походах</option>
+            <option>По возрастанию цены</option>
+            <option>По снижению цены</option>
+            <option>По рейтингу гидов</option>
           </select>
         </div>
       </div>
     </div>
 
-    <!-- Основной лэйаут: Фильтры слева (десктоп) + Сетка товаров справа -->
+    <!-- Основной контент (Сайдбар фильтров + Сетка) -->
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
       
-      <!-- ============================================== -->
-      
-      <!-- ============================================== -->
-      <aside class="hidden lg:block space-y-6 ds-card p-6 sticky top-28">
+      <!-- Десктопный сайдбар фильтров -->
+      <aside class="hidden lg:block space-y-6 bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-sm sticky top-28">
+        
         <div class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800">
-          <h3 class="font-bold text-slate-900 dark:text-white">Параметры фильтрации</h3>
-          <button class="text-xs text-brand-600 hover:underline">Сбросить</button>
+          <h3 class="font-bold text-slate-900 dark:text-white text-base">Фильтры экипировки</h3>
+          <button class="text-xs text-brand-600 dark:text-brand-400 font-semibold hover:underline">Сбросить</button>
         </div>
 
-        <!-- Фильтр по категории -->
-        <div class="space-y-2">
-          <label class="block text-xs font-bold uppercase tracking-wider text-slate-400">Категория</label>
-          <div class="space-y-1.5">
-            <label class="flex items-center space-x-2.5 text-sm cursor-pointer">
+        <!-- Категории -->
+        <div class="space-y-3">
+          <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Категория</label>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-2.5 cursor-pointer">
               <input type="checkbox" checked class="ds-checkbox">
-              <span>Смартфоны & Гаджеты</span>
+              <span>Все категории</span>
             </label>
-            <label class="flex items-center space-x-2.5 text-sm cursor-pointer">
+            <label class="flex items-center gap-2.5 cursor-pointer">
               <input type="checkbox" checked class="ds-checkbox">
-              <span>Ноутбуки & Ультрабуки</span>
+              <span>Палатки & Тенты</span>
             </label>
-            <label class="flex items-center space-x-2.5 text-sm cursor-pointer">
-              <input type="checkbox" class="ds-checkbox">
-              <span>Аудио & Наушники</span>
+            <label class="flex items-center gap-2.5 cursor-pointer">
+              <input type="checkbox" checked class="ds-checkbox">
+              <span>Рюкзаки (45–85 л)</span>
             </label>
-            <label class="flex items-center space-x-2.5 text-sm cursor-pointer">
-              <input type="checkbox" class="ds-checkbox">
-              <span>Носимая электроника</span>
+            <label class="flex items-center gap-2.5 cursor-pointer">
+              <input type="checkbox" checked class="ds-checkbox">
+              <span>Спальники & Коврики</span>
+            </label>
+            <label class="flex items-center gap-2.5 cursor-pointer">
+              <input type="checkbox" checked class="ds-checkbox">
+              <span>Мембраны & Термобелье</span>
+            </label>
+            <label class="flex items-center gap-2.5 cursor-pointer">
+              <input type="checkbox" checked class="ds-checkbox">
+              <span>Спутники & Навигация</span>
             </label>
           </div>
         </div>
 
-        <!-- Слайдер цены (Цена-слайдер) -->
+        <!-- Ползунок бюджета -->
         <div class="space-y-3 pt-4 border-t border-slate-100 dark:border-slate-800">
-          <div class="flex justify-between items-center text-xs font-bold uppercase tracking-wider text-slate-400">
-            <span>Ценовой диапазон</span>
-            <span id="priceDisplay" class="text-brand-600 font-mono text-sm">850 BYN</span>
+          <div class="flex justify-between items-center">
+            <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Бюджет (до)</label>
+            <span class="text-xs font-bold text-brand-600 dark:text-brand-400">120 000 ₽</span>
           </div>
-          <input type="range" id="priceRange" min="100" max="3000" step="50" value="850" class="w-full accent-brand-600 cursor-pointer">
-          <div class="flex justify-between text-xs text-slate-400">
-            <span>100 BYN</span>
-            <span>3,000+ BYN</span>
-          </div>
-        </div>
-
-        <!-- Теги фильтрации -->
-        <div class="space-y-2 pt-4 border-t border-slate-100 dark:border-slate-800">
-          <label class="block text-xs font-bold uppercase tracking-wider text-slate-400">Теги</label>
-          <div class="flex flex-wrap gap-1.5">
-            <span class="cursor-pointer px-2.5 py-1 rounded-lg text-xs font-medium bg-brand-50 text-brand-700 dark:bg-brand-950 dark:text-brand-300 border border-brand-200 dark:border-brand-800">Хит продаж</span>
-            <span class="cursor-pointer px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-brand-50">Скидка -20%</span>
-            <span class="cursor-pointer px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-brand-50">Беспроводные</span>
-            <span class="cursor-pointer px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-brand-50">Новинка 2026</span>
+          <input type="range" min="3000" max="250000" value="120000" class="w-full accent-brand-600 cursor-pointer">
+          <div class="flex justify-between text-[11px] text-slate-400">
+            <span>3 000 ₽</span>
+            <span>250 000 ₽</span>
           </div>
         </div>
 
-        <!-- Дополнительные опции с has-[:checked] -->
-        <div class="space-y-2 pt-4 border-t border-slate-100 dark:border-slate-800">
-          <label class="block text-xs font-bold uppercase tracking-wider text-slate-400">Доставка</label>
-          <label class="flex items-center justify-between p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 has-[:checked]:border-brand-500 has-[:checked]:bg-brand-50/50 dark:has-[:checked]:bg-brand-950/30 cursor-pointer transition">
-            <span class="text-xs font-medium text-slate-700 dark:text-slate-200">Быстрая доставка за 2 часа</span>
-            <input type="checkbox" checked class="ds-checkbox">
-          </label>
+        <!-- Особенности -->
+        <div class="space-y-3 pt-4 border-t border-slate-100 dark:border-slate-800">
+          <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Особенности</label>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-center gap-2.5 cursor-pointer">
+              <input type="checkbox" checked class="ds-checkbox">
+              <span>Ультралегкий (Ultralight)</span>
+            </label>
+            <label class="flex items-center gap-2.5 cursor-pointer">
+              <input type="checkbox" checked class="ds-checkbox">
+              <span>Мембрана Gore-Tex Pro</span>
+            </label>
+            <label class="flex items-center gap-2.5 cursor-pointer">
+              <input type="checkbox" class="ds-checkbox">
+              <span>Скидка подписчикам PRO</span>
+            </label>
+          </div>
         </div>
 
-        <!-- Рекламный блок в сайдбаре фильтров -->
-        <div class="pt-4 border-t border-slate-100 dark:border-slate-800">
-          <div data-vue-ad-slot data-size="sidebar" data-label="Здесь могла бы быть ваша реклама" data-sublabel="Партнёрский слот для продвижения вашего бренда" data-closable="true"></div>
-        </div>
       </aside>
 
-      <!-- ============================================== -->
-      <!-- 4. Сетка карточек товаров     -->
-      <!-- Адаптив: 1 колонка → 2 → 3 → 4                 -->
-      <!-- @container для Container Queries               -->
-      <!-- ============================================== -->
-      <div class="lg:col-span-3 space-y-8">
+      <!-- Сетка карточек товаров (3 колонки внутри 4-колоночного грида) -->
+      <div class="lg:col-span-3 space-y-6">
         
-        <!-- Skeleton Container (включается кнопкой теста) -->
-        <div id="skeletonGrid" class="hidden grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-          <div class="ds-card p-4 space-y-4 animate-pulse">
-            <div class="w-full aspect-square bg-slate-200 dark:bg-slate-800 rounded-2xl"></div>
-            <div class="h-4 bg-slate-200 dark:bg-slate-800 rounded-full w-3/4"></div>
-            <div class="h-3 bg-slate-200 dark:bg-slate-800 rounded-full w-1/2"></div>
-            <div class="flex justify-between items-center pt-2">
-              <div class="h-6 bg-slate-200 dark:bg-slate-800 rounded-lg w-1/3"></div>
-              <div class="h-9 bg-slate-200 dark:bg-slate-800 rounded-xl w-1/3"></div>
-            </div>
+        <!-- Скелетон контейнер (показывается при клике на Демо) -->
+        <div id="skeletonContainer" class="hidden grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+          <div class="bg-white dark:bg-slate-900 rounded-3xl p-5 border border-slate-200 dark:border-slate-800 animate-pulse space-y-4">
+            <div class="aspect-square bg-slate-200 dark:bg-slate-800 rounded-2xl"></div>
+            <div class="h-4 bg-slate-200 dark:bg-slate-800 rounded w-3/4"></div>
+            <div class="h-3 bg-slate-200 dark:bg-slate-800 rounded w-1/2"></div>
+            <div class="h-8 bg-slate-200 dark:bg-slate-800 rounded-xl"></div>
           </div>
-          <div class="ds-card p-4 space-y-4 animate-pulse">
-            <div class="w-full aspect-square bg-slate-200 dark:bg-slate-800 rounded-2xl"></div>
-            <div class="h-4 bg-slate-200 dark:bg-slate-800 rounded-full w-3/4"></div>
-            <div class="h-3 bg-slate-200 dark:bg-slate-800 rounded-full w-1/2"></div>
-            <div class="flex justify-between items-center pt-2">
-              <div class="h-6 bg-slate-200 dark:bg-slate-800 rounded-lg w-1/3"></div>
-              <div class="h-9 bg-slate-200 dark:bg-slate-800 rounded-xl w-1/3"></div>
-            </div>
+          <div class="bg-white dark:bg-slate-900 rounded-3xl p-5 border border-slate-200 dark:border-slate-800 animate-pulse space-y-4">
+            <div class="aspect-square bg-slate-200 dark:bg-slate-800 rounded-2xl"></div>
+            <div class="h-4 bg-slate-200 dark:bg-slate-800 rounded w-3/4"></div>
+            <div class="h-3 bg-slate-200 dark:bg-slate-800 rounded w-1/2"></div>
+            <div class="h-8 bg-slate-200 dark:bg-slate-800 rounded-xl"></div>
           </div>
-          <div class="ds-card p-4 space-y-4 animate-pulse">
-            <div class="w-full aspect-square bg-slate-200 dark:bg-slate-800 rounded-2xl"></div>
-            <div class="h-4 bg-slate-200 dark:bg-slate-800 rounded-full w-3/4"></div>
-            <div class="h-3 bg-slate-200 dark:bg-slate-800 rounded-full w-1/2"></div>
-            <div class="flex justify-between items-center pt-2">
-              <div class="h-6 bg-slate-200 dark:bg-slate-800 rounded-lg w-1/3"></div>
-              <div class="h-9 bg-slate-200 dark:bg-slate-800 rounded-xl w-1/3"></div>
-            </div>
+          <div class="bg-white dark:bg-slate-900 rounded-3xl p-5 border border-slate-200 dark:border-slate-800 animate-pulse space-y-4">
+            <div class="aspect-square bg-slate-200 dark:bg-slate-800 rounded-2xl"></div>
+            <div class="h-4 bg-slate-200 dark:bg-slate-800 rounded w-3/4"></div>
+            <div class="h-3 bg-slate-200 dark:bg-slate-800 rounded w-1/2"></div>
+            <div class="h-8 bg-slate-200 dark:bg-slate-800 rounded-xl"></div>
           </div>
         </div>
 
-        
-        <div id="productsGrid" class="@container grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+        <!-- Настоящая сетка товаров -->
+        <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
           
-          <!-- Товар 1 -->
-          <article class="ds-card p-4 flex flex-col justify-between group hover:shadow-xl hover:border-brand-500/50 transition-all duration-300">
-            <div>
-              <div class="relative w-full aspect-square rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800 mb-4">
-                <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=600&h=600&q=80" alt="Смарт-часы Ultra" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                <span class="absolute top-3 left-3 ds-badge ds-badge-brand">Хит</span>
-                <button class="absolute top-3 right-3 p-2 rounded-xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm text-slate-500 hover:text-rose-500 transition shadow">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-                </button>
-              </div>
-              <div class="text-xs text-brand-600 font-semibold mb-1">Флагманская серия</div>
-              <h3 class="font-bold text-slate-900 dark:text-white text-base group-hover:text-brand-600 transition">Nexus Watch Ultra Titanium</h3>
-              <p class="ds-body-sm text-xs mt-1 line-clamp-2">Корпус из титана, AMOLED экран 120Hz, датчик кислорода и автономность до 7 дней.</p>
+          <!-- Товар 1: Экспедиционная палатка -->
+          <article class="group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between p-4">
+            <div class="relative aspect-square rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800">
+              <img 
+                src="https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=600&q=80" 
+                alt="Экспедиционная палатка" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              >
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-brand-600 text-white shadow-sm">
+                Тест в Исландии
+              </span>
+              <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded-full text-[11px] font-bold bg-black/60 text-white backdrop-blur-sm">
+                1.45 кг
+              </span>
             </div>
 
-            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
-              <div>
-                <span class="text-xs text-slate-400 line-through">429 BYN</span>
-                <div class="text-lg font-extrabold text-slate-900 dark:text-white">349 BYN</div>
+            <div class="pt-4 space-y-2">
+              <div class="flex items-center justify-between text-xs text-slate-400">
+                <span>Палатки & Тенты</span>
+                <span class="text-amber-500 font-bold">★ 4.98</span>
               </div>
-              <button onclick="addToCart(this)" class="ds-btn ds-btn-sm ds-btn-primary group-hover:shadow-lg group-hover:shadow-brand-500/25">
-                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+              <h3 class="font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                Штормовая палатка TerraNova StormShield 2P
+              </h3>
+              <p class="text-xs text-slate-500 line-clamp-2">
+                Двухместная палатка с дугами из авиационного дюраля DAC, ветроустойчивость до 30 м/с и водяной столб 5 000 мм.
+              </p>
+            </div>
+
+            <div class="pt-4 mt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <div>
+                <span class="text-[11px] text-slate-400 block">Клубная цена</span>
+                <span class="text-lg font-black text-slate-900 dark:text-white">42 900 ₽</span>
+              </div>
+              <button class="ds-btn ds-btn-sm ds-btn-primary" onclick="alert('Товар добавлен в корзину!')">
                 В корзину
               </button>
             </div>
           </article>
 
-          <!-- Товар 2 -->
-          <article class="ds-card p-4 flex flex-col justify-between group hover:shadow-xl hover:border-brand-500/50 transition-all duration-300">
-            <div>
-              <div class="relative w-full aspect-square rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800 mb-4">
-                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&h=600&q=80" alt="Беспроводные наушники" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                <span class="absolute top-3 left-3 ds-badge ds-badge-success">-15%</span>
-              </div>
-              <div class="text-xs text-emerald-600 font-semibold mb-1">Hi-Res Audio</div>
-              <h3 class="font-bold text-slate-900 dark:text-white text-base group-hover:text-brand-600 transition">Aura Studio ANC Headphones</h3>
-              <p class="ds-body-sm text-xs mt-1 line-clamp-2">Активное шумоподавление нового поколения, пространственный звук Spatial 3D.</p>
+          <!-- Товар 2: Треккинговый рюкзак -->
+          <article class="group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between p-4">
+            <div class="relative aspect-square rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800">
+              <img 
+                src="https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=600&q=80" 
+                alt="Треккинговый рюкзак" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              >
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-sunset-500 text-white shadow-sm">
+                Топ продаж
+              </span>
+              <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded-full text-[11px] font-bold bg-black/60 text-white backdrop-blur-sm">
+                65 + 10 L
+              </span>
             </div>
 
-            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
-              <div>
-                <span class="text-xs text-slate-400 line-through">249 BYN</span>
-                <div class="text-lg font-extrabold text-slate-900 dark:text-white">199 BYN</div>
+            <div class="pt-4 space-y-2">
+              <div class="flex items-center justify-between text-xs text-slate-400">
+                <span>Рюкзаки</span>
+                <span class="text-amber-500 font-bold">★ 4.95</span>
               </div>
-              <button onclick="addToCart(this)" class="ds-btn ds-btn-sm ds-btn-primary group-hover:shadow-lg group-hover:shadow-brand-500/25">
-                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+              <h3 class="font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                Экспедиционный рюкзак Arctic Pro 65L
+              </h3>
+              <p class="text-xs text-slate-500 line-clamp-2">
+                Анатомический каркас, продуманное распределение веса, съёмный клапан и влагозащитный чехол в комплекте.
+              </p>
+            </div>
+
+            <div class="pt-4 mt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <div>
+                <span class="text-[11px] text-slate-400 block">Клубная цена</span>
+                <span class="text-lg font-black text-slate-900 dark:text-white">28 500 ₽</span>
+              </div>
+              <button class="ds-btn ds-btn-sm ds-btn-primary" onclick="alert('Товар добавлен в корзину!')">
                 В корзину
               </button>
             </div>
           </article>
 
-          <!-- Товар 3 -->
-          <article class="ds-card p-4 flex flex-col justify-between group hover:shadow-xl hover:border-brand-500/50 transition-all duration-300">
-            <div>
-              <div class="relative w-full aspect-square rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800 mb-4">
-                <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&h=600&q=80" alt="Ультрабук Pro" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                <span class="absolute top-3 left-3 ds-badge ds-badge-warning">Премиум</span>
-              </div>
-              <div class="text-xs text-purple-600 font-semibold mb-1">Рабочая станция</div>
-              <h3 class="font-bold text-slate-900 dark:text-white text-base group-hover:text-brand-600 transition">QuantumBook Pro M3 Max</h3>
-              <p class="ds-body-sm text-xs mt-1 line-clamp-2">Liquid Retina XDR дисплей, 36GB объединенной памяти, 1TB SSD и до 22 часов работы.</p>
+          <!-- Товар 3: Спутниковый коммуникатор -->
+          <article class="group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between p-4">
+            <div class="relative aspect-square rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800">
+              <img 
+                src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80" 
+                alt="Спутниковый трекер" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              >
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-rose-600 text-white shadow-sm">
+                Безопасность SOS
+              </span>
+              <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded-full text-[11px] font-bold bg-black/60 text-white backdrop-blur-sm">
+                Iridium 100%
+              </span>
             </div>
 
-            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
-              <div>
-                <span class="text-xs text-slate-400">Гарантия 2 года</span>
-                <div class="text-lg font-extrabold text-slate-900 dark:text-white">2,199 BYN</div>
+            <div class="pt-4 space-y-2">
+              <div class="flex items-center justify-between text-xs text-slate-400">
+                <span>Навигация</span>
+                <span class="text-amber-500 font-bold">★ 5.0</span>
               </div>
-              <button onclick="addToCart(this)" class="ds-btn ds-btn-sm ds-btn-primary group-hover:shadow-lg group-hover:shadow-brand-500/25">
-                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+              <h3 class="font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                Спутниковый трекер inReach Mini 2
+              </h3>
+              <p class="text-xs text-slate-500 line-clamp-2">
+                Глобальное покрытие через спутники Иридиум, кнопка SOS спасателям GEOS и обмен СМС в любой точке тайги и океана.
+              </p>
+            </div>
+
+            <div class="pt-4 mt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <div>
+                <span class="text-[11px] text-slate-400 block">Клубная цена</span>
+                <span class="text-lg font-black text-slate-900 dark:text-white">49 900 ₽</span>
+              </div>
+              <button class="ds-btn ds-btn-sm ds-btn-primary" onclick="alert('Товар добавлен в корзину!')">
                 В корзину
               </button>
             </div>
           </article>
 
-          <!-- Товар 4 -->
-          <article class="ds-card p-4 flex flex-col justify-between group hover:shadow-xl hover:border-brand-500/50 transition-all duration-300">
-            <div>
-              <div class="relative w-full aspect-square rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800 mb-4">
-                <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=600&h=600&q=80" alt="Игровая мышь" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-              </div>
-              <div class="text-xs text-pink-600 font-semibold mb-1">Аксессуары</div>
-              <h3 class="font-bold text-slate-900 dark:text-white text-base group-hover:text-brand-600 transition">CyberGrip Wireless Mouse</h3>
-              <p class="ds-body-sm text-xs mt-1 line-clamp-2">Оптический сенсор 26,000 DPI, сверхлегкий вес 58г и оптические микропереключатели.</p>
+          <!-- Товар 4: Пуховый спальник -->
+          <article class="group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between p-4">
+            <div class="relative aspect-square rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800">
+              <img 
+                src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80" 
+                alt="Спальный мешок" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              >
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-teal-600 text-white shadow-sm">
+                Комфорт -15°C
+              </span>
+              <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded-full text-[11px] font-bold bg-black/60 text-white backdrop-blur-sm">
+                Гусиный пух 850 FP
+              </span>
             </div>
 
-            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
-              <div>
-                <span class="text-xs text-slate-400 line-through">89 BYN</span>
-                <div class="text-lg font-extrabold text-slate-900 dark:text-white">69 BYN</div>
+            <div class="pt-4 space-y-2">
+              <div class="flex items-center justify-between text-xs text-slate-400">
+                <span>Спальники</span>
+                <span class="text-amber-500 font-bold">★ 4.96</span>
               </div>
-              <button onclick="addToCart(this)" class="ds-btn ds-btn-sm ds-btn-primary group-hover:shadow-lg group-hover:shadow-brand-500/25">
-                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+              <h3 class="font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                Пуховый кокон Glacier Down -15
+              </h3>
+              <p class="text-xs text-slate-500 line-clamp-2">
+                Вес всего 980 г, гидрофобная пропитка пуха Nikwax, компрессионный мешок с защитой от дождя.
+              </p>
+            </div>
+
+            <div class="pt-4 mt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <div>
+                <span class="text-[11px] text-slate-400 block">Клубная цена</span>
+                <span class="text-lg font-black text-slate-900 dark:text-white">36 000 ₽</span>
+              </div>
+              <button class="ds-btn ds-btn-sm ds-btn-primary" onclick="alert('Товар добавлен в корзину!')">
                 В корзину
               </button>
             </div>
           </article>
 
-          <!-- Товар 5 -->
-          <article class="ds-card p-4 flex flex-col justify-between group hover:shadow-xl hover:border-brand-500/50 transition-all duration-300">
-            <div>
-              <div class="relative w-full aspect-square rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800 mb-4">
-                <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=600&h=600&q=80" alt="Монитор 4K" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                <span class="absolute top-3 left-3 ds-badge ds-badge-danger">Осталось 2 шт</span>
-              </div>
-              <div class="text-xs text-brand-600 font-semibold mb-1">Дисплеи</div>
-              <h3 class="font-bold text-slate-900 dark:text-white text-base group-hover:text-brand-600 transition">VisionCraft 32" 4K OLED</h3>
-              <p class="ds-body-sm text-xs mt-1 line-clamp-2">Истинный черный цвет, 99.5% DCI-P3, поддержка Thunderbolt 4 с зарядкой до 96W.</p>
+          <!-- Товар 5: Треккинговые палки Карбон -->
+          <article class="group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between p-4">
+            <div class="relative aspect-square rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800">
+              <img 
+                src="https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=600&q=80" 
+                alt="Треккинговые палки" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              >
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-brand-600 text-white shadow-sm">
+                100% Карбон
+              </span>
+              <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded-full text-[11px] font-bold bg-black/60 text-white backdrop-blur-sm">
+                390 г пара
+              </span>
             </div>
 
-            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
-              <div>
-                <span class="text-xs text-slate-400">В наличии</span>
-                <div class="text-lg font-extrabold text-slate-900 dark:text-white">899 BYN</div>
+            <div class="pt-4 space-y-2">
+              <div class="flex items-center justify-between text-xs text-slate-400">
+                <span>Палки & Опоры</span>
+                <span class="text-amber-500 font-bold">★ 4.93</span>
               </div>
-              <button onclick="addToCart(this)" class="ds-btn ds-btn-sm ds-btn-primary group-hover:shadow-lg group-hover:shadow-brand-500/25">
-                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+              <h3 class="font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                Карбоновые палки Trail Ultra-Lite
+              </h3>
+              <p class="text-xs text-slate-500 line-clamp-2">
+                Замки FlickLock Pro, пробковая рукоятка против потения рук и сменные кольца для снега и курумника.
+              </p>
+            </div>
+
+            <div class="pt-4 mt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <div>
+                <span class="text-[11px] text-slate-400 block">Клубная цена</span>
+                <span class="text-lg font-black text-slate-900 dark:text-white">12 400 ₽</span>
+              </div>
+              <button class="ds-btn ds-btn-sm ds-btn-primary" onclick="alert('Товар добавлен в корзину!')">
                 В корзину
               </button>
             </div>
           </article>
 
-          <!-- Товар 6 -->
-          <article class="ds-card p-4 flex flex-col justify-between group hover:shadow-xl hover:border-brand-500/50 transition-all duration-300">
-            <div>
-              <div class="relative w-full aspect-square rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800 mb-4">
-                <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=600&h=600&q=80" alt="Клавиатура механика" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                <span class="absolute top-3 left-3 ds-badge ds-badge-brand">Top Choice</span>
-              </div>
-              <div class="text-xs text-indigo-600 font-semibold mb-1">Периферия</div>
-              <h3 class="font-bold text-slate-900 dark:text-white text-base group-hover:text-brand-600 transition">KeyForge Custom Mechanical</h3>
-              <p class="ds-body-sm text-xs mt-1 line-clamp-2">Hot-swap сокеты, смазанные переключатели Gateron Oil King, беспроводной режим 2.4Ghz.</p>
+          <!-- Товар 6: Авторский тур в Исландию -->
+          <article class="group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border-2 border-sunset-500/80 shadow-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between p-4 relative">
+            <div class="relative aspect-square rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800">
+              <img 
+                src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?auto=format&fit=crop&w=600&q=80" 
+                alt="Экспедиция в Исландию" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              >
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-sunset-500 text-white shadow-md">
+                Осталось 3 места
+              </span>
+              <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded-full text-[11px] font-bold bg-black/60 text-white backdrop-blur-sm">
+                12 дней • Декабрь
+              </span>
             </div>
 
-            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
-              <div>
-                <span class="text-xs text-slate-400 line-through">179 BYN</span>
-                <div class="text-lg font-extrabold text-slate-900 dark:text-white">149 BYN</div>
+            <div class="pt-4 space-y-2">
+              <div class="flex items-center justify-between text-xs text-slate-400">
+                <span class="text-sunset-500 font-bold">Авторская экспедиция</span>
+                <span class="text-amber-500 font-bold">★ 5.0</span>
               </div>
-              <button onclick="addToCart(this)" class="ds-btn ds-btn-sm ds-btn-primary group-hover:shadow-lg group-hover:shadow-brand-500/25">
-                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
-                В корзину
-              </button>
+              <h3 class="font-bold text-slate-900 dark:text-white group-hover:text-sunset-500 transition-colors">
+                Зимняя Исландия: Охота за Авророй & Ледники
+              </h3>
+              <p class="text-xs text-slate-500 line-clamp-2">
+                Всё включено: подготовленный Super-Jeep 4x4, проживание в горных лоджах, гид и мастер-классы по фотосъемке.
+              </p>
+            </div>
+
+            <div class="pt-4 mt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+              <div>
+                <span class="text-[11px] text-slate-400 block">Участие в группе</span>
+                <span class="text-lg font-black text-slate-900 dark:text-white">165 000 ₽</span>
+              </div>
+              <a href="./multistep.html" class="ds-btn ds-btn-sm ds-btn-sunset font-bold">
+                Забронировать
+              </a>
             </div>
           </article>
 
         </div>
 
-        <!-- ============================================== -->
-        
-        <!-- ============================================== -->
-        <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <div>Показано 1–6 из 48 девайсов</div>
-          <div class="flex items-center gap-1">
-            <button class="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 disabled:opacity-40" disabled>Назад</button>
-            <button class="px-3 py-1.5 rounded-xl bg-brand-600 text-white font-bold">1</button>
-            <button class="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">2</button>
-            <button class="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">3</button>
-            <span class="px-2">...</span>
-            <button class="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">8</button>
-            <button class="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">Вперед</button>
+        <!-- Пагинация -->
+        <div class="pt-8 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+          <button class="ds-btn ds-btn-sm ds-btn-secondary disabled:opacity-50" disabled>← Предыдущая</button>
+          <div class="flex items-center gap-1.5 text-xs font-bold">
+            <span class="w-8 h-8 rounded-xl bg-brand-600 text-white flex items-center justify-center">1</span>
+            <span class="w-8 h-8 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center cursor-pointer">2</span>
+            <span class="w-8 h-8 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center cursor-pointer">3</span>
           </div>
+          <button class="ds-btn ds-btn-sm ds-btn-secondary">Следующая →</button>
         </div>
 
       </div>
@@ -392,108 +472,81 @@
 
   </main>
 
-  <!-- ============================================== -->
-  
-  <!-- translate-y-full, backdrop-blur-sm             -->
-  <!-- ============================================== -->
-  <div id="drawerBackdrop" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden transition-opacity duration-300"></div>
-
-  <div id="mobileFilterDrawer" class="fixed inset-x-0 bottom-0 z-50 transform translate-y-full transition-transform duration-300 ease-out bg-white dark:bg-slate-900 rounded-t-3xl border-t border-slate-200 dark:border-slate-800 max-h-[85vh] overflow-y-auto p-6 space-y-6">
-    <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
-      <div class="flex items-center gap-2">
-        <div class="w-2 h-2 rounded-full bg-brand-500"></div>
-        <h3 class="font-bold text-slate-900 dark:text-white text-lg">Фильтры каталога</h3>
+  <!-- Мобильный Drawer фильтров (снизу) -->
+  <div id="mobileDrawerBackdrop" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden transition-opacity"></div>
+  <div id="mobileDrawer" class="fixed inset-x-0 bottom-0 bg-white dark:bg-slate-900 rounded-t-3xl z-50 p-6 space-y-5 transform translate-y-full transition-transform duration-300 max-h-[85vh] overflow-y-auto">
+    <div class="w-12 h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full mx-auto"></div>
+    <div class="flex items-center justify-between">
+      <h3 class="font-bold text-lg text-slate-900 dark:text-white">Фильтры экипировки</h3>
+      <button id="closeMobileDrawerBtn" class="p-1 rounded-lg text-slate-400 hover:text-slate-600">✕</button>
+    </div>
+    
+    <div class="space-y-4">
+      <div>
+        <label class="text-xs font-bold uppercase text-slate-400">Категории</label>
+        <div class="grid grid-cols-2 gap-2 mt-2 text-sm">
+          <label class="flex items-center gap-2"><input type="checkbox" checked class="ds-checkbox"><span>Палатки</span></label>
+          <label class="flex items-center gap-2"><input type="checkbox" checked class="ds-checkbox"><span>Рюкзаки</span></label>
+          <label class="flex items-center gap-2"><input type="checkbox" checked class="ds-checkbox"><span>Спальники</span></label>
+          <label class="flex items-center gap-2"><input type="checkbox" checked class="ds-checkbox"><span>Навигация</span></label>
+        </div>
       </div>
-      <button id="closeDrawerBtn" class="p-2 rounded-xl text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-      </button>
+      <div>
+        <label class="text-xs font-bold uppercase text-slate-400">Бюджет</label>
+        <input type="range" class="w-full mt-2 accent-brand-600">
+      </div>
     </div>
 
-    <!-- Мобильные чекбоксы -->
-    <div class="space-y-3">
-      <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Категории</span>
-      <label class="flex items-center justify-between py-1 cursor-pointer">
-        <span>Смартфоны & Гаджеты</span>
-        <input type="checkbox" checked class="ds-checkbox">
-      </label>
-      <label class="flex items-center justify-between py-1 cursor-pointer">
-        <span>Ноутбуки</span>
-        <input type="checkbox" checked class="ds-checkbox">
-      </label>
-      <label class="flex items-center justify-between py-1 cursor-pointer">
-        <span>Аудио & Наушники</span>
-        <input type="checkbox" class="ds-checkbox">
-      </label>
-    </div>
-
-    <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex gap-3">
-      <button id="resetDrawerBtn" class="flex-1 ds-btn ds-btn-md ds-btn-secondary">Сбросить</button>
-      <button id="applyDrawerBtn" class="flex-1 ds-btn ds-btn-md ds-btn-primary">Применить (6)</button>
-    </div>
+    <button id="applyFiltersBtn" class="w-full ds-btn ds-btn-md ds-btn-primary">
+      Применить фильтры
+    </button>
   </div>
 
   <script type="module">
-    import { initTheme } from '/src/js/main.js';
+    import { initTheme } from '../src/js/main.js';
     initTheme();
 
-    // Drawer фильтров
-    const drawer = document.getElementById('mobileFilterDrawer');
-    const backdrop = document.getElementById('drawerBackdrop');
-    const openBtn = document.getElementById('openMobileDrawerBtn');
-    const closeBtn = document.getElementById('closeDrawerBtn');
-    const applyBtn = document.getElementById('applyDrawerBtn');
-    const resetBtn = document.getElementById('resetDrawerBtn');
+    // Toggle skeleton demo
+    const skeletonBtn = document.getElementById('toggleSkeletonBtn');
+    const skeleton = document.getElementById('skeletonContainer');
+    const grid = document.getElementById('productsGrid');
+
+    if (skeletonBtn) {
+      skeletonBtn.addEventListener('click', () => {
+        const isHidden = skeleton.classList.contains('hidden');
+        if (isHidden) {
+          skeleton.classList.remove('hidden');
+          grid.classList.add('hidden');
+          skeletonBtn.classList.add('bg-amber-100', 'dark:bg-amber-950');
+        } else {
+          skeleton.classList.add('hidden');
+          grid.classList.remove('hidden');
+          skeletonBtn.classList.remove('bg-amber-100', 'dark:bg-amber-950');
+        }
+      });
+    }
+
+    // Mobile Drawer
+    const openDrawer = document.getElementById('openMobileDrawerBtn');
+    const closeDrawer = document.getElementById('closeMobileDrawerBtn');
+    const applyDrawer = document.getElementById('applyFiltersBtn');
+    const drawer = document.getElementById('mobileDrawer');
+    const backdrop = document.getElementById('mobileDrawerBackdrop');
 
     function toggleDrawer(open) {
       if (open) {
-        drawer.classList.remove('translate-y-full');
         backdrop.classList.remove('hidden');
-        document.body.classList.add('overflow-hidden');
+        drawer.classList.remove('translate-y-full');
       } else {
         drawer.classList.add('translate-y-full');
         backdrop.classList.add('hidden');
-        document.body.classList.remove('overflow-hidden');
       }
     }
 
-    openBtn?.addEventListener('click', () => toggleDrawer(true));
-    closeBtn?.addEventListener('click', () => toggleDrawer(false));
-    applyBtn?.addEventListener('click', () => toggleDrawer(false));
-    resetBtn?.addEventListener('click', () => toggleDrawer(false));
-    backdrop?.addEventListener('click', () => toggleDrawer(false));
-
-    // Интерактивный слайдер цены
-    const priceSlider = document.getElementById('priceRange');
-    const priceDisplay = document.getElementById('priceDisplay');
-    priceSlider?.addEventListener('input', (e) => {
-      priceDisplay.textContent = e.target.value + ' BYN';
-    });
-
-    // Переключение скелетона
-    const toggleSkeleton = document.getElementById('toggleSkeletonBtn');
-    const skeletonGrid = document.getElementById('skeletonGrid');
-    const productsGrid = document.getElementById('productsGrid');
-
-    let isSkeleton = false;
-    toggleSkeleton?.addEventListener('click', () => {
-      isSkeleton = !isSkeleton;
-      skeletonGrid.classList.toggle('hidden', !isSkeleton);
-      productsGrid.classList.toggle('hidden', isSkeleton);
-    });
-
-    // Корзина
-    let cartCountVal = 3;
-    window.addToCart = function(btn) {
-      cartCountVal++;
-      document.getElementById('cartCount').textContent = cartCountVal;
-      const originalText = btn.innerHTML;
-      btn.innerHTML = '✓ Добавлено';
-      btn.classList.add('bg-emerald-600', 'hover:bg-emerald-700');
-      setTimeout(() => {
-        btn.innerHTML = originalText;
-        btn.classList.remove('bg-emerald-600', 'hover:bg-emerald-700');
-      }, 1200);
-    };
+    if (openDrawer) openDrawer.addEventListener('click', () => toggleDrawer(true));
+    if (closeDrawer) closeDrawer.addEventListener('click', () => toggleDrawer(false));
+    if (backdrop) backdrop.addEventListener('click', () => toggleDrawer(false));
+    if (applyDrawer) applyDrawer.addEventListener('click', () => toggleDrawer(false));
   </script>
 </body>
 </html>

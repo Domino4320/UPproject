@@ -6,23 +6,36 @@ module.exports = {
   content: [
     './index.html',
     './pages/**/*.html',
-    './src/**/*.{html,js,ts}',
+    './src/**/*.{html,js,ts,vue}',
   ],
   theme: {
     extend: {
       colors: {
         brand: {
-          50: '#eef2ff',
-          100: '#e0e7ff',
-          200: '#c7d2fe',
-          300: '#a5b4fc',
-          400: '#818cf8',
-          500: '#6366f1',
-          600: '#4f46e5',
-          700: '#4338ca',
-          800: '#3730a3',
-          900: '#312e81',
-          950: '#1e1b4b',
+          50: '#f0fdf9',
+          100: '#ccfbf1',
+          200: '#99f6e4',
+          300: '#5eead4',
+          400: '#2dd4bf',
+          500: '#14b8a6', // Ocean teal / nature green
+          600: '#0d9488',
+          700: '#0f766e',
+          800: '#115e59',
+          900: '#134e4a',
+          950: '#042f2e',
+        },
+        sunset: {
+          50: '#fff7ed',
+          100: '#ffedd5',
+          200: '#fed7aa',
+          300: '#fdba74',
+          400: '#fb923c',
+          500: '#f97316',
+          600: '#ea580c',
+          700: '#c2410c',
+          800: '#9a3412',
+          900: '#7c2d12',
+          950: '#431407',
         },
         semantic: {
           success: {
@@ -42,7 +55,7 @@ module.exports = {
           },
           info: {
             light: '#e0f2fe',
-            DEFAULT: '#0ea5e9',
+            DEFAULT: '#0284c7',
             dark: '#075985',
           },
         },
@@ -52,8 +65,8 @@ module.exports = {
         mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
       },
       boxShadow: {
-        glow: '0 0 25px -5px rgba(99, 102, 241, 0.4)',
-        'glow-pink': '0 0 25px -5px rgba(236, 72, 153, 0.4)',
+        glow: '0 0 25px -5px rgba(20, 184, 166, 0.4)',
+        'glow-sunset': '0 0 25px -5px rgba(249, 115, 22, 0.4)',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-out forwards',
@@ -73,17 +86,16 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/container-queries'),
-    // Custom plugin for utilities as required in Task 4.4
-    plugin(function({ addUtilities, matchUtilities, theme }) {
+    plugin(function({ addUtilities }) {
       addUtilities({
         '.glass-card': {
-          'background': 'rgba(255, 255, 255, 0.75)',
+          'background': 'rgba(255, 255, 255, 0.8)',
           'backdrop-filter': 'blur(16px)',
           '-webkit-backdrop-filter': 'blur(16px)',
-          'border': '1px solid rgba(255, 255, 255, 0.3)',
+          'border': '1px solid rgba(255, 255, 255, 0.4)',
         },
         '.glass-card-dark': {
-          'background': 'rgba(15, 23, 42, 0.75)',
+          'background': 'rgba(15, 23, 42, 0.8)',
           'backdrop-filter': 'blur(16px)',
           '-webkit-backdrop-filter': 'blur(16px)',
           'border': '1px solid rgba(255, 255, 255, 0.08)',
@@ -103,15 +115,6 @@ module.exports = {
           '&::-webkit-scrollbar-thumb:hover': {
             background: '#94a3b8',
           },
-          '.dark &::-webkit-scrollbar-thumb': {
-            background: '#334155',
-          },
-          '.dark &::-webkit-scrollbar-thumb:hover': {
-            background: '#475569',
-          },
-        },
-        '.text-balance': {
-          'text-wrap': 'balance',
         },
       });
     }),
