@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TerraNova Design System — Travel UI Kit</title>
+  <title>TerraNova — Атлас природы, биомов и подготовки</title>
   <script>
     (function() {
       const savedTheme = localStorage.getItem('theme');
@@ -18,290 +18,465 @@
   <link rel="stylesheet" href="../src/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
-<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 flex flex-col min-h-screen">
+<body class="bg-[#f7faf8] text-slate-800 dark:bg-[#0b1512] dark:text-slate-100 flex flex-col min-h-screen bg-topo-pattern">
 
-  <!-- Top bar -->
-  <header class="sticky top-0 z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur border-b border-slate-200 dark:border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <div class="flex items-center space-x-3">
-        <a href="../" class="p-2 -ml-2 text-slate-500 hover:text-slate-900 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="Назад на главную">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-        </a>
-        <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-brand-600 to-sunset-500 flex items-center justify-center text-white font-bold text-sm shadow-md">
-          TN
+  <!-- Единая шапка сайта -->
+  <header class="sticky top-0 z-40 bg-white/85 dark:bg-[#0b1512]/85 backdrop-blur-md border-b border-emerald-900/10 dark:border-emerald-500/15">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      <a href="../" class="flex items-center space-x-3 group shrink-0">
+        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-forest-600 via-brand-600 to-sunset-500 flex items-center justify-center text-white shadow-lg shadow-brand-600/25 group-hover:scale-105 transition-transform">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
         </div>
-        <div>
-          <span class="font-bold text-slate-900 dark:text-white tracking-tight">TerraNova UI Kit</span>
-          <span class="ml-2 text-xs font-semibold px-2 py-0.5 rounded-full bg-brand-100 text-brand-700 dark:bg-brand-950 dark:text-brand-300">v2.0 • Travel Design System</span>
+        <div class="flex flex-col">
+          <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-forest-800 via-brand-600 to-sunset-600 dark:from-white dark:via-brand-400 dark:to-sunset-400 bg-clip-text text-transparent">
+            TerraNova
+          </span>
+          <span class="text-[10px] font-semibold text-slate-500 dark:text-slate-400 -mt-1 uppercase tracking-widest">Атлас природы</span>
         </div>
-      </div>
+      </a>
 
-      <div class="flex items-center gap-3 sm:gap-4 shrink-0">
-        <button id="themeToggle" data-theme-toggle class="p-2.5 rounded-xl text-slate-500 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-slate-800 bg-slate-100/50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition shrink-0" aria-label="Переключить тему">
+      <nav class="hidden lg:flex items-center gap-6 text-sm font-semibold text-slate-600 dark:text-slate-300">
+        <a href="../#articles" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Путеводители</a>
+        <a href="./storybook.html" class="text-brand-600 dark:text-brand-400 font-bold">Атлас природы</a>
+        <a href="./dashboard.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Трекер</a>
+        <a href="./ecommerce.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Снаряжение & Туры</a>
+        <a href="./kanban.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition">План сборов</a>
+        <a href="./messenger.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Попутчики</a>
+      </nav>
+
+      <div class="flex items-center gap-3 shrink-0">
+        <button data-theme-toggle class="p-2.5 rounded-xl border border-emerald-900/10 dark:border-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white bg-emerald-50/50 dark:bg-slate-800/50 transition" aria-label="Переключить тему">
           <svg data-theme-icon="sun" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
           <svg data-theme-icon="moon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
         </button>
-        <a href="../" class="ds-btn ds-btn-sm ds-btn-secondary whitespace-nowrap">Главная блога</a>
+        <a href="./multistep.html" class="hidden sm:inline-flex ds-btn ds-btn-sm ds-btn-sunset">Вступить в клуб</a>
+        <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-emerald-50 dark:hover:bg-slate-800 transition" aria-label="Меню">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
       </div>
+    </div>
+
+    <div id="mobileMenu" class="hidden lg:hidden border-t border-emerald-900/10 dark:border-slate-800 bg-white/95 dark:bg-[#0b1512]/95 px-4 py-4 space-y-2 text-sm font-medium">
+      <a href="../" class="block px-3 py-2 rounded-xl hover:bg-emerald-50 dark:hover:bg-slate-800">Главная блога</a>
+      <a href="./dashboard.html" class="block px-3 py-2 rounded-xl hover:bg-emerald-50 dark:hover:bg-slate-800">Трекер маршрутов</a>
+      <a href="./ecommerce.html" class="block px-3 py-2 rounded-xl hover:bg-emerald-50 dark:hover:bg-slate-800">Снаряжение & Туры</a>
+      <a href="./kanban.html" class="block px-3 py-2 rounded-xl hover:bg-emerald-50 dark:hover:bg-slate-800">План сборов</a>
+      <a href="./messenger.html" class="block px-3 py-2 rounded-xl hover:bg-emerald-50 dark:hover:bg-slate-800">Попутчики</a>
     </div>
   </header>
 
-  <div class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 flex gap-8">
+  <div class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-10 flex gap-8">
     
-    <!-- Сайдбар Storybook -->
-    <aside class="w-56 shrink-0 hidden lg:block sticky top-24 self-start space-y-6">
-      <div class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Дизайн-токены</div>
-      <nav class="space-y-1">
-        <a href="#colors" class="block px-3 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand-600 transition">1. Палитра цветов</a>
-        <a href="#typography" class="block px-3 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand-600 transition">2. Типографика</a>
-      </nav>
+    <!-- Сайдбар навигации по Атласу -->
+    <aside class="w-60 shrink-0 hidden lg:block sticky top-28 self-start space-y-6">
+      <div class="nature-card p-4 space-y-4">
+        <div class="text-xs font-bold uppercase tracking-wider text-slate-400">Разделы атласа</div>
+        <nav class="space-y-1">
+          <a href="#biomes" class="block px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-emerald-50 dark:hover:bg-slate-800 hover:text-brand-600 transition">1. Природные биомы</a>
+          <a href="#season-compass" class="block px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-emerald-50 dark:hover:bg-slate-800 hover:text-brand-600 transition">2. Сезонный компас</a>
+          <a href="#pack-calculator" class="block px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-emerald-50 dark:hover:bg-slate-800 hover:text-brand-600 transition">3. Вес рюкзака</a>
+          <a href="#leave-no-trace" class="block px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-emerald-50 dark:hover:bg-slate-800 hover:text-brand-600 transition">4. Кодекс природы</a>
+        </nav>
+      </div>
 
-      <div class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Компоненты</div>
-      <nav class="space-y-1">
-        <a href="#buttons" class="block px-3 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand-600 transition">3. Кнопки (Expedition CTA)</a>
-        <a href="#badges" class="block px-3 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand-600 transition">4. Бейджи сложности</a>
-        <a href="#alerts" class="block px-3 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand-600 transition">5. Уведомления (Alerts)</a>
-        <a href="#cards" class="block px-3 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand-600 transition">6. Карточки маршрутов</a>
-        <a href="#modal-section" class="block px-3 py-2 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-brand-600 transition">7. Модальное окно (Modal)</a>
-      </nav>
+      <div class="nature-card p-5 bg-gradient-to-br from-forest-600 to-brand-700 text-white border-0 space-y-3">
+        <div class="text-xs font-bold uppercase tracking-wider text-emerald-100">Совет гида</div>
+        <p class="text-xs leading-relaxed text-emerald-50">
+          Перед выходом в новый биом проверьте вес рюкзака и сверьтесь с сезонным компасом — погода в горах и у океана меняется за 20 минут.
+        </p>
+        <a href="./kanban.html" class="inline-flex items-center text-xs font-bold text-white underline underline-offset-4 hover:text-emerald-200">
+          Перейти к сборам →
+        </a>
+      </div>
     </aside>
 
     <!-- Основной контент -->
     <main class="flex-1 min-w-0 space-y-16">
 
-      <div>
-        <span class="ds-badge ds-badge-brand mb-3">Outdoor Design System</span>
-        <h1 class="ds-h1">TerraNova UI Kit & Документация</h1>
-        <p class="ds-body mt-2">Единая дизайн-система для блога о путешествиях и сервиса экспедиций: палитра дикой природы, компоненты, карточки маршрутов и интерактивные виджеты.</p>
-      </div>
-
-      <!-- 1. Цвета -->
-      <section id="colors" class="space-y-6 scroll-mt-24">
-        <div>
-          <h2 class="ds-h2">1. Палитра цветов (Brand Teal & Sunset)</h2>
-          <p class="ds-body-sm mt-1">Определены в <code class="font-mono text-brand-600">tailwind.config.js</code> для ассоциации с природой, океаном и горными закатами.</p>
+      <!-- Заголовок страницы -->
+      <section class="relative overflow-hidden nature-card p-7 sm:p-10">
+        <div class="relative z-10 max-w-3xl space-y-3">
+          <span class="ds-badge ds-badge-success">Полевой справочник исследователя</span>
+          <h1 class="ds-h1">Атлас природы и биомов TerraNova</h1>
+          <p class="ds-body">
+            Изучайте климатические зоны нашей планеты, подбирайте идеальный месяц для экспедиции и рассчитывайте вес снаряжения перед выходом на маршрут.
+          </p>
         </div>
-
-        <div class="space-y-4">
-          <h3 class="text-sm font-bold text-slate-500 uppercase tracking-wider">Brand Palette (Ocean Teal)</h3>
-          <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-11 gap-2">
-            <div class="space-y-1.5"><div class="h-16 rounded-xl bg-brand-50 border border-slate-200 shadow-inner"></div><div class="text-xs font-bold">50</div><div class="text-[10px] text-slate-400">#f0fdf9</div></div>
-            <div class="space-y-1.5"><div class="h-16 rounded-xl bg-brand-100 shadow-inner"></div><div class="text-xs font-bold">100</div><div class="text-[10px] text-slate-400">#ccfbf1</div></div>
-            <div class="space-y-1.5"><div class="h-16 rounded-xl bg-brand-200 shadow-inner"></div><div class="text-xs font-bold">200</div><div class="text-[10px] text-slate-400">#99f6e4</div></div>
-            <div class="space-y-1.5"><div class="h-16 rounded-xl bg-brand-300 shadow-inner"></div><div class="text-xs font-bold">300</div><div class="text-[10px] text-slate-400">#5eead4</div></div>
-            <div class="space-y-1.5"><div class="h-16 rounded-xl bg-brand-400 shadow-inner"></div><div class="text-xs font-bold">400</div><div class="text-[10px] text-slate-400">#2dd4bf</div></div>
-            <div class="space-y-1.5"><div class="h-16 rounded-xl bg-brand-500 shadow-inner"></div><div class="text-xs font-bold text-brand-600">500 (Base)</div><div class="text-[10px] text-slate-400">#14b8a6</div></div>
-            <div class="space-y-1.5"><div class="h-16 rounded-xl bg-brand-600 shadow-inner"></div><div class="text-xs font-bold">600</div><div class="text-[10px] text-slate-400">#0d9488</div></div>
-            <div class="space-y-1.5"><div class="h-16 rounded-xl bg-brand-700 shadow-inner"></div><div class="text-xs font-bold">700</div><div class="text-[10px] text-slate-400">#0f766e</div></div>
-            <div class="space-y-1.5"><div class="h-16 rounded-xl bg-brand-800 shadow-inner"></div><div class="text-xs font-bold">800</div><div class="text-[10px] text-slate-400">#115e59</div></div>
-            <div class="space-y-1.5"><div class="h-16 rounded-xl bg-brand-900 shadow-inner"></div><div class="text-xs font-bold">900</div><div class="text-[10px] text-slate-400">#134e4a</div></div>
-            <div class="space-y-1.5"><div class="h-16 rounded-xl bg-brand-950 shadow-inner"></div><div class="text-xs font-bold">950</div><div class="text-[10px] text-slate-400">#042f2e</div></div>
-          </div>
-        </div>
-
-        <div class="space-y-4 pt-2">
-          <h3 class="text-sm font-bold text-slate-500 uppercase tracking-wider">Sunset Accent Palette (Warm Mountain Sunset)</h3>
-          <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-9 gap-2">
-            <div class="space-y-1.5"><div class="h-16 rounded-xl bg-sunset-50 border border-slate-200 shadow-inner"></div><div class="text-xs font-bold">50</div><div class="text-[10px] text-slate-400">#fff7ed</div></div>
-            <div class="space-y-1.5"><div class="h-16 rounded-xl bg-sunset-200 shadow-inner"></div><div class="text-xs font-bold">200</div><div class="text-[10px] text-slate-400">#fed7aa</div></div>
-            <div class="space-y-1.5"><div class="h-16 rounded-xl bg-sunset-400 shadow-inner"></div><div class="text-xs font-bold">400</div><div class="text-[10px] text-slate-400">#fb923c</div></div>
-            <div class="space-y-1.5"><div class="h-16 rounded-xl bg-sunset-500 shadow-inner"></div><div class="text-xs font-bold text-sunset-500">500 (Base)</div><div class="text-[10px] text-slate-400">#f97316</div></div>
-            <div class="space-y-1.5"><div class="h-16 rounded-xl bg-sunset-600 shadow-inner"></div><div class="text-xs font-bold">600</div><div class="text-[10px] text-slate-400">#ea580c</div></div>
-            <div class="space-y-1.5"><div class="h-16 rounded-xl bg-sunset-800 shadow-inner"></div><div class="text-xs font-bold">800</div><div class="text-[10px] text-slate-400">#9a3412</div></div>
-          </div>
-        </div>
+        <svg class="absolute bottom-0 right-0 w-64 sm:w-80 h-32 text-emerald-600/10 dark:text-emerald-400/10 pointer-events-none" viewBox="0 0 300 120" fill="currentColor">
+          <path d="M20,120 L85,35 L135,85 L195,15 L265,95 L300,65 L300,120 Z"/>
+        </svg>
       </section>
 
-      <!-- 2. Типографика -->
-      <section id="typography" class="space-y-6 scroll-mt-24">
-        <div>
-          <h2 class="ds-h2">2. Типографика</h2>
-          <p class="ds-body-sm mt-1">Оформление статей, логбуков и путеводителей.</p>
-        </div>
-
-        <div class="space-y-4 p-6 rounded-3xl bg-white dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/80">
+      <!-- 1. Биомы и природные зоны -->
+      <section id="biomes" class="space-y-6 scroll-mt-24">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
-            <span class="text-xs font-mono text-slate-400">.ds-h1</span>
-            <div class="ds-h1">Экспедиция к Северному сиянию</div>
+            <h2 class="ds-h2">1. Природные биомы планеты</h2>
+            <p class="ds-body-sm mt-1">Нажмите на любую зону, чтобы открыть полевой гайд по климату, экипировке и безопасности.</p>
           </div>
-          <div>
-            <span class="text-xs font-mono text-slate-400">.ds-h2</span>
-            <div class="ds-h2">Ледники Ватнайёкюдль и лавовые поля</div>
-          </div>
-          <div>
-            <span class="text-xs font-mono text-slate-400">.ds-h3</span>
-            <div class="ds-h3">Чек-лист подготовки к автономному зимнему выезду</div>
-          </div>
-          <div>
-            <span class="text-xs font-mono text-slate-400">.ds-body</span>
-            <div class="ds-body">Автономные путешествия требуют точного планирования логистики, надежного снаряжения и понимания погодных рисков в суровом климате.</div>
+          <div class="flex flex-wrap gap-2" id="biomeFilters">
+            <button type="button" data-biome="all" class="biome-filter px-3.5 py-1.5 rounded-xl text-xs font-bold bg-brand-600 text-white">Все зоны</button>
+            <button type="button" data-biome="mountains" class="biome-filter px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 border border-emerald-900/10 dark:border-slate-700">🏔️ Горы</button>
+            <button type="button" data-biome="volcano" class="biome-filter px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 border border-emerald-900/10 dark:border-slate-700">🌋 Вулканы</button>
+            <button type="button" data-biome="arctic" class="biome-filter px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 border border-emerald-900/10 dark:border-slate-700">❄️ Арктика</button>
+            <button type="button" data-biome="forest" class="biome-filter px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 border border-emerald-900/10 dark:border-slate-700">🌲 Тайга</button>
           </div>
         </div>
-      </section>
 
-      <!-- 3. Кнопки -->
-      <section id="buttons" class="space-y-6 scroll-mt-24">
-        <div>
-          <h2 class="ds-h2">3. Матрица кнопок</h2>
-          <p class="ds-body-sm mt-1">Стили: Primary Teal, Sunset Gradient, Secondary, Ghost, Danger × sm/md/lg.</p>
-        </div>
-
-        <div class="p-6 rounded-3xl bg-white dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/80 space-y-6">
-          <div class="flex flex-wrap items-center gap-4">
-            <button class="ds-btn ds-btn-lg ds-btn-primary">В экспедицию (LG)</button>
-            <button class="ds-btn ds-btn-md ds-btn-primary">В экспедицию (MD)</button>
-            <button class="ds-btn ds-btn-sm ds-btn-primary">В экспедицию (SM)</button>
-          </div>
-
-          <div class="flex flex-wrap items-center gap-4">
-            <button class="ds-btn ds-btn-lg ds-btn-sunset">Забронировать тур (LG)</button>
-            <button class="ds-btn ds-btn-md ds-btn-sunset">Забронировать тур (MD)</button>
-            <button class="ds-btn ds-btn-sm ds-btn-sunset">Забронировать тур (SM)</button>
-          </div>
-
-          <div class="flex flex-wrap items-center gap-4">
-            <button class="ds-btn ds-btn-md ds-btn-secondary">GPX Маршрут</button>
-            <button class="ds-btn ds-btn-md ds-btn-ghost">Подробнее</button>
-            <button class="ds-btn ds-btn-md ds-btn-danger">Экстренный SOS</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- 4. Бейджи сложности -->
-      <section id="badges" class="space-y-6 scroll-mt-24">
-        <div>
-          <h2 class="ds-h2">4. Бейджи сложности и статусов</h2>
-          <p class="ds-body-sm mt-1">Градация уровня физической подготовки маршрутов.</p>
-        </div>
-
-        <div class="p-6 rounded-3xl bg-white dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/80 flex flex-wrap gap-3">
-          <span class="ds-badge ds-badge-success">🟢 Легкий хайкинг</span>
-          <span class="ds-badge ds-badge-brand">🔵 Умеренный треккинг</span>
-          <span class="ds-badge ds-badge-warning">🟡 Высокая сложность</span>
-          <span class="ds-badge ds-badge-sunset">🟠 Автономка 10+ дней</span>
-          <span class="ds-badge ds-badge-danger">🔴 Экстремальный альпинизм</span>
-        </div>
-      </section>
-
-      <!-- 5. Уведомления (Alerts) -->
-      <section id="alerts" class="space-y-6 scroll-mt-24">
-        <div>
-          <h2 class="ds-h2">5. Системные уведомления (Alerts)</h2>
-          <p class="ds-body-sm mt-1">Оповещения о погоде, визах и правилах безопасности.</p>
-        </div>
-
-        <div class="space-y-4">
-          <div class="ds-alert ds-alert-warning">
-            <span class="text-xl">⚠️</span>
-            <div>
-              <strong class="font-bold block">Штормовое предупреждение</strong>
-              <span>На перевале F208 в Исландии ожидаются порывы ветра до 28 м/с и метель. Движение на автодомах запрещено.</span>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="biomesGrid">
+          <!-- Биом 1 -->
+          <article data-biome-type="volcano" onclick="openBiomeModal('volcano')" class="biome-card nature-card overflow-hidden cursor-pointer group flex flex-col">
+            <div class="relative h-48 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=800&q=80" alt="Вулканические плато" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+              <span class="absolute top-3 left-3 ds-badge bg-sunset-600/90 text-white border-0">🌋 Вулканические плато</span>
+              <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded-full text-[11px] font-bold bg-black/60 text-white backdrop-blur-sm">Камчатка • Исландия</span>
             </div>
-          </div>
-
-          <div class="ds-alert ds-alert-info">
-            <span class="text-xl">ℹ️</span>
-            <div>
-              <strong class="font-bold block">Визовый регламент Непала</strong>
-              <span>Визу по прибытии в Катманду (On Arrival) можно оформить в терминале аэропорта за 50$ на 30 дней.</span>
-            </div>
-          </div>
-
-          <div class="ds-alert ds-alert-success">
-            <span class="text-xl">✓</span>
-            <div>
-              <strong class="font-bold block">Маршрут синхронизирован</strong>
-              <span>Файл gpx_iceland_winter_2026.gpx успешно сохранен в вашем кэше для офлайн-навигации.</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 6. Карточки маршрутов -->
-      <section id="cards" class="space-y-6 scroll-mt-24">
-        <div>
-          <h2 class="ds-h2">6. Карточка маршрута</h2>
-          <p class="ds-body-sm mt-1">Пример интерактивного блока экспедиции.</p>
-        </div>
-
-        <div class="max-w-md">
-          <div class="ds-card overflow-hidden group">
-            <div class="aspect-video relative overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?auto=format&fit=crop&w=600&q=80" alt="Исландия" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-              <span class="absolute top-3 left-3 ds-badge ds-badge-brand">F-Roads 4x4</span>
-            </div>
-            <div class="p-6 space-y-3">
-              <div class="flex justify-between items-center text-xs text-slate-400">
-                <span>12 дней • 1 800 км</span>
-                <span class="text-amber-500 font-bold">★ 4.97</span>
+            <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
+              <div class="space-y-2">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-brand-600 transition">Базальтовые поля, фумаролы и лавовые каньоны</h3>
+                <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">Резкие перепады погоды, острый вулканический шлак и серные испарения у кратеров.</p>
               </div>
-              <h3 class="font-bold text-lg text-slate-900 dark:text-white">Зимняя Исландия: Полное кольцо</h3>
-              <p class="text-xs text-slate-500 leading-relaxed">Экспедиция на подготовленном внедорожнике по ледникам, каньонам и горячим источникам.</p>
-              <div class="pt-4 flex items-center justify-between border-t border-slate-100 dark:border-slate-700/60">
-                <span class="text-lg font-extrabold text-slate-900 dark:text-white">145 000 ₽</span>
-                <button class="ds-btn ds-btn-sm ds-btn-sunset" onclick="openModal()">Подробнее</button>
+              <div class="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-800 text-xs">
+                <span class="font-semibold text-slate-500">Температура: -2°C ... +16°C</span>
+                <span class="font-bold text-brand-600 dark:text-brand-400">Открыть гид →</span>
               </div>
             </div>
-          </div>
+          </article>
+
+          <!-- Биом 2 -->
+          <article data-biome-type="mountains" onclick="openBiomeModal('alpine')" class="biome-card nature-card overflow-hidden cursor-pointer group flex flex-col">
+            <div class="relative h-48 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80" alt="Альпийские хребты" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+              <span class="absolute top-3 left-3 ds-badge bg-brand-600/90 text-white border-0">🏔️ Альпийские хребты</span>
+              <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded-full text-[11px] font-bold bg-black/60 text-white backdrop-blur-sm">Доломиты • Алтай</span>
+            </div>
+            <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
+              <div class="space-y-2">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-brand-600 transition">Высокогорные перевалы и альпийские луга</h3>
+                <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">Разреженный воздух, яркое горное солнце, вечерние заморозки и крутые сыпучие тропы.</p>
+              </div>
+              <div class="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-800 text-xs">
+                <span class="font-semibold text-slate-500">Высота: 1 800 — 3 600 м</span>
+                <span class="font-bold text-brand-600 dark:text-brand-400">Открыть гид →</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Биом 3 -->
+          <article data-biome-type="arctic" onclick="openBiomeModal('arctic')" class="biome-card nature-card overflow-hidden cursor-pointer group flex flex-col">
+            <div class="relative h-48 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Арктические фьорды" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+              <span class="absolute top-3 left-3 ds-badge bg-cyan-600/90 text-white border-0">❄️ Арктика и фьорды</span>
+              <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded-full text-[11px] font-bold bg-black/60 text-white backdrop-blur-sm">Лофотены • Патагония</span>
+            </div>
+            <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
+              <div class="space-y-2">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-brand-600 transition">Ледниковые бухты и океанские шторма</h3>
+                <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">Шквальные ветра до 25 м/с, повышенная влажность и ночёвки на открытых скалах у воды.</p>
+              </div>
+              <div class="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-800 text-xs">
+                <span class="font-semibold text-slate-500">Ветер: до 90 км/ч</span>
+                <span class="font-bold text-brand-600 dark:text-brand-400">Открыть гид →</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Биом 4 -->
+          <article data-biome-type="forest" onclick="openBiomeModal('taiga')" class="biome-card nature-card overflow-hidden cursor-pointer group flex flex-col">
+            <div class="relative h-48 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80" alt="Тайга и кедровые леса" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+              <span class="absolute top-3 left-3 ds-badge bg-forest-600/90 text-white border-0">🌲 Тайга и озёра</span>
+              <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded-full text-[11px] font-bold bg-black/60 text-white backdrop-blur-sm">Байкал • Кумано-Кодо</span>
+            </div>
+            <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
+              <div class="space-y-2">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-brand-600 transition">Вековые хвойные леса и чистые реки</h3>
+                <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">Мягкая лесная подстилка, высокая влажность утром, защита от насекомых и правила встречи с дикими животными.</p>
+              </div>
+              <div class="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-800 text-xs">
+                <span class="font-semibold text-slate-500">Температура: +5°C ... +24°C</span>
+                <span class="font-bold text-brand-600 dark:text-brand-400">Открыть гид →</span>
+              </div>
+            </div>
+          </article>
         </div>
       </section>
 
-      <!-- 7. Модальное окно -->
-      <section id="modal-section" class="space-y-6 scroll-mt-24">
+      <!-- 2. Сезонный компас (Когда ехать?) -->
+      <section id="season-compass" class="nature-card p-6 sm:p-8 space-y-6 scroll-mt-24">
         <div>
-          <h2 class="ds-h2">7. Модальное окно экспедиции</h2>
-          <p class="ds-body-sm mt-1">Всплывающее окно с деталями и контактами гида.</p>
+          <span class="ds-badge ds-badge-sunset mb-2">Интерактивный календарь</span>
+          <h2 class="ds-h2">2. Сезонный компас: когда лучше ехать?</h2>
+          <p class="ds-body-sm mt-1">Выберите месяц, чтобы узнать, где сейчас идеальная погода и открыты все перевалы.</p>
         </div>
 
-        <button class="ds-btn ds-btn-md ds-btn-primary" onclick="openModal()">
-          Открыть модальное окно
-        </button>
+        <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-12 gap-2" id="monthsBar">
+          <button type="button" data-month="0" class="month-btn py-2.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 border border-emerald-900/10 dark:border-slate-700 hover:border-brand-500 transition">Янв</button>
+          <button type="button" data-month="1" class="month-btn py-2.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 border border-emerald-900/10 dark:border-slate-700 hover:border-brand-500 transition">Фев</button>
+          <button type="button" data-month="2" class="month-btn py-2.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 border border-emerald-900/10 dark:border-slate-700 hover:border-brand-500 transition">Мар</button>
+          <button type="button" data-month="3" class="month-btn py-2.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 border border-emerald-900/10 dark:border-slate-700 hover:border-brand-500 transition">Апр</button>
+          <button type="button" data-month="4" class="month-btn py-2.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 border border-emerald-900/10 dark:border-slate-700 hover:border-brand-500 transition">Май</button>
+          <button type="button" data-month="5" class="month-btn py-2.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 border border-emerald-900/10 dark:border-slate-700 hover:border-brand-500 transition">Июн</button>
+          <button type="button" data-month="6" class="month-btn py-2.5 rounded-xl text-xs font-bold bg-brand-600 text-white shadow-md transition">Июл</button>
+          <button type="button" data-month="7" class="month-btn py-2.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 border border-emerald-900/10 dark:border-slate-700 hover:border-brand-500 transition">Авг</button>
+          <button type="button" data-month="8" class="month-btn py-2.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 border border-emerald-900/10 dark:border-slate-700 hover:border-brand-500 transition">Сен</button>
+          <button type="button" data-month="9" class="month-btn py-2.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 border border-emerald-900/10 dark:border-slate-700 hover:border-brand-500 transition">Окт</button>
+          <button type="button" data-month="10" class="month-btn py-2.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 border border-emerald-900/10 dark:border-slate-700 hover:border-brand-500 transition">Ноя</button>
+          <button type="button" data-month="11" class="month-btn py-2.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 border border-emerald-900/10 dark:border-slate-700 hover:border-brand-500 transition">Дек</button>
+        </div>
+
+        <div id="monthResult" class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+          <!-- Заполняется JS -->
+        </div>
+      </section>
+
+      <!-- 3. Калькулятор веса рюкзака -->
+      <section id="pack-calculator" class="nature-card p-6 sm:p-8 space-y-6 scroll-mt-24">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <span class="ds-badge ds-badge-brand mb-2">Умные сборы</span>
+            <h2 class="ds-h2">3. Калькулятор веса рюкзака</h2>
+            <p class="ds-body-sm mt-1">Отмечайте снаряжение, которое берёте в поход — система рассчитает базовый вес (Base Weight).</p>
+          </div>
+          <div class="text-right p-4 rounded-2xl bg-emerald-50/70 dark:bg-slate-800/80 border border-emerald-900/10 dark:border-slate-700 shrink-0">
+            <div class="text-xs text-slate-500 dark:text-slate-400">Общий вес</div>
+            <div id="totalWeight" class="text-3xl font-black text-brand-600 dark:text-brand-400">0.0 кг</div>
+            <div id="weightStatus" class="text-[11px] font-bold text-emerald-600 dark:text-emerald-400 mt-0.5">Ультралайт</div>
+          </div>
+        </div>
+
+        <div class="w-full h-3 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+          <div id="weightBar" class="h-full bg-gradient-to-r from-emerald-500 via-brand-500 to-sunset-500 transition-all duration-300" style="width: 30%;"></div>
+        </div>
+
+        <div id="gearList" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <!-- Генерируется JS -->
+        </div>
+
+        <form onsubmit="addCustomGear(event)" class="flex flex-col sm:flex-row gap-3 pt-2">
+          <input id="customGearName" type="text" placeholder="Добавить своё снаряжение (напр. Штатив)" class="ds-input flex-1 text-sm" required>
+          <input id="customGearWeight" type="number" step="0.05" min="0.05" max="20" placeholder="Вес (кг)" class="ds-input sm:w-32 text-sm" required>
+          <button type="submit" class="ds-btn ds-btn-md ds-btn-primary shrink-0">+ Добавить</button>
+        </form>
+      </section>
+
+      <!-- 4. Принципы Leave No Trace -->
+      <section id="leave-no-trace" class="nature-card p-6 sm:p-8 space-y-5 scroll-mt-24">
+        <h2 class="ds-h2">4. Кодекс дикой природы (Leave No Trace)</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="p-4 rounded-2xl bg-emerald-50/60 dark:bg-slate-800/60 space-y-1.5">
+            <div class="font-bold text-sm">🏕️ Стоянки только на твёрдом</div>
+            <p class="text-xs text-slate-600 dark:text-slate-400">Ставьте палатку на уже утоптанных площадках, не повреждая хрупкий мох тундры.</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-emerald-50/60 dark:bg-slate-800/60 space-y-1.5">
+            <div class="font-bold text-sm">🔥 Горелка вместо костра</div>
+            <p class="text-xs text-slate-600 dark:text-slate-400">Газовая или мультитопливная горелка не оставляет кострищ и спасает леса от пожаров.</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-emerald-50/60 dark:bg-slate-800/60 space-y-1.5">
+            <div class="font-bold text-sm">🎒 Всё принесённое — с собой</div>
+            <p class="text-xs text-slate-600 dark:text-slate-400">Даже органические отходы в холодном климате разлагаются годами. Уносите всё до города.</p>
+          </div>
+        </div>
       </section>
 
     </main>
-
   </div>
 
-  <!-- Модальное окно -->
-  <div id="demoModal" class="ds-modal-backdrop hidden">
-    <div class="ds-modal-content p-6 sm:p-8 space-y-5">
-      <div class="flex justify-between items-start">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-brand-500/10 text-brand-600 flex items-center justify-center font-bold">
-            🏔️
-          </div>
-          <div>
-            <h3 class="font-bold text-lg text-slate-900 dark:text-white">Экспедиция TerraNova</h3>
-            <span class="text-xs text-slate-400">Связь со спутниковым координатором</span>
-          </div>
+  <!-- Модальное окно гида по биому -->
+  <div id="biomeModal" class="hidden ds-modal-backdrop" onclick="if(event.target===this) closeBiomeModal()">
+    <div class="ds-modal-content max-w-xl p-6 sm:p-8 space-y-5">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <span id="bmBadge" class="ds-badge ds-badge-brand mb-2"></span>
+          <h3 id="bmTitle" class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white"></h3>
         </div>
-        <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600 text-lg">✕</button>
+        <button type="button" onclick="closeBiomeModal()" class="p-2 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition">✕</button>
       </div>
-
-      <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-        Все участники перед стартом получают доступ к спутниковому каналу Garmin inReach и закрытой карте точек ночёвок. Пожалуйста, проверьте наличие загранпаспорта со сроком действия от 6 месяцев.
-      </p>
-
-      <div class="pt-4 border-t border-slate-100 dark:border-slate-700 flex justify-end gap-3">
-        <button class="ds-btn ds-btn-sm ds-btn-secondary" onclick="closeModal()">Закрыть</button>
-        <button class="ds-btn ds-btn-sm ds-btn-sunset" onclick="alert('GPX-трек скачивается...'); closeModal();">Скачать трек</button>
+      <p id="bmDesc" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed"></p>
+      <div class="space-y-2">
+        <div class="text-xs font-bold uppercase tracking-wider text-slate-400">Обязательно в этом биоме</div>
+        <ul id="bmChecklist" class="space-y-2 text-sm text-slate-700 dark:text-slate-200"></ul>
+      </div>
+      <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex justify-end gap-3">
+        <button type="button" onclick="closeBiomeModal()" class="ds-btn ds-btn-md ds-btn-secondary">Закрыть</button>
+        <a href="./kanban.html" class="ds-btn ds-btn-md ds-btn-primary">Открыть план сборов →</a>
       </div>
     </div>
   </div>
 
-  <script type="module">
-    import { initTheme } from '../src/js/main.js';
-    initTheme();
+  <script type="module" src="../src/js/main.js"></script>
+  <script>
+    // 1. Фильтрация биомов
+    document.querySelectorAll('.biome-filter').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const type = btn.dataset.biome;
+        document.querySelectorAll('.biome-filter').forEach(b => {
+          const active = b === btn;
+          b.className = active
+            ? 'biome-filter px-3.5 py-1.5 rounded-xl text-xs font-bold bg-brand-600 text-white'
+            : 'biome-filter px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 border border-emerald-900/10 dark:border-slate-700';
+        });
+        document.querySelectorAll('.biome-card').forEach(card => {
+          const match = type === 'all' || card.dataset.biomeType === type;
+          card.classList.toggle('hidden', !match);
+        });
+      });
+    });
 
-    window.openModal = function() {
-      document.getElementById('demoModal').classList.remove('hidden');
+    // 2. Модальное окно биомов
+    const BIOME_DATA = {
+      volcano: {
+        badge: '🌋 Вулканические плато',
+        title: 'Гид по вулканическим регионам',
+        desc: 'Камчатка и центральная Исландия требуют высокой прочности обуви и защиты от мелкого вулканического пепла.',
+        items: ['Ботинки с высоким рантом и жёсткой подошвой Vibram', 'Защитные очки и бафф от пепла при сильном ветре', 'Треккинговые палки для спуска по сыпучему шлаку', 'Запас воды минимум 2.5 л на день (на лаве нет ручьёв)']
+      },
+      alpine: {
+        badge: '🏔️ Альпийские хребты',
+        title: 'Гид по высокогорным маршрутам',
+        desc: 'В Доломитах и на Алтае погода меняется стремительно: утром может быть +18°C, а на перевале пойти мокрый снег.',
+        items: ['Трёхслойная одежда: термобельё, флис, мембрана 20 000 мм', 'Пуховка для вечерних стоянок на высоте >2000 м', 'Крем SPF 50+ и солнцезащитные очки категории 3', 'Офлайн-карта высот и запасной пауэрбанк']
+      },
+      arctic: {
+        badge: '❄️ Арктика и фьорды',
+        title: 'Гид по штормовым фьордам',
+        desc: 'Лофотены и Патагония славятся шквальными ветрами с океана и частыми дождями.',
+        items: ['Штормовая палатка с алюминиевыми дугами и штормовыми оттяжками', 'Гермомешки для спальника и электроники', 'Непромокаемые мембранные брюки-самосбросы', 'Тёплая шапка и ветрозащитные перчатки даже летом']
+      },
+      taiga: {
+        badge: '🌲 Тайга и озёра',
+        title: 'Гид по лесным маршрутам',
+        desc: 'Сибирская тайга и кедровые тропы Японии дарят тень и мягкую тропу, но требуют внимания к влажности и фауне.',
+        items: ['Репелленты и противоклещевая обработка одежды', 'Фальшфейер или перцовый спрей в медвежьих регионах', 'Лёгкий тент над лагерем на случай затяжного дождя', 'Фильтр для воды или таблетки для обеззараживания']
+      }
     };
 
-    window.closeModal = function() {
-      document.getElementById('demoModal').classList.add('hidden');
-    };
+    function openBiomeModal(key) {
+      const data = BIOME_DATA[key];
+      if (!data) return;
+      document.getElementById('bmBadge').textContent = data.badge;
+      document.getElementById('bmTitle').textContent = data.title;
+      document.getElementById('bmDesc').textContent = data.desc;
+      document.getElementById('bmChecklist').innerHTML = data.items
+        .map(item => `<li class="flex items-start gap-2.5"><span class="text-emerald-500 font-bold">✓</span><span>${item}</span></li>`)
+        .join('');
+      document.getElementById('biomeModal').classList.remove('hidden');
+    }
+
+    function closeBiomeModal() {
+      document.getElementById('biomeModal').classList.add('hidden');
+    }
+
+    // 3. Сезонный компас
+    const SEASON_DATA = [
+      { best: 'Патагония (O-Trek), Новая Зеландия, Зимний Байкал (конец месяца)', warn: 'Альпы и Камчатка под глубоким снегом — только скитур.' },
+      { best: 'Патагония, Лёд Байкала, Полярное сияние в Тромсё', warn: 'Исландские F-дороги закрыты до июня.' },
+      { best: 'Сакура в Японии, Непал (весенний сезон), Озеро Байкал', warn: 'В горах Европы лавиноопасный период.' },
+      { best: 'Тропа Кумано-Кодо в Японии, Марокко, Каппадокия', warn: 'На Алтае и в Доломитах межсезонье и грязь на тропах.' },
+      { best: 'Кавказ, Грузия (нижние долины), Ликийская тропа', warn: 'Высокие альпийские перевалы ещё закрыты снегом.' },
+      { best: 'Лофотены (полярный день), Исландия (открытие нагорья), Алтай', warn: 'В тайге пик активности клещей и мошки.' },
+      { best: 'Камчатка, Доломитовые Альпы, Исландия, Норвегия', warn: 'В Патагонии глубокая зима и сильные метели.' },
+      { best: 'Камчатка (лучший месяц!), Доломиты, Алтай, Фареры', warn: 'Жарко на южных низменных маршрутах.' },
+      { best: 'Золотая осень на Камчатке и в Доломитах, Байкал, Аляска', warn: 'В Исландии возможны первые осенние шторма.' },
+      { best: 'Красная листва в Японии (момидзи), Непал (ясное небо)', warn: 'Горные приюты в Альпах закрываются на зиму.' },
+      { best: 'Старт сезона в Патагонии, Пустыни Омана и Иордании', warn: 'Короткий световой день в Скандинавии.' },
+      { best: 'Патагония (пик лета), Чили, Новая Зеландия', warn: 'Полярная ночь за Полярным кругом — только охота за сиянием.' }
+    ];
+
+    function selectMonth(idx) {
+      document.querySelectorAll('.month-btn').forEach((btn, i) => {
+        btn.className = i === idx
+          ? 'month-btn py-2.5 rounded-xl text-xs font-bold bg-brand-600 text-white shadow-md transition'
+          : 'month-btn py-2.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 border border-emerald-900/10 dark:border-slate-700 hover:border-brand-500 transition';
+      });
+      const info = SEASON_DATA[idx];
+      document.getElementById('monthResult').innerHTML = `
+        <div class="p-5 rounded-2xl bg-emerald-50/70 dark:bg-emerald-950/30 border border-emerald-200/80 dark:border-emerald-800/50 space-y-1.5">
+          <div class="text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">🌿 Идеально в этом месяце</div>
+          <p class="text-sm font-semibold text-slate-800 dark:text-slate-100">${info.best}</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200/80 dark:border-amber-800/50 space-y-1.5">
+          <div class="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300">⚠️ Особенности и риски</div>
+          <p class="text-sm font-semibold text-slate-800 dark:text-slate-100">${info.warn}</p>
+        </div>
+      `;
+    }
+
+    document.querySelectorAll('.month-btn').forEach(btn => {
+      btn.addEventListener('click', () => selectMonth(Number(btn.dataset.month)));
+    });
+    selectMonth(6); // Июль по умолчанию
+
+    // 4. Калькулятор веса рюкзака
+    const gearItems = [
+      { id: 1, name: 'Палатка 2-местная штормовая', weight: 1.65, checked: true },
+      { id: 2, name: 'Спальник пуховый (-5°C)', weight: 0.90, checked: true },
+      { id: 3, name: 'Коврик надувной R-Value 4.2', weight: 0.48, checked: true },
+      { id: 4, name: 'Рюкзак 55 л с каркасом', weight: 1.25, checked: true },
+      { id: 5, name: 'Горелка титановая + баллон 230 г', weight: 0.42, checked: true },
+      { id: 6, name: 'Мембранная куртка + пуховка', weight: 0.65, checked: true },
+      { id: 7, name: 'Аптечка, фонарик и Garmin inReach', weight: 0.55, checked: true },
+      { id: 8, name: 'Треккинговые палки (пара)', weight: 0.46, checked: false },
+      { id: 9, name: 'Фотокамера с объективом', weight: 1.15, checked: false },
+      { id: 10, name: 'Вода и перекус на 3 дня', weight: 3.20, checked: false }
+    ];
+
+    function renderGear() {
+      const list = document.getElementById('gearList');
+      list.innerHTML = gearItems.map(item => `
+        <label class="flex items-center justify-between gap-3 p-3.5 rounded-2xl border ${item.checked ? 'border-brand-500/50 bg-emerald-50/50 dark:bg-emerald-950/20' : 'border-slate-200/80 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60'} cursor-pointer transition">
+          <div class="flex items-center gap-3 min-w-0">
+            <input type="checkbox" ${item.checked ? 'checked' : ''} onchange="toggleGear(${item.id})" class="ds-checkbox">
+            <span class="text-sm font-medium text-slate-800 dark:text-slate-100 truncate">${item.name}</span>
+          </div>
+          <span class="text-xs font-bold text-slate-500 dark:text-slate-400 shrink-0">${item.weight.toFixed(2)} кг</span>
+        </label>
+      `).join('');
+
+      const total = gearItems.reduce((sum, i) => i.checked ? sum + i.weight : sum, 0);
+      document.getElementById('totalWeight').textContent = `${total.toFixed(1)} кг`;
+
+      const pct = Math.min(100, (total / 15) * 100);
+      document.getElementById('weightBar').style.width = `${pct}%`;
+
+      const status = document.getElementById('weightStatus');
+      if (total <= 6.5) {
+        status.textContent = 'Ультралайт — летите как ветер! 🪶';
+        status.className = 'text-[11px] font-bold text-emerald-600 dark:text-emerald-400 mt-0.5';
+      } else if (total <= 10.5) {
+        status.textContent = 'Оптимальный автономный вес 👍';
+        status.className = 'text-[11px] font-bold text-brand-600 dark:text-brand-400 mt-0.5';
+      } else {
+        status.textContent = 'Тяжеловато — проверьте лишнее ⛰️';
+        status.className = 'text-[11px] font-bold text-sunset-600 dark:text-sunset-400 mt-0.5';
+      }
+    }
+
+    function toggleGear(id) {
+      const item = gearItems.find(i => i.id === id);
+      if (item) item.checked = !item.checked;
+      renderGear();
+    }
+
+    function addCustomGear(e) {
+      e.preventDefault();
+      const nameEl = document.getElementById('customGearName');
+      const weightEl = document.getElementById('customGearWeight');
+      const name = nameEl.value.trim();
+      const weight = parseFloat(weightEl.value);
+      if (!name || isNaN(weight)) return;
+      gearItems.push({ id: Date.now(), name, weight, checked: true });
+      nameEl.value = '';
+      weightEl.value = '';
+      renderGear();
+      if (window.showToast) window.showToast('Добавлено в рюкзак', `${name} (+${weight.toFixed(2)} кг)`, 'success');
+    }
+
+    renderGear();
   </script>
 </body>
 </html>

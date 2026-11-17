@@ -10,6 +10,7 @@ export function applyTheme(isDark) {
     localStorage.setItem('theme', 'dark');
   } else {
     document.documentElement.classList.remove('dark');
+    localStorage.setItem('theme', 'light');
   }
   updateIcons(isDark);
 }
@@ -45,6 +46,61 @@ export function initTheme() {
     btn.dataset.themeBound = 'true';
     btn.addEventListener('click', toggleTheme);
   });
+}
+
+// Global Toast Notification Utility
+export function showToast(title, message = '', type = 'success') {
+  let container = document.getElementById('tn-toast-container');
+  if (!container) {
+    container = document.createElement('div');
+    container.id = 'tn-toast-container';
+    container.className = 'fixed bottom-5 right-5 z-[100] flex flex-col gap-2.5 max-w-sm w-full pointer-events-none px-4 sm:px-0';
+    document.body.appendChild(container);
+  }
+
+  const toast = document.createElement('div');
+  const colors = {
+    success: 'border-emerald-500/40 bg-white/95 dark:bg-slate-900/95 text-slate-900 dark:text-white',
+    info: 'border-brand-500/40 bg-white/95 dark:bg-slate-900/95 text-slate-900 dark:text-white',
+    warning: 'border-sunset-500/40 bg-white/95 dark:bg-slate-900/95 text-slate-900 dark:text-white',
+  };
+  const iconMap = {
+    success: '<span class="w-8 h-8 rounded-xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 font-bold">🌲</span>',
+    info: '<span class="w-8 h-8 rounded-xl bg-brand-500/15 text-brand-600 dark:text-brand-400 flex items-center justify-center shrink-0 font-bold">🧭</span>',
+    warning: '<span class="w-8 h-8 rounded-xl bg-sunset-500/15 text-sunset-600 dark:text-sunset-400 flex items-center justify-center shrink-0 font-bold">⛺</span>',
+  };
+
+  toast.className = `pointer-events-auto flex items-start gap-3 p-4 rounded-2xl border shadow-2xl backdrop-blur-md transition-all duration-300 transform translate-y-4 opacity-0 ${colors[type] || colors.success}`;
+  toast.innerHTML = `
+    ${iconMap[type] || iconMap.success}
+    <div class="flex-1 min-w-0">
+      <div class="text-xs font-extrabold tracking-tight">${title}</div>
+      ${message ? `<div class="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">${message}</div>` : ''}
+    </div>
+    <button type="button" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-xs p-1">✕</button>
+  `;
+
+  toast.querySelector('button').addEventListener('click', () => {
+    toast.classList.add('opacity-0', 'translate-y-2');
+    setTimeout(() => toast.remove(), 250);
+  });
+
+  container.appendChild(toast);
+  requestAnimationFrame(() => {
+    toast.classList.remove('translate-y-4', 'opacity-0');
+  });
+
+  setTimeout(() => {
+    if (toast.parentNode) {
+      toast.classList.add('opacity-0', 'translate-y-2');
+      setTimeout(() => toast.remove(), 300);
+    }
+  }, 4200);
+}
+
+// Expose globally for inline handlers
+if (typeof window !== 'undefined') {
+  window.showToast = showToast;
 }
 
 // Vue AdSlot mounting helper
@@ -134,6 +190,8 @@ export function initMobileMenu() {
   const btn = document.getElementById('mobileMenuBtn');
   const menu = document.getElementById('mobileMenu');
   if (!btn || !menu) return;
+  if (btn.dataset.menuBound === 'true') return;
+  btn.dataset.menuBound = 'true';
 
   btn.addEventListener('click', () => {
     menu.classList.toggle('hidden');
