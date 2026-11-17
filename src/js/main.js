@@ -200,10 +200,94 @@ export function initMobileMenu() {
   });
 }
 
+// Scroll Reveal Animations
+export function initScrollReveal() {
+  const els = document.querySelectorAll('[data-reveal]');
+  if (!els.length) return;
+
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(el => el.classList.add('is-revealed'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const delay = entry.target.dataset.revealDelay || 0;
+        setTimeout(() => {
+          entry.target.classList.add('is-revealed');
+        }, Number(delay));
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+  els.forEach(el => observer.observe(el));
+}
+
+// Top Reading / Scroll Progress Bar
+export function initScrollProgress() {
+  if (document.body.classList.contains('overflow-hidden')) return;
+  if (document.getElementById('tn-scroll-progress')) return;
+
+  const bar = document.createElement('div');
+  bar.id = 'tn-scroll-progress';
+  bar.className = 'fixed top-0 left-0 h-[3px] w-0 bg-gradient-to-r from-brand-500 via-teal-400 to-sunset-500 z-[70] transition-[width] duration-75 pointer-events-none';
+  document.body.appendChild(bar);
+
+  const update = () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const pct = docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0;
+    bar.style.width = `${pct}%`;
+  };
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+}
+
+// Animated Stat Counters
+export function initAnimatedCounters() {
+  const counters = document.querySelectorAll('[data-count-to]');
+  if (!counters.length || !('IntersectionObserver' in window)) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseFloat(el.dataset.countTo);
+      const suffix = el.dataset.countSuffix || '';
+      const decimals = Number(el.dataset.countDecimals || 0);
+      const duration = 1200;
+      const start = performance.now();
+
+      const step = (now) => {
+        const progress = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const val = (target * eased).toFixed(decimals);
+        el.textContent = `${val}${suffix}`;
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          el.textContent = `${target.toFixed(decimals)}${suffix}`;
+        }
+      };
+
+      requestAnimationFrame(step);
+      observer.unobserve(el);
+    });
+  }, { threshold: 0.3 });
+
+  counters.forEach(c => observer.observe(c));
+}
+
 // Universal Initializer on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initAdSlots();
   initFaqAccordion();
   initMobileMenu();
+  initScrollReveal();
+  initScrollProgress();
+  initAnimatedCounters();
 });

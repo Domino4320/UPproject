@@ -25,54 +25,69 @@
   <!-- ============================================== -->
   <!-- 1. Навбар магазина снаряжения                   -->
   <!-- ============================================== -->
-  <header class="sticky top-0 z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80">
+  <header class="sticky top-0 z-40 bg-white/85 dark:bg-[#0b1512]/85 backdrop-blur-md border-b border-emerald-900/10 dark:border-emerald-500/15">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
       
       <!-- Логотип -->
       <a href="../" class="flex items-center space-x-3 group shrink-0">
-        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-600 via-teal-500 to-sunset-500 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-forest-600 via-brand-600 to-sunset-500 flex items-center justify-center text-white shadow-lg shadow-brand-600/25 group-hover:scale-105 transition-transform">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         </div>
         <div class="flex flex-col">
-          <span class="text-lg font-black tracking-tight text-slate-900 dark:text-white">TerraNova Gear</span>
-          <span class="text-[10px] font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-widest -mt-1">Outdoor & Expeditions</span>
+          <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-forest-800 via-brand-600 to-sunset-600 dark:from-white dark:via-brand-400 dark:to-sunset-400 bg-clip-text text-transparent">
+            TerraNova
+          </span>
+          <span class="text-[10px] font-semibold text-slate-500 dark:text-slate-400 -mt-1 uppercase tracking-widest">Outdoor & Gear</span>
         </div>
       </a>
 
-      <!-- Поисковая строка -->
-      <div class="hidden sm:block flex-1 max-w-md mx-4">
-        <div class="relative">
-          <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-          </span>
-          <input type="text" placeholder="Поиск палаток, рюкзаков, мембран, туров..." class="ds-input pl-10 py-2 text-sm bg-slate-100 dark:bg-slate-800 border-transparent focus:bg-white dark:focus:bg-slate-900 focus:border-brand-500">
-        </div>
-      </div>
+      <!-- Навигация -->
+      <nav class="hidden lg:flex items-center gap-5 text-sm font-semibold">
+        <a href="../#articles" class="nav-link">Путеводители</a>
+        <a href="./storybook.html" class="nav-link">Атлас природы</a>
+        <a href="./dashboard.html" class="nav-link">Трекер</a>
+        <a href="./ecommerce.html" class="nav-link nav-link-active">Снаряжение & Туры</a>
+        <a href="./kanban.html" class="nav-link">План сборов</a>
+        <a href="./messenger.html" class="nav-link">Попутчики</a>
+      </nav>
 
       <!-- Действия навбара -->
-      <div class="flex items-center gap-3 sm:gap-4 shrink-0">
+      <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
         <!-- Демо-переключатель скелетона -->
-        <button id="toggleSkeletonBtn" class="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition whitespace-nowrap">
+        <button id="toggleSkeletonBtn" class="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition whitespace-nowrap">
           <span class="w-2 h-2 rounded-full bg-sunset-500 animate-pulse"></span>
-          <span>Демо Skeleton</span>
+          <span>Skeleton</span>
         </button>
 
         <!-- Тема -->
-        <button data-theme-toggle class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white bg-slate-100/50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition shrink-0" aria-label="Сменить тему">
+        <button data-theme-toggle class="p-2.5 rounded-xl border border-emerald-900/10 dark:border-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white bg-emerald-50/50 dark:bg-slate-800/50 hover:bg-emerald-100/60 dark:hover:bg-slate-800 transition shrink-0" aria-label="Сменить тему">
           <svg data-theme-icon="sun" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
           <svg data-theme-icon="moon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
         </button>
 
         <!-- Корзина -->
-        <button class="relative p-2.5 rounded-xl bg-brand-50 dark:bg-brand-950/60 text-brand-600 dark:text-brand-300 hover:bg-brand-100 dark:hover:bg-brand-900/60 transition shrink-0">
+        <button id="cartButton" class="relative p-2.5 rounded-xl bg-brand-50 dark:bg-brand-950/60 text-brand-600 dark:text-brand-300 hover:bg-brand-100 dark:hover:bg-brand-900/60 transition shrink-0" aria-label="Корзина">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-          <span id="cartCount" class="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-sunset-500 text-white text-[11px] font-bold flex items-center justify-center shadow-md">2</span>
+          <span id="cartCount" class="absolute -top-1 -right-1 min-w-[20px] h-5 px-1 rounded-full bg-sunset-500 text-white text-[11px] font-bold flex items-center justify-center shadow-md transition-transform duration-200">2</span>
         </button>
 
-        <a href="../" class="ds-btn ds-btn-sm ds-btn-secondary hidden sm:inline-flex whitespace-nowrap">Блог</a>
+        <a href="./multistep.html" class="hidden sm:inline-flex ds-btn ds-btn-sm ds-btn-sunset whitespace-nowrap">Вступить в клуб</a>
+
+        <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-emerald-50 dark:hover:bg-slate-800 transition" aria-label="Меню">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
       </div>
+    </div>
+
+    <div id="mobileMenu" class="hidden lg:hidden border-t border-emerald-900/10 dark:border-slate-800 bg-white/95 dark:bg-[#0b1512]/95 px-4 py-4 space-y-2 text-sm font-medium">
+      <a href="../" class="block px-3 py-2 rounded-xl hover:bg-emerald-50 dark:hover:bg-slate-800">Главная блога</a>
+      <a href="./storybook.html" class="block px-3 py-2 rounded-xl hover:bg-emerald-50 dark:hover:bg-slate-800">Атлас природы</a>
+      <a href="./dashboard.html" class="block px-3 py-2 rounded-xl hover:bg-emerald-50 dark:hover:bg-slate-800">Трекер маршрутов</a>
+      <a href="./kanban.html" class="block px-3 py-2 rounded-xl hover:bg-emerald-50 dark:hover:bg-slate-800">План сборов</a>
+      <a href="./messenger.html" class="block px-3 py-2 rounded-xl hover:bg-emerald-50 dark:hover:bg-slate-800">Попутчики</a>
+      <a href="./multistep.html" class="block px-3 py-2 rounded-xl text-sunset-600 font-bold hover:bg-emerald-50 dark:hover:bg-slate-800">Вступить в клуб →</a>
     </div>
   </header>
 
@@ -84,7 +99,7 @@
     <!-- Заголовок -->
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
       <div>
-        <span class="ds-badge ds-badge-brand mb-2">Проверенное снаряжение</span>
+        <span class="ds-kicker mb-2">Проверенное снаряжение</span>
         <h1 class="ds-h1 text-2xl sm:text-3xl">Экипировка & Авторские туры</h1>
         <p class="ds-body-sm mt-1">Только то, что мы проверили в экстремальных походах по Исландии, Патагонии и Камчатке.</p>
       </div>
@@ -247,7 +262,7 @@
                 <span class="text-[11px] text-slate-400 block">Клубная цена</span>
                 <span class="text-lg font-black text-slate-900 dark:text-white">42 900 ₽</span>
               </div>
-              <button class="ds-btn ds-btn-sm ds-btn-primary" onclick="alert('Товар добавлен в корзину!')">
+              <button type="button" class="ds-btn ds-btn-sm ds-btn-primary add-to-cart-btn">
                 В корзину
               </button>
             </div>
@@ -287,7 +302,7 @@
                 <span class="text-[11px] text-slate-400 block">Клубная цена</span>
                 <span class="text-lg font-black text-slate-900 dark:text-white">28 500 ₽</span>
               </div>
-              <button class="ds-btn ds-btn-sm ds-btn-primary" onclick="alert('Товар добавлен в корзину!')">
+              <button type="button" class="ds-btn ds-btn-sm ds-btn-primary add-to-cart-btn">
                 В корзину
               </button>
             </div>
@@ -327,7 +342,7 @@
                 <span class="text-[11px] text-slate-400 block">Клубная цена</span>
                 <span class="text-lg font-black text-slate-900 dark:text-white">49 900 ₽</span>
               </div>
-              <button class="ds-btn ds-btn-sm ds-btn-primary" onclick="alert('Товар добавлен в корзину!')">
+              <button type="button" class="ds-btn ds-btn-sm ds-btn-primary add-to-cart-btn">
                 В корзину
               </button>
             </div>
@@ -367,7 +382,7 @@
                 <span class="text-[11px] text-slate-400 block">Клубная цена</span>
                 <span class="text-lg font-black text-slate-900 dark:text-white">36 000 ₽</span>
               </div>
-              <button class="ds-btn ds-btn-sm ds-btn-primary" onclick="alert('Товар добавлен в корзину!')">
+              <button type="button" class="ds-btn ds-btn-sm ds-btn-primary add-to-cart-btn">
                 В корзину
               </button>
             </div>
@@ -407,7 +422,7 @@
                 <span class="text-[11px] text-slate-400 block">Клубная цена</span>
                 <span class="text-lg font-black text-slate-900 dark:text-white">12 400 ₽</span>
               </div>
-              <button class="ds-btn ds-btn-sm ds-btn-primary" onclick="alert('Товар добавлен в корзину!')">
+              <button type="button" class="ds-btn ds-btn-sm ds-btn-primary add-to-cart-btn">
                 В корзину
               </button>
             </div>
@@ -503,8 +518,31 @@
   </div>
 
   <script type="module">
-    import { initTheme } from '../src/js/main.js';
+    import { initTheme, initMobileMenu } from '../src/js/main.js';
     initTheme();
+    initMobileMenu();
+
+    // Cart counter without alert
+    const cartCountEl = document.getElementById('cartCount');
+    let cartCount = parseInt(cartCountEl?.textContent || '0', 10) || 0;
+
+    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        cartCount += 1;
+        if (cartCountEl) {
+          cartCountEl.textContent = String(cartCount);
+          cartCountEl.classList.add('scale-125');
+          setTimeout(() => cartCountEl.classList.remove('scale-125'), 220);
+        }
+
+        const prevText = btn.textContent;
+        btn.textContent = '✓ В корзине';
+        btn.classList.add('from-emerald-600', 'to-teal-600');
+        setTimeout(() => {
+          btn.textContent = prevText;
+        }, 1100);
+      });
+    });
 
     // Toggle skeleton demo
     const skeletonBtn = document.getElementById('toggleSkeletonBtn');

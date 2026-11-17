@@ -39,13 +39,13 @@
         </div>
       </a>
 
-      <nav class="hidden lg:flex items-center gap-6 text-sm font-semibold text-slate-600 dark:text-slate-300">
-        <a href="../#articles" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Путеводители</a>
-        <a href="./storybook.html" class="text-brand-600 dark:text-brand-400 font-bold">Атлас природы</a>
-        <a href="./dashboard.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Трекер</a>
-        <a href="./ecommerce.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Снаряжение & Туры</a>
-        <a href="./kanban.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition">План сборов</a>
-        <a href="./messenger.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition">Попутчики</a>
+      <nav class="hidden lg:flex items-center gap-6 text-sm font-semibold">
+        <a href="../#articles" class="nav-link">Путеводители</a>
+        <a href="./storybook.html" class="nav-link nav-link-active">Атлас природы</a>
+        <a href="./dashboard.html" class="nav-link">Трекер</a>
+        <a href="./ecommerce.html" class="nav-link">Снаряжение & Туры</a>
+        <a href="./kanban.html" class="nav-link">План сборов</a>
+        <a href="./messenger.html" class="nav-link">Попутчики</a>
       </nav>
 
       <div class="flex items-center gap-3 shrink-0">
@@ -100,7 +100,7 @@
       <!-- Заголовок страницы -->
       <section class="relative overflow-hidden nature-card p-7 sm:p-10">
         <div class="relative z-10 max-w-3xl space-y-3">
-          <span class="ds-badge ds-badge-success">Полевой справочник исследователя</span>
+          <span class="ds-kicker">Полевой справочник исследователя</span>
           <h1 class="ds-h1">Атлас природы и биомов TerraNova</h1>
           <p class="ds-body">
             Изучайте климатические зоны нашей планеты, подбирайте идеальный месяц для экспедиции и рассчитывайте вес снаряжения перед выходом на маршрут.
@@ -209,7 +209,7 @@
       <!-- 2. Сезонный компас (Когда ехать?) -->
       <section id="season-compass" class="nature-card p-6 sm:p-8 space-y-6 scroll-mt-24">
         <div>
-          <span class="ds-badge ds-badge-sunset mb-2">Интерактивный календарь</span>
+          <span class="ds-kicker ds-kicker-sunset mb-2">Интерактивный календарь</span>
           <h2 class="ds-h2">2. Сезонный компас: когда лучше ехать?</h2>
           <p class="ds-body-sm mt-1">Выберите месяц, чтобы узнать, где сейчас идеальная погода и открыты все перевалы.</p>
         </div>
@@ -238,7 +238,7 @@
       <section id="pack-calculator" class="nature-card p-6 sm:p-8 space-y-6 scroll-mt-24">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <span class="ds-badge ds-badge-brand mb-2">Умные сборы</span>
+            <span class="ds-kicker mb-2">Умные сборы</span>
             <h2 class="ds-h2">3. Калькулятор веса рюкзака</h2>
             <p class="ds-body-sm mt-1">Отмечайте снаряжение, которое берёте в поход — система рассчитает базовый вес (Base Weight).</p>
           </div>

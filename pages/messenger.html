@@ -22,27 +22,51 @@
 </head>
 <body class="bg-[#f7faf8] text-slate-800 dark:bg-[#0b1512] dark:text-slate-100 h-screen flex flex-col antialiased overflow-hidden bg-topo-pattern">
 
-  <!-- Верхний бар -->
-  <header class="h-16 shrink-0 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80 px-4 sm:px-6 flex items-center justify-between z-30">
-    <div class="flex items-center space-x-3">
-      <a href="../" class="p-2 -ml-2 text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="На главную">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+  <!-- Единая шапка сайта -->
+  <header class="sticky top-0 shrink-0 bg-white/85 dark:bg-[#0b1512]/85 backdrop-blur-md border-b border-emerald-900/10 dark:border-emerald-500/15 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-4">
+      <a href="../" class="flex items-center space-x-3 group shrink-0">
+        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-forest-600 via-brand-600 to-sunset-500 flex items-center justify-center text-white shadow-lg shadow-brand-600/25 group-hover:scale-105 transition-transform">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-forest-800 via-brand-600 to-sunset-600 dark:from-white dark:via-brand-400 dark:to-sunset-400 bg-clip-text text-transparent">
+            TerraNova
+          </span>
+          <span class="text-[10px] font-semibold text-slate-500 dark:text-slate-400 -mt-1 uppercase tracking-widest">Чат попутчиков</span>
+        </div>
       </a>
-      <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-600 via-teal-500 to-sunset-500 flex items-center justify-center text-white font-bold text-sm shadow-md">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-      </div>
-      <div>
-        <span class="font-extrabold text-slate-900 dark:text-white text-base">TerraNova Chat</span>
-        <span class="ml-2 text-[11px] font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300">Спутниковая связь активна</span>
+
+      <nav class="hidden lg:flex items-center gap-5 text-sm font-semibold">
+        <a href="../#articles" class="nav-link">Путеводители</a>
+        <a href="./storybook.html" class="nav-link">Атлас природы</a>
+        <a href="./dashboard.html" class="nav-link">Трекер</a>
+        <a href="./ecommerce.html" class="nav-link">Снаряжение & Туры</a>
+        <a href="./kanban.html" class="nav-link">План сборов</a>
+        <a href="./messenger.html" class="nav-link nav-link-active">Попутчики</a>
+      </nav>
+
+      <div class="flex items-center gap-3 shrink-0">
+        <button data-theme-toggle class="p-2.5 rounded-xl border border-emerald-900/10 dark:border-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white bg-emerald-50/50 dark:bg-slate-800/50 transition" aria-label="Сменить тему">
+          <svg data-theme-icon="sun" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <svg data-theme-icon="moon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        </button>
+        <a href="./multistep.html" class="hidden sm:inline-flex ds-btn ds-btn-sm ds-btn-sunset whitespace-nowrap">Вступить в клуб</a>
+        <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-emerald-50 dark:hover:bg-slate-800 transition" aria-label="Меню">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
       </div>
     </div>
 
-    <div class="flex items-center gap-3 sm:gap-4 shrink-0">
-      <button data-theme-toggle class="p-2 rounded-xl text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition" aria-label="Сменить тему">
-        <svg data-theme-icon="sun" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-        <svg data-theme-icon="moon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
-      </button>
-      <a href="./kanban.html" class="ds-btn ds-btn-sm ds-btn-secondary hidden sm:inline-flex whitespace-nowrap">К сборам (Kanban)</a>
+    <div id="mobileMenu" class="hidden lg:hidden border-t border-emerald-900/10 dark:border-slate-800 bg-white/95 dark:bg-[#0b1512]/95 px-4 py-4 space-y-2 text-sm font-medium">
+      <a href="../" class="block px-3 py-2 rounded-xl hover:bg-emerald-50 dark:hover:bg-slate-800">Главная блога</a>
+      <a href="./storybook.html" class="block px-3 py-2 rounded-xl hover:bg-emerald-50 dark:hover:bg-slate-800">Атлас природы</a>
+      <a href="./dashboard.html" class="block px-3 py-2 rounded-xl hover:bg-emerald-50 dark:hover:bg-slate-800">Трекер маршрутов</a>
+      <a href="./ecommerce.html" class="block px-3 py-2 rounded-xl hover:bg-emerald-50 dark:hover:bg-slate-800">Снаряжение & Туры</a>
+      <a href="./kanban.html" class="block px-3 py-2 rounded-xl hover:bg-emerald-50 dark:hover:bg-slate-800">План сборов</a>
+      <a href="./multistep.html" class="block px-3 py-2 rounded-xl text-sunset-600 font-bold hover:bg-emerald-50 dark:hover:bg-slate-800">Вступить в клуб →</a>
     </div>
   </header>
 
@@ -55,200 +79,68 @@
       <div class="p-4 border-b border-slate-100 dark:border-slate-800 space-y-3">
         <div class="flex items-center justify-between">
           <h2 class="text-lg font-bold text-slate-900 dark:text-white">Чаты экспедиций</h2>
-          <span class="px-2 py-0.5 rounded-full text-xs font-bold bg-brand-50 text-brand-700 dark:bg-brand-950 dark:text-brand-300">3 новых</span>
+          <span id="totalUnreadLabel" class="text-xs font-semibold text-brand-600 dark:text-brand-400">4 канала</span>
         </div>
         <div class="relative">
           <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
           </span>
-          <input type="text" placeholder="Поиск каналов и попутчиков..." class="ds-input pl-9 py-2 text-xs bg-slate-50 dark:bg-slate-800">
+          <input id="chatSearchInput" type="text" placeholder="Поиск каналов и попутчиков..." class="ds-input pl-9 py-2 text-xs bg-slate-50 dark:bg-slate-800">
         </div>
       </div>
 
       <!-- Список каналов и диалогов -->
-      <div class="flex-1 overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:bg-slate-300 dark:[&::-webkit-scrollbar-thumb]:bg-slate-700 [&::-webkit-scrollbar-thumb]:rounded-full divide-y divide-slate-100 dark:divide-slate-800/60">
-        
-        <!-- Диалог 1: Исландия 2026 (Активный) -->
-        <div class="p-4 bg-brand-50/70 dark:bg-brand-950/40 flex items-center gap-3.5 cursor-pointer border-l-4 border-brand-600 transition-colors">
-          <div class="relative shrink-0">
-            <img src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?auto=format&fit=crop&w=100&h=100&q=80" alt="Исландия" class="w-12 h-12 rounded-2xl object-cover ring-2 ring-brand-500">
-            <span class="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-emerald-500 ring-2 ring-white dark:ring-slate-900"></span>
-          </div>
-          <div class="min-w-0 flex-1">
-            <div class="flex justify-between items-baseline mb-1">
-              <span class="font-bold text-sm text-slate-900 dark:text-white truncate">Экспедиция Исландия '26</span>
-              <span class="text-[11px] text-brand-600 dark:text-brand-400 font-semibold">11:42</span>
-            </div>
-            <p class="text-xs text-slate-600 dark:text-slate-300 truncate font-medium">Максим: Перевал F208 открыт, броды до 40 см! 🚙</p>
-          </div>
-          <span class="w-5 h-5 rounded-full bg-sunset-500 text-white text-[11px] font-bold flex items-center justify-center shrink-0">2</span>
-        </div>
-
-        <!-- Диалог 2: Непал -->
-        <div class="p-4 hover:bg-slate-50 dark:hover:bg-slate-800/50 flex items-center gap-3.5 cursor-pointer transition-colors">
-          <div class="relative shrink-0">
-            <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=100&h=100&q=80" alt="Непал" class="w-12 h-12 rounded-2xl object-cover">
-            <span class="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-emerald-500 ring-2 ring-white dark:ring-slate-900"></span>
-          </div>
-          <div class="min-w-0 flex-1">
-            <div class="flex justify-between items-baseline mb-1">
-              <span class="font-bold text-sm text-slate-900 dark:text-white truncate">Кольцо Аннапурны (Окт)</span>
-              <span class="text-[11px] text-slate-400">Вчера</span>
-            </div>
-            <p class="text-xs text-slate-500 dark:text-slate-400 truncate">Получили пермиты в ACAP, всё готово!</p>
-          </div>
-        </div>
-
-        <!-- Диалог 3: Норвегия кемпер -->
-        <div class="p-4 hover:bg-slate-50 dark:hover:bg-slate-800/50 flex items-center gap-3.5 cursor-pointer transition-colors">
-          <div class="relative shrink-0">
-            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=100&h=100&q=80" alt="Лофотены" class="w-12 h-12 rounded-2xl object-cover">
-            <span class="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-slate-300 dark:bg-slate-600 ring-2 ring-white dark:ring-slate-900"></span>
-          </div>
-          <div class="min-w-0 flex-1">
-            <div class="flex justify-between items-baseline mb-1">
-              <span class="font-bold text-sm text-slate-900 dark:text-white truncate">Попутчики Норвегия 4x4</span>
-              <span class="text-[11px] text-slate-400">12 ноя</span>
-            </div>
-            <p class="text-xs text-slate-500 dark:text-slate-400 truncate">Нашли 4-го участника для шеринга кемпера</p>
-          </div>
-        </div>
-
-        <!-- Диалог 4: Камчатка -->
-        <div class="p-4 hover:bg-slate-50 dark:hover:bg-slate-800/50 flex items-center gap-3.5 cursor-pointer transition-colors">
-          <div class="relative shrink-0">
-            <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=100&h=100&q=80" alt="Камчатка" class="w-12 h-12 rounded-2xl object-cover">
-            <span class="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-emerald-500 ring-2 ring-white dark:ring-slate-900"></span>
-          </div>
-          <div class="min-w-0 flex-1">
-            <div class="flex justify-between items-baseline mb-1">
-              <span class="font-bold text-sm text-slate-900 dark:text-white truncate">Камчатка: Вулканы '26</span>
-              <span class="text-[11px] text-slate-400">10 ноя</span>
-            </div>
-            <p class="text-xs text-slate-500 dark:text-slate-400 truncate">Фальшфейеры и сигналы охотника куплены</p>
-          </div>
-        </div>
-
+      <div id="chatList" class="flex-1 overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:bg-slate-300 dark:[&::-webkit-scrollbar-thumb]:bg-slate-700 [&::-webkit-scrollbar-thumb]:rounded-full divide-y divide-slate-100 dark:divide-slate-800/60">
       </div>
     </aside>
 
     <!-- Окно открытой беседы -->
-    <main class="flex-1 flex flex-col bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 overflow-hidden shadow-sm relative">
+    <main id="chatMain" class="hidden md:flex flex-1 flex-col bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 overflow-hidden shadow-sm relative">
       
       <!-- Хедер текущего чата -->
-      <div class="p-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between shrink-0 bg-white/70 dark:bg-slate-900/70 backdrop-blur-md">
-        <div class="flex items-center gap-3">
-          <img src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?auto=format&fit=crop&w=100&h=100&q=80" alt="Исландия" class="w-10 h-10 rounded-xl object-cover ring-2 ring-brand-500">
-          <div>
-            <div class="flex items-center gap-2">
-              <h3 class="font-bold text-sm text-slate-900 dark:text-white">Экспедиция Исландия '26 (12 мест)</h3>
-              <span class="ds-badge ds-badge-brand text-[10px]">Координаты: 64.1° N</span>
+      <div class="p-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between gap-3 shrink-0 bg-white/70 dark:bg-slate-900/70 backdrop-blur-md">
+        <div class="flex items-center gap-3 min-w-0">
+          <button id="backToChatsBtn" type="button" class="md:hidden p-2 -ml-1 rounded-xl text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition" aria-label="Назад к списку чатов">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <img id="activeChatAvatar" src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?auto=format&fit=crop&w=100&h=100&q=80" alt="" class="w-10 h-10 rounded-xl object-cover ring-2 ring-brand-500 shrink-0">
+          <div class="min-w-0">
+            <div class="flex items-center gap-2 flex-wrap">
+              <h3 id="activeChatTitle" class="font-bold text-sm text-slate-900 dark:text-white truncate">Экспедиция Исландия '26 (12 мест)</h3>
+              <span id="activeChatCoords" class="ds-badge ds-badge-brand text-[10px]">Координаты: 64.1° N</span>
             </div>
-            <span class="text-xs text-slate-400">14 участников • 6 онлайн</span>
+            <span id="activeChatSubtitle" class="text-xs text-slate-400 block truncate">14 участников • 6 онлайн</span>
           </div>
         </div>
 
-        <div class="flex items-center gap-2">
-          <a href="./kanban.html" class="ds-btn ds-btn-sm ds-btn-secondary">
+        <div class="flex items-center gap-2 shrink-0">
+          <a href="./kanban.html" class="ds-btn ds-btn-sm ds-btn-secondary whitespace-nowrap">
             Чек-лист группы
           </a>
         </div>
       </div>
 
       <!-- Лента сообщений со стилизованным скроллом -->
-      <div class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:bg-slate-300 dark:[&::-webkit-scrollbar-thumb]:bg-slate-700 [&::-webkit-scrollbar-thumb]:rounded-full">
-        
-        <!-- Системный разделитель даты -->
-        <div class="flex items-center justify-center my-4">
-          <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">
-            Сегодня, 14 ноября 2026
-          </span>
-        </div>
-
-        <!-- Входящее сообщение от гида -->
-        <div class="flex items-start gap-3 max-w-xl">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&h=80&q=80" alt="Максим Ветров" class="w-8 h-8 rounded-full object-cover shrink-0 mt-1">
-          <div class="space-y-1">
-            <div class="flex items-baseline gap-2">
-              <span class="text-xs font-bold text-slate-900 dark:text-white">Максим Ветров (Лидер)</span>
-              <span class="text-[10px] text-slate-400">10:15</span>
-            </div>
-            <div class="p-4 rounded-2xl rounded-tl-sm bg-slate-100 dark:bg-slate-800 text-sm text-slate-800 dark:text-slate-100 space-y-2">
-              <p>Всем привет! До старта зимней экспедиции по кольцу Исландии осталось 10 дней. Скачайте свежий трек в OsmAnd: добавил точку стоянки у лагуны Йёкюльсаурлоун.</p>
-              
-              <!-- Превью фото локации -->
-              <div class="rounded-xl overflow-hidden mt-2 border border-slate-200 dark:border-slate-700">
-                <img src="https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&w=600&q=80" alt="Ледяная пещера" class="w-full h-44 object-cover">
-                <div class="p-2.5 bg-slate-50 dark:bg-slate-800 text-xs flex justify-between items-center">
-                  <span class="font-semibold text-slate-700 dark:text-slate-300">Ледяная пещера Ватнайёкюдль</span>
-                  <span class="text-[11px] text-brand-600 dark:text-brand-400">GPS: 64.048° N</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Входящее сообщение от участника -->
-        <div class="flex items-start gap-3 max-w-xl">
-          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&h=80&q=80" alt="Елена" class="w-8 h-8 rounded-full object-cover shrink-0 mt-1">
-          <div class="space-y-1">
-            <div class="flex items-baseline gap-2">
-              <span class="text-xs font-bold text-slate-900 dark:text-white">Елена Васильева</span>
-              <span class="text-[10px] text-slate-400">10:48</span>
-            </div>
-            <div class="p-4 rounded-2xl rounded-tl-sm bg-slate-100 dark:bg-slate-800 text-sm text-slate-800 dark:text-slate-100">
-              <p>Супер! Максим, подскажи, цепи на колеса для арендованного 4x4 Defender брать в Рейкьявике или уже включены в аренду?</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Исходящее сообщение (Справа, в фирменном цвете) -->
-        <div class="flex items-end justify-end gap-2 ml-auto max-w-xl">
-          <div class="space-y-1 text-right">
-            <div class="p-4 rounded-2xl rounded-tr-sm bg-gradient-to-r from-brand-600 to-teal-600 text-white text-sm text-left shadow-md">
-              <p>Да, я созвонился с прокатом: цепи противоскольжения и шипованная резина уже входят в экспедиционный пакет. Плюс берем спутниковый трекер inReach для постоянного трекинга в горах.</p>
-            </div>
-            <div class="text-[10px] text-slate-400 pr-1 flex items-center justify-end gap-1">
-              <span>11:15</span>
-              <span>✓✓</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Входящее сообщение с чек-листом -->
-        <div class="flex items-start gap-3 max-w-xl">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&h=80&q=80" alt="Максим" class="w-8 h-8 rounded-full object-cover shrink-0 mt-1">
-          <div class="space-y-1">
-            <div class="flex items-baseline gap-2">
-              <span class="text-xs font-bold text-slate-900 dark:text-white">Максим Ветров (Лидер)</span>
-              <span class="text-[10px] text-slate-400">11:42</span>
-            </div>
-            <div class="p-4 rounded-2xl rounded-tl-sm bg-slate-100 dark:bg-slate-800 text-sm text-slate-800 dark:text-slate-100 space-y-2">
-              <p>Отлично! Перевал F208 сейчас открыт, броды до 40 см. Не забудьте неопреновые носки и мембранные куртки с показателем от 20 000 мм.</p>
-              <div class="flex items-center gap-2 pt-1 text-xs text-sunset-500 font-bold">
-                <span>📍 Точка сбора: Аэропорт Кеблавик, 12 декабря в 14:00</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
+      <div id="messagesContainer" class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:bg-slate-300 dark:[&::-webkit-scrollbar-thumb]:bg-slate-700 [&::-webkit-scrollbar-thumb]:rounded-full">
       </div>
 
       <!-- Поле ввода сообщения (Sticky bottom) -->
       <div class="p-3 sm:p-4 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 shrink-0">
-        <form class="flex items-center gap-2" onsubmit="event.preventDefault(); alert('Сообщение отправлено в чат экспедиции!');">
+        <form id="chatForm" class="flex items-center gap-2">
           <!-- Кнопка прикрепления файла -->
-          <button type="button" class="p-2.5 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="Прикрепить GPX-трек или фото">
+          <button id="attachGpxBtn" type="button" class="p-2.5 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="Прикрепить GPX-точку">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"/></svg>
           </button>
 
           <input 
+            id="chatInput"
             type="text" 
+            autocomplete="off"
             placeholder="Написать сообщение в чат экспедиции..." 
             class="flex-1 ds-input py-2.5 text-sm bg-slate-100 dark:bg-slate-800 border-transparent focus:bg-white dark:focus:bg-slate-900 focus:border-brand-500"
           >
 
-          <button type="submit" class="p-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white transition shadow-md shadow-brand-600/25 shrink-0" title="Отправить">
+          <button type="submit" class="p-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white transition shadow-md shadow-brand-600/25 shrink-0 active:scale-95" title="Отправить">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
           </button>
         </form>
@@ -259,8 +151,379 @@
   </div>
 
   <script type="module">
-    import { initTheme } from '../src/js/main.js';
+    import { initTheme, initMobileMenu } from '../src/js/main.js';
     initTheme();
+    initMobileMenu();
+
+    const CHATS = [
+      {
+        id: 'iceland',
+        title: "Экспедиция Исландия '26",
+        fullTitle: "Экспедиция Исландия '26 (12 мест)",
+        subtitle: '14 участников • 6 онлайн',
+        coords: 'Координаты: 64.1° N',
+        avatar: 'https://images.unsplash.com/photo-1504893524553-b855bce32c67?auto=format&fit=crop&w=100&h=100&q=80',
+        online: true,
+        unread: 2,
+        lastTime: '11:42',
+        leader: {
+          name: 'Максим Ветров (Лидер)',
+          avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&h=80&q=80',
+          autoReply: 'Принято! Добавил твой комментарий в общий брифинг перед вылетом.'
+        },
+        messages: [
+          { type: 'date', text: 'Сегодня, 14 ноября 2026' },
+          {
+            type: 'in',
+            sender: 'Максим Ветров (Лидер)',
+            avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&h=80&q=80',
+            time: '10:15',
+            text: 'Всем привет! До старта зимней экспедиции по кольцу Исландии осталось 10 дней. Скачайте свежий трек в OsmAnd: добавил точку стоянки у лагуны Йёкюльсаурлоун.',
+            photo: {
+              src: 'https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&w=600&q=80',
+              caption: 'Ледяная пещера Ватнайёкюдль',
+              gps: 'GPS: 64.048° N'
+            }
+          },
+          {
+            type: 'in',
+            sender: 'Елена Васильева',
+            avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&h=80&q=80',
+            time: '10:48',
+            text: 'Супер! Максим, подскажи, цепи на колеса для арендованного 4x4 Defender брать в Рейкьявике или уже включены в аренду?'
+          },
+          {
+            type: 'out',
+            time: '11:15',
+            text: 'Да, я созвонился с прокатом: цепи противоскольжения и шипованная резина уже входят в экспедиционный пакет. Плюс берем спутниковый трекер inReach для постоянного трекинга в горах.'
+          },
+          {
+            type: 'in',
+            sender: 'Максим Ветров (Лидер)',
+            avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&h=80&q=80',
+            time: '11:42',
+            text: 'Отлично! Перевал F208 сейчас открыт, броды до 40 см. Не забудьте неопреновые носки и мембранные куртки с показателем от 20 000 мм.',
+            highlight: '📍 Точка сбора: Аэропорт Кеблавик, 12 декабря в 14:00'
+          }
+        ]
+      },
+      {
+        id: 'annapurna',
+        title: 'Кольцо Аннапурны (Окт)',
+        fullTitle: 'Кольцо Аннапурны • Треккинг к Торонг-Ла',
+        subtitle: '9 участников • 3 онлайн',
+        coords: 'Высота: 5 416 м',
+        avatar: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=100&h=100&q=80',
+        online: true,
+        unread: 0,
+        lastTime: 'Вчера',
+        leader: {
+          name: 'Алина Соколова (Гид)',
+          avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=80&h=80&q=80',
+          autoReply: 'Отличный вопрос! В Мананге у нас запланирован дополнительный день акклиматизации.'
+        },
+        messages: [
+          { type: 'date', text: 'Вчера, 13 ноября 2026' },
+          {
+            type: 'in',
+            sender: 'Алина Соколова (Гид)',
+            avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=80&h=80&q=80',
+            time: '16:20',
+            text: 'Получили пермиты в ACAP и карты TIMS на всю группу! Встречаемся в Катманду в районе Тамель, у нас забронирован уютный гестхаус с видом на ступу.'
+          },
+          {
+            type: 'out',
+            time: '17:05',
+            text: 'Здорово! Какие спальники лучше брать на октябрь — хватит ли комфорта -5°C для ночёвки перед перевалом Торонг-Ла?'
+          },
+          {
+            type: 'in',
+            sender: 'Алина Соколова (Гид)',
+            avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=80&h=80&q=80',
+            time: '18:10',
+            text: 'В лоджах на 4500 м дают тёплые одеяла, так что -5°C с флисовым вкладышем будет вполне достаточно.'
+          }
+        ]
+      },
+      {
+        id: 'norway',
+        title: 'Попутчики Норвегия 4x4',
+        fullTitle: 'Попутчики Норвегия 4x4 • Лофотены',
+        subtitle: '6 участников • 2 онлайн',
+        coords: 'Координаты: 68.2° N',
+        avatar: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=100&h=100&q=80',
+        online: false,
+        unread: 0,
+        lastTime: '12 ноя',
+        leader: {
+          name: 'Денис Орлов',
+          avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=80&h=80&q=80',
+          autoReply: 'Записал! Скину таблицу расходов по паромам и кемпингам вечером.'
+        },
+        messages: [
+          { type: 'date', text: '12 ноября 2026' },
+          {
+            type: 'in',
+            sender: 'Денис Орлов',
+            avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=80&h=80&q=80',
+            time: '14:30',
+            text: 'Ребята, нашли 4-го участника для шеринга кемпера! Маршрут: Тромсё — Сенья — Лофотенские острова на 10 дней.'
+          },
+          {
+            type: 'in',
+            sender: 'Игорь К.',
+            avatar: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=80&h=80&q=80',
+            time: '15:12',
+            text: 'Отлично, паром из Будё в Москенес лучше бронировать заранее, чтобы не стоять в очереди.'
+          }
+        ]
+      },
+      {
+        id: 'kamchatka',
+        title: "Камчатка: Вулканы '26",
+        fullTitle: "Камчатка: Вулканы '26 • Толбачик и Мутновский",
+        subtitle: '11 участников • 4 онлайн',
+        coords: 'Координаты: 55.8° N',
+        avatar: 'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=100&h=100&q=80',
+        online: true,
+        unread: 1,
+        lastTime: '10 ноя',
+        leader: {
+          name: 'Артём Мельников',
+          avatar: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=80&h=80&q=80',
+          autoReply: 'Супер! Вахтовка КАМАЗ 6x6 уже подтверждена на все даты.'
+        },
+        messages: [
+          { type: 'date', text: '10 ноября 2026' },
+          {
+            type: 'in',
+            sender: 'Артём Мельников',
+            avatar: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=80&h=80&q=80',
+            time: '09:40',
+            text: 'Фальшфейеры, сигналы охотника и медвежьи баллоны куплены на всю группу. Дополнительно везём 2 комплекта спутниковых раций.'
+          }
+        ]
+      }
+    ];
+
+    let activeChatId = 'iceland';
+    let searchQuery = '';
+
+    const chatListEl = document.getElementById('chatList');
+    const messagesEl = document.getElementById('messagesContainer');
+    const chatForm = document.getElementById('chatForm');
+    const chatInput = document.getElementById('chatInput');
+    const chatSearchInput = document.getElementById('chatSearchInput');
+    const chatSidebar = document.getElementById('chatSidebar');
+    const chatMain = document.getElementById('chatMain');
+    const backToChatsBtn = document.getElementById('backToChatsBtn');
+    const attachGpxBtn = document.getElementById('attachGpxBtn');
+
+    function escapeHtml(str) {
+      return str.replace(/[&<>"']/g, m => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[m]));
+    }
+
+    function getCurrentTime() {
+      const now = new Date();
+      return now.toTimeString().slice(0, 5);
+    }
+
+    function renderChatList() {
+      const filtered = CHATS.filter(c => {
+        if (!searchQuery) return true;
+        const lastMsg = c.messages[c.messages.length - 1]?.text || '';
+        return c.title.toLowerCase().includes(searchQuery) || lastMsg.toLowerCase().includes(searchQuery);
+      });
+
+      chatListEl.innerHTML = filtered.map(chat => {
+        const isActive = chat.id === activeChatId;
+        const lastMsgObj = [...chat.messages].reverse().find(m => m.type !== 'date');
+        const preview = lastMsgObj
+          ? (lastMsgObj.type === 'out' ? `Вы: ${lastMsgObj.text}` : `${lastMsgObj.sender.split(' ')[0]}: ${lastMsgObj.text}`)
+          : '';
+
+        return `
+          <button type="button" data-chat-id="${chat.id}" class="w-full text-left p-4 flex items-center gap-3.5 cursor-pointer transition-colors ${isActive ? 'bg-brand-50/70 dark:bg-brand-950/40 border-l-4 border-brand-600' : 'hover:bg-slate-50 dark:hover:bg-slate-800/50 border-l-4 border-transparent'}">
+            <div class="relative shrink-0">
+              <img src="${chat.avatar}" alt="${escapeHtml(chat.title)}" class="w-12 h-12 rounded-2xl object-cover ${isActive ? 'ring-2 ring-brand-500' : ''}">
+              <span class="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full ${chat.online ? 'bg-emerald-500' : 'bg-slate-300 dark:bg-slate-600'} ring-2 ring-white dark:ring-slate-900"></span>
+            </div>
+            <div class="min-w-0 flex-1">
+              <div class="flex justify-between items-baseline mb-1 gap-2">
+                <span class="font-bold text-sm text-slate-900 dark:text-white truncate">${escapeHtml(chat.title)}</span>
+                <span class="text-[11px] shrink-0 ${isActive ? 'text-brand-600 dark:text-brand-400 font-semibold' : 'text-slate-400'}">${escapeHtml(chat.lastTime)}</span>
+              </div>
+              <p class="text-xs text-slate-500 dark:text-slate-400 truncate ${chat.unread > 0 ? 'font-semibold text-slate-700 dark:text-slate-200' : ''}">${escapeHtml(preview)}</p>
+            </div>
+            ${chat.unread > 0 ? `<span class="w-5 h-5 rounded-full bg-sunset-500 text-white text-[11px] font-bold flex items-center justify-center shrink-0">${chat.unread}</span>` : ''}
+          </button>
+        `;
+      }).join('');
+
+      chatListEl.querySelectorAll('[data-chat-id]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          selectChat(btn.dataset.chatId);
+        });
+      });
+    }
+
+    function renderActiveChat() {
+      const chat = CHATS.find(c => c.id === activeChatId);
+      if (!chat) return;
+
+      document.getElementById('activeChatAvatar').src = chat.avatar;
+      document.getElementById('activeChatTitle').textContent = chat.fullTitle;
+      document.getElementById('activeChatCoords').textContent = chat.coords;
+      document.getElementById('activeChatSubtitle').textContent = chat.subtitle;
+
+      messagesEl.innerHTML = chat.messages.map(msg => {
+        if (msg.type === 'date') {
+          return `
+            <div class="flex items-center justify-center my-4">
+              <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">
+                ${escapeHtml(msg.text)}
+              </span>
+            </div>
+          `;
+        }
+
+        if (msg.type === 'out') {
+          return `
+            <div class="flex items-end justify-end gap-2 ml-auto max-w-xl animate-fade-in">
+              <div class="space-y-1 text-right">
+                <div class="p-4 rounded-2xl rounded-tr-sm bg-gradient-to-r from-brand-600 to-teal-600 text-white text-sm text-left shadow-md">
+                  <p>${escapeHtml(msg.text)}</p>
+                </div>
+                <div class="text-[10px] text-slate-400 pr-1 flex items-center justify-end gap-1">
+                  <span>${escapeHtml(msg.time)}</span>
+                  <span>✓✓</span>
+                </div>
+              </div>
+            </div>
+          `;
+        }
+
+        return `
+          <div class="flex items-start gap-3 max-w-xl animate-fade-in">
+            <img src="${msg.avatar}" alt="${escapeHtml(msg.sender)}" class="w-8 h-8 rounded-full object-cover shrink-0 mt-1">
+            <div class="space-y-1">
+              <div class="flex items-baseline gap-2">
+                <span class="text-xs font-bold text-slate-900 dark:text-white">${escapeHtml(msg.sender)}</span>
+                <span class="text-[10px] text-slate-400">${escapeHtml(msg.time)}</span>
+              </div>
+              <div class="p-4 rounded-2xl rounded-tl-sm bg-slate-100 dark:bg-slate-800 text-sm text-slate-800 dark:text-slate-100 space-y-2">
+                <p>${escapeHtml(msg.text)}</p>
+                ${msg.photo ? `
+                  <div class="rounded-xl overflow-hidden mt-2 border border-slate-200 dark:border-slate-700">
+                    <img src="${msg.photo.src}" alt="${escapeHtml(msg.photo.caption)}" class="w-full h-44 object-cover">
+                    <div class="p-2.5 bg-slate-50 dark:bg-slate-800 text-xs flex justify-between items-center">
+                      <span class="font-semibold text-slate-700 dark:text-slate-300">${escapeHtml(msg.photo.caption)}</span>
+                      <span class="text-[11px] text-brand-600 dark:text-brand-400">${escapeHtml(msg.photo.gps)}</span>
+                    </div>
+                  </div>
+                ` : ''}
+                ${msg.highlight ? `
+                  <div class="flex items-center gap-2 pt-1 text-xs text-sunset-500 font-bold">
+                    <span>${escapeHtml(msg.highlight)}</span>
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+    function selectChat(id) {
+      activeChatId = id;
+      const chat = CHATS.find(c => c.id === id);
+      if (chat) chat.unread = 0;
+
+      // Mobile view toggle
+      if (window.innerWidth < 768) {
+        chatSidebar.classList.add('hidden');
+        chatMain.classList.remove('hidden');
+        chatMain.classList.add('flex');
+      }
+
+      renderChatList();
+      renderActiveChat();
+      chatInput?.focus();
+    }
+
+    if (backToChatsBtn) {
+      backToChatsBtn.addEventListener('click', () => {
+        chatMain.classList.add('hidden');
+        chatMain.classList.remove('flex');
+        chatSidebar.classList.remove('hidden');
+      });
+    }
+
+    if (chatSearchInput) {
+      chatSearchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value.trim().toLowerCase();
+        renderChatList();
+      });
+    }
+
+    if (attachGpxBtn) {
+      attachGpxBtn.addEventListener('click', () => {
+        const chat = CHATS.find(c => c.id === activeChatId);
+        if (!chat) return;
+        chatInput.value = `📍 Отправляю GPX-точку лагеря (${chat.coords})`;
+        chatInput.focus();
+      });
+    }
+
+    if (chatForm) {
+      chatForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const text = chatInput.value.trim();
+        if (!text) return;
+
+        const chat = CHATS.find(c => c.id === activeChatId);
+        if (!chat) return;
+
+        const time = getCurrentTime();
+        chat.messages.push({ type: 'out', time, text });
+        chat.lastTime = time;
+        chatInput.value = '';
+
+        renderChatList();
+        renderActiveChat();
+
+        // Contextual reply from expedition leader
+        const targetId = chat.id;
+        setTimeout(() => {
+          const targetChat = CHATS.find(c => c.id === targetId);
+          if (!targetChat) return;
+          const replyTime = getCurrentTime();
+          targetChat.messages.push({
+            type: 'in',
+            sender: targetChat.leader.name,
+            avatar: targetChat.leader.avatar,
+            time: replyTime,
+            text: targetChat.leader.autoReply
+          });
+          targetChat.lastTime = replyTime;
+          if (activeChatId !== targetId) {
+            targetChat.unread += 1;
+          }
+          renderChatList();
+          if (activeChatId === targetId) {
+            renderActiveChat();
+          }
+        }, 950);
+      });
+    }
+
+    // Initial render (clear initial unread on active chat after first paint or keep as is)
+    renderChatList();
+    renderActiveChat();
   </script>
 </body>
 </html>

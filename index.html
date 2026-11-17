@@ -45,16 +45,13 @@
       </a>
 
       <!-- Меню по центру -->
-      <nav class="hidden lg:flex items-center gap-4 xl:gap-6 2xl:gap-7 text-sm font-semibold text-slate-600 dark:text-slate-300 shrink-0">
-        <a href="#articles" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors whitespace-nowrap">Путеводители</a>
-        <a href="./pages/storybook.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors flex items-center gap-1.5 whitespace-nowrap">
-          <span>Атлас природы</span>
-          <span class="px-1.5 py-0.5 text-[10px] font-bold rounded-md bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300">New</span>
-        </a>
-        <a href="./pages/dashboard.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors whitespace-nowrap">Трекер</a>
-        <a href="./pages/ecommerce.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors whitespace-nowrap">Снаряжение & Туры</a>
-        <a href="./pages/kanban.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors whitespace-nowrap">План сборов</a>
-        <a href="./pages/messenger.html" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors whitespace-nowrap">Попутчики</a>
+      <nav class="hidden lg:flex items-center gap-4 xl:gap-6 2xl:gap-7 text-sm font-semibold shrink-0">
+        <a href="#articles" class="nav-link">Путеводители</a>
+        <a href="./pages/storybook.html" class="nav-link">Атлас природы</a>
+        <a href="./pages/dashboard.html" class="nav-link">Трекер</a>
+        <a href="./pages/ecommerce.html" class="nav-link">Снаряжение & Туры</a>
+        <a href="./pages/kanban.html" class="nav-link">План сборов</a>
+        <a href="./pages/messenger.html" class="nav-link">Попутчики</a>
       </nav>
 
       <!-- Правая часть: тема + Вступить в клуб + Об авторе + Мобильный бургер -->
@@ -192,19 +189,19 @@
       <!-- Trust metrics / Expedition stats -->
       <div class="mt-12 pt-10 border-t border-emerald-900/10 dark:border-slate-800/80 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto text-left sm:text-center">
         <div>
-          <div class="text-3xl font-extrabold text-slate-900 dark:text-white">54 страны</div>
+          <div class="text-3xl font-extrabold text-slate-900 dark:text-white" data-count-to="54" data-count-suffix=" страны">54 страны</div>
           <div class="text-xs text-slate-500 dark:text-slate-400 mt-1 uppercase font-semibold">Исследовано лично</div>
         </div>
         <div>
-          <div class="text-3xl font-extrabold text-slate-900 dark:text-white">140+ треков</div>
+          <div class="text-3xl font-extrabold text-slate-900 dark:text-white" data-count-to="140" data-count-suffix="+ треков">140+ треков</div>
           <div class="text-xs text-slate-500 dark:text-slate-400 mt-1 uppercase font-semibold">Офлайн GPX-файлов</div>
         </div>
         <div>
-          <div class="text-3xl font-extrabold text-slate-900 dark:text-white">280k км</div>
+          <div class="text-3xl font-extrabold text-slate-900 dark:text-white" data-count-to="280" data-count-suffix="k км">280k км</div>
           <div class="text-xs text-slate-500 dark:text-slate-400 mt-1 uppercase font-semibold">Пройдено по земле</div>
         </div>
         <div>
-          <div class="text-3xl font-extrabold text-slate-900 dark:text-white">4.9 / 5.0</div>
+          <div class="text-3xl font-extrabold text-slate-900 dark:text-white" data-count-to="4.9" data-count-decimals="1" data-count-suffix=" / 5.0">4.9 / 5.0</div>
           <div class="text-xs text-slate-500 dark:text-slate-400 mt-1 uppercase font-semibold">Рейтинг маршрутов</div>
         </div>
       </div>
@@ -227,9 +224,9 @@
   <!-- ============================================== -->
   <!-- 3. Популярные путеводители и маршруты (Интерактивная сетка) -->
   <!-- ============================================== -->
-  <section id="articles" class="section-container scroll-mt-24">
+  <section id="articles" class="section-container scroll-mt-24" data-reveal>
     <div class="section-heading-wrapper">
-      <span class="ds-badge ds-badge-brand mb-3">Проверенные экспедиции</span>
+      <span class="ds-kicker mb-3">Проверенные экспедиции</span>
       <h2 class="ds-h2">Популярные путеводители и отчёты</h2>
       <p class="ds-body mt-3">
         Готовые маршруты с картами, точками стоянок, таймингом и сметой расходов. Выбирайте стихию или ищите по региону:
@@ -575,9 +572,9 @@
   <!-- ============================================== -->
   <!-- 4. Экосистема инструментов для путешественника -->
   <!-- ============================================== -->
-  <section class="section-container bg-emerald-50/40 dark:bg-emerald-950/20 rounded-3xl my-6 border border-emerald-900/10 dark:border-emerald-500/15">
+  <section class="section-container bg-emerald-50/40 dark:bg-emerald-950/20 rounded-3xl my-6 border border-emerald-900/10 dark:border-emerald-500/15" data-reveal>
     <div class="section-heading-wrapper">
-      <span class="ds-badge ds-badge-brand mb-3">Живая платформа</span>
+      <span class="ds-kicker mb-3">Живая платформа</span>
       <h2 class="ds-h2">Всё для ваших самостоятельных приключений</h2>
       <p class="ds-body mt-3">Мы не продаем скучные пакетные туры — мы даем интерактивные инструменты, знания о природе и уверенность для автономных маршрутов.</p>
     </div>
@@ -647,7 +644,7 @@
         </div>
 
         <div>
-          <span class="ds-badge ds-badge-success mb-2">Основатель TerraNova</span>
+          <span class="ds-kicker mb-2">Основатель TerraNova</span>
           <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white">Максим Ветров</h3>
           <p class="text-sm font-medium text-brand-600 dark:text-brand-400 mt-0.5">Трэвел-журналист & Горный гид</p>
         </div>
@@ -675,7 +672,7 @@
 
       <!-- Правая колонка: История и принципы -->
       <div class="lg:col-span-7 space-y-6">
-        <span class="ds-badge ds-badge-sunset">Наша философия</span>
+        <span class="ds-kicker ds-kicker-sunset">Наша философия</span>
         <h2 class="ds-h2">Путешествия, которые оставляют после себя только следы на тропе</h2>
         <p class="ds-body">
           TerraNova выросла из личного полевого дневника в 2018 году. За 8 лет автономных экспедиций — от вулканов Камчатки до ледников Патагонии — мы собрали базу маршрутов, где каждая точка воды, стоянки и перевала проверена ногами.
@@ -699,9 +696,9 @@
   <!-- ============================================== -->
   <!-- 6. Клуб путешественников / Тарифы подписки (Задание 2.2) -->
   <!-- ============================================== -->
-  <section id="club" class="section-container bg-emerald-50/40 dark:bg-emerald-950/20 rounded-3xl my-12 border border-emerald-900/10 dark:border-emerald-500/15">
+  <section id="club" class="section-container bg-emerald-50/40 dark:bg-emerald-950/20 rounded-3xl my-12 border border-emerald-900/10 dark:border-emerald-500/15" data-reveal>
     <div class="section-heading-wrapper">
-      <span class="ds-badge ds-badge-sunset mb-3">Клуб исследователей</span>
+      <span class="ds-kicker ds-kicker-sunset mb-3">Клуб исследователей</span>
       <h2 class="ds-h2">Присоединяйтесь к сообществу первооткрывателей</h2>
       <p class="ds-body mt-3">Выберите удобный уровень доступа к закрытой базе треков, авторским экспедициям и закрытому клубу скидок на снаряжение.</p>
 
@@ -847,9 +844,9 @@
   <!-- ============================================== -->
   <!-- 7. Отзывы участников экспедиций (Snap-карусель) -->
   <!-- ============================================== -->
-  <section class="section-container">
+  <section class="section-container" data-reveal>
     <div class="section-heading-wrapper">
-      <span class="ds-badge ds-badge-brand mb-3">Истории читателей</span>
+      <span class="ds-kicker mb-3">Истории читателей</span>
       <h2 class="ds-h2">Те, кто уже отправился в путь</h2>
       <p class="ds-body mt-3">Реальные впечатления людей, прошедших маршруты по нашим путеводителям и трекам.</p>
     </div>
@@ -902,9 +899,9 @@
   <!-- ============================================== -->
   <!-- 8. FAQ-аккордеон для путешественников -->
   <!-- ============================================== -->
-  <section class="section-container max-w-4xl">
+  <section class="section-container max-w-4xl" data-reveal>
     <div class="section-heading-wrapper">
-      <span class="ds-badge ds-badge-brand mb-3">База знаний</span>
+      <span class="ds-kicker mb-3">База знаний</span>
       <h2 class="ds-h2">Часто задаваемые вопросы</h2>
       <p class="ds-body mt-3">Всё о подготовке, безопасности, визах и снаряжении для самостоятельных путешествий.</p>
     </div>
@@ -920,8 +917,10 @@
           </span>
         </button>
         <div class="faq-panel grid grid-rows-[0fr] transition-all duration-300 ease-out px-6">
-          <div class="overflow-hidden pb-5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-            Все файлы поставляются в стандартных форматах .GPX и .KML. Вы можете открыть их в бесплатном приложении Organic Maps или OsmAnd в один клик. Предварительно скачайте офлайн-карту нужного региона, и навигация будет работать даже в глухой тундре без сотовой связи.
+          <div class="overflow-hidden min-h-0">
+            <div class="pb-5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Все файлы поставляются в стандартных форматах .GPX и .KML. Вы можете открыть их в бесплатном приложении Organic Maps или OsmAnd в один клик. Предварительно скачайте офлайн-карту нужного региона, и навигация будет работать даже в глухой тундре без сотовой связи.
+            </div>
           </div>
         </div>
       </div>
@@ -935,8 +934,10 @@
           </span>
         </button>
         <div class="faq-panel grid grid-rows-[0fr] transition-all duration-300 ease-out px-6">
-          <div class="overflow-hidden pb-5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-            Обычная туристическая страховка не покрывает походы в горы. Всегда выбирайте опцию «Активный отдых / Треккинг» и проверяйте пункт «Поисково-спасательные работы с вертолетом» (SAR). В статьях блога есть список проверенных ассистансов для Непала, Патагонии и Альп.
+          <div class="overflow-hidden min-h-0">
+            <div class="pb-5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Обычная туристическая страховка не покрывает походы в горы. Всегда выбирайте опцию «Активный отдых / Треккинг» и проверяйте пункт «Поисково-спасательные работы с вертолетом» (SAR). В статьях блога есть список проверенных ассистансов для Непала, Патагонии и Альп.
+            </div>
           </div>
         </div>
       </div>
@@ -950,8 +951,10 @@
           </span>
         </button>
         <div class="faq-panel grid grid-rows-[0fr] transition-all duration-300 ease-out px-6">
-          <div class="overflow-hidden pb-5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-            Соло-походы дарят невероятное ощущение свободы, но требуют строгой дисциплины: обязательная регистрация в МЧС / рейнджерах парка, наличие спутникового трекера (например, Garmin inReach), запас фильтрации воды и дублирование навигации. Если вы новичок, воспользуйтесь нашим чатом для поиска попутчиков.
+          <div class="overflow-hidden min-h-0">
+            <div class="pb-5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Соло-походы дарят невероятное ощущение свободы, но требуют строгой дисциплины: обязательная регистрация в МЧС / рейнджерах парка, наличие спутникового трекера (например, Garmin inReach), запас фильтрации воды и дублирование навигации. Если вы новичок, воспользуйтесь нашим чатом для поиска попутчиков.
+            </div>
           </div>
         </div>
       </div>
@@ -965,8 +968,10 @@
           </span>
         </button>
         <div class="faq-panel grid grid-rows-[0fr] transition-all duration-300 ease-out px-6">
-          <div class="overflow-hidden pb-5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-            После вступления в клуб PRO в личном кабинете открывается раздел с партнёрскими промокодами и персональными ссылками на кэшбэк. Скидки действуют в магазинах туристического снаряжения, на аренду автодомов и сервисы покупки авиабилетов.
+          <div class="overflow-hidden min-h-0">
+            <div class="pb-5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              После вступления в клуб PRO в личном кабинете открывается раздел с партнёрскими промокодами и персональными ссылками на кэшбэк. Скидки действуют в магазинах туристического снаряжения, на аренду автодомов и сервисы покупки авиабилетов.
+            </div>
           </div>
         </div>
       </div>

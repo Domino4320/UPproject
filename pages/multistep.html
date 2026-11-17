@@ -25,28 +25,50 @@
   <!-- ============================================== -->
   <!-- 1. Хедер страницы                               -->
   <!-- ============================================== -->
-  <header class="sticky top-0 z-30 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
-      <div class="flex items-center space-x-3">
-        <a href="../" class="p-2 -ml-2 text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="На главную">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-        </a>
-        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-600 via-teal-500 to-sunset-500 flex items-center justify-center text-white shadow-md">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+  <header class="sticky top-0 z-40 bg-white/85 dark:bg-[#0b1512]/85 backdrop-blur-md border-b border-emerald-900/10 dark:border-emerald-500/15">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      <a href="../" class="flex items-center space-x-3 group shrink-0">
+        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-forest-600 via-brand-600 to-sunset-500 flex items-center justify-center text-white shadow-lg shadow-brand-600/25 group-hover:scale-105 transition-transform">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
         </div>
-        <div>
-          <span class="font-bold text-slate-900 dark:text-white text-base">TerraNova Expedition</span>
-          <span class="ml-2 text-[11px] font-semibold px-2 py-0.5 rounded-full bg-sunset-100 text-sunset-700 dark:bg-sunset-950 dark:text-sunset-300">Бронирование</span>
+        <div class="flex flex-col">
+          <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-forest-800 via-brand-600 to-sunset-600 dark:from-white dark:via-brand-400 dark:to-sunset-400 bg-clip-text text-transparent">
+            TerraNova
+          </span>
+          <span class="text-[10px] font-semibold text-slate-500 dark:text-slate-400 -mt-1 uppercase tracking-widest">Бронирование</span>
         </div>
-      </div>
+      </a>
 
-      <div class="flex items-center gap-3 sm:gap-4 shrink-0">
-        <button data-theme-toggle class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white bg-slate-100/50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition shrink-0" aria-label="Сменить тему">
+      <nav class="hidden lg:flex items-center gap-5 text-sm font-semibold">
+        <a href="../#articles" class="nav-link">Путеводители</a>
+        <a href="./storybook.html" class="nav-link">Атлас природы</a>
+        <a href="./dashboard.html" class="nav-link">Трекер</a>
+        <a href="./ecommerce.html" class="nav-link">Снаряжение & Туры</a>
+        <a href="./kanban.html" class="nav-link">План сборов</a>
+        <a href="./messenger.html" class="nav-link">Попутчики</a>
+      </nav>
+
+      <div class="flex items-center gap-3 shrink-0">
+        <button data-theme-toggle class="p-2.5 rounded-xl border border-emerald-900/10 dark:border-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white bg-emerald-50/50 dark:bg-slate-800/50 transition shrink-0" aria-label="Сменить тему">
           <svg data-theme-icon="sun" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
           <svg data-theme-icon="moon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
         </button>
-        <a href="../" class="ds-btn ds-btn-sm ds-btn-secondary whitespace-nowrap">Главная блога</a>
+        <a href="../" class="hidden sm:inline-flex ds-btn ds-btn-sm ds-btn-secondary whitespace-nowrap">На главную</a>
+        <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-emerald-50 dark:hover:bg-slate-800 transition" aria-label="Меню">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
       </div>
+    </div>
+
+    <div id="mobileMenu" class="hidden lg:hidden border-t border-emerald-900/10 dark:border-slate-800 bg-white/95 dark:bg-[#0b1512]/95 px-4 py-4 space-y-2 text-sm font-medium">
+      <a href="../" class="block px-3 py-2 rounded-xl hover:bg-emerald-50 dark:hover:bg-slate-800">Главная блога</a>
+      <a href="./storybook.html" class="block px-3 py-2 rounded-xl hover:bg-emerald-50 dark:hover:bg-slate-800">Атлас природы</a>
+      <a href="./dashboard.html" class="block px-3 py-2 rounded-xl hover:bg-emerald-50 dark:hover:bg-slate-800">Трекер маршрутов</a>
+      <a href="./ecommerce.html" class="block px-3 py-2 rounded-xl hover:bg-emerald-50 dark:hover:bg-slate-800">Снаряжение & Туры</a>
+      <a href="./kanban.html" class="block px-3 py-2 rounded-xl hover:bg-emerald-50 dark:hover:bg-slate-800">План сборов</a>
+      <a href="./messenger.html" class="block px-3 py-2 rounded-xl hover:bg-emerald-50 dark:hover:bg-slate-800">Попутчики</a>
     </div>
   </header>
 
@@ -56,7 +78,7 @@
   <main class="flex-1 max-w-4xl mx-auto w-full px-4 sm:px-6 py-10 space-y-8">
     
     <div class="text-center space-y-2">
-      <span class="ds-badge ds-badge-brand">Expedition Wizard</span>
+      <span class="ds-kicker">Expedition Wizard</span>
       <h1 class="ds-h1 text-2xl sm:text-4xl">Заявка на участие в экспедиции</h1>
       <p class="ds-body max-w-xl mx-auto text-sm sm:text-base">Пройдите 4 шага, чтобы забронировать место в группе, подобрать снаряжение и присоединиться к клубу исследователей.</p>
     </div>
@@ -300,8 +322,9 @@
   </main>
 
   <script type="module">
-    import { initTheme } from '../src/js/main.js';
+    import { initTheme, initMobileMenu } from '../src/js/main.js';
     initTheme();
+    initMobileMenu();
 
     let currentStep = 1;
     const totalSteps = 4;
