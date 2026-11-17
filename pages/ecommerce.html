@@ -113,12 +113,12 @@
 
         <!-- Сортировка -->
         <div class="flex items-center gap-2">
-          <label class="text-xs font-semibold text-slate-500 whitespace-nowrap hidden sm:inline">Сортировать:</label>
-          <select class="ds-input py-2 text-xs w-auto font-medium cursor-pointer">
-            <option>Сначала проверенные в походах</option>
-            <option>По возрастанию цены</option>
-            <option>По снижению цены</option>
-            <option>По рейтингу гидов</option>
+          <label for="sortSelect" class="text-xs font-semibold text-slate-500 whitespace-nowrap hidden sm:inline">Сортировать:</label>
+          <select id="sortSelect" class="ds-input py-2 text-xs w-auto font-medium cursor-pointer">
+            <option value="featured">Сначала проверенные в походах</option>
+            <option value="price-asc">По возрастанию цены</option>
+            <option value="price-desc">По снижению цены</option>
+            <option value="rating">По рейтингу гидов</option>
           </select>
         </div>
       </div>
@@ -132,7 +132,15 @@
         
         <div class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800">
           <h3 class="font-bold text-slate-900 dark:text-white text-base">Фильтры экипировки</h3>
-          <button class="text-xs text-brand-600 dark:text-brand-400 font-semibold hover:underline">Сбросить</button>
+          <button id="resetFiltersBtn" type="button" class="text-xs text-brand-600 dark:text-brand-400 font-semibold hover:underline">Сбросить</button>
+        </div>
+
+        <!-- Поиск -->
+        <div class="relative">
+          <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </span>
+          <input id="catalogSearchInput" type="text" placeholder="Поиск по каталогу..." class="ds-input pl-9 py-2 text-xs bg-slate-50 dark:bg-slate-800">
         </div>
 
         <!-- Категории -->
@@ -140,28 +148,32 @@
           <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Категория</label>
           <div class="space-y-2 text-sm">
             <label class="flex items-center gap-2.5 cursor-pointer">
-              <input type="checkbox" checked class="ds-checkbox">
+              <input id="catAll" type="checkbox" checked class="ds-checkbox">
               <span>Все категории</span>
             </label>
             <label class="flex items-center gap-2.5 cursor-pointer">
-              <input type="checkbox" checked class="ds-checkbox">
+              <input type="checkbox" checked value="tents" class="ds-checkbox cat-filter">
               <span>Палатки & Тенты</span>
             </label>
             <label class="flex items-center gap-2.5 cursor-pointer">
-              <input type="checkbox" checked class="ds-checkbox">
+              <input type="checkbox" checked value="backpacks" class="ds-checkbox cat-filter">
               <span>Рюкзаки (45–85 л)</span>
             </label>
             <label class="flex items-center gap-2.5 cursor-pointer">
-              <input type="checkbox" checked class="ds-checkbox">
+              <input type="checkbox" checked value="sleeping" class="ds-checkbox cat-filter">
               <span>Спальники & Коврики</span>
             </label>
             <label class="flex items-center gap-2.5 cursor-pointer">
-              <input type="checkbox" checked class="ds-checkbox">
+              <input type="checkbox" checked value="apparel" class="ds-checkbox cat-filter">
               <span>Мембраны & Термобелье</span>
             </label>
             <label class="flex items-center gap-2.5 cursor-pointer">
-              <input type="checkbox" checked class="ds-checkbox">
+              <input type="checkbox" checked value="navigation" class="ds-checkbox cat-filter">
               <span>Спутники & Навигация</span>
+            </label>
+            <label class="flex items-center gap-2.5 cursor-pointer">
+              <input type="checkbox" checked value="tours" class="ds-checkbox cat-filter">
+              <span>Авторские туры</span>
             </label>
           </div>
         </div>
@@ -169,10 +181,10 @@
         <!-- Ползунок бюджета -->
         <div class="space-y-3 pt-4 border-t border-slate-100 dark:border-slate-800">
           <div class="flex justify-between items-center">
-            <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Бюджет (до)</label>
-            <span class="text-xs font-bold text-brand-600 dark:text-brand-400">120 000 ₽</span>
+            <label for="priceRange" class="text-xs font-bold uppercase tracking-wider text-slate-400">Бюджет (до)</label>
+            <span id="priceRangeValue" class="text-xs font-bold text-brand-600 dark:text-brand-400">250 000 ₽</span>
           </div>
-          <input type="range" min="3000" max="250000" value="120000" class="w-full accent-brand-600 cursor-pointer">
+          <input id="priceRange" type="range" min="3000" max="250000" step="1000" value="250000" class="w-full accent-brand-600 cursor-pointer">
           <div class="flex justify-between text-[11px] text-slate-400">
             <span>3 000 ₽</span>
             <span>250 000 ₽</span>
@@ -184,15 +196,15 @@
           <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Особенности</label>
           <div class="space-y-2 text-sm">
             <label class="flex items-center gap-2.5 cursor-pointer">
-              <input type="checkbox" checked class="ds-checkbox">
+              <input type="checkbox" value="ultralight" class="ds-checkbox feature-filter">
               <span>Ультралегкий (Ultralight)</span>
             </label>
             <label class="flex items-center gap-2.5 cursor-pointer">
-              <input type="checkbox" checked class="ds-checkbox">
+              <input type="checkbox" value="goretex" class="ds-checkbox feature-filter">
               <span>Мембрана Gore-Tex Pro</span>
             </label>
             <label class="flex items-center gap-2.5 cursor-pointer">
-              <input type="checkbox" class="ds-checkbox">
+              <input type="checkbox" value="proDiscount" class="ds-checkbox feature-filter">
               <span>Скидка подписчикам PRO</span>
             </label>
           </div>
@@ -225,260 +237,28 @@
           </div>
         </div>
 
+        <!-- Счётчик результатов -->
+        <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+          <span id="resultsCount">Показано 6 из 15 предложений</span>
+          <span id="activePageLabel" class="font-semibold">Страница 1 из 3</span>
+        </div>
+
         <!-- Настоящая сетка товаров -->
-        <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-          
-          <!-- Товар 1: Экспедиционная палатка -->
-          <article class="group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between p-4">
-            <div class="relative aspect-square rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800">
-              <img 
-                src="https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=600&q=80" 
-                alt="Экспедиционная палатка" 
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              >
-              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-brand-600 text-white shadow-sm">
-                Тест в Исландии
-              </span>
-              <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded-full text-[11px] font-bold bg-black/60 text-white backdrop-blur-sm">
-                1.45 кг
-              </span>
-            </div>
+        <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6"></div>
 
-            <div class="pt-4 space-y-2">
-              <div class="flex items-center justify-between text-xs text-slate-400">
-                <span>Палатки & Тенты</span>
-                <span class="text-amber-500 font-bold">★ 4.98</span>
-              </div>
-              <h3 class="font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
-                Штормовая палатка TerraNova StormShield 2P
-              </h3>
-              <p class="text-xs text-slate-500 line-clamp-2">
-                Двухместная палатка с дугами из авиационного дюраля DAC, ветроустойчивость до 30 м/с и водяной столб 5 000 мм.
-              </p>
-            </div>
-
-            <div class="pt-4 mt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
-              <div>
-                <span class="text-[11px] text-slate-400 block">Клубная цена</span>
-                <span class="text-lg font-black text-slate-900 dark:text-white">42 900 ₽</span>
-              </div>
-              <button type="button" class="ds-btn ds-btn-sm ds-btn-primary add-to-cart-btn">
-                В корзину
-              </button>
-            </div>
-          </article>
-
-          <!-- Товар 2: Треккинговый рюкзак -->
-          <article class="group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between p-4">
-            <div class="relative aspect-square rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800">
-              <img 
-                src="https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=600&q=80" 
-                alt="Треккинговый рюкзак" 
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              >
-              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-sunset-500 text-white shadow-sm">
-                Топ продаж
-              </span>
-              <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded-full text-[11px] font-bold bg-black/60 text-white backdrop-blur-sm">
-                65 + 10 L
-              </span>
-            </div>
-
-            <div class="pt-4 space-y-2">
-              <div class="flex items-center justify-between text-xs text-slate-400">
-                <span>Рюкзаки</span>
-                <span class="text-amber-500 font-bold">★ 4.95</span>
-              </div>
-              <h3 class="font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
-                Экспедиционный рюкзак Arctic Pro 65L
-              </h3>
-              <p class="text-xs text-slate-500 line-clamp-2">
-                Анатомический каркас, продуманное распределение веса, съёмный клапан и влагозащитный чехол в комплекте.
-              </p>
-            </div>
-
-            <div class="pt-4 mt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
-              <div>
-                <span class="text-[11px] text-slate-400 block">Клубная цена</span>
-                <span class="text-lg font-black text-slate-900 dark:text-white">28 500 ₽</span>
-              </div>
-              <button type="button" class="ds-btn ds-btn-sm ds-btn-primary add-to-cart-btn">
-                В корзину
-              </button>
-            </div>
-          </article>
-
-          <!-- Товар 3: Спутниковый коммуникатор -->
-          <article class="group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between p-4">
-            <div class="relative aspect-square rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800">
-              <img 
-                src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80" 
-                alt="Спутниковый трекер" 
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              >
-              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-rose-600 text-white shadow-sm">
-                Безопасность SOS
-              </span>
-              <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded-full text-[11px] font-bold bg-black/60 text-white backdrop-blur-sm">
-                Iridium 100%
-              </span>
-            </div>
-
-            <div class="pt-4 space-y-2">
-              <div class="flex items-center justify-between text-xs text-slate-400">
-                <span>Навигация</span>
-                <span class="text-amber-500 font-bold">★ 5.0</span>
-              </div>
-              <h3 class="font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
-                Спутниковый трекер inReach Mini 2
-              </h3>
-              <p class="text-xs text-slate-500 line-clamp-2">
-                Глобальное покрытие через спутники Иридиум, кнопка SOS спасателям GEOS и обмен СМС в любой точке тайги и океана.
-              </p>
-            </div>
-
-            <div class="pt-4 mt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
-              <div>
-                <span class="text-[11px] text-slate-400 block">Клубная цена</span>
-                <span class="text-lg font-black text-slate-900 dark:text-white">49 900 ₽</span>
-              </div>
-              <button type="button" class="ds-btn ds-btn-sm ds-btn-primary add-to-cart-btn">
-                В корзину
-              </button>
-            </div>
-          </article>
-
-          <!-- Товар 4: Пуховый спальник -->
-          <article class="group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between p-4">
-            <div class="relative aspect-square rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800">
-              <img 
-                src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80" 
-                alt="Спальный мешок" 
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              >
-              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-teal-600 text-white shadow-sm">
-                Комфорт -15°C
-              </span>
-              <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded-full text-[11px] font-bold bg-black/60 text-white backdrop-blur-sm">
-                Гусиный пух 850 FP
-              </span>
-            </div>
-
-            <div class="pt-4 space-y-2">
-              <div class="flex items-center justify-between text-xs text-slate-400">
-                <span>Спальники</span>
-                <span class="text-amber-500 font-bold">★ 4.96</span>
-              </div>
-              <h3 class="font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
-                Пуховый кокон Glacier Down -15
-              </h3>
-              <p class="text-xs text-slate-500 line-clamp-2">
-                Вес всего 980 г, гидрофобная пропитка пуха Nikwax, компрессионный мешок с защитой от дождя.
-              </p>
-            </div>
-
-            <div class="pt-4 mt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
-              <div>
-                <span class="text-[11px] text-slate-400 block">Клубная цена</span>
-                <span class="text-lg font-black text-slate-900 dark:text-white">36 000 ₽</span>
-              </div>
-              <button type="button" class="ds-btn ds-btn-sm ds-btn-primary add-to-cart-btn">
-                В корзину
-              </button>
-            </div>
-          </article>
-
-          <!-- Товар 5: Треккинговые палки Карбон -->
-          <article class="group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between p-4">
-            <div class="relative aspect-square rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800">
-              <img 
-                src="https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=600&q=80" 
-                alt="Треккинговые палки" 
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              >
-              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-brand-600 text-white shadow-sm">
-                100% Карбон
-              </span>
-              <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded-full text-[11px] font-bold bg-black/60 text-white backdrop-blur-sm">
-                390 г пара
-              </span>
-            </div>
-
-            <div class="pt-4 space-y-2">
-              <div class="flex items-center justify-between text-xs text-slate-400">
-                <span>Палки & Опоры</span>
-                <span class="text-amber-500 font-bold">★ 4.93</span>
-              </div>
-              <h3 class="font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
-                Карбоновые палки Trail Ultra-Lite
-              </h3>
-              <p class="text-xs text-slate-500 line-clamp-2">
-                Замки FlickLock Pro, пробковая рукоятка против потения рук и сменные кольца для снега и курумника.
-              </p>
-            </div>
-
-            <div class="pt-4 mt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
-              <div>
-                <span class="text-[11px] text-slate-400 block">Клубная цена</span>
-                <span class="text-lg font-black text-slate-900 dark:text-white">12 400 ₽</span>
-              </div>
-              <button type="button" class="ds-btn ds-btn-sm ds-btn-primary add-to-cart-btn">
-                В корзину
-              </button>
-            </div>
-          </article>
-
-          <!-- Товар 6: Авторский тур в Исландию -->
-          <article class="group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border-2 border-sunset-500/80 shadow-md hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between p-4 relative">
-            <div class="relative aspect-square rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800">
-              <img 
-                src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?auto=format&fit=crop&w=600&q=80" 
-                alt="Экспедиция в Исландию" 
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              >
-              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-sunset-500 text-white shadow-md">
-                Осталось 3 места
-              </span>
-              <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded-full text-[11px] font-bold bg-black/60 text-white backdrop-blur-sm">
-                12 дней • Декабрь
-              </span>
-            </div>
-
-            <div class="pt-4 space-y-2">
-              <div class="flex items-center justify-between text-xs text-slate-400">
-                <span class="text-sunset-500 font-bold">Авторская экспедиция</span>
-                <span class="text-amber-500 font-bold">★ 5.0</span>
-              </div>
-              <h3 class="font-bold text-slate-900 dark:text-white group-hover:text-sunset-500 transition-colors">
-                Зимняя Исландия: Охота за Авророй & Ледники
-              </h3>
-              <p class="text-xs text-slate-500 line-clamp-2">
-                Всё включено: подготовленный Super-Jeep 4x4, проживание в горных лоджах, гид и мастер-классы по фотосъемке.
-              </p>
-            </div>
-
-            <div class="pt-4 mt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
-              <div>
-                <span class="text-[11px] text-slate-400 block">Участие в группе</span>
-                <span class="text-lg font-black text-slate-900 dark:text-white">165 000 ₽</span>
-              </div>
-              <a href="./multistep.html" class="ds-btn ds-btn-sm ds-btn-sunset font-bold">
-                Забронировать
-              </a>
-            </div>
-          </article>
-
+        <!-- Пустое состояние -->
+        <div id="emptyCatalogState" class="hidden text-center py-16 px-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 space-y-4">
+          <div class="text-4xl">🧭</div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white">Ничего не найдено</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400 max-w-md mx-auto">По выбранным фильтрам и бюджету товаров не нашлось. Попробуйте расширить бюджет или сбросить фильтры.</p>
+          <button id="emptyResetBtn" type="button" class="ds-btn ds-btn-md ds-btn-primary">Сбросить фильтры</button>
         </div>
 
         <!-- Пагинация -->
-        <div class="pt-8 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
-          <button class="ds-btn ds-btn-sm ds-btn-secondary disabled:opacity-50" disabled>← Предыдущая</button>
-          <div class="flex items-center gap-1.5 text-xs font-bold">
-            <span class="w-8 h-8 rounded-xl bg-brand-600 text-white flex items-center justify-center">1</span>
-            <span class="w-8 h-8 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center cursor-pointer">2</span>
-            <span class="w-8 h-8 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center justify-center cursor-pointer">3</span>
-          </div>
-          <button class="ds-btn ds-btn-sm ds-btn-secondary">Следующая →</button>
+        <div id="paginationBar" class="pt-8 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+          <button id="prevPageBtn" type="button" class="ds-btn ds-btn-sm ds-btn-secondary disabled:opacity-50" disabled>← Предыдущая</button>
+          <div id="pageNumbers" class="flex items-center gap-1.5 text-xs font-bold"></div>
+          <button id="nextPageBtn" type="button" class="ds-btn ds-btn-sm ds-btn-secondary disabled:opacity-50">Следующая →</button>
         </div>
 
       </div>
@@ -493,28 +273,34 @@
     <div class="w-12 h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full mx-auto"></div>
     <div class="flex items-center justify-between">
       <h3 class="font-bold text-lg text-slate-900 dark:text-white">Фильтры экипировки</h3>
-      <button id="closeMobileDrawerBtn" class="p-1 rounded-lg text-slate-400 hover:text-slate-600">✕</button>
+      <button id="closeMobileDrawerBtn" type="button" class="p-1 rounded-lg text-slate-400 hover:text-slate-600">✕</button>
     </div>
     
     <div class="space-y-4">
       <div>
         <label class="text-xs font-bold uppercase text-slate-400">Категории</label>
         <div class="grid grid-cols-2 gap-2 mt-2 text-sm">
-          <label class="flex items-center gap-2"><input type="checkbox" checked class="ds-checkbox"><span>Палатки</span></label>
-          <label class="flex items-center gap-2"><input type="checkbox" checked class="ds-checkbox"><span>Рюкзаки</span></label>
-          <label class="flex items-center gap-2"><input type="checkbox" checked class="ds-checkbox"><span>Спальники</span></label>
-          <label class="flex items-center gap-2"><input type="checkbox" checked class="ds-checkbox"><span>Навигация</span></label>
+          <label class="flex items-center gap-2"><input type="checkbox" checked value="tents" class="ds-checkbox mobile-cat-filter"><span>Палатки</span></label>
+          <label class="flex items-center gap-2"><input type="checkbox" checked value="backpacks" class="ds-checkbox mobile-cat-filter"><span>Рюкзаки</span></label>
+          <label class="flex items-center gap-2"><input type="checkbox" checked value="sleeping" class="ds-checkbox mobile-cat-filter"><span>Спальники</span></label>
+          <label class="flex items-center gap-2"><input type="checkbox" checked value="apparel" class="ds-checkbox mobile-cat-filter"><span>Мембраны</span></label>
+          <label class="flex items-center gap-2"><input type="checkbox" checked value="navigation" class="ds-checkbox mobile-cat-filter"><span>Навигация</span></label>
+          <label class="flex items-center gap-2"><input type="checkbox" checked value="tours" class="ds-checkbox mobile-cat-filter"><span>Туры</span></label>
         </div>
       </div>
       <div>
-        <label class="text-xs font-bold uppercase text-slate-400">Бюджет</label>
-        <input type="range" class="w-full mt-2 accent-brand-600">
+        <div class="flex justify-between items-center">
+          <label class="text-xs font-bold uppercase text-slate-400">Бюджет (до)</label>
+          <span id="mobilePriceValue" class="text-xs font-bold text-brand-600 dark:text-brand-400">250 000 ₽</span>
+        </div>
+        <input id="mobilePriceRange" type="range" min="3000" max="250000" step="1000" value="250000" class="w-full mt-2 accent-brand-600">
       </div>
     </div>
 
-    <button id="applyFiltersBtn" class="w-full ds-btn ds-btn-md ds-btn-primary">
-      Применить фильтры
-    </button>
+    <div class="flex gap-2">
+      <button id="mobileResetFiltersBtn" type="button" class="ds-btn ds-btn-md ds-btn-secondary">Сбросить</button>
+      <button id="applyFiltersBtn" type="button" class="flex-1 ds-btn ds-btn-md ds-btn-primary">Применить фильтры</button>
+    </div>
   </div>
 
   <script type="module">
@@ -522,32 +308,505 @@
     initTheme();
     initMobileMenu();
 
-    // Cart counter without alert
+    const PRODUCTS = [
+      {
+        id: 1,
+        title: 'Штормовая палатка TerraNova StormShield 2P',
+        category: 'tents',
+        categoryLabel: 'Палатки & Тенты',
+        price: 42900,
+        rating: 4.98,
+        badge: 'Тест в Исландии',
+        badgeColor: 'bg-brand-600',
+        spec: '1.45 кг',
+        desc: 'Двухместная палатка с дугами из авиационного дюраля DAC, ветроустойчивость до 30 м/с и водяной столб 5 000 мм.',
+        image: 'https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=600&q=80',
+        features: ['ultralight', 'proDiscount'],
+        isTour: false
+      },
+      {
+        id: 2,
+        title: 'Экспедиционный рюкзак Arctic Pro 65L',
+        category: 'backpacks',
+        categoryLabel: 'Рюкзаки',
+        price: 28500,
+        rating: 4.95,
+        badge: 'Топ продаж',
+        badgeColor: 'bg-sunset-500',
+        spec: '65 + 10 L',
+        desc: 'Анатомический каркас, продуманное распределение веса, съёмный клапан и влагозащитный чехол в комплекте.',
+        image: 'https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=600&q=80',
+        features: ['proDiscount'],
+        isTour: false
+      },
+      {
+        id: 3,
+        title: 'Спутниковый трекер inReach Mini 2',
+        category: 'navigation',
+        categoryLabel: 'Навигация',
+        price: 49900,
+        rating: 5.0,
+        badge: 'Безопасность SOS',
+        badgeColor: 'bg-rose-600',
+        spec: 'Iridium 100%',
+        desc: 'Глобальное покрытие через спутники Иридиум, кнопка SOS спасателям GEOS и обмен СМС в любой точке тайги и океана.',
+        image: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80',
+        features: ['ultralight'],
+        isTour: false
+      },
+      {
+        id: 4,
+        title: 'Пуховый кокон Glacier Down -15',
+        category: 'sleeping',
+        categoryLabel: 'Спальники',
+        price: 36000,
+        rating: 4.96,
+        badge: 'Комфорт -15°C',
+        badgeColor: 'bg-teal-600',
+        spec: 'Пух 850 FP',
+        desc: 'Вес всего 980 г, гидрофобная пропитка пуха Nikwax, компрессионный мешок с защитой от дождя.',
+        image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80',
+        features: ['ultralight', 'proDiscount'],
+        isTour: false
+      },
+      {
+        id: 5,
+        title: 'Карбоновые палки Trail Ultra-Lite',
+        category: 'backpacks',
+        categoryLabel: 'Палки & Опоры',
+        price: 12400,
+        rating: 4.93,
+        badge: '100% Карбон',
+        badgeColor: 'bg-brand-600',
+        spec: '390 г пара',
+        desc: 'Замки FlickLock Pro, пробковая рукоятка против потения рук и сменные кольца для снега и курумника.',
+        image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=600&q=80',
+        features: ['ultralight'],
+        isTour: false
+      },
+      {
+        id: 6,
+        title: 'Зимняя Исландия: Охота за Авророй & Ледники',
+        category: 'tours',
+        categoryLabel: 'Авторская экспедиция',
+        price: 165000,
+        rating: 5.0,
+        badge: 'Осталось 3 места',
+        badgeColor: 'bg-sunset-500',
+        spec: '12 дней • Декабрь',
+        desc: 'Всё включено: подготовленный Super-Jeep 4x4, проживание в горных лоджах, гид и мастер-классы по фотосъемке.',
+        image: 'https://images.unsplash.com/photo-1504893524553-b855bce32c67?auto=format&fit=crop&w=600&q=80',
+        features: ['proDiscount'],
+        isTour: true
+      },
+      {
+        id: 7,
+        title: 'Штормовая куртка Alpine Shell GTX Pro',
+        category: 'apparel',
+        categoryLabel: 'Мембраны & Термобелье',
+        price: 44500,
+        rating: 4.97,
+        badge: '28 000 мм',
+        badgeColor: 'bg-cyan-600',
+        spec: 'Gore-Tex Pro 3L',
+        desc: 'Трёхслойная мембрана для альпинизма и штормового ветра, проклеенные швы и вентиляция под мышками.',
+        image: 'https://images.unsplash.com/photo-1544966503-7cc5ac882d5f?auto=format&fit=crop&w=600&q=80',
+        features: ['goretex', 'proDiscount'],
+        isTour: false
+      },
+      {
+        id: 8,
+        title: 'Ультралегкая палатка Ridge Carbon 1P',
+        category: 'tents',
+        categoryLabel: 'Палатки & Тенты',
+        price: 34900,
+        rating: 4.89,
+        badge: 'Ultralight',
+        badgeColor: 'bg-emerald-600',
+        spec: '790 г',
+        desc: 'Одноместное укрытие из силиконизированного нейлона 15D для соло-маршрутов и быстрого треккинга.',
+        image: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=600&q=80',
+        features: ['ultralight'],
+        isTour: false
+      },
+      {
+        id: 9,
+        title: 'Надувной коврик ThermoAir R-5.4',
+        category: 'sleeping',
+        categoryLabel: 'Спальники & Коврики',
+        price: 15800,
+        rating: 4.92,
+        badge: 'Зима до -20°C',
+        badgeColor: 'bg-teal-600',
+        spec: '480 г • R 5.4',
+        desc: 'Трёхкамерный теплоотражающий коврик с насосом-мешком в комплекте. Компактно складывается в бутылку 0.7 л.',
+        image: 'https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?auto=format&fit=crop&w=600&q=80',
+        features: ['ultralight', 'proDiscount'],
+        isTour: false
+      },
+      {
+        id: 10,
+        title: 'Камчатка: Вулканы и Тихий океан',
+        category: 'tours',
+        categoryLabel: 'Авторская экспедиция',
+        price: 185000,
+        rating: 4.99,
+        badge: 'Хит лета',
+        badgeColor: 'bg-sunset-500',
+        spec: '11 дней • Август',
+        desc: 'Восхождение на Толбачик и Мутновский, выход в океан к косаткам, вахтовка 6x6 и горячие источники.',
+        image: 'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=600&q=80',
+        features: ['proDiscount'],
+        isTour: true
+      },
+      {
+        id: 11,
+        title: 'Мультиспортивные часы Fenix Solar Pro',
+        category: 'navigation',
+        categoryLabel: 'Навигация',
+        price: 68900,
+        rating: 4.96,
+        badge: 'Офлайн-карты',
+        badgeColor: 'bg-brand-600',
+        spec: 'До 38 дней GPS',
+        desc: 'Сапфировое стекло с солнечной батареей, топографические карты всего мира, барометр и штормовые предупреждения.',
+        image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80',
+        features: [],
+        isTour: false
+      },
+      {
+        id: 12,
+        title: 'Штурмовой рюкзак Alpine Summit 45L',
+        category: 'backpacks',
+        categoryLabel: 'Рюкзаки',
+        price: 21900,
+        rating: 4.91,
+        badge: 'Водостойкий',
+        badgeColor: 'bg-indigo-600',
+        spec: '45 L • 920 г',
+        desc: 'Лёгкий и прочный рюкзак из ткани Dyneema Ripstop с креплениями для ледоруба и сноуборда.',
+        image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80',
+        features: ['ultralight'],
+        isTour: false
+      },
+      {
+        id: 13,
+        title: 'Треккинг в Доломитовых Альпах (Италия)',
+        category: 'tours',
+        categoryLabel: 'Авторская экспедиция',
+        price: 118000,
+        rating: 4.98,
+        badge: 'Комфорт-трек',
+        badgeColor: 'bg-sunset-500',
+        spec: '8 дней • Сентябрь',
+        desc: 'Панорамные тропы вокруг Тре Чиме, ночёвки в альпийских рифуджио и дегустация тирольской кухни.',
+        image: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80',
+        features: ['proDiscount'],
+        isTour: true
+      },
+      {
+        id: 14,
+        title: 'Термобельё Merino Wool 240 г/м²',
+        category: 'apparel',
+        categoryLabel: 'Мембраны & Термобелье',
+        price: 9800,
+        rating: 4.94,
+        badge: '100% Меринос',
+        badgeColor: 'bg-forest-600',
+        spec: 'Тепло даже влажным',
+        desc: 'Натуральная шерсть мериноса без запаха в многодневных походах, плоские швы и анатомический крой.',
+        image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80',
+        features: ['proDiscount'],
+        isTour: false
+      },
+      {
+        id: 15,
+        title: 'Мембранные брюки StormPant GTX',
+        category: 'apparel',
+        categoryLabel: 'Мембраны & Термобелье',
+        price: 26400,
+        rating: 4.9,
+        badge: 'Самосбросы',
+        badgeColor: 'bg-cyan-600',
+        spec: 'Gore-Tex Pro',
+        desc: 'Боковые молнии во всю длину позволяют надеть брюки поверх треккинговых ботинок и кошек за 30 секунд.',
+        image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80',
+        features: ['goretex', 'ultralight'],
+        isTour: false
+      }
+    ];
+
+    const ITEMS_PER_PAGE = 6;
+    let currentPage = 1;
+    let cartCount = parseInt(document.getElementById('cartCount')?.textContent || '2', 10) || 2;
+
+    const state = {
+      search: '',
+      categories: new Set(['tents', 'backpacks', 'sleeping', 'apparel', 'navigation', 'tours']),
+      maxPrice: 250000,
+      features: new Set(),
+      sort: 'featured'
+    };
+
+    const grid = document.getElementById('productsGrid');
+    const emptyState = document.getElementById('emptyCatalogState');
+    const paginationBar = document.getElementById('paginationBar');
+    const pageNumbersEl = document.getElementById('pageNumbers');
+    const prevPageBtn = document.getElementById('prevPageBtn');
+    const nextPageBtn = document.getElementById('nextPageBtn');
+    const resultsCountEl = document.getElementById('resultsCount');
+    const activePageLabelEl = document.getElementById('activePageLabel');
     const cartCountEl = document.getElementById('cartCount');
-    let cartCount = parseInt(cartCountEl?.textContent || '0', 10) || 0;
 
-    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        cartCount += 1;
-        if (cartCountEl) {
-          cartCountEl.textContent = String(cartCount);
-          cartCountEl.classList.add('scale-125');
-          setTimeout(() => cartCountEl.classList.remove('scale-125'), 220);
+    const catAllCheckbox = document.getElementById('catAll');
+    const catCheckboxes = document.querySelectorAll('.cat-filter');
+    const mobileCatCheckboxes = document.querySelectorAll('.mobile-cat-filter');
+    const featureCheckboxes = document.querySelectorAll('.feature-filter');
+    const priceRange = document.getElementById('priceRange');
+    const priceRangeValue = document.getElementById('priceRangeValue');
+    const mobilePriceRange = document.getElementById('mobilePriceRange');
+    const mobilePriceValue = document.getElementById('mobilePriceValue');
+    const sortSelect = document.getElementById('sortSelect');
+    const searchInput = document.getElementById('catalogSearchInput');
+
+    function formatPrice(val) {
+      return `${Number(val).toLocaleString('ru-RU')} ₽`;
+    }
+
+    function getFilteredProducts() {
+      let list = PRODUCTS.filter(p => {
+        if (!state.categories.has(p.category)) return false;
+        if (p.price > state.maxPrice) return false;
+        if (state.search) {
+          const haystack = `${p.title} ${p.desc} ${p.categoryLabel}`.toLowerCase();
+          if (!haystack.includes(state.search)) return false;
         }
+        for (const feat of state.features) {
+          if (!p.features.includes(feat)) return false;
+        }
+        return true;
+      });
 
-        const prevText = btn.textContent;
-        btn.textContent = '✓ В корзине';
-        btn.classList.add('from-emerald-600', 'to-teal-600');
-        setTimeout(() => {
-          btn.textContent = prevText;
-        }, 1100);
+      if (state.sort === 'price-asc') {
+        list = [...list].sort((a, b) => a.price - b.price);
+      } else if (state.sort === 'price-desc') {
+        list = [...list].sort((a, b) => b.price - a.price);
+      } else if (state.sort === 'rating') {
+        list = [...list].sort((a, b) => b.rating - a.rating);
+      }
+      return list;
+    }
+
+    function renderCatalog(scrollToTop = false) {
+      const filtered = getFilteredProducts();
+      const totalItems = filtered.length;
+      const totalPages = Math.max(1, Math.ceil(totalItems / ITEMS_PER_PAGE));
+
+      if (currentPage > totalPages) currentPage = totalPages;
+      if (currentPage < 1) currentPage = 1;
+
+      const startIdx = (currentPage - 1) * ITEMS_PER_PAGE;
+      const pageItems = filtered.slice(startIdx, startIdx + ITEMS_PER_PAGE);
+
+      if (resultsCountEl) {
+        resultsCountEl.textContent = totalItems
+          ? `Показано ${pageItems.length} из ${totalItems} предложений`
+          : '0 предложений';
+      }
+      if (activePageLabelEl) {
+        activePageLabelEl.textContent = `Страница ${currentPage} из ${totalPages}`;
+      }
+
+      if (totalItems === 0) {
+        grid.classList.add('hidden');
+        emptyState.classList.remove('hidden');
+        paginationBar.classList.add('hidden');
+        return;
+      }
+
+      grid.classList.remove('hidden');
+      emptyState.classList.add('hidden');
+      paginationBar.classList.remove('hidden');
+
+      grid.innerHTML = pageItems.map(item => `
+        <article class="group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden ${item.isTour ? 'border-2 border-sunset-500/80 shadow-md' : 'border border-slate-200/80 dark:border-slate-800 shadow-sm'} hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between p-4">
+          <div class="relative aspect-square rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800">
+            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${item.badgeColor} text-white shadow-sm">
+              ${item.badge}
+            </span>
+            <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded-full text-[11px] font-bold bg-black/60 text-white backdrop-blur-sm">
+              ${item.spec}
+            </span>
+          </div>
+
+          <div class="pt-4 space-y-2">
+            <div class="flex items-center justify-between text-xs text-slate-400">
+              <span class="${item.isTour ? 'text-sunset-500 font-bold' : ''}">${item.categoryLabel}</span>
+              <span class="text-amber-500 font-bold">★ ${item.rating}</span>
+            </div>
+            <h3 class="font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+              ${item.title}
+            </h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">
+              ${item.desc}
+            </p>
+          </div>
+
+          <div class="pt-4 mt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+            <div>
+              <span class="text-[11px] text-slate-400 block">${item.isTour ? 'Участие в группе' : 'Клубная цена'}</span>
+              <span class="text-lg font-black text-slate-900 dark:text-white">${formatPrice(item.price)}</span>
+            </div>
+            ${item.isTour
+              ? `<a href="./multistep.html" class="ds-btn ds-btn-sm ds-btn-sunset font-bold">Забронировать</a>`
+              : `<button type="button" class="ds-btn ds-btn-sm ds-btn-primary add-to-cart-btn">В корзину</button>`
+            }
+          </div>
+        </article>
+      `).join('');
+
+      // Bind add-to-cart buttons
+      grid.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          cartCount += 1;
+          if (cartCountEl) {
+            cartCountEl.textContent = String(cartCount);
+            cartCountEl.classList.add('scale-125');
+            setTimeout(() => cartCountEl.classList.remove('scale-125'), 220);
+          }
+          const prevText = btn.textContent;
+          btn.textContent = '✓ В корзине';
+          setTimeout(() => { btn.textContent = prevText; }, 1100);
+        });
+      });
+
+      // Render pagination numbers
+      pageNumbersEl.innerHTML = Array.from({ length: totalPages }, (_, idx) => {
+        const page = idx + 1;
+        const active = page === currentPage;
+        return `<button type="button" data-page="${page}" class="w-8 h-8 rounded-xl flex items-center justify-center transition ${active ? 'bg-brand-600 text-white shadow-sm' : 'hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300'}">${page}</button>`;
+      }).join('');
+
+      pageNumbersEl.querySelectorAll('[data-page]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          currentPage = Number(btn.dataset.page);
+          renderCatalog(true);
+        });
+      });
+
+      prevPageBtn.disabled = currentPage <= 1;
+      nextPageBtn.disabled = currentPage >= totalPages;
+
+      if (scrollToTop) {
+        grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function syncCheckboxes() {
+      catCheckboxes.forEach(cb => { cb.checked = state.categories.has(cb.value); });
+      mobileCatCheckboxes.forEach(cb => { cb.checked = state.categories.has(cb.value); });
+      if (catAllCheckbox) {
+        catAllCheckbox.checked = state.categories.size === 6;
+      }
+      if (priceRange) priceRange.value = String(state.maxPrice);
+      if (priceRangeValue) priceRangeValue.textContent = formatPrice(state.maxPrice);
+      if (mobilePriceRange) mobilePriceRange.value = String(state.maxPrice);
+      if (mobilePriceValue) mobilePriceValue.textContent = formatPrice(state.maxPrice);
+    }
+
+    function resetAllFilters() {
+      state.search = '';
+      state.categories = new Set(['tents', 'backpacks', 'sleeping', 'apparel', 'navigation', 'tours']);
+      state.maxPrice = 250000;
+      state.features.clear();
+      state.sort = 'featured';
+      currentPage = 1;
+
+      if (searchInput) searchInput.value = '';
+      if (sortSelect) sortSelect.value = 'featured';
+      featureCheckboxes.forEach(cb => { cb.checked = false; });
+      syncCheckboxes();
+      renderCatalog();
+    }
+
+    // Desktop & Mobile filter listeners
+    catAllCheckbox?.addEventListener('change', (e) => {
+      if (e.target.checked) {
+        state.categories = new Set(['tents', 'backpacks', 'sleeping', 'apparel', 'navigation', 'tours']);
+      } else {
+        state.categories.clear();
+      }
+      currentPage = 1;
+      syncCheckboxes();
+      renderCatalog();
+    });
+
+    const handleCatChange = (cb) => {
+      if (cb.checked) state.categories.add(cb.value);
+      else state.categories.delete(cb.value);
+      currentPage = 1;
+      syncCheckboxes();
+      renderCatalog();
+    };
+
+    catCheckboxes.forEach(cb => cb.addEventListener('change', () => handleCatChange(cb)));
+    mobileCatCheckboxes.forEach(cb => cb.addEventListener('change', () => handleCatChange(cb)));
+
+    featureCheckboxes.forEach(cb => {
+      cb.addEventListener('change', () => {
+        if (cb.checked) state.features.add(cb.value);
+        else state.features.delete(cb.value);
+        currentPage = 1;
+        renderCatalog();
       });
     });
+
+    priceRange?.addEventListener('input', (e) => {
+      state.maxPrice = Number(e.target.value);
+      currentPage = 1;
+      syncCheckboxes();
+      renderCatalog();
+    });
+
+    mobilePriceRange?.addEventListener('input', (e) => {
+      state.maxPrice = Number(e.target.value);
+      currentPage = 1;
+      syncCheckboxes();
+      renderCatalog();
+    });
+
+    sortSelect?.addEventListener('change', (e) => {
+      state.sort = e.target.value;
+      currentPage = 1;
+      renderCatalog();
+    });
+
+    searchInput?.addEventListener('input', (e) => {
+      state.search = e.target.value.trim().toLowerCase();
+      currentPage = 1;
+      renderCatalog();
+    });
+
+    prevPageBtn?.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage -= 1;
+        renderCatalog(true);
+      }
+    });
+
+    nextPageBtn?.addEventListener('click', () => {
+      currentPage += 1;
+      renderCatalog(true);
+    });
+
+    document.getElementById('resetFiltersBtn')?.addEventListener('click', resetAllFilters);
+    document.getElementById('emptyResetBtn')?.addEventListener('click', resetAllFilters);
+    document.getElementById('mobileResetFiltersBtn')?.addEventListener('click', resetAllFilters);
 
     // Toggle skeleton demo
     const skeletonBtn = document.getElementById('toggleSkeletonBtn');
     const skeleton = document.getElementById('skeletonContainer');
-    const grid = document.getElementById('productsGrid');
 
     if (skeletonBtn) {
       skeletonBtn.addEventListener('click', () => {
@@ -585,6 +844,9 @@
     if (closeDrawer) closeDrawer.addEventListener('click', () => toggleDrawer(false));
     if (backdrop) backdrop.addEventListener('click', () => toggleDrawer(false));
     if (applyDrawer) applyDrawer.addEventListener('click', () => toggleDrawer(false));
+
+    // Initial render
+    renderCatalog();
   </script>
 </body>
 </html>
