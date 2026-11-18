@@ -8,6 +8,7 @@ import InteractiveMessenger from '../components/InteractiveMessenger.vue';
 import InteractiveGuidesSection from '../components/InteractiveGuidesSection.vue';
 import InteractiveFaq from '../components/InteractiveFaq.vue';
 import BiomeAtlasApp from '../components/BiomeAtlasApp.vue';
+import ExpeditionTrackerApp from '../components/ExpeditionTrackerApp.vue';
 
 export {
   AdSlot,
@@ -19,6 +20,7 @@ export {
   InteractiveGuidesSection,
   InteractiveFaq,
   BiomeAtlasApp,
+  ExpeditionTrackerApp,
 };
 
 // Dark Mode and Theme Management
@@ -360,6 +362,13 @@ export function initVueComponents() {
     if (el.dataset.vueMounted === 'true') return;
     el.dataset.vueMounted = 'true';
     createApp(BiomeAtlasApp).mount(el);
+  });
+
+  // 9. Expedition Tracker App (dashboard.html)
+  document.querySelectorAll('[data-vue-tracker]').forEach(el => {
+    if (el.dataset.vueMounted === 'true') return;
+    el.dataset.vueMounted = 'true';
+    createApp(ExpeditionTrackerApp).mount(el);
   });
 }
 
