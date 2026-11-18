@@ -212,7 +212,7 @@ const chats = ref([
     lastTime: '11:42',
     leader: {
       name: 'Максим Ветров (Лидер)',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&h=80&q=80',
+      avatar: 'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=80&h=80&q=80',
       autoReply: 'Принято! Добавил твой комментарий в общий брифинг перед вылетом.',
     },
     messages: [
@@ -220,7 +220,7 @@ const chats = ref([
       {
         type: 'in',
         sender: 'Максим Ветров (Лидер)',
-        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&h=80&q=80',
+        avatar: 'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=80&h=80&q=80',
         time: '10:15',
         text: 'Всем привет! До старта зимней экспедиции по кольцу Исландии осталось 10 дней. Скачайте свежий трек в OsmAnd: добавил точку стоянки у лагуны Йёкюльсаурлоун.',
         photo: {
@@ -244,7 +244,7 @@ const chats = ref([
       {
         type: 'in',
         sender: 'Максим Ветров (Лидер)',
-        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&h=80&q=80',
+        avatar: 'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=80&h=80&q=80',
         time: '11:42',
         text: 'Отлично! Перевал F208 сейчас открыт, броды до 40 см. Не забудьте неопреновые носки и мембранные куртки с показателем от 20 000 мм.',
         highlight: '📍 Точка сбора: Аэропорт Кеблавик, 12 декабря в 14:00',
