@@ -1,247 +1,249 @@
 <template>
   <main class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    <section class="relative overflow-hidden rounded-3xl p-6 sm:p-8 lg:p-10 bg-gradient-to-br from-forest-900 via-brand-900 to-slate-900 text-white shadow-xl">
+      <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-brand-400/20 blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-24 left-1/3 w-72 h-72 rounded-full bg-sunset-500/15 blur-3xl pointer-events-none"></div>
 
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-      <div>
-        <span class="ds-kicker mb-2">Проверенное снаряжение</span>
-        <h1 class="ds-h1 text-2xl sm:text-3xl">Экипировка & Авторские туры</h1>
-        <p class="ds-body-sm mt-1">Только то, что мы проверили в экстремальных походах по Исландии, Патагонии и Камчатке.</p>
+      <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+        <div class="lg:col-span-7 space-y-3">
+          <div class="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.18em] text-emerald-300">
+            <span class="w-5 h-0.5 rounded-full bg-gradient-to-r from-brand-400 to-sunset-400"></span>
+            <span>TerraNova Outpost</span>
+          </div>
+          <h1 class="text-3xl sm:text-4xl font-black tracking-tight leading-tight">
+            Экипировка, проверенная штормами и перевалами
+          </h1>
+          <p class="text-sm text-emerald-100/80 max-w-xl leading-relaxed">
+            Подбирайте снаряжение по бюджету в BYN или выберите готовый комплект под конкретную экспедицию одним кликом.
+          </p>
+        </div>
+
+        <div class="lg:col-span-5 bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-4 space-y-3">
+          <div class="text-[11px] font-bold uppercase tracking-wider text-emerald-200">Быстрые подборки под маршрут</div>
+          <div class="flex flex-wrap gap-2">
+            <button
+              v-for="kit in quickKits"
+              :key="kit.key"
+              type="button"
+              @click="applyQuickKit(kit)"
+              :class="[
+                'px-3 py-1.5 rounded-xl text-xs font-bold transition',
+                activeKit === kit.key
+                  ? 'bg-sunset-500 text-white shadow-md'
+                  : 'bg-white/10 hover:bg-white/20 text-white'
+              ]"
+            >
+              {{ kit.label }}
+            </button>
+            <button
+              v-if="activeKit"
+              type="button"
+              @click="resetFilters"
+              class="px-3 py-1.5 rounded-xl text-xs font-bold bg-black/25 hover:bg-black/40 text-emerald-200 transition"
+            >
+              Сбросить ✕
+            </button>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="flex flex-wrap items-center gap-3">
-
+    <section class="bento-card p-4 sm:p-5 space-y-4">
+      <div class="flex flex-wrap items-center gap-2">
         <button
           type="button"
-          @click="mobileDrawerOpen = true"
-          class="lg:hidden ds-btn ds-btn-md ds-btn-secondary flex items-center justify-center gap-2"
+          @click="toggleSingleCategory('all')"
+          :class="[
+            'px-3.5 py-2 rounded-xl text-xs font-bold transition',
+            selectedCategory === 'all'
+              ? 'bg-gradient-to-r from-brand-600 to-teal-600 text-white shadow-md shadow-brand-600/20'
+              : 'bg-emerald-50/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-emerald-100 dark:hover:bg-slate-700'
+          ]"
         >
-          <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/>
-          </svg>
-          <span>Фильтры</span>
+          🌍 Все ({{ PRODUCTS.length }})
         </button>
-
-        <div class="flex items-center gap-2">
-          <label for="vueSortSelect" class="text-xs font-semibold text-slate-500 whitespace-nowrap hidden sm:inline">Сортировать:</label>
-          <select id="vueSortSelect" v-model="sortBy" class="ds-input py-2 text-xs w-auto font-medium cursor-pointer">
-            <option value="featured">Сначала проверенные в походах</option>
-            <option value="price-asc">По возрастанию цены</option>
-            <option value="price-desc">По снижению цены</option>
-            <option value="rating">По рейтингу гидов</option>
-          </select>
-        </div>
+        <button
+          v-for="cat in categoryOptions"
+          :key="cat.key"
+          type="button"
+          @click="toggleSingleCategory(cat.key)"
+          :class="[
+            'px-3.5 py-2 rounded-xl text-xs font-bold transition',
+            selectedCategory === cat.key
+              ? 'bg-gradient-to-r from-brand-600 to-teal-600 text-white shadow-md shadow-brand-600/20'
+              : 'bg-emerald-50/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-emerald-100 dark:hover:bg-slate-700'
+          ]"
+        >
+          {{ cat.icon }} {{ cat.short }}
+        </button>
       </div>
-    </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
-
-      <aside class="hidden lg:block space-y-6 bento-card p-6 sticky top-28">
-        <div class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800">
-          <h3 class="font-bold text-slate-900 dark:text-white text-base">Фильтры экипировки</h3>
-          <button type="button" @click="resetFilters" class="text-xs text-brand-600 dark:text-brand-400 font-semibold hover:underline">
-            Сбросить
-          </button>
-        </div>
-
-        <div class="relative">
+      <div class="pt-3 border-t border-slate-100 dark:border-slate-800 grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+        <div class="md:col-span-4 relative">
           <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
             </svg>
           </span>
-          <input v-model.trim="searchQuery" type="text" placeholder="Поиск по каталогу..." class="ds-input pl-9 py-2 text-xs bg-slate-50 dark:bg-slate-800">
+          <input v-model.trim="searchQuery" type="text" placeholder="Поиск палаток, спальников, туров..." class="ds-input pl-9 py-2 text-xs bg-slate-50 dark:bg-slate-800">
         </div>
 
-        <div class="space-y-3">
-          <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Категория</label>
-          <div class="space-y-2 text-sm">
-            <label class="flex items-center gap-2.5 cursor-pointer">
-              <input type="checkbox" :checked="allCategoriesSelected" @change="toggleAllCategories($event.target.checked)" class="ds-checkbox">
-              <span class="font-medium">Все категории</span>
-            </label>
-            <label v-for="cat in categoryOptions" :key="cat.key" class="flex items-center gap-2.5 cursor-pointer">
-              <input type="checkbox" :value="cat.key" v-model="selectedCategories" class="ds-checkbox">
-              <span>{{ cat.label }}</span>
-            </label>
-          </div>
-        </div>
-
-        <div class="space-y-3 pt-4 border-t border-slate-100 dark:border-slate-800">
-          <div class="flex justify-between items-center">
-            <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Бюджет (до)</label>
-            <span class="text-xs font-bold text-brand-600 dark:text-brand-400">{{ formatPrice(maxPrice) }}</span>
-          </div>
+        <div class="md:col-span-4 flex items-center gap-3 px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800/80">
+          <span class="text-[11px] font-bold text-slate-500 whitespace-nowrap">До {{ formatPrice(maxPrice) }}</span>
           <input v-model.number="maxPrice" type="range" min="100" max="8500" step="50" class="w-full accent-brand-600 cursor-pointer">
-          <div class="flex justify-between text-[11px] text-slate-400">
-            <span>100 BYN</span>
-            <span>8 500 BYN</span>
-          </div>
         </div>
 
-        <div class="space-y-3 pt-4 border-t border-slate-100 dark:border-slate-800">
-          <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Особенности</label>
-          <div class="space-y-2 text-sm">
-            <label v-for="feat in featureOptions" :key="feat.key" class="flex items-center gap-2.5 cursor-pointer">
-              <input type="checkbox" :value="feat.key" v-model="selectedFeatures" class="ds-checkbox">
-              <span>{{ feat.label }}</span>
-            </label>
-          </div>
+        <div class="md:col-span-4 flex flex-wrap md:flex-nowrap items-center justify-end gap-2">
+          <button
+            v-for="feat in featureOptions"
+            :key="feat.key"
+            type="button"
+            @click="toggleFeature(feat.key)"
+            :class="[
+              'px-2.5 py-1.5 rounded-lg text-[11px] font-bold border transition whitespace-nowrap',
+              selectedFeatures.includes(feat.key)
+                ? 'bg-brand-600 text-white border-brand-600'
+                : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-brand-500'
+            ]"
+          >
+            {{ feat.short }}
+          </button>
+
+          <select v-model="sortBy" class="ds-input py-1.5 px-2.5 text-xs w-auto font-semibold cursor-pointer bg-slate-50 dark:bg-slate-800">
+            <option value="featured">Популярные</option>
+            <option value="price-asc">Дешевле</option>
+            <option value="price-desc">Дороже</option>
+            <option value="rating">Рейтинг ★</option>
+          </select>
         </div>
-      </aside>
-
-      <div class="lg:col-span-3 space-y-6">
-
-          <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-            <span>
-              {{ filteredProducts.length ? `Показано ${paginatedProducts.length} из ${filteredProducts.length} предложений` : '0 предложений' }}
-            </span>
-            <span class="font-semibold">Страница {{ currentPage }} из {{ totalPages }}</span>
-          </div>
-
-          <div v-if="filteredProducts.length === 0" class="text-center py-16 px-6 rounded-3xl bento-card space-y-4">
-            <div class="text-4xl">🧭</div>
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Ничего не найдено</h3>
-            <p class="text-sm text-slate-500 dark:text-slate-400 max-w-md mx-auto">
-              По выбранным фильтрам и бюджету товаров не нашлось. Попробуйте расширить бюджет или сбросить фильтры.
-            </p>
-            <button type="button" @click="resetFilters" class="ds-btn ds-btn-md ds-btn-primary">Сбросить фильтры</button>
-          </div>
-
-          <div v-else class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-            <article
-              v-for="item in paginatedProducts"
-              :key="item.id"
-              :class="[
-                'group bento-card p-4 flex flex-col justify-between hover:-translate-y-1',
-                item.isTour ? 'ring-2 ring-sunset-500/70' : ''
-              ]"
-            >
-              <div>
-                <div
-                  @click="quickViewItem = item"
-                  class="relative aspect-square rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800 cursor-pointer"
-                >
-                  <img
-                    :src="item.image"
-                    :alt="item.title"
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  >
-                  <span :class="['absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-white shadow-sm', item.badgeColor]">
-                    {{ item.badge }}
-                  </span>
-                  <span class="absolute bottom-3 right-3 px-2 py-0.5 rounded-full text-[11px] font-bold bg-black/60 text-white backdrop-blur-sm">
-                    {{ item.spec }}
-                  </span>
-                </div>
-
-                <div class="pt-4 space-y-2">
-                  <div class="flex items-center justify-between text-xs text-slate-400">
-                    <span :class="item.isTour ? 'text-sunset-500 font-bold' : ''">{{ item.categoryLabel }}</span>
-                    <span class="text-amber-500 font-bold">★ {{ item.rating }}</span>
-                  </div>
-                  <h3
-                    @click="quickViewItem = item"
-                    class="font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors cursor-pointer"
-                  >
-                    {{ item.title }}
-                  </h3>
-                  <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">{{ item.desc }}</p>
-                </div>
-              </div>
-
-              <div class="pt-4 mt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
-                <div>
-                  <span class="text-[11px] text-slate-400 block">{{ item.isTour ? 'Участие в группе' : 'Клубная цена' }}</span>
-                  <span class="text-lg font-black text-slate-900 dark:text-white">{{ formatPrice(item.price) }}</span>
-                </div>
-                <a v-if="item.isTour" href="./multistep.html" class="ds-btn ds-btn-sm ds-btn-sunset font-bold">
-                  Забронировать
-                </a>
-                <button
-                  v-else
-                  type="button"
-                  @click="addToCart(item)"
-                  class="ds-btn ds-btn-sm ds-btn-primary"
-                >
-                  {{ addedId === item.id ? '✓ В корзине' : 'В корзину' }}
-                </button>
-              </div>
-            </article>
-          </div>
-
-          <div v-if="filteredProducts.length > 0" class="pt-8 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
-            <button
-              type="button"
-              :disabled="currentPage <= 1"
-              @click="goToPage(currentPage - 1)"
-              class="ds-btn ds-btn-sm ds-btn-secondary disabled:opacity-50"
-            >
-              ← Предыдущая
-            </button>
-            <div class="flex items-center gap-1.5 text-xs font-bold">
-              <button
-                v-for="p in totalPages"
-                :key="p"
-                type="button"
-                @click="goToPage(p)"
-                :class="[
-                  'w-8 h-8 rounded-xl flex items-center justify-center transition',
-                  p === currentPage
-                    ? 'bg-brand-600 text-white shadow-sm'
-                    : 'hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300'
-                ]"
-              >
-                {{ p }}
-              </button>
-            </div>
-            <button
-              type="button"
-              :disabled="currentPage >= totalPages"
-              @click="goToPage(currentPage + 1)"
-              class="ds-btn ds-btn-sm ds-btn-secondary disabled:opacity-50"
-            >
-              Следующая →
-            </button>
-          </div>
       </div>
+    </section>
+
+    <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 px-1">
+      <span>
+        {{ filteredProducts.length ? `Показано ${paginatedProducts.length} из ${filteredProducts.length} предложений` : '0 предложений' }}
+      </span>
+      <span class="font-semibold">Страница {{ currentPage }} из {{ totalPages }}</span>
     </div>
 
-    <Transition name="v-fade-slide">
-      <div v-if="mobileDrawerOpen" class="fixed inset-0 z-50 lg:hidden">
-        <div @click="mobileDrawerOpen = false" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm"></div>
-        <div class="fixed inset-x-0 bottom-0 bg-white dark:bg-slate-900 rounded-t-3xl p-6 space-y-5 max-h-[85vh] overflow-y-auto shadow-2xl">
-          <div class="w-12 h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full mx-auto"></div>
-          <div class="flex items-center justify-between">
-            <h3 class="font-bold text-lg text-slate-900 dark:text-white">Фильтры экипировки</h3>
-            <button type="button" @click="mobileDrawerOpen = false" class="p-1 rounded-lg text-slate-400 hover:text-slate-600">✕</button>
+    <div v-if="filteredProducts.length === 0" class="text-center py-16 px-6 rounded-3xl bento-card space-y-4">
+      <div class="text-4xl">🧭</div>
+      <h3 class="text-lg font-bold text-slate-900 dark:text-white">Ничего не найдено</h3>
+      <p class="text-sm text-slate-500 dark:text-slate-400 max-w-md mx-auto">
+        По выбранным фильтрам и бюджету товаров не нашлось. Попробуйте расширить бюджет или сбросить фильтры.
+      </p>
+      <button type="button" @click="resetFilters" class="ds-btn ds-btn-md ds-btn-primary">Сбросить фильтры</button>
+    </div>
+
+    <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <article
+        v-for="item in paginatedProducts"
+        :key="item.id"
+        :class="[
+          'group bento-card p-4 flex flex-col justify-between hover:-translate-y-1.5',
+          item.isTour ? 'ring-2 ring-sunset-500/80' : ''
+        ]"
+      >
+        <div>
+          <div
+            @click="quickViewItem = item"
+            class="relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800 cursor-pointer"
+          >
+            <img
+              :src="item.image"
+              :alt="item.title"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            >
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/65 via-transparent to-transparent"></div>
+            <span :class="['absolute top-3 left-3 px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider text-white shadow-sm', item.badgeColor]">
+              {{ item.badge }}
+            </span>
+            <span class="absolute top-3 right-3 px-2 py-1 rounded-lg text-[11px] font-bold bg-black/55 text-white backdrop-blur-sm">
+              ★ {{ item.rating }}
+            </span>
+            <span class="absolute bottom-3 left-3 px-2.5 py-1 rounded-lg text-[11px] font-mono font-bold bg-black/55 text-white backdrop-blur-sm">
+              {{ item.spec }}
+            </span>
           </div>
 
-          <div class="space-y-4">
-            <div>
-              <label class="text-xs font-bold uppercase text-slate-400">Категории</label>
-              <div class="grid grid-cols-2 gap-2 mt-2 text-sm">
-                <label v-for="cat in categoryOptions" :key="cat.key" class="flex items-center gap-2">
-                  <input type="checkbox" :value="cat.key" v-model="selectedCategories" class="ds-checkbox">
-                  <span>{{ cat.short }}</span>
-                </label>
-              </div>
+          <div class="pt-4 space-y-2">
+            <div class="text-xs font-semibold" :class="item.isTour ? 'text-sunset-500' : 'text-brand-600 dark:text-brand-400'">
+              {{ item.categoryLabel }}
             </div>
-            <div>
-              <div class="flex justify-between items-center">
-                <label class="text-xs font-bold uppercase text-slate-400">Бюджет (до)</label>
-                <span class="text-xs font-bold text-brand-600 dark:text-brand-400">{{ formatPrice(maxPrice) }}</span>
-              </div>
-              <input v-model.number="maxPrice" type="range" min="100" max="8500" step="50" class="w-full mt-2 accent-brand-600">
-            </div>
-          </div>
-
-          <div class="flex gap-2">
-            <button type="button" @click="resetFilters" class="ds-btn ds-btn-md ds-btn-secondary">Сбросить</button>
-            <button type="button" @click="mobileDrawerOpen = false" class="flex-1 ds-btn ds-btn-md ds-btn-primary">Показать ({{ filteredProducts.length }})</button>
+            <h3
+              @click="quickViewItem = item"
+              class="font-extrabold text-base text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors cursor-pointer leading-snug"
+            >
+              {{ item.title }}
+            </h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed">{{ item.desc }}</p>
           </div>
         </div>
+
+        <div class="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-3">
+          <div>
+            <span class="text-[10px] uppercase tracking-wider text-slate-400 block">{{ item.isTour ? 'Участие в группе' : 'Клубная цена' }}</span>
+            <span class="text-xl font-black text-slate-900 dark:text-white">{{ formatPrice(item.price) }}</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <button
+              type="button"
+              @click="quickViewItem = item"
+              class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-brand-600 transition text-xs font-bold"
+              title="Подробнее"
+            >
+              👁
+            </button>
+            <a v-if="item.isTour" href="./multistep.html" class="ds-btn ds-btn-sm ds-btn-sunset font-bold">
+              Забронировать
+            </a>
+            <button
+              v-else
+              type="button"
+              @click="addToCart(item)"
+              class="ds-btn ds-btn-sm ds-btn-primary"
+            >
+              {{ addedId === item.id ? '✓ В корзине' : 'В корзину' }}
+            </button>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div v-if="filteredProducts.length > 0" class="pt-6 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+      <button
+        type="button"
+        :disabled="currentPage <= 1"
+        @click="goToPage(currentPage - 1)"
+        class="ds-btn ds-btn-sm ds-btn-secondary disabled:opacity-50"
+      >
+        ← Предыдущая
+      </button>
+      <div class="flex items-center gap-1.5 text-xs font-bold">
+        <button
+          v-for="p in totalPages"
+          :key="p"
+          type="button"
+          @click="goToPage(p)"
+          :class="[
+            'w-9 h-9 rounded-xl flex items-center justify-center transition',
+            p === currentPage
+              ? 'bg-brand-600 text-white shadow-md shadow-brand-600/20'
+              : 'hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300'
+          ]"
+        >
+          {{ p }}
+        </button>
       </div>
-    </Transition>
+      <button
+        type="button"
+        :disabled="currentPage >= totalPages"
+        @click="goToPage(currentPage + 1)"
+        class="ds-btn ds-btn-sm ds-btn-secondary disabled:opacity-50"
+      >
+        Следующая →
+      </button>
+    </div>
 
     <Transition name="v-fade-slide">
       <div v-if="quickViewItem" @click.self="quickViewItem = null" class="ds-modal-backdrop">
@@ -340,29 +342,35 @@ const PRODUCTS = [
   { id: 15, title: 'Мембранные брюки StormPant GTX', category: 'apparel', categoryLabel: 'Мембраны & Термобелье', price: 880, rating: 4.9, badge: 'Самосбросы', badgeColor: 'bg-cyan-600', spec: 'Gore-Tex Pro', desc: 'Боковые молнии во всю длину позволяют надеть брюки поверх треккинговых ботинок и кошек за 30 секунд.', image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80', features: ['goretex', 'ultralight'], isTour: false },
 ];
 
+const quickKits = [
+  { key: 'arctic', label: '❄️ Набор для Исландии', cat: 'all', features: ['goretex'], maxPrice: 8500 },
+  { key: 'ultra', label: '🪶 Ультралайт-трек', cat: 'all', features: ['ultralight'], maxPrice: 1500 },
+  { key: 'tours', label: '🏔️ Только экспедиции', cat: 'tours', features: [], maxPrice: 8500 },
+];
+
 const categoryOptions = [
-  { key: 'tents', label: 'Палатки & Тенты', short: 'Палатки' },
-  { key: 'backpacks', label: 'Рюкзаки (45–85 л)', short: 'Рюкзаки' },
-  { key: 'sleeping', label: 'Спальники & Коврики', short: 'Спальники' },
-  { key: 'apparel', label: 'Мембраны & Термобелье', short: 'Мембраны' },
-  { key: 'navigation', label: 'Спутники & Навигация', short: 'Навигация' },
-  { key: 'tours', label: 'Авторские туры', short: 'Туры' },
+  { key: 'tents', icon: '⛺', short: 'Палатки' },
+  { key: 'backpacks', icon: '🎒', short: 'Рюкзаки' },
+  { key: 'sleeping', icon: '🛌', short: 'Спальники' },
+  { key: 'apparel', icon: '🧥', short: 'Мембраны' },
+  { key: 'navigation', icon: '🧭', short: 'Навигация' },
+  { key: 'tours', icon: '🏔️', short: 'Туры' },
 ];
 
 const featureOptions = [
-  { key: 'ultralight', label: 'Ультралегкий (Ultralight)' },
-  { key: 'goretex', label: 'Мембрана Gore-Tex Pro' },
-  { key: 'proDiscount', label: 'Скидка подписчикам PRO' },
+  { key: 'ultralight', short: 'Ultralight' },
+  { key: 'goretex', short: 'Gore-Tex Pro' },
+  { key: 'proDiscount', short: 'PRO -15%' },
 ];
 
 const ITEMS_PER_PAGE = 6;
 const searchQuery = ref('');
-const selectedCategories = ref(categoryOptions.map(c => c.key));
+const selectedCategory = ref('all');
 const maxPrice = ref(8500);
 const selectedFeatures = ref([]);
 const sortBy = ref('featured');
 const currentPage = ref(1);
-const mobileDrawerOpen = ref(false);
+const activeKit = ref('');
 const quickViewItem = ref(null);
 const addedId = ref(null);
 const cartOpen = ref(false);
@@ -372,12 +380,10 @@ const cartItems = ref([
   { id: 5, title: PRODUCTS[4].title, price: PRODUCTS[4].price, image: PRODUCTS[4].image, qty: 1 },
 ]);
 
-const allCategoriesSelected = computed(() => selectedCategories.value.length === categoryOptions.length);
-
 const filteredProducts = computed(() => {
   const q = searchQuery.value.toLowerCase();
   let list = PRODUCTS.filter(p => {
-    if (!selectedCategories.value.includes(p.category)) return false;
+    if (selectedCategory.value !== 'all' && p.category !== selectedCategory.value) return false;
     if (p.price > maxPrice.value) return false;
     if (q && !`${p.title} ${p.desc} ${p.categoryLabel}`.toLowerCase().includes(q)) return false;
     for (const f of selectedFeatures.value) {
@@ -401,7 +407,7 @@ const paginatedProducts = computed(() => {
 const totalCartQty = computed(() => cartItems.value.reduce((s, i) => s + i.qty, 0));
 const cartTotalSum = computed(() => cartItems.value.reduce((s, i) => s + i.price * i.qty, 0));
 
-watch([searchQuery, selectedCategories, maxPrice, selectedFeatures, sortBy], () => {
+watch([searchQuery, selectedCategory, maxPrice, selectedFeatures, sortBy], () => {
   currentPage.value = 1;
 }, { deep: true });
 
@@ -413,13 +419,32 @@ function formatPrice(val) {
   return `${Number(val).toLocaleString('ru-RU')} BYN`;
 }
 
-function toggleAllCategories(checked) {
-  selectedCategories.value = checked ? categoryOptions.map(c => c.key) : [];
+function toggleSingleCategory(key) {
+  activeKit.value = '';
+  selectedCategory.value = key;
+}
+
+function toggleFeature(key) {
+  activeKit.value = '';
+  if (selectedFeatures.value.includes(key)) {
+    selectedFeatures.value = selectedFeatures.value.filter(k => k !== key);
+  } else {
+    selectedFeatures.value = [...selectedFeatures.value, key];
+  }
+}
+
+function applyQuickKit(kit) {
+  activeKit.value = kit.key;
+  selectedCategory.value = kit.cat;
+  selectedFeatures.value = [...kit.features];
+  maxPrice.value = kit.maxPrice;
+  currentPage.value = 1;
 }
 
 function resetFilters() {
+  activeKit.value = '';
   searchQuery.value = '';
-  selectedCategories.value = categoryOptions.map(c => c.key);
+  selectedCategory.value = 'all';
   maxPrice.value = 8500;
   selectedFeatures.value = [];
   sortBy.value = 'featured';
