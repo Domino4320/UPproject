@@ -5,8 +5,21 @@ import ExpeditionHeroWidget from '../components/ExpeditionHeroWidget.vue';
 import RouteCompassApp from '../components/RouteCompassApp.vue';
 import InteractiveCatalog from '../components/InteractiveCatalog.vue';
 import InteractiveMessenger from '../components/InteractiveMessenger.vue';
+import InteractiveGuidesSection from '../components/InteractiveGuidesSection.vue';
+import InteractiveFaq from '../components/InteractiveFaq.vue';
+import BiomeAtlasApp from '../components/BiomeAtlasApp.vue';
 
-export { AdSlot, SiteHeader, ExpeditionHeroWidget, RouteCompassApp, InteractiveCatalog, InteractiveMessenger };
+export {
+  AdSlot,
+  SiteHeader,
+  ExpeditionHeroWidget,
+  RouteCompassApp,
+  InteractiveCatalog,
+  InteractiveMessenger,
+  InteractiveGuidesSection,
+  InteractiveFaq,
+  BiomeAtlasApp,
+};
 
 // Dark Mode and Theme Management
 export function applyTheme(isDark) {
@@ -326,6 +339,27 @@ export function initVueComponents() {
     if (el.dataset.vueMounted === 'true') return;
     el.dataset.vueMounted = 'true';
     createApp(InteractiveMessenger).mount(el);
+  });
+
+  // 6. Interactive Guides Section (index.html)
+  document.querySelectorAll('[data-vue-guides]').forEach(el => {
+    if (el.dataset.vueMounted === 'true') return;
+    el.dataset.vueMounted = 'true';
+    createApp(InteractiveGuidesSection).mount(el);
+  });
+
+  // 7. Interactive FAQ (index.html)
+  document.querySelectorAll('[data-vue-faq]').forEach(el => {
+    if (el.dataset.vueMounted === 'true') return;
+    el.dataset.vueMounted = 'true';
+    createApp(InteractiveFaq).mount(el);
+  });
+
+  // 8. Biome Atlas App (storybook.html)
+  document.querySelectorAll('[data-vue-atlas]').forEach(el => {
+    if (el.dataset.vueMounted === 'true') return;
+    el.dataset.vueMounted = 'true';
+    createApp(BiomeAtlasApp).mount(el);
   });
 }
 
