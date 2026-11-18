@@ -1,6 +1,6 @@
 <template>
   <main class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-    <!-- Заголовок и сортировка -->
+
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
       <div>
         <span class="ds-kicker mb-2">Проверенное снаряжение</span>
@@ -9,7 +9,7 @@
       </div>
 
       <div class="flex flex-wrap items-center gap-3">
-        <!-- Кнопка мобильных фильтров -->
+
         <button
           type="button"
           @click="mobileDrawerOpen = true"
@@ -21,7 +21,6 @@
           <span>Фильтры</span>
         </button>
 
-        <!-- Сортировка -->
         <div class="flex items-center gap-2">
           <label for="vueSortSelect" class="text-xs font-semibold text-slate-500 whitespace-nowrap hidden sm:inline">Сортировать:</label>
           <select id="vueSortSelect" v-model="sortBy" class="ds-input py-2 text-xs w-auto font-medium cursor-pointer">
@@ -34,9 +33,8 @@
       </div>
     </div>
 
-    <!-- Сетка: Сайдбар + Товары -->
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
-      <!-- Десктопный сайдбар -->
+
       <aside class="hidden lg:block space-y-6 bento-card p-6 sticky top-28">
         <div class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800">
           <h3 class="font-bold text-slate-900 dark:text-white text-base">Фильтры экипировки</h3>
@@ -45,7 +43,6 @@
           </button>
         </div>
 
-        <!-- Поиск -->
         <div class="relative">
           <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -55,7 +52,6 @@
           <input v-model.trim="searchQuery" type="text" placeholder="Поиск по каталогу..." class="ds-input pl-9 py-2 text-xs bg-slate-50 dark:bg-slate-800">
         </div>
 
-        <!-- Категории -->
         <div class="space-y-3">
           <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Категория</label>
           <div class="space-y-2 text-sm">
@@ -70,7 +66,6 @@
           </div>
         </div>
 
-        <!-- Ползунок бюджета -->
         <div class="space-y-3 pt-4 border-t border-slate-100 dark:border-slate-800">
           <div class="flex justify-between items-center">
             <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Бюджет (до)</label>
@@ -83,7 +78,6 @@
           </div>
         </div>
 
-        <!-- Особенности -->
         <div class="space-y-3 pt-4 border-t border-slate-100 dark:border-slate-800">
           <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Особенности</label>
           <div class="space-y-2 text-sm">
@@ -95,9 +89,8 @@
         </div>
       </aside>
 
-      <!-- Правая часть: Товары -->
       <div class="lg:col-span-3 space-y-6">
-          <!-- Инфо-строка -->
+
           <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
             <span>
               {{ filteredProducts.length ? `Показано ${paginatedProducts.length} из ${filteredProducts.length} предложений` : '0 предложений' }}
@@ -105,7 +98,6 @@
             <span class="font-semibold">Страница {{ currentPage }} из {{ totalPages }}</span>
           </div>
 
-          <!-- Пустое состояние -->
           <div v-if="filteredProducts.length === 0" class="text-center py-16 px-6 rounded-3xl bento-card space-y-4">
             <div class="text-4xl">🧭</div>
             <h3 class="text-lg font-bold text-slate-900 dark:text-white">Ничего не найдено</h3>
@@ -115,7 +107,6 @@
             <button type="button" @click="resetFilters" class="ds-btn ds-btn-md ds-btn-primary">Сбросить фильтры</button>
           </div>
 
-          <!-- Сетка товаров -->
           <div v-else class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
             <article
               v-for="item in paginatedProducts"
@@ -178,7 +169,6 @@
             </article>
           </div>
 
-          <!-- Пагинация -->
           <div v-if="filteredProducts.length > 0" class="pt-8 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
             <button
               type="button"
@@ -216,7 +206,6 @@
       </div>
     </div>
 
-    <!-- Мобильный Drawer фильтров -->
     <Transition name="v-fade-slide">
       <div v-if="mobileDrawerOpen" class="fixed inset-0 z-50 lg:hidden">
         <div @click="mobileDrawerOpen = false" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm"></div>
@@ -254,7 +243,6 @@
       </div>
     </Transition>
 
-    <!-- Quick-View Модальное окно товара -->
     <Transition name="v-fade-slide">
       <div v-if="quickViewItem" @click.self="quickViewItem = null" class="ds-modal-backdrop">
         <div class="ds-modal-content max-w-xl overflow-hidden">
@@ -284,7 +272,6 @@
       </div>
     </Transition>
 
-    <!-- Slide-over Корзина (Vue Drawer) -->
     <Transition name="v-fade-slide">
       <div v-if="cartOpen" class="fixed inset-0 z-50 flex justify-end">
         <div @click="cartOpen = false" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm"></div>

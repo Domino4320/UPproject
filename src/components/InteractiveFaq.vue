@@ -6,7 +6,6 @@
       <p class="ds-body mt-3">Всё о подготовке, безопасности, визах и снаряжении для самостоятельных путешествий.</p>
     </div>
 
-    <!-- Фильтр тем -->
     <div class="flex flex-wrap justify-center gap-2 mb-8">
       <button
         v-for="cat in categories"

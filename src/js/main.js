@@ -23,7 +23,6 @@ export {
   ExpeditionTrackerApp,
 };
 
-// Dark Mode and Theme Management
 export function applyTheme(isDark) {
   if (isDark) {
     document.documentElement.classList.add('dark');
@@ -68,7 +67,6 @@ export function initTheme() {
   });
 }
 
-// Global Toast Notification Utility
 export function showToast(title, message = '', type = 'success') {
   let container = document.getElementById('tn-toast-container');
   if (!container) {
@@ -118,12 +116,10 @@ export function showToast(title, message = '', type = 'success') {
   }, 4200);
 }
 
-// Expose globally for inline handlers
 if (typeof window !== 'undefined') {
   window.showToast = showToast;
 }
 
-// Vue AdSlot mounting helper
 export function initAdSlots() {
   const slots = document.querySelectorAll('[data-vue-ad-slot]');
   slots.forEach(el => {
@@ -153,7 +149,6 @@ export function initAdSlots() {
   });
 }
 
-// Smooth FAQ Accordion
 export function initFaqAccordion() {
   const faqItems = document.querySelectorAll('.faq-item');
   if (!faqItems.length) return;
@@ -170,7 +165,6 @@ export function initFaqAccordion() {
     trigger.addEventListener('click', () => {
       const isOpen = panel.classList.contains('grid-rows-[1fr]');
 
-      // Close other panels
       faqItems.forEach(other => {
         if (other !== item) {
           const otherPanel = other.querySelector('.faq-panel');
@@ -189,7 +183,6 @@ export function initFaqAccordion() {
         }
       });
 
-      // Toggle current panel
       if (isOpen) {
         panel.classList.remove('grid-rows-[1fr]');
         panel.classList.add('grid-rows-[0fr]');
@@ -205,7 +198,6 @@ export function initFaqAccordion() {
   });
 }
 
-// Mobile Menu Toggle
 export function initMobileMenu() {
   const btn = document.getElementById('mobileMenuBtn');
   const menu = document.getElementById('mobileMenu');
@@ -220,7 +212,6 @@ export function initMobileMenu() {
   });
 }
 
-// Scroll Reveal Animations
 export function initScrollReveal() {
   const els = document.querySelectorAll('[data-reveal]');
   if (!els.length) return;
@@ -245,7 +236,6 @@ export function initScrollReveal() {
   els.forEach(el => observer.observe(el));
 }
 
-// Top Reading / Scroll Progress Bar
 export function initScrollProgress() {
   if (document.body.classList.contains('overflow-hidden')) return;
   if (document.getElementById('tn-scroll-progress')) return;
@@ -266,7 +256,6 @@ export function initScrollProgress() {
   update();
 }
 
-// Animated Stat Counters
 export function initAnimatedCounters() {
   const counters = document.querySelectorAll('[data-count-to]');
   if (!counters.length || !('IntersectionObserver' in window)) return;
@@ -301,9 +290,8 @@ export function initAnimatedCounters() {
   counters.forEach(c => observer.observe(c));
 }
 
-// Vue App Mount Helpers
 export function initVueComponents() {
-  // 1. Unified SiteHeader
+
   document.querySelectorAll('[data-vue-header]').forEach(el => {
     if (el.dataset.vueMounted === 'true') return;
     el.dataset.vueMounted = 'true';
@@ -315,56 +303,48 @@ export function initVueComponents() {
     }).mount(el);
   });
 
-  // 2. Hero Live Expedition Bento Widget
   document.querySelectorAll('[data-vue-hero-widget]').forEach(el => {
     if (el.dataset.vueMounted === 'true') return;
     el.dataset.vueMounted = 'true';
     createApp(ExpeditionHeroWidget).mount(el);
   });
 
-  // 3. Route Compass App (kanban.html)
   document.querySelectorAll('[data-vue-route-compass]').forEach(el => {
     if (el.dataset.vueMounted === 'true') return;
     el.dataset.vueMounted = 'true';
     createApp(RouteCompassApp).mount(el);
   });
 
-  // 4. Interactive Catalog (ecommerce.html)
   document.querySelectorAll('[data-vue-catalog]').forEach(el => {
     if (el.dataset.vueMounted === 'true') return;
     el.dataset.vueMounted = 'true';
     createApp(InteractiveCatalog).mount(el);
   });
 
-  // 5. Interactive Messenger (messenger.html)
   document.querySelectorAll('[data-vue-messenger]').forEach(el => {
     if (el.dataset.vueMounted === 'true') return;
     el.dataset.vueMounted = 'true';
     createApp(InteractiveMessenger).mount(el);
   });
 
-  // 6. Interactive Guides Section (index.html)
   document.querySelectorAll('[data-vue-guides]').forEach(el => {
     if (el.dataset.vueMounted === 'true') return;
     el.dataset.vueMounted = 'true';
     createApp(InteractiveGuidesSection).mount(el);
   });
 
-  // 7. Interactive FAQ (index.html)
   document.querySelectorAll('[data-vue-faq]').forEach(el => {
     if (el.dataset.vueMounted === 'true') return;
     el.dataset.vueMounted = 'true';
     createApp(InteractiveFaq).mount(el);
   });
 
-  // 8. Biome Atlas App (storybook.html)
   document.querySelectorAll('[data-vue-atlas]').forEach(el => {
     if (el.dataset.vueMounted === 'true') return;
     el.dataset.vueMounted = 'true';
     createApp(BiomeAtlasApp).mount(el);
   });
 
-  // 9. Expedition Tracker App (dashboard.html)
   document.querySelectorAll('[data-vue-tracker]').forEach(el => {
     if (el.dataset.vueMounted === 'true') return;
     el.dataset.vueMounted = 'true';
@@ -372,7 +352,6 @@ export function initVueComponents() {
   });
 }
 
-// Universal Initializer on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initVueComponents();

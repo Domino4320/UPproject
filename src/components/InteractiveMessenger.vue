@@ -1,6 +1,6 @@
 <template>
   <div class="flex-1 flex overflow-hidden max-w-7xl w-full mx-auto p-2 sm:p-4 gap-4">
-    <!-- Сайдбар чатов -->
+
     <aside
       :class="[
         'w-full md:w-80 lg:w-96 flex-col bento-card shrink-0 overflow-hidden',
@@ -27,7 +27,6 @@
         </div>
       </div>
 
-      <!-- Список каналов -->
       <div class="flex-1 overflow-y-auto scrollbar-custom divide-y divide-slate-100 dark:divide-slate-800/60">
         <button
           v-for="chat in filteredChats"
@@ -72,14 +71,13 @@
       </div>
     </aside>
 
-    <!-- Окно активного чата -->
     <main
       :class="[
         'flex-1 flex-col bento-card overflow-hidden relative',
         mobileShowChat ? 'flex' : 'hidden md:flex'
       ]"
     >
-      <!-- Хедер беседы -->
+
       <div class="p-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between gap-3 shrink-0 bg-white/70 dark:bg-slate-900/70 backdrop-blur-md">
         <div class="flex items-center gap-3 min-w-0">
           <button
@@ -109,17 +107,15 @@
         </a>
       </div>
 
-      <!-- Лента сообщений -->
       <div ref="messagesRef" class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 scrollbar-custom">
         <template v-for="(msg, idx) in activeChat.messages" :key="idx">
-          <!-- Дата -->
+
           <div v-if="msg.type === 'date'" class="flex items-center justify-center my-4">
             <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">
               {{ msg.text }}
             </span>
           </div>
 
-          <!-- Исходящее -->
           <div v-else-if="msg.type === 'out'" class="flex items-end justify-end gap-2 ml-auto max-w-xl animate-fade-in">
             <div class="space-y-1 text-right">
               <div class="p-4 rounded-2xl rounded-tr-sm bg-gradient-to-r from-brand-600 to-teal-600 text-white text-sm text-left shadow-md">
@@ -132,7 +128,6 @@
             </div>
           </div>
 
-          <!-- Входящее -->
           <div v-else class="flex items-start gap-3 max-w-xl animate-fade-in">
             <img :src="msg.avatar" :alt="msg.sender" class="w-8 h-8 rounded-full object-cover shrink-0 mt-1">
             <div class="space-y-1">
@@ -158,7 +153,6 @@
         </template>
       </div>
 
-      <!-- Поле ввода -->
       <div class="p-3 sm:p-4 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 shrink-0">
         <form @submit.prevent="sendMessage" class="flex items-center gap-2">
           <button

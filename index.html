@@ -15,7 +15,7 @@
         document.documentElement.classList.remove('dark');
       }
     })();
-  </script>
+</script>
   <link rel="stylesheet" href="./src/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,23 +23,16 @@
 </head>
 <body class="bg-[#f7faf8] text-slate-800 dark:bg-[#0b1512] dark:text-slate-100 min-h-screen flex flex-col selection:bg-brand-500 selection:text-white bg-topo-pattern">
 
-  <!-- ============================================== -->
-  <!-- 1. Навигационная панель (Vue 3 SiteHeader)      -->
-  <!-- ============================================== -->
   <div data-vue-header data-active-page="home" data-base-path="." data-subtitle="Nature & Expeditions"></div>
 
-  <!-- ============================================== -->
-  <!-- 2. Hero-секция с природным силуэтом и быстрым поиском -->
-  <!-- ============================================== -->
   <section id="hero" class="relative overflow-hidden pt-14 sm:pt-20 lg:pt-24 pb-16 sm:pb-24">
-    <!-- Атмосферный природный фон -->
+
     <div class="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
       <div class="absolute -top-40 -left-40 w-96 h-96 bg-forest-500/20 rounded-full blur-3xl animate-pulse"></div>
       <div class="absolute top-16 right-10 w-[500px] h-[500px] bg-sunset-500/15 rounded-full blur-3xl animate-pulse" style="animation-duration: 8s;"></div>
       <div class="absolute -bottom-20 left-1/3 w-96 h-96 bg-brand-500/20 rounded-full blur-3xl"></div>
       <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#f7faf8]/50 to-[#f7faf8] dark:via-[#0b1512]/60 dark:to-[#0b1512]"></div>
 
-      <!-- Декоративный силуэт гор и хвойного леса -->
       <svg class="absolute bottom-0 left-0 right-0 w-full h-32 sm:h-44 text-emerald-900/[0.06] dark:text-emerald-400/[0.05]" preserveAspectRatio="none" viewBox="0 0 1440 200" fill="currentColor">
         <path d="M0,160 L120,105 L210,140 L340,65 L470,135 L590,85 L730,150 L880,45 L1020,125 L1160,75 L1290,130 L1440,80 L1440,200 L0,200 Z"/>
         <path d="M0,180 L90,145 L170,170 L280,125 L390,165 L510,130 L640,175 L790,120 L930,168 L1080,135 L1220,172 L1350,140 L1440,165 L1440,200 L0,200 Z" opacity="0.6"/>
@@ -47,28 +40,24 @@
     </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-      
-      <!-- Бейдж экспедиции -->
+
       <a href="#articles" onclick="filterGuidesByTag('Арктика')" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 dark:bg-emerald-950/70 border border-emerald-900/10 dark:border-emerald-700/50 text-forest-700 dark:text-emerald-300 text-xs sm:text-sm font-semibold mb-7 backdrop-blur-md shadow-sm hover:border-brand-500 transition">
         <span class="flex h-2 w-2 rounded-full bg-sunset-500 animate-ping"></span>
         <span>Новая экспедиция: Зимняя Исландия и ледники Ватнайёкюдль</span>
         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
       </a>
 
-      <!-- Главный заголовок -->
       <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-slate-900 dark:text-white max-w-5xl mx-auto leading-[1.08]">
-        Открывай дикую природу с духом 
+        Открывай дикую природу с духом
         <span class="bg-gradient-to-r from-forest-600 via-brand-500 to-sunset-500 bg-clip-text text-transparent">
           настоящих первооткрывателей
         </span>
       </h1>
 
-      <!-- Подзаголовок -->
       <p class="mt-6 text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
         Авторские путеводители, проверенные GPS-треки для офлайн-навигации, атлас природных биомов и честные отчёты из 54 стран планеты.
       </p>
 
-      <!-- Быстрые природные теги (интерактивные) -->
       <div class="mt-8 flex flex-wrap items-center justify-center gap-2.5">
         <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 mr-1">Выбрать стихию:</span>
         <button type="button" onclick="jumpAndFilter('Горы')" class="px-3.5 py-1.5 rounded-full text-xs font-bold bg-white/90 dark:bg-slate-800/90 border border-emerald-900/10 dark:border-slate-700 hover:border-brand-500 hover:text-brand-600 dark:hover:text-brand-400 shadow-sm transition">
@@ -85,7 +74,6 @@
         </button>
       </div>
 
-      <!-- CTA Кнопки -->
       <div class="mt-9 flex flex-col sm:flex-row items-center justify-center gap-4">
         <a href="#articles" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-forest-600 via-brand-600 to-teal-600 hover:from-forest-700 hover:to-teal-700 text-white font-bold text-base shadow-xl shadow-brand-600/25 hover:scale-[1.02] active:scale-95 transition-all duration-200 flex items-center justify-center gap-3">
           <span>Выбрать маршрут</span>
@@ -96,7 +84,6 @@
         </a>
       </div>
 
-      <!-- Trust metrics / Expedition stats -->
       <div class="mt-12 pt-10 border-t border-emerald-900/10 dark:border-slate-800/80 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto text-left sm:text-center">
         <div>
           <div class="text-3xl font-extrabold text-slate-900 dark:text-white" data-count-to="54" data-count-suffix=" страны">54 страны</div>
@@ -116,32 +103,22 @@
         </div>
       </div>
 
-      <!-- Живая Vue 3 Bento-сводка ближайших выходов -->
       <div data-vue-hero-widget></div>
     </div>
   </section>
 
-  <!-- ============================================== -->
-  <!-- Партнёрский блок (Vue AdSlot) -->
-  <!-- ============================================== -->
   <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-2 mb-6">
-    <div 
-      data-vue-ad-slot 
-      data-size="leaderboard" 
-      data-label="Спецпроект: Скидка 25% на мембранную экипировку и треккинговые ботинки" 
-      data-sublabel="Партнёрский промокод 'TERRANOVA' дарит скидку на снаряжение в лучших outdoor-магазинах для подготовки к сезону." 
+    <div
+      data-vue-ad-slot
+      data-size="leaderboard"
+      data-label="Спецпроект: Скидка 25% на мембранную экипировку и треккинговые ботинки"
+      data-sublabel="Партнёрский промокод 'TERRANOVA' дарит скидку на снаряжение в лучших outdoor-магазинах для подготовки к сезону."
       data-closable="true"
     ></div>
   </section>
 
-  <!-- ============================================== -->
-  <!-- 3. Популярные путеводители и маршруты (Vue 3) -->
-  <!-- ============================================== -->
   <div data-vue-guides></div>
 
-  <!-- ============================================== -->
-  <!-- 4. Экосистема инструментов для путешественника -->
-  <!-- ============================================== -->
   <section class="section-container bg-emerald-50/40 dark:bg-emerald-950/20 rounded-3xl my-6 border border-emerald-900/10 dark:border-emerald-500/15" data-reveal>
     <div class="section-heading-wrapper">
       <span class="ds-kicker mb-3">Живая платформа</span>
@@ -196,18 +173,14 @@
     </div>
   </section>
 
-  <!-- ============================================== -->
-  <!-- 5. Об авторе и философия TerraNova -->
-  <!-- ============================================== -->
   <section id="about-author" class="section-container scroll-mt-24">
     <div class="nature-card p-6 sm:p-10 lg:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-      
-      <!-- Левая колонка: Профиль автора -->
+
       <div class="lg:col-span-5 flex flex-col items-center text-center p-6 rounded-3xl bg-emerald-50/60 dark:bg-slate-800/70 border border-emerald-900/10 dark:border-slate-700/80 space-y-5">
         <div class="relative">
-          <img 
-            src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=220&h=220&q=80" 
-            alt="Максим Ветров" 
+          <img
+            src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=220&h=220&q=80"
+            alt="Максим Ветров"
             class="w-24 h-24 rounded-full object-cover shadow-lg ring-4 ring-brand-500/30"
           >
           <span class="absolute bottom-1 right-1 w-5 h-5 bg-emerald-500 border-2 border-white dark:border-slate-800 rounded-full" title="На связи из базового лагеря"></span>
@@ -240,7 +213,6 @@
         </div>
       </div>
 
-      <!-- Правая колонка: История и принципы -->
       <div class="lg:col-span-7 space-y-6">
         <span class="ds-kicker ds-kicker-sunset">Наша философия</span>
         <h2 class="ds-h2">Путешествия, которые оставляют после себя только следы на тропе</h2>
@@ -263,16 +235,12 @@
     </div>
   </section>
 
-  <!-- ============================================== -->
-  <!-- 6. Клуб путешественников / Тарифы подписки (Задание 2.2) -->
-  <!-- ============================================== -->
   <section id="club" class="section-container bg-emerald-50/40 dark:bg-emerald-950/20 rounded-3xl my-12 border border-emerald-900/10 dark:border-emerald-500/15" data-reveal>
     <div class="section-heading-wrapper">
       <span class="ds-kicker ds-kicker-sunset mb-3">Клуб исследователей</span>
       <h2 class="ds-h2">Присоединяйтесь к сообществу первооткрывателей</h2>
       <p class="ds-body mt-3">Выберите удобный уровень доступа к закрытой базе треков, авторским экспедициям и закрытому клубу скидок на снаряжение.</p>
 
-      <!-- Переключатель Месяц / Год -->
       <div class="mt-7 inline-flex items-center p-1.5 rounded-2xl bg-white dark:bg-slate-900 border border-emerald-900/10 dark:border-slate-700 shadow-sm">
         <button type="button" id="billingMonthly" onclick="setBillingPeriod('monthly')" class="px-4 py-2 rounded-xl text-xs font-bold bg-brand-600 text-white transition">
           Помесячно
@@ -285,8 +253,7 @@
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch pt-2">
-      
-      <!-- Тариф 1: Вольный странник -->
+
       <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 border border-slate-200 dark:border-slate-700 flex flex-col justify-between shadow-sm">
         <div class="space-y-6">
           <div class="space-y-2">
@@ -327,7 +294,6 @@
         </div>
       </div>
 
-      <!-- Тариф 2: Клуб первооткрывателей (PRO) - Выделенный -->
       <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 border-2 border-brand-500 shadow-2xl relative flex flex-col justify-between lg:-translate-y-2 lg:scale-105">
         <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-gradient-to-r from-brand-600 to-sunset-500 text-white shadow-md">
           Хит среди читателей
@@ -371,7 +337,6 @@
         </div>
       </div>
 
-      <!-- Тариф 3: Экспедиционный VIP -->
       <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 border border-slate-200 dark:border-slate-700 flex flex-col justify-between shadow-sm">
         <div class="space-y-6">
           <div class="space-y-2">
@@ -411,9 +376,6 @@
     </div>
   </section>
 
-  <!-- ============================================== -->
-  <!-- 7. Отзывы участников экспедиций (Snap-карусель) -->
-  <!-- ============================================== -->
   <section class="section-container" data-reveal>
     <div class="section-heading-wrapper">
       <span class="ds-kicker mb-3">Истории читателей</span>
@@ -421,9 +383,8 @@
       <p class="ds-body mt-3">Реальные впечатления людей, прошедших маршруты по нашим путеводителям и трекам.</p>
     </div>
 
-    <!-- Snap-scroll карусель без обязательного JS -->
     <div class="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-6 scrollbar-custom">
-      
+
       <div class="min-w-[300px] sm:min-w-[380px] p-6 rounded-3xl bg-white dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 snap-center shadow-sm flex flex-col justify-between">
         <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed italic">
           «Проехали всю Исландию по маршруту Максима в октябре! GPS-трек со всеми бродами спас нас от застревания в лавовом поле. Это было лучшее приключение в жизни!»
@@ -466,19 +427,12 @@
     </div>
   </section>
 
-  <!-- ============================================== -->
-  <!-- 8. FAQ-аккордеон для путешественников (Vue 3)   -->
-  <!-- ============================================== -->
   <div data-vue-faq></div>
 
-  <!-- ============================================== -->
-  <!-- 9. Подвал сайта (4 колонки) -->
-  <!-- ============================================== -->
   <footer class="mt-auto bg-white dark:bg-slate-900 border-t border-slate-200/80 dark:border-slate-800 transition-colors">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
-        
-        <!-- О блоге -->
+
         <div class="lg:col-span-2 space-y-4">
           <a href="./" class="flex items-center space-x-3 group">
             <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-600 via-teal-500 to-sunset-500 flex items-center justify-center text-white shadow-md">
@@ -496,7 +450,6 @@
           </div>
         </div>
 
-        <!-- Направления -->
         <div class="space-y-3">
           <h4 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">Направления</h4>
           <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
@@ -508,7 +461,6 @@
           </ul>
         </div>
 
-        <!-- Инструменты -->
         <div class="space-y-3">
           <h4 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">Инструменты</h4>
           <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
@@ -520,17 +472,16 @@
           </ul>
         </div>
 
-        <!-- Рассылка отчётов -->
         <div class="space-y-3">
           <h4 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">Почтовый маяк</h4>
           <p class="text-xs text-slate-500 dark:text-slate-400">
             Раз в месяц присылаем новый подробный маршрут с GPS-треком. Никакого спама.
           </p>
           <form class="space-y-2" onsubmit="event.preventDefault(); this.reset(); showToast('Вы подписаны на Почтовый маяк!', 'Первый маршрут с GPX-треком уже летит на вашу почту.', 'success');">
-            <input 
-              type="email" 
-              required 
-              placeholder="Ваш email" 
+            <input
+              type="email"
+              required
+              placeholder="Ваш email"
               class="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500"
             >
             <button type="submit" class="w-full ds-btn ds-btn-sm ds-btn-sunset font-bold">
@@ -543,7 +494,6 @@
     </div>
   </footer>
 
-  <!-- Модальное окно деталей маршрута -->
   <div id="guideModal" class="hidden ds-modal-backdrop" onclick="if(event.target===this) closeGuideModal()">
     <div class="ds-modal-content max-w-2xl max-h-[90vh] flex flex-col">
       <div class="relative h-48 sm:h-56 shrink-0 overflow-hidden">
@@ -591,7 +541,7 @@
 
   <script type="module" src="./src/js/main.js"></script>
   <script>
-    // Данные для модального окна маршрутов
+
     const GUIDE_DETAILS = {
       iceland: {
         region: 'Северная Европа • Исландия',
@@ -779,6 +729,6 @@
         if (vipPeriod) vipPeriod.textContent = '/ год';
       }
     }
-  </script>
+</script>
 </body>
 </html>

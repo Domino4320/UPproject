@@ -1,6 +1,6 @@
 <template>
   <div class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-10 flex gap-8">
-    <!-- Сайдбар навигации по Атласу -->
+
     <aside class="w-60 shrink-0 hidden lg:block sticky top-28 self-start space-y-6">
       <div class="bento-card p-4 space-y-4">
         <div class="text-xs font-bold uppercase tracking-wider text-slate-400">Разделы атласа</div>
@@ -13,9 +13,8 @@
       </div>
     </aside>
 
-    <!-- Основной контент -->
     <main class="flex-1 min-w-0 space-y-16">
-      <!-- Заголовок страницы -->
+
       <section class="relative overflow-hidden bento-card p-7 sm:p-10">
         <div class="relative z-10 max-w-3xl space-y-3">
           <span class="ds-kicker">Полевой справочник исследователя</span>
@@ -29,7 +28,6 @@
         </svg>
       </section>
 
-      <!-- 1. Биомы и природные зоны -->
       <section id="biomes" class="space-y-6 scroll-mt-24">
         <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
@@ -83,7 +81,6 @@
         </div>
       </section>
 
-      <!-- 2. Интерактивный сезонный компас -->
       <section id="season-compass" class="bento-card p-6 sm:p-8 space-y-6 scroll-mt-24">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
@@ -127,7 +124,6 @@
         </Transition>
       </section>
 
-      <!-- 3. Калькулятор веса рюкзака -->
       <section id="pack-calculator" class="bento-card p-6 sm:p-8 space-y-6 scroll-mt-24">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
@@ -142,7 +138,6 @@
           </div>
         </div>
 
-        <!-- Быстрые пресеты комплекта -->
         <div class="flex flex-wrap gap-2">
           <button type="button" @click="applyPackPreset('ultralight')" class="px-3 py-1.5 rounded-xl bg-emerald-50 dark:bg-slate-800 hover:bg-brand-600 hover:text-white text-xs font-bold transition">🪶 Ультралайт (&lt;5 кг)</button>
           <button type="button" @click="applyPackPreset('expedition')" class="px-3 py-1.5 rounded-xl bg-emerald-50 dark:bg-slate-800 hover:bg-brand-600 hover:text-white text-xs font-bold transition">⛺ Полная экспедиция</button>
@@ -182,7 +177,6 @@
         </form>
       </section>
 
-      <!-- 4. Принципы Leave No Trace -->
       <section id="leave-no-trace" class="bento-card p-6 sm:p-8 space-y-5 scroll-mt-24">
         <h2 class="ds-h2">4. Кодекс дикой природы (Leave No Trace)</h2>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -202,7 +196,6 @@
       </section>
     </main>
 
-    <!-- Модальное окно биома -->
     <Transition name="v-fade-slide">
       <div v-if="selectedBiome" @click.self="selectedBiome = null" class="ds-modal-backdrop">
         <div class="ds-modal-content max-w-xl p-6 sm:p-8 space-y-5">

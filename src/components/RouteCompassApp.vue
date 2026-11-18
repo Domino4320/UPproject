@@ -1,6 +1,6 @@
 <template>
   <main class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-8">
-    <!-- Заголовок и кнопка рулетки -->
+
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
       <div class="space-y-2 max-w-2xl">
         <span class="ds-kicker">Интерактивный конструктор</span>
@@ -28,11 +28,10 @@
       </button>
     </div>
 
-    <!-- Двухколоночная рабочая область -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-      <!-- Левая колонка: Настройки компаса -->
+
       <section class="lg:col-span-5 space-y-6 bento-card p-6 sm:p-7">
-        <!-- 1. Стихия -->
+
         <div class="space-y-3">
           <div class="flex items-center justify-between">
             <span class="text-xs font-extrabold uppercase tracking-wider text-slate-400">1. Выберите стихию</span>
@@ -58,7 +57,6 @@
           </div>
         </div>
 
-        <!-- 2. Формат -->
         <div class="space-y-3 pt-4 border-t border-slate-100 dark:border-slate-800">
           <span class="text-xs font-extrabold uppercase tracking-wider text-slate-400 block">2. Формат передвижения</span>
           <div class="grid grid-cols-2 gap-2.5">
@@ -80,7 +78,6 @@
           </div>
         </div>
 
-        <!-- 3. Уровень вызова -->
         <div class="space-y-3 pt-4 border-t border-slate-100 dark:border-slate-800">
           <span class="text-xs font-extrabold uppercase tracking-wider text-slate-400 block">3. Уровень вызова</span>
           <div class="grid grid-cols-3 gap-2">
@@ -101,7 +98,6 @@
           </div>
         </div>
 
-        <!-- Быстрые пресеты -->
         <div class="pt-4 border-t border-slate-100 dark:border-slate-800 space-y-2.5">
           <span class="text-xs font-extrabold uppercase tracking-wider text-slate-400 block">Готовые комбинации</span>
           <div class="flex flex-wrap gap-2">
@@ -123,7 +119,6 @@
         </div>
       </section>
 
-      <!-- Правая колонка: Живая карточка экспедиции -->
       <section class="lg:col-span-7">
         <Transition name="v-fade-slide" mode="out-in">
           <div :key="currentRoute.id" class="bento-card overflow-hidden">
@@ -145,7 +140,7 @@
             </div>
 
             <div class="p-6 sm:p-7 space-y-6">
-              <!-- Метрики -->
+
               <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
                 <div class="p-3 rounded-2xl bg-emerald-50/70 dark:bg-slate-800/80">
                   <div class="text-[11px] text-slate-500 dark:text-slate-400">Длительность</div>
@@ -165,7 +160,6 @@
                 </div>
               </div>
 
-              <!-- Профиль высоты -->
               <div class="space-y-2.5">
                 <div class="flex items-center justify-between text-xs gap-2">
                   <span class="font-bold uppercase tracking-wider text-slate-400">Профиль высоты и стоянок</span>
@@ -215,7 +209,6 @@
                 </div>
               </div>
 
-              <!-- Симулятор 24 часов -->
               <div class="space-y-3">
                 <div class="flex items-center justify-between">
                   <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Симулятор 24 часов в лагере</span>
@@ -250,7 +243,6 @@
                 </Transition>
               </div>
 
-              <!-- Главные впечатления -->
               <div class="space-y-2.5">
                 <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block">Что вы переживёте на маршруте</span>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
@@ -264,7 +256,6 @@
                 </div>
               </div>
 
-              <!-- Действия -->
               <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3">
                 <a href="./ecommerce.html" class="ds-btn ds-btn-md ds-btn-secondary">Подобрать экипировку</a>
                 <a href="./multistep.html" class="ds-btn ds-btn-md ds-btn-primary">Забронировать экспедицию →</a>

@@ -8,7 +8,7 @@
     ]"
   >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
-      <!-- Логотип -->
+
       <a :href="homeUrl" class="flex items-center space-x-3 group shrink-0">
         <div class="relative w-10 h-10 rounded-2xl bg-gradient-to-tr from-forest-600 via-brand-600 to-sunset-500 flex items-center justify-center text-white shadow-lg shadow-brand-600/25 group-hover:scale-105 group-hover:rotate-3 transition-all duration-300">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -25,7 +25,6 @@
         </div>
       </a>
 
-      <!-- Десктопное меню -->
       <nav class="hidden lg:flex items-center gap-5 xl:gap-6 text-sm font-semibold shrink-0">
         <a
           v-for="item in navItems"
@@ -40,9 +39,8 @@
         </a>
       </nav>
 
-      <!-- Правая панель действий -->
       <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
-        <!-- Кнопка корзины (показывается на ecommerce или если есть товары) -->
+
         <button
           v-if="showCart"
           type="button"
@@ -64,7 +62,6 @@
           </span>
         </button>
 
-        <!-- Переключатель темы -->
         <button
           type="button"
           @click="toggleTheme"
@@ -84,7 +81,6 @@
           Вступить в клуб
         </a>
 
-        <!-- Мобильный бургер -->
         <button
           type="button"
           @click="mobileOpen = !mobileOpen"
@@ -102,7 +98,6 @@
       </div>
     </div>
 
-    <!-- Мобильное меню (Vue Transition) -->
     <Transition name="v-fade-slide">
       <div
         v-if="mobileOpen"

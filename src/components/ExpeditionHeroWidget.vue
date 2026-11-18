@@ -1,7 +1,7 @@
 <template>
   <div class="mt-14 max-w-5xl mx-auto">
     <div class="bento-card p-4 sm:p-6 text-left">
-      <!-- Верхняя панель переключателей экспедиций -->
+
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-emerald-900/10 dark:border-slate-800">
         <div class="flex items-center gap-2.5">
           <span class="relative flex h-2.5 w-2.5">
@@ -31,10 +31,9 @@
         </div>
       </div>
 
-      <!-- Контент выбранной экспедиции с Vue Transition -->
       <Transition name="v-fade-slide" mode="out-in">
         <div :key="current.id" class="grid grid-cols-1 md:grid-cols-12 gap-5 pt-5 items-stretch">
-          <!-- Фото с наложением -->
+
           <div class="md:col-span-5 relative rounded-2xl overflow-hidden min-h-[210px] group">
             <img
               :src="current.image"
@@ -66,7 +65,6 @@
             </div>
           </div>
 
-          <!-- Бенто-метрики справа -->
           <div class="md:col-span-7 flex flex-col justify-between gap-4">
             <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
               {{ current.desc }}

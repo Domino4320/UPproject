@@ -14,7 +14,7 @@
         document.documentElement.classList.remove('dark');
       }
     })();
-  </script>
+</script>
   <link rel="stylesheet" href="../src/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,26 +22,19 @@
 </head>
 <body class="bg-[#f7faf8] text-slate-800 dark:bg-[#0b1512] dark:text-slate-100 min-h-screen flex flex-col antialiased selection:bg-brand-500 selection:text-white bg-topo-pattern">
 
-  <!-- ============================================== -->
-  <!-- 1. Хедер страницы (Vue 3 SiteHeader)           -->
-  <!-- ============================================== -->
   <div data-vue-header data-active-page="multistep" data-base-path=".." data-subtitle="Бронирование"></div>
 
-  <!-- ============================================== -->
-  <!-- 2. Форма бронирования                           -->
-  <!-- ============================================== -->
   <main class="flex-1 max-w-4xl mx-auto w-full px-4 sm:px-6 py-10 space-y-8">
-    
+
     <div class="text-center space-y-2">
       <span class="ds-kicker">Expedition Wizard</span>
       <h1 class="ds-h1 text-2xl sm:text-4xl">Заявка на участие в экспедиции</h1>
       <p class="ds-body max-w-xl mx-auto text-sm sm:text-base">Пройдите 4 шага, чтобы забронировать место в группе, подобрать снаряжение и присоединиться к клубу исследователей.</p>
     </div>
 
-    <!-- Индикатор шагов (Stepper) -->
     <nav aria-label="Этапы бронирования" class="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 shadow-sm">
       <ol class="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs font-semibold">
-        
+
         <li id="stepIndicator1" class="flex items-center gap-3 text-brand-600 dark:text-brand-400">
           <div class="w-8 h-8 rounded-xl bg-brand-600 text-white flex items-center justify-center font-bold text-xs shadow-md">1</div>
           <div class="flex flex-col">
@@ -77,13 +70,9 @@
       </ol>
     </nav>
 
-    <!-- Шаги формы -->
     <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-10 border border-slate-200/80 dark:border-slate-800/80 shadow-sm">
       <form id="multistepForm">
-        
-        <!-- ========================================== -->
-        <!-- ШАГ 1: Выбор экспедиции                   -->
-        <!-- ========================================== -->
+
         <div id="step1" class="space-y-6">
           <div class="border-b border-slate-100 dark:border-slate-800 pb-4">
             <h2 class="text-xl font-bold text-slate-900 dark:text-white">Шаг 1: Выберите направление экспедиции</h2>
@@ -91,7 +80,7 @@
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            
+
             <label class="has-[:checked]:border-brand-600 has-[:checked]:ring-2 has-[:checked]:ring-brand-500/20 p-5 rounded-2xl border-2 border-slate-200 dark:border-slate-700 cursor-pointer transition hover:border-slate-300 dark:hover:border-slate-600 flex items-start gap-4">
               <input type="radio" name="expedition" value="iceland" checked class="mt-1 accent-brand-600">
               <div class="space-y-1">
@@ -131,9 +120,6 @@
           </div>
         </div>
 
-        <!-- ========================================== -->
-        <!-- ШАГ 2: Данные участника & Опыт             -->
-        <!-- ========================================== -->
         <div id="step2" class="space-y-6 hidden">
           <div class="border-b border-slate-100 dark:border-slate-800 pb-4">
             <h2 class="text-xl font-bold text-slate-900 dark:text-white">Шаг 2: Данные участника и опыт походов</h2>
@@ -168,9 +154,6 @@
           </div>
         </div>
 
-        <!-- ========================================== -->
-        <!-- ШАГ 3: Снаряжение & Страховка              -->
-        <!-- ========================================== -->
         <div id="step3" class="space-y-6 hidden">
           <div class="border-b border-slate-100 dark:border-slate-800 pb-4">
             <h2 class="text-xl font-bold text-slate-900 dark:text-white">Шаг 3: Снаряжение и безопасность</h2>
@@ -219,9 +202,6 @@
           </div>
         </div>
 
-        <!-- ========================================== -->
-        <!-- ШАГ 4: Подтверждение                       -->
-        <!-- ========================================== -->
         <div id="step4" class="space-y-6 hidden">
           <div class="border-b border-slate-100 dark:border-slate-800 pb-4">
             <h2 class="text-xl font-bold text-slate-900 dark:text-white">Шаг 4: Подтверждение бронирования</h2>
@@ -261,7 +241,6 @@
           </div>
         </div>
 
-        <!-- Кнопки управления шагами -->
         <div class="pt-8 mt-8 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center">
           <button type="button" id="prevBtn" class="ds-btn ds-btn-md ds-btn-secondary invisible">
             ← Назад
@@ -276,7 +255,6 @@
 
   </main>
 
-  <!-- Красивое модальное окно успешной заявки -->
   <div id="bookingSuccessModal" class="hidden ds-modal-backdrop">
     <div class="ds-modal-content max-w-md p-7 sm:p-8 text-center space-y-5 animate-fade-in">
       <div class="w-16 h-16 mx-auto rounded-3xl bg-gradient-to-tr from-emerald-500 to-brand-500 text-white flex items-center justify-center shadow-xl shadow-emerald-500/30">
@@ -334,10 +312,10 @@
     }
 
     function updateStepUI() {
-      // Hide all steps
+
       for (let i = 1; i <= totalSteps; i++) {
         document.getElementById(`step${i}`).classList.toggle('hidden', i !== currentStep);
-        
+
         const ind = document.getElementById(`stepIndicator${i}`);
         if (i === currentStep) {
           ind.className = 'flex items-center gap-3 text-brand-600 dark:text-brand-400';
@@ -351,10 +329,8 @@
         }
       }
 
-      // Prev button visibility
       prevBtn.classList.toggle('invisible', currentStep === 1);
 
-      // Next button text
       if (currentStep === totalSteps) {
         nextBtn.innerHTML = 'Забронировать место ✓';
         nextBtn.className = 'ds-btn ds-btn-md ds-btn-primary font-bold';
@@ -388,6 +364,6 @@
         updateStepUI();
       }
     });
-  </script>
+</script>
 </body>
 </html>

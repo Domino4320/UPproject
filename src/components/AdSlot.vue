@@ -1,15 +1,14 @@
 <template>
-  <div 
+  <div
     v-if="isVisible"
     class="relative w-full rounded-2xl transition-all duration-200 group overflow-hidden select-none border-2 border-dashed border-brand-300 dark:border-brand-800 hover:border-brand-500 dark:hover:border-brand-400 bg-gradient-to-r from-emerald-50/70 via-teal-50/50 to-amber-50/60 dark:from-slate-900/95 dark:via-slate-900/90 dark:to-teal-950/40 shadow-sm hover:shadow-md"
     :class="presetClass"
     :style="customStyle"
     data-ad-slot
   >
-    <!-- Декоративная фоновая сетка -->
+
     <div class="absolute inset-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none bg-[radial-gradient(#0d9488_1px,transparent_1px)] [background-size:16px_16px]"></div>
 
-    <!-- Кнопка закрытия -->
     <button
       v-if="closable"
       @click="isVisible = false"
@@ -23,7 +22,6 @@
       </svg>
     </button>
 
-    <!-- Leaderboard / Banner -->
     <div v-if="size === 'leaderboard' || size === 'banner'" class="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-5 sm:p-6">
       <div class="space-y-1.5 max-w-2xl text-left">
         <div class="flex items-center gap-2">
@@ -50,7 +48,6 @@
       </div>
     </div>
 
-    <!-- Sidebar Variant -->
     <div v-else-if="size === 'sidebar'" class="relative z-10 flex flex-col items-center text-center space-y-3 p-5">
       <div class="w-10 h-10 rounded-2xl bg-brand-500/10 text-brand-600 dark:text-brand-400 flex items-center justify-center border border-brand-500/20">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -69,7 +66,6 @@
       </a>
     </div>
 
-    <!-- Inline Variant -->
     <div v-else class="relative z-10 flex items-center justify-between gap-3 text-left p-3.5">
       <div class="min-w-0 flex-1">
         <div class="flex items-center gap-1.5 mb-0.5">

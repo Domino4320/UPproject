@@ -1,6 +1,6 @@
 <template>
   <main class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-8">
-    <!-- Верхний заголовок + переключатель вида -->
+
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
       <div class="space-y-2">
         <span class="ds-kicker">GPS & Field Logbook</span>
@@ -21,9 +21,8 @@
       </div>
     </div>
 
-    <!-- 1. Верхний Bento-ряд: Паспорт регионов + Телеметрия -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-      <!-- Паспорт исследователя (7 колонок) -->
+
       <section class="lg:col-span-7 bento-card p-6 sm:p-7 flex flex-col justify-between gap-6">
         <div class="flex flex-wrap items-start justify-between gap-4">
           <div class="flex items-center gap-4">
@@ -47,7 +46,6 @@
           </div>
         </div>
 
-        <!-- Кликабельные штампы регионов -->
         <div class="space-y-2.5">
           <div class="text-xs font-bold uppercase tracking-wider text-slate-400">Фильтр по регионам мира</div>
           <div class="flex flex-wrap gap-2">
@@ -70,7 +68,6 @@
         </div>
       </section>
 
-      <!-- Карточка активного GPS-маяка (5 колонок) -->
       <section class="lg:col-span-5 rounded-3xl p-6 sm:p-7 bg-gradient-to-br from-forest-800 via-brand-800 to-slate-900 text-white shadow-xl flex flex-col justify-between gap-5 relative overflow-hidden">
         <div class="absolute -right-10 -top-10 w-44 h-44 rounded-full bg-brand-400/20 blur-2xl pointer-events-none"></div>
 
@@ -107,9 +104,8 @@
       </section>
     </div>
 
-    <!-- 2. Средний Bento-ряд: График активности + Бюджет BYN -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-      <!-- Интерактивный график по месяцам (8 колонок) -->
+
       <section class="lg:col-span-8 bento-card p-6 sm:p-7 flex flex-col justify-between gap-6">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
@@ -172,7 +168,6 @@
         </div>
       </section>
 
-      <!-- Структура бюджета в BYN (4 колонки) -->
       <section class="lg:col-span-4 bento-card p-6 sm:p-7 flex flex-col justify-between gap-5">
         <div>
           <div class="flex items-center justify-between">
@@ -200,7 +195,6 @@
       </section>
     </div>
 
-    <!-- 3. Журнал экспедиций (фильтрация + карточки/таблица) -->
     <section class="bento-card overflow-hidden">
       <div class="p-6 border-b border-slate-100 dark:border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
@@ -267,7 +261,6 @@
       </div>
     </section>
 
-    <!-- Модалка добавления маршрута в журнал -->
     <Transition name="v-fade-slide">
       <div v-if="addModalOpen" @click.self="addModalOpen = false" class="ds-modal-backdrop">
         <div class="ds-modal-content max-w-md p-6 space-y-5">

@@ -8,7 +8,6 @@
       </p>
     </div>
 
-    <!-- Панель фильтров, поиска и вида -->
     <div class="mb-8 flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4 bento-card p-3.5 sm:p-4">
       <div class="flex flex-wrap items-center gap-2">
         <button
@@ -50,7 +49,6 @@
       </div>
     </div>
 
-    <!-- Пустое состояние -->
     <div v-if="filteredGuides.length === 0" class="text-center py-14 bento-card space-y-3">
       <div class="text-3xl">🗺️</div>
       <h3 class="font-bold text-lg text-slate-900 dark:text-white">Маршруты не найдены</h3>
@@ -58,7 +56,6 @@
       <button type="button" @click="resetFilters" class="ds-btn ds-btn-sm ds-btn-primary">Сбросить фильтры</button>
     </div>
 
-    <!-- Сетка путеводителей -->
     <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
       <article
         v-for="guide in filteredGuides"
@@ -130,7 +127,6 @@
       </article>
     </div>
 
-    <!-- Модальное окно деталей маршрута -->
     <Transition name="v-fade-slide">
       <div v-if="selectedGuide" @click.self="selectedGuide = null" class="ds-modal-backdrop">
         <div class="ds-modal-content max-w-2xl max-h-[90vh] flex flex-col">
