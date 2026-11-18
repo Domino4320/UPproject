@@ -91,10 +91,10 @@
             <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Бюджет (до)</label>
             <span class="text-xs font-bold text-brand-600 dark:text-brand-400">{{ formatPrice(maxPrice) }}</span>
           </div>
-          <input v-model.number="maxPrice" type="range" min="3000" max="250000" step="1000" class="w-full accent-brand-600 cursor-pointer">
+          <input v-model.number="maxPrice" type="range" min="100" max="8500" step="50" class="w-full accent-brand-600 cursor-pointer">
           <div class="flex justify-between text-[11px] text-slate-400">
-            <span>3 000 ₽</span>
-            <span>250 000 ₽</span>
+            <span>100 BYN</span>
+            <span>8 500 BYN</span>
           </div>
         </div>
 
@@ -269,7 +269,7 @@
                 <label class="text-xs font-bold uppercase text-slate-400">Бюджет (до)</label>
                 <span class="text-xs font-bold text-brand-600 dark:text-brand-400">{{ formatPrice(maxPrice) }}</span>
               </div>
-              <input v-model.number="maxPrice" type="range" min="3000" max="250000" step="1000" class="w-full mt-2 accent-brand-600">
+              <input v-model.number="maxPrice" type="range" min="100" max="8500" step="50" class="w-full mt-2 accent-brand-600">
             </div>
           </div>
 
@@ -363,21 +363,21 @@
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue';
 
 const PRODUCTS = [
-  { id: 1, title: 'Штормовая палатка TerraNova StormShield 2P', category: 'tents', categoryLabel: 'Палатки & Тенты', price: 42900, rating: 4.98, badge: 'Тест в Исландии', badgeColor: 'bg-brand-600', spec: '1.45 кг', desc: 'Двухместная палатка с дугами из авиационного дюраля DAC, ветроустойчивость до 30 м/с и водяной столб 5 000 мм.', image: 'https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=600&q=80', features: ['ultralight', 'proDiscount'], isTour: false },
-  { id: 2, title: 'Экспедиционный рюкзак Arctic Pro 65L', category: 'backpacks', categoryLabel: 'Рюкзаки', price: 28500, rating: 4.95, badge: 'Топ продаж', badgeColor: 'bg-sunset-500', spec: '65 + 10 L', desc: 'Анатомический каркас, продуманное распределение веса, съёмный клапан и влагозащитный чехол в комплекте.', image: 'https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=600&q=80', features: ['proDiscount'], isTour: false },
-  { id: 3, title: 'Спутниковый трекер inReach Mini 2', category: 'navigation', categoryLabel: 'Навигация', price: 49900, rating: 5.0, badge: 'Безопасность SOS', badgeColor: 'bg-rose-600', spec: 'Iridium 100%', desc: 'Глобальное покрытие через спутники Иридиум, кнопка SOS спасателям GEOS и обмен СМС в любой точке тайги и океана.', image: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80', features: ['ultralight'], isTour: false },
-  { id: 4, title: 'Пуховый кокон Glacier Down -15', category: 'sleeping', categoryLabel: 'Спальники', price: 36000, rating: 4.96, badge: 'Комфорт -15°C', badgeColor: 'bg-teal-600', spec: 'Пух 850 FP', desc: 'Вес всего 980 г, гидрофобная пропитка пуха Nikwax, компрессионный мешок с защитой от дождя.', image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80', features: ['ultralight', 'proDiscount'], isTour: false },
-  { id: 5, title: 'Карбоновые палки Trail Ultra-Lite', category: 'backpacks', categoryLabel: 'Палки & Опоры', price: 12400, rating: 4.93, badge: '100% Карбон', badgeColor: 'bg-brand-600', spec: '390 г пара', desc: 'Замки FlickLock Pro, пробковая рукоятка против потения рук и сменные кольца для снега и курумника.', image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=600&q=80', features: ['ultralight'], isTour: false },
-  { id: 6, title: 'Зимняя Исландия: Охота за Авророй & Ледники', category: 'tours', categoryLabel: 'Авторская экспедиция', price: 165000, rating: 5.0, badge: 'Осталось 3 места', badgeColor: 'bg-sunset-500', spec: '12 дней • Декабрь', desc: 'Всё включено: подготовленный Super-Jeep 4x4, проживание в горных лоджах, гид и мастер-классы по фотосъемке.', image: 'https://images.unsplash.com/photo-1504893524553-b855bce32c67?auto=format&fit=crop&w=600&q=80', features: ['proDiscount'], isTour: true },
-  { id: 7, title: 'Штормовая куртка Alpine Shell GTX Pro', category: 'apparel', categoryLabel: 'Мембраны & Термобелье', price: 44500, rating: 4.97, badge: '28 000 мм', badgeColor: 'bg-cyan-600', spec: 'Gore-Tex Pro 3L', desc: 'Трёхслойная мембрана для альпинизма и штормового ветра, проклеенные швы и вентиляция под мышками.', image: 'https://images.unsplash.com/photo-1544966503-7cc5ac882d5f?auto=format&fit=crop&w=600&q=80', features: ['goretex', 'proDiscount'], isTour: false },
-  { id: 8, title: 'Ультралегкая палатка Ridge Carbon 1P', category: 'tents', categoryLabel: 'Палатки & Тенты', price: 34900, rating: 4.89, badge: 'Ultralight', badgeColor: 'bg-emerald-600', spec: '790 г', desc: 'Одноместное укрытие из силиконизированного нейлона 15D для соло-маршрутов и быстрого треккинга.', image: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=600&q=80', features: ['ultralight'], isTour: false },
-  { id: 9, title: 'Надувной коврик ThermoAir R-5.4', category: 'sleeping', categoryLabel: 'Спальники & Коврики', price: 15800, rating: 4.92, badge: 'Зима до -20°C', badgeColor: 'bg-teal-600', spec: '480 г • R 5.4', desc: 'Трёхкамерный теплоотражающий коврик с насосом-мешком в комплекте. Компактно складывается в бутылку 0.7 л.', image: 'https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?auto=format&fit=crop&w=600&q=80', features: ['ultralight', 'proDiscount'], isTour: false },
-  { id: 10, title: 'Камчатка: Вулканы и Тихий океан', category: 'tours', categoryLabel: 'Авторская экспедиция', price: 185000, rating: 4.99, badge: 'Хит лета', badgeColor: 'bg-sunset-500', spec: '11 дней • Август', desc: 'Восхождение на Толбачик и Мутновский, выход в океан к косаткам, вахтовка 6x6 и горячие источники.', image: 'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=600&q=80', features: ['proDiscount'], isTour: true },
-  { id: 11, title: 'Мультиспортивные часы Fenix Solar Pro', category: 'navigation', categoryLabel: 'Навигация', price: 68900, rating: 4.96, badge: 'Офлайн-карты', badgeColor: 'bg-brand-600', spec: 'До 38 дней GPS', desc: 'Сапфировое стекло с солнечной батареей, топографические карты всего мира, барометр и штормовые предупреждения.', image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80', features: [], isTour: false },
-  { id: 12, title: 'Штурмовой рюкзак Alpine Summit 45L', category: 'backpacks', categoryLabel: 'Рюкзаки', price: 21900, rating: 4.91, badge: 'Водостойкий', badgeColor: 'bg-indigo-600', spec: '45 L • 920 г', desc: 'Лёгкий и прочный рюкзак из ткани Dyneema Ripstop с креплениями для ледоруба и сноуборда.', image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80', features: ['ultralight'], isTour: false },
-  { id: 13, title: 'Треккинг в Доломитовых Альпах (Италия)', category: 'tours', categoryLabel: 'Авторская экспедиция', price: 118000, rating: 4.98, badge: 'Комфорт-трек', badgeColor: 'bg-sunset-500', spec: '8 дней • Сентябрь', desc: 'Панорамные тропы вокруг Тре Чиме, ночёвки в альпийских рифуджио и дегустация тирольской кухни.', image: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80', features: ['proDiscount'], isTour: true },
-  { id: 14, title: 'Термобельё Merino Wool 240 г/м²', category: 'apparel', categoryLabel: 'Мембраны & Термобелье', price: 9800, rating: 4.94, badge: '100% Меринос', badgeColor: 'bg-forest-600', spec: 'Тепло даже влажным', desc: 'Натуральная шерсть мериноса без запаха в многодневных походах, плоские швы и анатомический крой.', image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80', features: ['proDiscount'], isTour: false },
-  { id: 15, title: 'Мембранные брюки StormPant GTX', category: 'apparel', categoryLabel: 'Мембраны & Термобелье', price: 26400, rating: 4.9, badge: 'Самосбросы', badgeColor: 'bg-cyan-600', spec: 'Gore-Tex Pro', desc: 'Боковые молнии во всю длину позволяют надеть брюки поверх треккинговых ботинок и кошек за 30 секунд.', image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80', features: ['goretex', 'ultralight'], isTour: false },
+  { id: 1, title: 'Штормовая палатка TerraNova StormShield 2P', category: 'tents', categoryLabel: 'Палатки & Тенты', price: 1450, rating: 4.98, badge: 'Тест в Исландии', badgeColor: 'bg-brand-600', spec: '1.45 кг', desc: 'Двухместная палатка с дугами из авиационного дюраля DAC, ветроустойчивость до 30 м/с и водяной столб 5 000 мм.', image: 'https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=600&q=80', features: ['ultralight', 'proDiscount'], isTour: false },
+  { id: 2, title: 'Экспедиционный рюкзак Arctic Pro 65L', category: 'backpacks', categoryLabel: 'Рюкзаки', price: 950, rating: 4.95, badge: 'Топ продаж', badgeColor: 'bg-sunset-500', spec: '65 + 10 L', desc: 'Анатомический каркас, продуманное распределение веса, съёмный клапан и влагозащитный чехол в комплекте.', image: 'https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=600&q=80', features: ['proDiscount'], isTour: false },
+  { id: 3, title: 'Спутниковый трекер inReach Mini 2', category: 'navigation', categoryLabel: 'Навигация', price: 1650, rating: 5.0, badge: 'Безопасность SOS', badgeColor: 'bg-rose-600', spec: 'Iridium 100%', desc: 'Глобальное покрытие через спутники Иридиум, кнопка SOS спасателям GEOS и обмен СМС в любой точке тайги и океана.', image: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80', features: ['ultralight'], isTour: false },
+  { id: 4, title: 'Пуховый кокон Glacier Down -15', category: 'sleeping', categoryLabel: 'Спальники', price: 1200, rating: 4.96, badge: 'Комфорт -15°C', badgeColor: 'bg-teal-600', spec: 'Пух 850 FP', desc: 'Вес всего 980 г, гидрофобная пропитка пуха Nikwax, компрессионный мешок с защитой от дождя.', image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80', features: ['ultralight', 'proDiscount'], isTour: false },
+  { id: 5, title: 'Карбоновые палки Trail Ultra-Lite', category: 'backpacks', categoryLabel: 'Палки & Опоры', price: 410, rating: 4.93, badge: '100% Карбон', badgeColor: 'bg-brand-600', spec: '390 г пара', desc: 'Замки FlickLock Pro, пробковая рукоятка против потения рук и сменные кольца для снега и курумника.', image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=600&q=80', features: ['ultralight'], isTour: false },
+  { id: 6, title: 'Зимняя Исландия: Охота за Авророй & Ледники', category: 'tours', categoryLabel: 'Авторская экспедиция', price: 5400, rating: 5.0, badge: 'Осталось 3 места', badgeColor: 'bg-sunset-500', spec: '12 дней • Декабрь', desc: 'Всё включено: подготовленный Super-Jeep 4x4, проживание в горных лоджах, гид и мастер-классы по фотосъемке.', image: 'https://images.unsplash.com/photo-1504893524553-b855bce32c67?auto=format&fit=crop&w=600&q=80', features: ['proDiscount'], isTour: true },
+  { id: 7, title: 'Штормовая куртка Alpine Shell GTX Pro', category: 'apparel', categoryLabel: 'Мембраны & Термобелье', price: 1480, rating: 4.97, badge: '28 000 мм', badgeColor: 'bg-cyan-600', spec: 'Gore-Tex Pro 3L', desc: 'Трёхслойная мембрана для альпинизма и штормового ветра, проклеенные швы и вентиляция под мышками.', image: 'https://images.unsplash.com/photo-1544966503-7cc5ac882d5f?auto=format&fit=crop&w=600&q=80', features: ['goretex', 'proDiscount'], isTour: false },
+  { id: 8, title: 'Ультралегкая палатка Ridge Carbon 1P', category: 'tents', categoryLabel: 'Палатки & Тенты', price: 1150, rating: 4.89, badge: 'Ultralight', badgeColor: 'bg-emerald-600', spec: '790 г', desc: 'Одноместное укрытие из силиконизированного нейлона 15D для соло-маршрутов и быстрого треккинга.', image: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=600&q=80', features: ['ultralight'], isTour: false },
+  { id: 9, title: 'Надувной коврик ThermoAir R-5.4', category: 'sleeping', categoryLabel: 'Спальники & Коврики', price: 520, rating: 4.92, badge: 'Зима до -20°C', badgeColor: 'bg-teal-600', spec: '480 г • R 5.4', desc: 'Трёхкамерный теплоотражающий коврик с насосом-мешком в комплекте. Компактно складывается в бутылку 0.7 л.', image: 'https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?auto=format&fit=crop&w=600&q=80', features: ['ultralight', 'proDiscount'], isTour: false },
+  { id: 10, title: 'Камчатка: Вулканы и Тихий океан', category: 'tours', categoryLabel: 'Авторская экспедиция', price: 6100, rating: 4.99, badge: 'Хит лета', badgeColor: 'bg-sunset-500', spec: '11 дней • Август', desc: 'Восхождение на Толбачик и Мутновский, выход в океан к косаткам, вахтовка 6x6 и горячие источники.', image: 'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=600&q=80', features: ['proDiscount'], isTour: true },
+  { id: 11, title: 'Мультиспортивные часы Fenix Solar Pro', category: 'navigation', categoryLabel: 'Навигация', price: 2290, rating: 4.96, badge: 'Офлайн-карты', badgeColor: 'bg-brand-600', spec: 'До 38 дней GPS', desc: 'Сапфировое стекло с солнечной батареей, топографические карты всего мира, барометр и штормовые предупреждения.', image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80', features: [], isTour: false },
+  { id: 12, title: 'Штурмовой рюкзак Alpine Summit 45L', category: 'backpacks', categoryLabel: 'Рюкзаки', price: 730, rating: 4.91, badge: 'Водостойкий', badgeColor: 'bg-indigo-600', spec: '45 L • 920 г', desc: 'Лёгкий и прочный рюкзак из ткани Dyneema Ripstop с креплениями для ледоруба и сноуборда.', image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80', features: ['ultralight'], isTour: false },
+  { id: 13, title: 'Треккинг в Доломитовых Альпах (Италия)', category: 'tours', categoryLabel: 'Авторская экспедиция', price: 3900, rating: 4.98, badge: 'Комфорт-трек', badgeColor: 'bg-sunset-500', spec: '8 дней • Сентябрь', desc: 'Панорамные тропы вокруг Тре Чиме, ночёвки в альпийских рифуджио и дегустация тирольской кухни.', image: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80', features: ['proDiscount'], isTour: true },
+  { id: 14, title: 'Термобельё Merino Wool 240 г/м²', category: 'apparel', categoryLabel: 'Мембраны & Термобелье', price: 320, rating: 4.94, badge: '100% Меринос', badgeColor: 'bg-forest-600', spec: 'Тепло даже влажным', desc: 'Натуральная шерсть мериноса без запаха в многодневных походах, плоские швы и анатомический крой.', image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80', features: ['proDiscount'], isTour: false },
+  { id: 15, title: 'Мембранные брюки StormPant GTX', category: 'apparel', categoryLabel: 'Мембраны & Термобелье', price: 880, rating: 4.9, badge: 'Самосбросы', badgeColor: 'bg-cyan-600', spec: 'Gore-Tex Pro', desc: 'Боковые молнии во всю длину позволяют надеть брюки поверх треккинговых ботинок и кошек за 30 секунд.', image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80', features: ['goretex', 'ultralight'], isTour: false },
 ];
 
 const categoryOptions = [
@@ -398,7 +398,7 @@ const featureOptions = [
 const ITEMS_PER_PAGE = 6;
 const searchQuery = ref('');
 const selectedCategories = ref(categoryOptions.map(c => c.key));
-const maxPrice = ref(250000);
+const maxPrice = ref(8500);
 const selectedFeatures = ref([]);
 const sortBy = ref('featured');
 const currentPage = ref(1);
@@ -451,7 +451,7 @@ watch(totalCartQty, (val) => {
 }, { immediate: true });
 
 function formatPrice(val) {
-  return `${Number(val).toLocaleString('ru-RU')} ₽`;
+  return `${Number(val).toLocaleString('ru-RU')} BYN`;
 }
 
 function toggleAllCategories(checked) {
@@ -461,7 +461,7 @@ function toggleAllCategories(checked) {
 function resetFilters() {
   searchQuery.value = '';
   selectedCategories.value = categoryOptions.map(c => c.key);
-  maxPrice.value = 250000;
+  maxPrice.value = 8500;
   selectedFeatures.value = [];
   sortBy.value = 'featured';
   currentPage.value = 1;
