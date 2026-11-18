@@ -233,3 +233,34 @@
 .animate-float-slow {
   animation: floatSlow 6s ease-in-out infinite;
 }
+
+/* Unique Bento & Glassmorphism Visuals */
+.bento-card {
+  @apply relative overflow-hidden rounded-3xl bg-white/90 dark:bg-slate-900/85 backdrop-blur-xl border border-emerald-900/10 dark:border-emerald-500/15 shadow-sm hover:shadow-2xl hover:shadow-brand-500/10 transition-all duration-300;
+}
+
+.bento-card::before {
+  content: '';
+  @apply absolute inset-0 rounded-3xl pointer-events-none opacity-0 transition-opacity duration-300;
+  background: radial-gradient(600px circle at 50% 0%, rgba(20, 184, 166, 0.12), transparent 60%);
+}
+
+.bento-card:hover::before {
+  @apply opacity-100;
+}
+
+/* Vue Transition Helpers */
+.v-fade-slide-enter-active,
+.v-fade-slide-leave-active {
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.v-fade-slide-enter-from {
+  opacity: 0;
+  transform: translateY(10px) scale(0.98);
+}
+
+.v-fade-slide-leave-to {
+  opacity: 0;
+  transform: translateY(-8px) scale(0.98);
+}

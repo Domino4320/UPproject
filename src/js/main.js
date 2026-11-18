@@ -1,7 +1,12 @@
 import { createApp } from 'vue';
 import AdSlot from '../components/AdSlot.vue';
+import SiteHeader from '../components/SiteHeader.vue';
+import ExpeditionHeroWidget from '../components/ExpeditionHeroWidget.vue';
+import RouteCompassApp from '../components/RouteCompassApp.vue';
+import InteractiveCatalog from '../components/InteractiveCatalog.vue';
+import InteractiveMessenger from '../components/InteractiveMessenger.vue';
 
-export { AdSlot };
+export { AdSlot, SiteHeader, ExpeditionHeroWidget, RouteCompassApp, InteractiveCatalog, InteractiveMessenger };
 
 // Dark Mode and Theme Management
 export function applyTheme(isDark) {
@@ -281,9 +286,53 @@ export function initAnimatedCounters() {
   counters.forEach(c => observer.observe(c));
 }
 
+// Vue App Mount Helpers
+export function initVueComponents() {
+  // 1. Unified SiteHeader
+  document.querySelectorAll('[data-vue-header]').forEach(el => {
+    if (el.dataset.vueMounted === 'true') return;
+    el.dataset.vueMounted = 'true';
+    createApp(SiteHeader, {
+      activePage: el.dataset.activePage || 'home',
+      basePath: el.dataset.basePath || '.',
+      subtitle: el.dataset.subtitle || 'Nature & Expeditions',
+      showCart: el.dataset.showCart === 'true',
+    }).mount(el);
+  });
+
+  // 2. Hero Live Expedition Bento Widget
+  document.querySelectorAll('[data-vue-hero-widget]').forEach(el => {
+    if (el.dataset.vueMounted === 'true') return;
+    el.dataset.vueMounted = 'true';
+    createApp(ExpeditionHeroWidget).mount(el);
+  });
+
+  // 3. Route Compass App (kanban.html)
+  document.querySelectorAll('[data-vue-route-compass]').forEach(el => {
+    if (el.dataset.vueMounted === 'true') return;
+    el.dataset.vueMounted = 'true';
+    createApp(RouteCompassApp).mount(el);
+  });
+
+  // 4. Interactive Catalog (ecommerce.html)
+  document.querySelectorAll('[data-vue-catalog]').forEach(el => {
+    if (el.dataset.vueMounted === 'true') return;
+    el.dataset.vueMounted = 'true';
+    createApp(InteractiveCatalog).mount(el);
+  });
+
+  // 5. Interactive Messenger (messenger.html)
+  document.querySelectorAll('[data-vue-messenger]').forEach(el => {
+    if (el.dataset.vueMounted === 'true') return;
+    el.dataset.vueMounted = 'true';
+    createApp(InteractiveMessenger).mount(el);
+  });
+}
+
 // Universal Initializer on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
+  initVueComponents();
   initAdSlots();
   initFaqAccordion();
   initMobileMenu();

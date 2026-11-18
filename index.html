@@ -24,99 +24,9 @@
 <body class="bg-[#f7faf8] text-slate-800 dark:bg-[#0b1512] dark:text-slate-100 min-h-screen flex flex-col selection:bg-brand-500 selection:text-white bg-topo-pattern">
 
   <!-- ============================================== -->
-  <!-- 1. Навигационная панель (Sticky + Glassmorphism) -->
+  <!-- 1. Навигационная панель (Vue 3 SiteHeader)      -->
   <!-- ============================================== -->
-  <header class="sticky top-0 z-50 bg-white/85 dark:bg-[#0b1512]/85 backdrop-blur-md border-b border-emerald-900/10 dark:border-emerald-500/15 transition-colors duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
-      
-      <!-- Логотип слева -->
-      <a href="./" class="flex items-center space-x-3 group shrink-0">
-        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-forest-600 via-brand-600 to-sunset-500 flex items-center justify-center text-white shadow-lg shadow-brand-600/25 group-hover:scale-105 transition-transform duration-200">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        </div>
-        <div class="flex flex-col">
-          <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-forest-800 via-brand-600 to-sunset-600 dark:from-white dark:via-brand-400 dark:to-sunset-400 bg-clip-text text-transparent">
-            TerraNova
-          </span>
-          <span class="text-[10px] font-semibold text-slate-500 dark:text-slate-400 -mt-1 uppercase tracking-widest">Nature & Expeditions</span>
-        </div>
-      </a>
-
-      <!-- Меню по центру -->
-      <nav class="hidden lg:flex items-center gap-4 xl:gap-6 2xl:gap-7 text-sm font-semibold shrink-0">
-        <a href="#articles" class="nav-link">Путеводители</a>
-        <a href="./pages/storybook.html" class="nav-link">Атлас природы</a>
-        <a href="./pages/dashboard.html" class="nav-link">Трекер</a>
-        <a href="./pages/ecommerce.html" class="nav-link">Снаряжение & Туры</a>
-        <a href="./pages/kanban.html" class="nav-link">Компас маршрута</a>
-        <a href="./pages/messenger.html" class="nav-link">Попутчики</a>
-      </nav>
-
-      <!-- Правая часть: тема + Вступить в клуб + Об авторе + Мобильный бургер -->
-      <div class="flex items-center gap-3 sm:gap-4 shrink-0">
-        
-        <button data-theme-toggle class="p-2.5 rounded-xl border border-emerald-900/10 dark:border-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white bg-emerald-50/50 dark:bg-slate-800/50 hover:bg-emerald-100/60 dark:hover:bg-slate-800 transition shrink-0" aria-label="Сменить тему" title="Сменить тему">
-          <svg data-theme-icon="sun" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-          <svg data-theme-icon="moon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
-        </button>
-
-        <div class="h-6 w-px bg-emerald-900/10 dark:bg-slate-800 hidden sm:block"></div>
-
-        <div class="flex items-center gap-2.5 sm:gap-3">
-          <a href="./pages/multistep.html" class="hidden sm:inline-flex ds-btn ds-btn-md ds-btn-sunset whitespace-nowrap">
-            <span>Вступить в клуб</span>
-          </a>
-          <a href="#about-author" class="ds-btn ds-btn-md ds-btn-secondary whitespace-nowrap">
-            <span>О проекте</span>
-          </a>
-        </div>
-
-        <!-- Кнопка мобильного меню -->
-        <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-emerald-50 dark:hover:bg-slate-800 transition shrink-0 ml-1" aria-label="Открыть меню">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Мобильное выпадающее меню -->
-    <div id="mobileMenu" class="hidden lg:hidden border-t border-emerald-900/10 dark:border-slate-800 bg-white/95 dark:bg-[#0b1512]/95 backdrop-blur-lg px-4 pt-4 pb-6 space-y-3">
-      <div class="grid grid-cols-1 gap-1 text-sm font-medium">
-        <a href="#articles" class="px-3.5 py-2.5 rounded-xl hover:bg-emerald-50 dark:hover:bg-slate-800 flex justify-between items-center text-slate-800 dark:text-slate-100">
-          <span>Путеводители и отчёты</span>
-          <span class="text-xs text-brand-600 font-semibold">Смотреть →</span>
-        </a>
-        <a href="./pages/storybook.html" class="px-3.5 py-2.5 rounded-xl hover:bg-emerald-50 dark:hover:bg-slate-800 flex justify-between items-center text-slate-800 dark:text-slate-100">
-          <span>Атлас природы и биомов</span>
-          <span class="text-xs text-emerald-600 font-semibold">Открыть →</span>
-        </a>
-        <a href="./pages/dashboard.html" class="px-3.5 py-2.5 rounded-xl hover:bg-emerald-50 dark:hover:bg-slate-800 flex justify-between items-center text-slate-800 dark:text-slate-100">
-          <span>Трекер маршрутов</span>
-          <span class="text-xs text-brand-600 font-semibold">Открыть →</span>
-        </a>
-        <a href="./pages/ecommerce.html" class="px-3.5 py-2.5 rounded-xl hover:bg-emerald-50 dark:hover:bg-slate-800 flex justify-between items-center text-slate-800 dark:text-slate-100">
-          <span>Каталог снаряжения & Туры</span>
-          <span class="text-xs text-brand-600 font-semibold">В каталог →</span>
-        </a>
-        <a href="./pages/kanban.html" class="px-3.5 py-2.5 rounded-xl hover:bg-emerald-50 dark:hover:bg-slate-800 flex justify-between items-center text-slate-800 dark:text-slate-100">
-          <span>Компас маршрута</span>
-          <span class="text-xs text-brand-600 font-semibold">Подобрать →</span>
-        </a>
-        <a href="./pages/messenger.html" class="px-3.5 py-2.5 rounded-xl hover:bg-emerald-50 dark:hover:bg-slate-800 flex justify-between items-center text-slate-800 dark:text-slate-100">
-          <span>Чат попутчиков</span>
-          <span class="text-xs text-brand-600 font-semibold">В чат →</span>
-        </a>
-      </div>
-
-      <div class="pt-2 border-t border-emerald-900/10 dark:border-slate-800 flex gap-2">
-        <a href="./pages/multistep.html" class="flex-1 ds-btn ds-btn-md ds-btn-sunset text-center">Вступить в клуб</a>
-        <a href="./pages/storybook.html" class="flex-1 ds-btn ds-btn-md ds-btn-secondary text-center">Атлас природы</a>
-      </div>
-    </div>
-  </header>
+  <div data-vue-header data-active-page="home" data-base-path="." data-subtitle="Nature & Expeditions"></div>
 
   <!-- ============================================== -->
   <!-- 2. Hero-секция с природным силуэтом и быстрым поиском -->
@@ -205,6 +115,9 @@
           <div class="text-xs text-slate-500 dark:text-slate-400 mt-1 uppercase font-semibold">Рейтинг маршрутов</div>
         </div>
       </div>
+
+      <!-- Живая Vue 3 Bento-сводка ближайших выходов -->
+      <div data-vue-hero-widget></div>
     </div>
   </section>
 
