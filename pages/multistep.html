@@ -142,23 +142,23 @@
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div class="space-y-1.5">
-              <label class="text-xs font-bold text-slate-700 dark:text-slate-300">Имя и фамилия *</label>
-              <input type="text" placeholder="Максим Ветров" required class="ds-input">
+              <label for="msFullName" class="text-xs font-bold text-slate-700 dark:text-slate-300">Имя и фамилия *</label>
+              <input id="msFullName" type="text" placeholder="Максим Ветров" required minlength="2" class="ds-input invalid:border-rose-400">
             </div>
 
             <div class="space-y-1.5">
-              <label class="text-xs font-bold text-slate-700 dark:text-slate-300">Email для отправки треков *</label>
-              <input type="email" placeholder="explorer@terranova.travel" required class="ds-input">
+              <label for="msEmail" class="text-xs font-bold text-slate-700 dark:text-slate-300">Email для отправки треков *</label>
+              <input id="msEmail" type="email" placeholder="explorer@terranova.travel" required class="ds-input invalid:border-rose-400">
             </div>
 
             <div class="space-y-1.5">
-              <label class="text-xs font-bold text-slate-700 dark:text-slate-300">Телефон (WhatsApp / Telegram) *</label>
-              <input type="tel" placeholder="+7 999 000-00-00" required class="ds-input">
+              <label for="msPhone" class="text-xs font-bold text-slate-700 dark:text-slate-300">Телефон (WhatsApp / Telegram) *</label>
+              <input id="msPhone" type="tel" placeholder="+375 29 000-00-00" required pattern="[\+\d\s\-\(\)]{7,20}" title="Введите корректный номер телефона (минимум 7 цифр)" class="ds-input invalid:border-rose-400">
             </div>
 
             <div class="space-y-1.5">
-              <label class="text-xs font-bold text-slate-700 dark:text-slate-300">Ваш походный опыт</label>
-              <select class="ds-input">
+              <label for="msExp" class="text-xs font-bold text-slate-700 dark:text-slate-300">Ваш походный опыт</label>
+              <select id="msExp" class="ds-input">
                 <option>Новичок (первый серьезный поход)</option>
                 <option selected>Средний (ПВД с палатками, хайкинг до 20 км)</option>
                 <option>Опытный (многодневные автономы, перевалы 3000м+)</option>
@@ -276,6 +276,39 @@
 
   </main>
 
+  <!-- Красивое модальное окно успешной заявки -->
+  <div id="bookingSuccessModal" class="hidden ds-modal-backdrop">
+    <div class="ds-modal-content max-w-md p-7 sm:p-8 text-center space-y-5 animate-fade-in">
+      <div class="w-16 h-16 mx-auto rounded-3xl bg-gradient-to-tr from-emerald-500 to-brand-500 text-white flex items-center justify-center shadow-xl shadow-emerald-500/30">
+        <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+        </svg>
+      </div>
+
+      <div class="space-y-2">
+        <span id="bookingRefBadge" class="ds-badge ds-badge-success font-mono">Заявка #TN-2026</span>
+        <h3 class="text-2xl font-black text-slate-900 dark:text-white">Место забронировано!</h3>
+        <p id="bookingSuccessText" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed"></p>
+      </div>
+
+      <div class="p-4 rounded-2xl bg-emerald-50/70 dark:bg-slate-800/80 border border-emerald-900/10 dark:border-slate-700 text-left space-y-1.5 text-xs">
+        <div class="flex justify-between">
+          <span class="text-slate-500">Статус:</span>
+          <span class="font-bold text-emerald-600 dark:text-emerald-400">Ожидает звонка координатора</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-slate-500">Связь:</span>
+          <span class="font-bold text-slate-800 dark:text-slate-200">Telegram / Email в течение 2 ч</span>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-2.5 pt-1">
+        <a href="./messenger.html" class="flex-1 ds-btn ds-btn-md ds-btn-secondary">Чат попутчиков</a>
+        <a href="../index.html" class="flex-1 ds-btn ds-btn-md ds-btn-primary">На главную →</a>
+      </div>
+    </div>
+  </div>
+
   <script type="module">
     import { initTheme, initMobileMenu } from '../src/js/main.js';
     initTheme();
@@ -286,6 +319,19 @@
 
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
+
+    function validateCurrentStep() {
+      const stepEl = document.getElementById(`step${currentStep}`);
+      if (!stepEl) return true;
+      const fields = stepEl.querySelectorAll('input, select, textarea');
+      for (const field of fields) {
+        if (!field.checkValidity()) {
+          field.reportValidity();
+          return false;
+        }
+      }
+      return true;
+    }
 
     function updateStepUI() {
       // Hide all steps
@@ -320,12 +366,19 @@
     }
 
     nextBtn.addEventListener('click', () => {
+      if (!validateCurrentStep()) return;
+
       if (currentStep < totalSteps) {
         currentStep++;
         updateStepUI();
       } else {
-        alert('Поздравляем! Ваша заявка в экспедицию принята. Наш координатор свяжется с вами в Telegram в течение 2 часов.');
-        window.location.href = '../index.html';
+        const name = document.getElementById('msFullName')?.value.trim() || 'Исследователь';
+        const email = document.getElementById('msEmail')?.value.trim() || '';
+        const refNum = Math.floor(1000 + Math.random() * 9000);
+        document.getElementById('bookingRefBadge').textContent = `Заявка #TN-${refNum}`;
+        document.getElementById('bookingSuccessText').textContent =
+          `${name}, ваша заявка принята! Подтверждение и чек-лист подготовки отправлены на ${email || 'указанную почту'}.`;
+        document.getElementById('bookingSuccessModal').classList.remove('hidden');
       }
     });
 

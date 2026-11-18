@@ -21,21 +21,6 @@
           <span>Фильтры</span>
         </button>
 
-        <!-- Скелетон демо -->
-        <button
-          type="button"
-          @click="showSkeleton = !showSkeleton"
-          :class="[
-            'hidden md:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border text-xs font-semibold transition',
-            showSkeleton
-              ? 'bg-amber-100 dark:bg-amber-950 border-amber-400 text-amber-800 dark:text-amber-200'
-              : 'border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800'
-          ]"
-        >
-          <span class="w-2 h-2 rounded-full bg-sunset-500 animate-pulse"></span>
-          <span>Skeleton</span>
-        </button>
-
         <!-- Сортировка -->
         <div class="flex items-center gap-2">
           <label for="vueSortSelect" class="text-xs font-semibold text-slate-500 whitespace-nowrap hidden sm:inline">Сортировать:</label>
@@ -112,17 +97,6 @@
 
       <!-- Правая часть: Товары -->
       <div class="lg:col-span-3 space-y-6">
-        <!-- Скелетон -->
-        <div v-if="showSkeleton" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-          <div v-for="n in 6" :key="n" class="bg-white dark:bg-slate-900 rounded-3xl p-5 border border-slate-200 dark:border-slate-800 animate-pulse space-y-4">
-            <div class="aspect-square bg-slate-200 dark:bg-slate-800 rounded-2xl"></div>
-            <div class="h-4 bg-slate-200 dark:bg-slate-800 rounded w-3/4"></div>
-            <div class="h-3 bg-slate-200 dark:bg-slate-800 rounded w-1/2"></div>
-            <div class="h-8 bg-slate-200 dark:bg-slate-800 rounded-xl"></div>
-          </div>
-        </div>
-
-        <template v-else>
           <!-- Инфо-строка -->
           <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
             <span>
@@ -239,7 +213,6 @@
               Следующая →
             </button>
           </div>
-        </template>
       </div>
     </div>
 
@@ -402,7 +375,6 @@ const maxPrice = ref(8500);
 const selectedFeatures = ref([]);
 const sortBy = ref('featured');
 const currentPage = ref(1);
-const showSkeleton = ref(false);
 const mobileDrawerOpen = ref(false);
 const quickViewItem = ref(null);
 const addedId = ref(null);
